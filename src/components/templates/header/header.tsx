@@ -42,13 +42,11 @@ export const Header = (props: HeaderProps) => {
         />
       </Link>
       {menuItems.map((item, idx) => {
+        const { name, link } = item
         return (
-          <Box
-            key={idx}
-            display={{ base: 'none', md: 'block', lg: 'block' }}
-            as={DesktopLogo}
-            title={t('common.logoImageAltText')}
-          />
+          <Link key={idx} href={link}>
+            {name}
+          </Link>
         )
       })}
       <LanguageSelector />

@@ -12,7 +12,7 @@ export type Logo = {
 
 export type MenuItem = {
   name: string
-  url: string
+  link: string
   isProject: boolean
   isCta: boolean
 }
