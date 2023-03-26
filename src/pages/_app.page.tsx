@@ -1,81 +1,114 @@
-import { ChakraProvider } from '@chakra-ui/react';
-import localFont from '@next/font/local';
-import { appWithTranslation } from 'next-i18next';
-import type { AppProps } from 'next/app';
+import { ChakraProvider } from '@chakra-ui/react'
+import localFont from '@next/font/local'
+import { appWithTranslation } from 'next-i18next'
+import type { AppProps } from 'next/app'
 
-import { Layout } from '@src/components/templates/layout';
-import { theme } from '@src/theme';
+import { Layout, MenuItem, AssetContent } from '@src/components/templates/layout'
+import { client } from '@src/lib/client'
+import { theme } from '@src/theme'
 
-const spaceGrotesk = localFont({
+export const banglaSangam = localFont({
   src: [
     {
-      path: './utils/fonts/space-grotesk-v13-latin-300.woff',
+      path: './utils/fonts/bangla-sangam-mn.woff',
       weight: '300',
-      style: 'normal',
+      style: 'normal'
     },
     {
-      path: './utils/fonts/space-grotesk-v13-latin-300.woff2',
+      path: './utils/fonts/bangla-sangam-mn.woff2',
       weight: '300',
-      style: 'normal',
+      style: 'normal'
     },
     {
-      path: './utils/fonts/space-grotesk-v13-latin-regular.woff',
+      path: './utils/fonts/bangla-sangam-mn.woff',
       weight: '400',
-      style: 'normal',
+      style: 'normal'
     },
     {
-      path: './utils/fonts/space-grotesk-v13-latin-regular.woff2',
+      path: './utils/fonts/bangla-sangam-mn.woff2',
       weight: '400',
-      style: 'normal',
+      style: 'normal'
     },
     {
-      path: './utils/fonts/space-grotesk-v13-latin-500.woff',
+      path: './utils/fonts/bangla-sangam-mn.woff',
       weight: '500',
-      style: 'normal',
+      style: 'normal'
     },
     {
-      path: './utils/fonts/space-grotesk-v13-latin-500.woff2',
+      path: './utils/fonts/bangla-sangam-mn.woff2',
       weight: '500',
-      style: 'normal',
+      style: 'normal'
     },
     {
-      path: './utils/fonts/space-grotesk-v13-latin-600.woff',
+      path: './utils/fonts/bangla-sangam-mn.woff',
       weight: '600',
-      style: 'normal',
+      style: 'normal'
     },
     {
-      path: './utils/fonts/space-grotesk-v13-latin-600.woff2',
+      path: './utils/fonts/bangla-sangam-mn.woff2',
       weight: '600',
-      style: 'normal',
+      style: 'normal'
     },
     {
-      path: './utils/fonts/space-grotesk-v13-latin-700.woff',
+      path: './utils/fonts/bangla-sangam-mn.woff',
       weight: '700',
-      style: 'normal',
+      style: 'normal'
     },
     {
-      path: './utils/fonts/space-grotesk-v13-latin-700.woff2',
+      path: './utils/fonts/bangla-sangam-mn.woff2',
       weight: '700',
-      style: 'normal',
-    },
-  ],
-});
+      style: 'normal'
+    }
+  ]
+})
 
-const App = ({ Component, pageProps }: AppProps) => {
+export type AppProperties =
+  AppProps & { data: { menuCollection: {
+    items: MenuItem[]
+  }, assetsCollection: {
+    items: AssetContent[]
+  }
+}}
+
+const App = ({ Component, pageProps, data }: AppProperties) => {
   return (
-      <ChakraProvider
-        theme={{
-          ...theme,
-          fonts: {
-            heading: `${spaceGrotesk.style.fontFamily}, ${theme.fonts.heading}`,
-            body: `${spaceGrotesk.style.fontFamily}, ${theme.fonts.body}`,
-          },
-        }}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </ChakraProvider>
-  );
-};
+    <ChakraProvider
+      theme={{
+        ...theme,
+        fonts: {
+          heading: `${banglaSangam.style.fontFamily}, ${theme.fonts.heading}`,
+          body: `${banglaSangam.style.fontFamily}, ${theme.fonts.body}`
+        }
+      }}
+    >
+      <Layout
+        menuContent={data.menuCollection.items}
+        assetContent={data.assetsCollection.items[0]}
+      >
+        <Component {...pageProps} />
+      </Layout>
+    </ChakraProvider>
+  )
+}
 
-export default appWithTranslation(App);
+App.getInitialProps = async ({ locale }: { locale?: string }) => {
+  try {
+    const data = await client.layout({ locale })
+
+    if (!data) {
+      return {
+        notFound: true
+      }
+    }
+
+    return {
+      data
+    }
+  } catch {
+    return {
+      notFound: true
+    }
+  }
+}
+
+export default appWithTranslation(App)

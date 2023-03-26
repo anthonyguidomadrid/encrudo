@@ -24,9 +24,12 @@ fragment PageLandingFields on PageLanding {
 }
 
 query pageLanding($locale: String, $preview: Boolean) {
-  pageLandingCollection(limit: 1, locale: $locale, preview: $preview) {
+  menuCollection(limit: 10, locale: $locale, preview: $preview) {
     items {
-      ...PageLandingFields
+      name
+      link
+      isProject
+      isCta
     }
   }
 }

@@ -1,0 +1,25 @@
+query layout($locale: String, $preview: Boolean) {
+  menuCollection(limit: 10, locale: $locale, preview: $preview) {
+    items {
+      name
+      link
+      isProject
+      isCta
+    }
+  }
+  assetsCollection(limit: 1, locale: $locale, preview: $preview) {
+    items {
+      logo {
+        url
+        description
+      }
+      socialMediaCollection {
+        items {
+          url
+          description
+          fileName
+        }
+      }
+    }
+  }
+}

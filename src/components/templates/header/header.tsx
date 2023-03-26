@@ -1,15 +1,22 @@
-import { Box, BoxProps, Flex } from '@chakra-ui/react';
-import { useTranslation } from 'next-i18next';
-import Link from 'next/link';
+import { Box, BoxProps, Flex } from '@chakra-ui/react'
+import { useTranslation } from 'next-i18next'
+import Link from 'next/link'
 
-import MobileLogo from '@icons/bonelli-mobile.svg';
-import DesktopLogo from '@icons/bonelli.svg';
-import { LanguageSelector } from '@src/components/features/language-selector';
+import MobileLogo from '@icons/bonelli-mobile.svg'
+import DesktopLogo from '@icons/bonelli.svg'
+import { LanguageSelector } from '@src/components/features/language-selector'
+import { Logo, MenuItem } from '@src/components/templates/layout'
 
-export const HEADER_HEIGHT = 60;
+export const HEADER_HEIGHT = 60
 
-export const Header = (props: BoxProps) => {
-  const { t } = useTranslation();
+export type HeaderProps = BoxProps & {
+  logo: Logo
+  menuItems: MenuItem[]
+}
+
+export const Header = (props: HeaderProps) => {
+  const { menuItems } = props
+  const { t } = useTranslation()
 
   return (
     <Flex
@@ -20,7 +27,8 @@ export const Header = (props: BoxProps) => {
       pr={{ base: 4, md: 12, lg: 12 }}
       height={`${HEADER_HEIGHT}px`}
       zIndex="2"
-      {...props}>
+      {...props}
+    >
       <Link href="/" title={t('common.homepage')}>
         <Box
           display={{ base: 'none', md: 'block', lg: 'block' }}
@@ -33,7 +41,17 @@ export const Header = (props: BoxProps) => {
           title={t('common.logoImageAltText')}
         />
       </Link>
+      {menuItems.map((item, idx) => {
+        return (
+          <Box
+            key={idx}
+            display={{ base: 'none', md: 'block', lg: 'block' }}
+            as={DesktopLogo}
+            title={t('common.logoImageAltText')}
+          />
+        )
+      })}
       <LanguageSelector />
     </Flex>
-  );
-};
+  )
+}
