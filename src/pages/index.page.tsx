@@ -36,9 +36,9 @@ export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
   try {
     const data = await client.pageLanding({ locale });
 
-    const page = data.pageLandingCollection?.items[0];
+    // const page = data.pageLandingCollection?.items[0];
 
-    if (!page) {
+    if (!data) {
       return {
         notFound: true,
       };
@@ -47,7 +47,7 @@ export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
     return {
       props: {
         ...(await getServerSideTranslations(locale)),
-        page,
+        data,
       },
     };
   } catch {
