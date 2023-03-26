@@ -1,7 +1,7 @@
 import { ChakraProvider } from '@chakra-ui/react'
 import localFont from '@next/font/local'
 import { appWithTranslation } from 'next-i18next'
-import type { AppProps } from 'next/app'
+import type { AppContext, AppProps } from 'next/app'
 
 import { Layout, MenuItem, AssetContent } from '@src/components/templates/layout'
 import { client } from '@src/lib/client'
@@ -91,7 +91,8 @@ const App = ({ Component, pageProps, data }: AppProperties) => {
   )
 }
 
-App.getInitialProps = async ({ locale }: { locale?: string }) => {
+App.getInitialProps = async ({ router }: AppContext) => {
+  const locale = router.locale;
   try {
     const data = await client.layout({ locale })
 
