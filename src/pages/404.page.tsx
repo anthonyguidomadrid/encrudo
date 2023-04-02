@@ -5,7 +5,7 @@ import { getServerSideTranslations } from '@src/pages/utils/get-serverside-trans
 const ErrorPage404 = () => {
   return (
     <div className="bg-black h-screen">
-      <h1>Page not found</h1>
+      <p>Page not found</p>
     </div>
   )
 }

@@ -24,7 +24,7 @@ export const MenuLinks = ({
             <Link
               key={idx}
               className={classNames('my-2 md:mx-2 md:my-0', {
-                'text-black': isDark
+                'text-primary': isDark
               })}
               href={item?.link ?? ''}
               onClick={() => setMenuOpen && setMenuOpen(false)}

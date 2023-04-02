@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: "Bangla";
+    src: url("../public/fonts/bangla-sangam-mn.ttf");
+  }

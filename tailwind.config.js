@@ -9,7 +9,24 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    fontSize: {
+      base: '12px'
+    },
+    extend: {
+      colors: {
+        primary: '#605f5f',
+        grey: {
+          medium: '#717171',
+          light: '#828990'
+        },
+        beige: {
+          light: '#dfdedc'
+        }
+      },
+      fontFamily: {
+        sans: ['Bangla', 'cursive'],
+      },
+    },
   },
   plugins: [],
 }

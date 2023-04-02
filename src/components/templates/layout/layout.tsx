@@ -40,7 +40,7 @@ export const Layout = ({
 
   menuContent =
     menuContent &&
-    menuContent.sort((a, b) => a?.indexOrder ?? 1 - (b?.indexOrder ?? 0))
+    menuContent.sort((a, b) => (a?.indexOrder ?? 0) - (b?.indexOrder ?? 0))
 
   return (
     <>

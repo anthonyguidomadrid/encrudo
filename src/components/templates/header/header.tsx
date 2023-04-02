@@ -7,7 +7,7 @@ import { Logo, MenuItem } from '../layout'
 
 import { MenuLinks, LanguageSelector } from './'
 
-import HamburgerMenu from '@icons/bonelli-mobile.svg'
+import HamburgerMenu from '@icons/menu.svg'
 
 export type HeaderProps = {
   logoLight?: Logo
@@ -37,11 +37,11 @@ export const Header: FunctionComponent<HeaderProps> = ({
 
   return (
     <nav
-      className={classNames('fixed top-0 w-full z-50 p-5 text-white', {
+      className={classNames('fixed top-0 w-full z-50 p-5 text-white text-base uppercase', {
         'bg-white bg-opacity-80': isDark
       })}
     >
-      <div className="flex justify-between flex-1">
+      <div className="flex justify-between flex-1 items-center">
         <Link href="/" onClick={() => setMenuOpen(false)} className="mr-6">
           <Image
             src={isDark ? logoDark?.url ?? '' : logoLight?.url ?? ''}
@@ -71,7 +71,7 @@ export const Header: FunctionComponent<HeaderProps> = ({
           className="flex items-center block md:hidden"
           onClick={() => setMenuOpen(!isMenuOpen)}
         >
-          <HamburgerMenu className="h-4 w-4" />
+          <HamburgerMenu className={classNames("h-6 w-6", {'fill-white': !isDark, 'fill-primary': isDark})} />
         </button>
       </div>
         <div
