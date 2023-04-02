@@ -1,12 +1,8 @@
 import { GetStaticProps } from 'next'
-import { Trans, useTranslation } from 'next-i18next'
-import Link from 'next/link'
 
 import { getServerSideTranslations } from '@src/pages/utils/get-serverside-translations'
 
 const ErrorPage404 = () => {
-  const { t } = useTranslation()
-
   return (
     <div className="bg-black h-screen">
       <h1>Page not found</h1>

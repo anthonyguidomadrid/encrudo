@@ -2,14 +2,10 @@ import localFont from '@next/font/local'
 import { appWithTranslation } from 'next-i18next'
 import type { AppContext, AppProps } from 'next/app'
 
-import {
-  Layout,
-  MenuItem,
-  AssetContent
-} from '@src/components/templates/layout'
+import { Layout } from '@src/components/templates/layout'
+import { LayoutQuery } from '@src/lib/__generated/sdk'
 import { client } from '@src/lib/client'
 import '../../styles/global.css'
-import { LayoutQuery } from '@src/lib/__generated/sdk'
 
 export const banglaSangam = localFont({
   src: [

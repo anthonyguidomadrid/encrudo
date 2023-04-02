@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router'
 import { ReactNode } from 'react'
 
 import { Header } from '../header'
@@ -38,9 +37,6 @@ export const Layout = ({
   menuContent,
   assetContent
 }: LayoutProps) => {
-  const router = useRouter()
-
-  const isHomePage = router.pathname === '/'
 
   menuContent =
     menuContent &&
