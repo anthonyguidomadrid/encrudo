@@ -5,6 +5,8 @@ import { FunctionComponent, useState } from 'react'
 
 import { Logo, MenuItem } from '../layout'
 
+import { MenuLinks, LanguageSelector } from './'
+
 import HamburgerMenu from '@icons/bonelli-mobile.svg'
 
 export type HeaderProps = {
@@ -31,38 +33,20 @@ export const Header: FunctionComponent<HeaderProps> = ({
 
   global.onscroll = () => scrollFunction()
 
-  const MenuLinks = menuContent?.map((item, idx) => {
-    return (
-      <Link
-        data-testid="scroll-link"
-        key={idx}
-        className="my-2 md:mx-2 md:my-0"
-        href={item?.link ?? ''}
-        onClick={() => setMenuOpen(false)}
-      >
-        {item?.name}
-      </Link>
-    )
-  })
-
-  const LanguageSelector = <p>ES | EN</p>
+  const isDark = ispageScrolled || isMenuOpen
 
   return (
     <nav
-      className={classNames('fixed top-0 w-full z-50 text-white p-5', {
-        'bg-white bg-opacity-80 text-black': ispageScrolled || isMenuOpen
+      className={classNames('fixed top-0 w-full z-50 p-5 text-white', {
+        'bg-white bg-opacity-80': isDark
       })}
     >
       <div className="flex justify-between flex-1">
         <Link href="/" onClick={() => setMenuOpen(false)} className="mr-6">
           <Image
-            src={
-              ispageScrolled || isMenuOpen
-                ? logoDark?.url ?? ''
-                : logoLight?.url ?? ''
-            }
+            src={isDark ? logoDark?.url ?? '' : logoLight?.url ?? ''}
             alt={
-              ispageScrolled
+              isDark
                 ? logoDark?.description ?? ''
                 : logoLight?.description ?? ''
             }
@@ -71,8 +55,18 @@ export const Header: FunctionComponent<HeaderProps> = ({
             height="28"
           />
         </Link>
-        {<div className={'flex gap-7 hidden md:block'}>{MenuLinks}</div>}
-        <div className="hidden md:block">{LanguageSelector}</div>
+        {
+          <div className={'flex gap-7 hidden md:block'}>
+            <MenuLinks
+              menuContent={menuContent}
+              setMenuOpen={setMenuOpen}
+              isDark={isDark}
+            />
+          </div>
+        }
+        <div className="hidden md:block">
+          <LanguageSelector isDark={isDark}/>
+        </div>
         <button
           className="flex items-center block md:hidden"
           onClick={() => setMenuOpen(!isMenuOpen)}
@@ -80,16 +74,21 @@ export const Header: FunctionComponent<HeaderProps> = ({
           <HamburgerMenu className="h-4 w-4" />
         </button>
       </div>
-      <div
-        className={classNames('md:hidden flex flex-col mt-4', {
-          hidden: !isMenuOpen
-        })}
-      >
-        {MenuLinks}
-      </div>
-      <div className={classNames('md:hidden mt-2', { hidden: !isMenuOpen })}>
-        {LanguageSelector}
-      </div>
+        <div
+          className={classNames({
+            hidden: !isMenuOpen
+          })}
+        >
+          <MenuLinks
+            menuContent={menuContent}
+            setMenuOpen={setMenuOpen}
+            isDark={isDark}
+            classes={'md:hidden flex flex-col mt-4'}
+          />
+        </div>
+        <div className={classNames('md:hidden mt-2', { hidden: !isMenuOpen })}>
+          <LanguageSelector isDark={isDark}/>
+        </div>
     </nav>
   )
 }
