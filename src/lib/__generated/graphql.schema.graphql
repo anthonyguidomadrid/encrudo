@@ -129,7 +129,8 @@ Logo and social media links [See type definition](https://app.contentful.com/spa
 type Assets implements Entry {
   contentfulMetadata: ContentfulMetadata!
   linkedFrom(allowedLocales: [String]): AssetsLinkingCollections
-  logo(locale: String, preview: Boolean): Asset
+  logoDark(locale: String, preview: Boolean): Asset
+  logoLight(locale: String, preview: Boolean): Asset
   socialMediaCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): AssetCollection
   sys: Sys!
 }
@@ -145,7 +146,8 @@ input AssetsFilter {
   AND: [AssetsFilter]
   OR: [AssetsFilter]
   contentfulMetadata: ContentfulMetadataFilter
-  logo_exists: Boolean
+  logoDark_exists: Boolean
+  logoLight_exists: Boolean
   socialMediaCollection_exists: Boolean
   sys: SysFilter
 }
@@ -510,7 +512,7 @@ Menu items: name, link, index and CTA [See type definition](https://app.contentf
 """
 type Menu implements Entry {
   contentfulMetadata: ContentfulMetadata!
-  index(locale: String): Int
+  indexOrder(locale: String): Int
   isCta(locale: String): Boolean
   isProject(locale: String): Boolean
   link(locale: String): String
@@ -530,15 +532,15 @@ input MenuFilter {
   AND: [MenuFilter]
   OR: [MenuFilter]
   contentfulMetadata: ContentfulMetadataFilter
-  index: Int
-  index_exists: Boolean
-  index_gt: Int
-  index_gte: Int
-  index_in: [Int]
-  index_lt: Int
-  index_lte: Int
-  index_not: Int
-  index_not_in: [Int]
+  indexOrder: Int
+  indexOrder_exists: Boolean
+  indexOrder_gt: Int
+  indexOrder_gte: Int
+  indexOrder_in: [Int]
+  indexOrder_lt: Int
+  indexOrder_lte: Int
+  indexOrder_not: Int
+  indexOrder_not_in: [Int]
   isCta: Boolean
   isCta_exists: Boolean
   isCta_not: Boolean
@@ -567,8 +569,8 @@ type MenuLinkingCollections {
 }
 
 enum MenuOrder {
-  index_ASC
-  index_DESC
+  indexOrder_ASC
+  indexOrder_DESC
   isCta_ASC
   isCta_DESC
   isProject_ASC

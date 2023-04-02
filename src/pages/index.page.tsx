@@ -1,8 +1,6 @@
-import { Box } from '@chakra-ui/react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { useTranslation } from 'next-i18next'
 
-import { HeroBanner } from '@src/components/features/hero-banner'
 import { ProductTileGrid } from '@src/components/features/product'
 import { SeoFields } from '@src/components/features/seo'
 import { client } from '@src/lib/client'
@@ -16,21 +14,6 @@ const Page = ({
   return (
     <>
       {page.seoFields && <SeoFields {...page.seoFields} />}
-      <HeroBanner {...page} />
-      {page.productsCollection?.items && (
-        <Box
-          mt={{
-            base: 5,
-            md: 9,
-            lg: 16
-          }}
-        >
-          <ProductTileGrid
-            title={t('product.trendingProducts')}
-            products={page.productsCollection.items}
-          />
-        </Box>
-      )}
     </>
   )
 }

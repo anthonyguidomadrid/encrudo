@@ -4,12 +4,16 @@ query layout($locale: String, $preview: Boolean) {
       name
       link
       isProject
-      isCta
+      indexOrder
     }
   }
   assetsCollection(limit: 1, locale: $locale, preview: $preview) {
     items {
-      logo {
+      logoLight {
+        url
+        description
+      }
+      logoDark {
         url
         description
       }

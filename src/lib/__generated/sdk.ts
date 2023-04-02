@@ -272,7 +272,8 @@ export type Assets = Entry & {
   __typename?: 'Assets';
   contentfulMetadata: ContentfulMetadata;
   linkedFrom?: Maybe<AssetsLinkingCollections>;
-  logo?: Maybe<Asset>;
+  logoDark?: Maybe<Asset>;
+  logoLight?: Maybe<Asset>;
   socialMediaCollection?: Maybe<AssetCollection>;
   sys: Sys;
 };
@@ -285,7 +286,14 @@ export type AssetsLinkedFromArgs = {
 
 
 /** Logo and social media links [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/assets) */
-export type AssetsLogoArgs = {
+export type AssetsLogoDarkArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+/** Logo and social media links [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/assets) */
+export type AssetsLogoLightArgs = {
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
 };
@@ -311,7 +319,8 @@ export type AssetsFilter = {
   AND?: InputMaybe<Array<InputMaybe<AssetsFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<AssetsFilter>>>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
-  logo_exists?: InputMaybe<Scalars['Boolean']>;
+  logoDark_exists?: InputMaybe<Scalars['Boolean']>;
+  logoLight_exists?: InputMaybe<Scalars['Boolean']>;
   socialMediaCollection_exists?: InputMaybe<Scalars['Boolean']>;
   sys?: InputMaybe<SysFilter>;
 };
@@ -773,7 +782,7 @@ export type ImageTransformOptions = {
 export type Menu = Entry & {
   __typename?: 'Menu';
   contentfulMetadata: ContentfulMetadata;
-  index?: Maybe<Scalars['Int']>;
+  indexOrder?: Maybe<Scalars['Int']>;
   isCta?: Maybe<Scalars['Boolean']>;
   isProject?: Maybe<Scalars['Boolean']>;
   link?: Maybe<Scalars['String']>;
@@ -784,7 +793,7 @@ export type Menu = Entry & {
 
 
 /** Menu items: name, link, index and CTA [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/menu) */
-export type MenuIndexArgs = {
+export type MenuIndexOrderArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
@@ -830,15 +839,15 @@ export type MenuFilter = {
   AND?: InputMaybe<Array<InputMaybe<MenuFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<MenuFilter>>>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
-  index?: InputMaybe<Scalars['Int']>;
-  index_exists?: InputMaybe<Scalars['Boolean']>;
-  index_gt?: InputMaybe<Scalars['Int']>;
-  index_gte?: InputMaybe<Scalars['Int']>;
-  index_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
-  index_lt?: InputMaybe<Scalars['Int']>;
-  index_lte?: InputMaybe<Scalars['Int']>;
-  index_not?: InputMaybe<Scalars['Int']>;
-  index_not_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
+  indexOrder?: InputMaybe<Scalars['Int']>;
+  indexOrder_exists?: InputMaybe<Scalars['Boolean']>;
+  indexOrder_gt?: InputMaybe<Scalars['Int']>;
+  indexOrder_gte?: InputMaybe<Scalars['Int']>;
+  indexOrder_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
+  indexOrder_lt?: InputMaybe<Scalars['Int']>;
+  indexOrder_lte?: InputMaybe<Scalars['Int']>;
+  indexOrder_not?: InputMaybe<Scalars['Int']>;
+  indexOrder_not_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
   isCta?: InputMaybe<Scalars['Boolean']>;
   isCta_exists?: InputMaybe<Scalars['Boolean']>;
   isCta_not?: InputMaybe<Scalars['Boolean']>;
@@ -876,8 +885,8 @@ export type MenuLinkingCollectionsEntryCollectionArgs = {
 };
 
 export enum MenuOrder {
-  IndexAsc = 'index_ASC',
-  IndexDesc = 'index_DESC',
+  IndexOrderAsc = 'indexOrder_ASC',
+  IndexOrderDesc = 'indexOrder_DESC',
   IsCtaAsc = 'isCta_ASC',
   IsCtaDesc = 'isCta_DESC',
   IsProjectAsc = 'isProject_ASC',
@@ -2268,7 +2277,7 @@ export type LayoutQueryVariables = Exact<{
 }>;
 
 
-export type LayoutQuery = { __typename?: 'Query', menuCollection?: { __typename?: 'MenuCollection', items: Array<{ __typename?: 'Menu', name?: string | null, link?: string | null, isProject?: boolean | null, isCta?: boolean | null } | null> } | null, assetsCollection?: { __typename?: 'AssetsCollection', items: Array<{ __typename?: 'Assets', logo?: { __typename?: 'Asset', url?: string | null, description?: string | null } | null, socialMediaCollection?: { __typename?: 'AssetCollection', items: Array<{ __typename?: 'Asset', url?: string | null, description?: string | null, fileName?: string | null } | null> } | null } | null> } | null };
+export type LayoutQuery = { __typename?: 'Query', menuCollection?: { __typename?: 'MenuCollection', items: Array<{ __typename?: 'Menu', name?: string | null, link?: string | null, isProject?: boolean | null, indexOrder?: number | null } | null> } | null, assetsCollection?: { __typename?: 'AssetsCollection', items: Array<{ __typename?: 'Assets', logoLight?: { __typename?: 'Asset', url?: string | null, description?: string | null } | null, logoDark?: { __typename?: 'Asset', url?: string | null, description?: string | null } | null, socialMediaCollection?: { __typename?: 'AssetCollection', items: Array<{ __typename?: 'Asset', url?: string | null, description?: string | null, fileName?: string | null } | null> } | null } | null> } | null };
 
 export type PageLandingCollectionQueryVariables = Exact<{
   locale?: InputMaybe<Scalars['String']>;
@@ -2465,12 +2474,16 @@ export const LayoutDocument = gql`
       name
       link
       isProject
-      isCta
+      indexOrder
     }
   }
-  assetsCollection(limit: 10, locale: $locale, preview: $preview) {
+  assetsCollection(limit: 1, locale: $locale, preview: $preview) {
     items {
-      logo {
+      logoLight {
+        url
+        description
+      }
+      logoDark {
         url
         description
       }

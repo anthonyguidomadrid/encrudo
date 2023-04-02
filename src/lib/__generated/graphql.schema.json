@@ -1925,7 +1925,44 @@
             "deprecationReason": null
           },
           {
-            "name": "logo",
+            "name": "logoDark",
+            "description": null,
+            "args": [
+              {
+                "name": "locale",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              },
+              {
+                "name": "preview",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Boolean",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "Asset",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "logoLight",
             "description": null,
             "args": [
               {
@@ -2180,7 +2217,19 @@
             "deprecationReason": null
           },
           {
-            "name": "logo_exists",
+            "name": "logoDark_exists",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "logoLight_exists",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -5118,7 +5167,7 @@
             "deprecationReason": null
           },
           {
-            "name": "index",
+            "name": "indexOrder",
             "description": null,
             "args": [
               {
@@ -5429,7 +5478,7 @@
             "deprecationReason": null
           },
           {
-            "name": "index",
+            "name": "indexOrder",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -5441,7 +5490,7 @@
             "deprecationReason": null
           },
           {
-            "name": "index_exists",
+            "name": "indexOrder_exists",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -5453,7 +5502,7 @@
             "deprecationReason": null
           },
           {
-            "name": "index_gt",
+            "name": "indexOrder_gt",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -5465,7 +5514,7 @@
             "deprecationReason": null
           },
           {
-            "name": "index_gte",
+            "name": "indexOrder_gte",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -5477,7 +5526,7 @@
             "deprecationReason": null
           },
           {
-            "name": "index_in",
+            "name": "indexOrder_in",
             "description": null,
             "type": {
               "kind": "LIST",
@@ -5493,7 +5542,7 @@
             "deprecationReason": null
           },
           {
-            "name": "index_lt",
+            "name": "indexOrder_lt",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -5505,7 +5554,7 @@
             "deprecationReason": null
           },
           {
-            "name": "index_lte",
+            "name": "indexOrder_lte",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -5517,7 +5566,7 @@
             "deprecationReason": null
           },
           {
-            "name": "index_not",
+            "name": "indexOrder_not",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -5529,7 +5578,7 @@
             "deprecationReason": null
           },
           {
-            "name": "index_not_in",
+            "name": "indexOrder_not_in",
             "description": null,
             "type": {
               "kind": "LIST",
@@ -5898,13 +5947,13 @@
         "interfaces": null,
         "enumValues": [
           {
-            "name": "index_ASC",
+            "name": "indexOrder_ASC",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "index_DESC",
+            "name": "indexOrder_DESC",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null

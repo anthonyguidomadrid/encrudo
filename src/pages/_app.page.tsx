@@ -1,11 +1,15 @@
-import { ChakraProvider } from '@chakra-ui/react'
 import localFont from '@next/font/local'
 import { appWithTranslation } from 'next-i18next'
 import type { AppContext, AppProps } from 'next/app'
 
-import { Layout, MenuItem, AssetContent } from '@src/components/templates/layout'
+import {
+  Layout,
+  MenuItem,
+  AssetContent
+} from '@src/components/templates/layout'
 import { client } from '@src/lib/client'
-import { theme } from '@src/theme'
+import '../../styles/global.css'
+import { LayoutQuery } from '@src/lib/__generated/sdk'
 
 export const banglaSangam = localFont({
   src: [
@@ -62,37 +66,23 @@ export const banglaSangam = localFont({
   ]
 })
 
-export type AppProperties =
-  AppProps & { data: { menuCollection: {
-    items: MenuItem[]
-  }, assetsCollection: {
-    items: AssetContent[]
-  }
-}}
+export type AppProperties = AppProps & {
+  data: LayoutQuery
+}
 
 const App = ({ Component, pageProps, data }: AppProperties) => {
   return (
-    <ChakraProvider
-      theme={{
-        ...theme,
-        fonts: {
-          heading: `${banglaSangam.style.fontFamily}, ${theme.fonts.heading}`,
-          body: `${banglaSangam.style.fontFamily}, ${theme.fonts.body}`
-        }
-      }}
+    <Layout
+      menuContent={data?.menuCollection?.items}
+      assetContent={data?.assetsCollection?.items[0]}
     >
-      <Layout
-        menuContent={data.menuCollection.items}
-        assetContent={data.assetsCollection.items[0]}
-      >
-        <Component {...pageProps} />
-      </Layout>
-    </ChakraProvider>
+      <Component {...pageProps} />
+    </Layout>
   )
 }
 
 App.getInitialProps = async ({ router }: AppContext) => {
-  const locale = router.locale;
+  const locale = router.locale
   try {
     const data = await client.layout({ locale })
 
@@ -102,9 +92,7 @@ App.getInitialProps = async ({ router }: AppContext) => {
       }
     }
 
-    return {
-      data
-    }
+    return { data }
   } catch {
     return {
       notFound: true

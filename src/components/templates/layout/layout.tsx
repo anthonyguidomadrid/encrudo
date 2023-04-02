@@ -1,35 +1,36 @@
-import { Flex, useTheme } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { ReactNode } from 'react'
 
-import { Footer } from '../footer'
 import { Header } from '../header'
 
+export type SocialMedia = {
+  url?: string | null
+  description?: string | null
+} | null
+
 export type Logo = {
-  url: string
-  description: string
-}
+  url?: string | null
+  description?: string | null
+} | null
 
 export type MenuItem = {
-  name: string
-  link: string
-  isProject: boolean
-  isCta: boolean
-}
+  name?: string | null
+  link?: string | null
+  isProject?: boolean | null
+  indexOrder?: number | null
+} | null
 
 export type AssetContent = {
-  logo: Logo
-  socialMediaCollection: {
-    items: {
-      url: string
-      description: string
-    }[]
-  }
-}
+  logoLight?: Logo
+  logoDark?: Logo
+  socialMediaCollection?: {
+    items?: SocialMedia[] | null
+  } | null
+} | null
 interface LayoutProps {
   children: ReactNode
-  menuContent: MenuItem[]
-  assetContent: AssetContent
+  menuContent?: MenuItem[]
+  assetContent?: AssetContent
 }
 
 export const Layout = ({
@@ -38,28 +39,22 @@ export const Layout = ({
   assetContent
 }: LayoutProps) => {
   const router = useRouter()
-  const theme = useTheme()
 
   const isHomePage = router.pathname === '/'
+
+  menuContent =
+    menuContent &&
+    menuContent.sort((a, b) => a?.indexOrder ?? 1 - (b?.indexOrder ?? 0))
 
   return (
     <>
       <Header
-        borderBottom={isHomePage ? '' : '1px'}
-        borderColor={isHomePage ? null : theme.f36.gray200}
-        logo={assetContent.logo}
-        menuItems={menuContent}
+        menuContent={menuContent}
+        logoLight={assetContent?.logoLight}
+        logoDark={assetContent?.logoDark}
       />
-      <Flex
-        flexGrow="1"
-        flexDirection="column"
-        width="100%"
-        as="main"
-        pb={{ base: 8, lg: 12 }}
-      >
-        {children}
-      </Flex>
-      <Footer />
+      <div className="h-screen">{children}</div>
+      <h1>Footer</h1>
     </>
   )
 }

@@ -7,9 +7,6 @@
     "npm": "Please use Yarn"
   },
   "scripts": {
-    "generate-theme-typings": "yarn chakra-cli tokens ./src/theme/theme.ts",
-    "predev": "yarn generate-theme-typings",
-    "prebuild": "yarn generate-theme-typings",
     "prepare": "husky install",
     "dev": "next dev",
     "build": "next build",
@@ -30,7 +27,6 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@chakra-ui/react": "^2.4.1",
     "@contentful/f36-icons": "^4.23.2",
     "@contentful/f36-tokens": "^4.0.1",
     "@emotion/react": "^11.10.5",
@@ -38,10 +34,12 @@
     "@next/bundle-analyzer": "^13.0.4",
     "@next/font": "13.0.5",
     "@svgr/webpack": "^6.5.1",
+    "classnames": "^2.3.2",
     "dotenv": "^16.0.3",
     "framer-motion": "^7.6.11",
     "graphql": "^16.6.0",
     "locale-currency": "^0.0.2",
+    "lodash.throttle": "^4.1.1",
     "next": "13.0.5",
     "next-absolute-url": "^1.2.2",
     "next-compose-plugins": "^2.2.1",
@@ -55,7 +53,6 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.19.1",
-    "@chakra-ui/cli": "^2.1.8",
     "@graphql-codegen/cli": "2.13.12",
     "@graphql-codegen/client-preset": "1.1.4",
     "@graphql-codegen/introspection": "2.2.1",
@@ -64,6 +61,7 @@
     "@types/react-dom": "18.0.9",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.32.0",
+    "autoprefixer": "^10.4.14",
     "eslint": "8.26.0",
     "eslint-config-next": "13.0.1",
     "eslint-config-prettier": "^8.3.0",
@@ -76,7 +74,9 @@
     "i18next": "^21.9.2",
     "i18next-http-backend": "^1.4.4",
     "lint-staged": "^13.0.3",
+    "postcss": "^8.4.21",
     "prettier": "^2.7.1",
+    "tailwindcss": "^3.3.1",
     "typescript": "4.9.3",
     "typescript-graphql-request": "^4.4.6"
   },
