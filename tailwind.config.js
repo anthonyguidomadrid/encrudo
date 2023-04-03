@@ -9,9 +9,6 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    fontSize: {
-      base: '12px'
-    },
     extend: {
       colors: {
         primary: '#605f5f',

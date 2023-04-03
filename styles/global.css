@@ -5,4 +5,8 @@
 @font-face {
     font-family: "Bangla";
     src: url("../public/fonts/bangla-sangam-mn.ttf");
-  }
+}
+
+html {
+  font-size: 14px;
+}

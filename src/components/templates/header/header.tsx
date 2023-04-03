@@ -39,7 +39,7 @@ export const Header: FunctionComponent<HeaderProps> = ({
     <>
       <nav
         className={classNames(
-          'flex items-center justify-between flex-wrap p-5 text-base uppercase fixed top-0 w-full z-50 text-white',
+          'flex items-center justify-between flex-wrap p-5 uppercase fixed top-0 w-full z-50 text-white',
           {
             'bg-white bg-opacity-80 text-primary': isDark
           }
