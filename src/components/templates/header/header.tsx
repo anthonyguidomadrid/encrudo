@@ -5,7 +5,7 @@ import { FunctionComponent, useState } from 'react'
 
 import { Logo, MenuItem } from '../layout'
 
-import { MenuLinks, LanguageSelector } from './'
+import { LanguageSelector } from './'
 
 import HamburgerMenu from '@icons/menu.svg'
 
@@ -36,59 +36,72 @@ export const Header: FunctionComponent<HeaderProps> = ({
   const isDark = ispageScrolled || isMenuOpen
 
   return (
-    <nav
-      className={classNames('fixed top-0 w-full z-50 p-5 text-white text-base uppercase', {
-        'bg-white bg-opacity-80': isDark
-      })}
-    >
-      <div className="flex justify-between flex-1 items-center">
-        <Link href="/" onClick={() => setMenuOpen(false)} className="mr-6">
-          <Image
-            src={isDark ? logoDark?.url ?? '' : logoLight?.url ?? ''}
-            alt={
-              isDark
-                ? logoDark?.description ?? ''
-                : logoLight?.description ?? ''
-            }
-            className="h-7"
-            width="100"
-            height="28"
-          />
-        </Link>
-        {
-          <div className={'flex gap-7 hidden md:block'}>
-            <MenuLinks
-              menuContent={menuContent}
-              setMenuOpen={setMenuOpen}
-              isDark={isDark}
+    <>
+      <nav
+        className={classNames(
+          'flex items-center justify-between flex-wrap p-5 text-base uppercase fixed top-0 w-full z-50 text-white',
+          {
+            'bg-white bg-opacity-80 text-primary': isDark
+          }
+        )}
+      >
+        <div className="flex items-center flex-shrink-0">
+          <Link href="/" onClick={() => setMenuOpen(false)}>
+            <Image
+              src={isDark ? logoDark?.url ?? '' : logoLight?.url ?? ''}
+              alt={
+                isDark
+                  ? logoDark?.description ?? ''
+                  : logoLight?.description ?? ''
+              }
+              className="h-7"
+              width="100"
+              height="28"
             />
-          </div>
-        }
-        <div className="hidden md:block">
-          <LanguageSelector isDark={isDark}/>
+          </Link>
         </div>
-        <button
-          className="flex items-center block md:hidden"
-          onClick={() => setMenuOpen(!isMenuOpen)}
-        >
-          <HamburgerMenu className={classNames("h-6 w-6", {'fill-white': !isDark, 'fill-primary': isDark})} />
-        </button>
-      </div>
+        <div className="block md:hidden">
+          <button
+            className="flex items-center px-3 py-2"
+            onClick={() => setMenuOpen(!isMenuOpen)}
+          >
+            <HamburgerMenu
+              className={classNames('h-6 w-6', {
+                'fill-white': !isDark,
+                'fill-primary': isDark
+              })}
+            />
+          </button>
+        </div>
         <div
-          className={classNames({
-            hidden: !isMenuOpen
-          })}
+          className={classNames(
+            'w-full block flex-grow md:flex md:items-center md:w-auto',
+            { hidden: !isMenuOpen }
+          )}
         >
-          <MenuLinks
-            menuContent={menuContent}
-            setMenuOpen={setMenuOpen}
-            isDark={isDark}
-            classes={'md:hidden flex flex-col mt-4'}
-          />
+          <div className="text-sm md:flex-grow">
+            <div className="flex flex-col md:flex-row md:justify-center gap-5 my-5 md:my-0">
+              {menuContent?.map((item, idx) => {
+                return (
+                  <Link
+                    key={idx}
+                    className={classNames({
+                      'text-primary': isDark
+                    })}
+                    href={item?.link ?? ''}
+                    onClick={() => setMenuOpen && setMenuOpen(false)}
+                  >
+                    {item?.name}
+                  </Link>
+                )
+              })}
+            </div>
+          </div>
+          <div>
+            <LanguageSelector isDark={isDark} />
+          </div>
         </div>
-        <div className={classNames('md:hidden mt-2', { hidden: !isMenuOpen })}>
-          <LanguageSelector isDark={isDark}/>
-        </div>
-    </nav>
+      </nav>
+    </>
   )
 }

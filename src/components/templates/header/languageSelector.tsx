@@ -2,15 +2,14 @@ import classNames from 'classnames'
 import { useRouter } from 'next/router'
 
 export type LanguageSelectorProps = {
-  isDark: boolean
+  isDark?: boolean
 }
 
-export const LanguageSelector = ({ isDark }: LanguageSelectorProps) => {
+export const LanguageSelector = ({ isDark = true }: LanguageSelectorProps) => {
   const { locales } = useRouter()
   const router = useRouter()
 
   const changeLocale = (value: string) => {
-    console.log('value', value)
     router.push(
       { pathname: router.pathname, query: router.query },
       router.asPath,
