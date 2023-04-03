@@ -62,7 +62,7 @@ export const Header: FunctionComponent<HeaderProps> = ({
         </div>
         <div className="block md:hidden">
           <button
-            className="flex items-center px-3 py-2"
+            className="flex items-center"
             onClick={() => setMenuOpen(!isMenuOpen)}
           >
             <HamburgerMenu
