@@ -13,7 +13,7 @@ export type AppProperties = AppProps & {
 const App = ({ Component, pageProps, data }: AppProperties) => {
   return (
     <Layout
-      menuContent={data?.menuCollection?.items}
+      menuContent={data?.menuCollection?.items?.sort((a, b) => (a?.indexOrder ?? 0) - (b?.indexOrder ?? 0))}
       assetContent={data?.assetsCollection?.items[0]}
     >
       <Component {...pageProps} />

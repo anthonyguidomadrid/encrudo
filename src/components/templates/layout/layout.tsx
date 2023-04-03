@@ -38,10 +38,6 @@ export const Layout = ({
   assetContent
 }: LayoutProps) => {
 
-  menuContent =
-    menuContent &&
-    menuContent.sort((a, b) => (a?.indexOrder ?? 0) - (b?.indexOrder ?? 0))
-
   return (
     <>
       <Header
