@@ -274,7 +274,7 @@ export type Assets = Entry & {
   linkedFrom?: Maybe<AssetsLinkingCollections>;
   logoDark?: Maybe<Asset>;
   logoLight?: Maybe<Asset>;
-  socialMediaCollection?: Maybe<AssetCollection>;
+  logoSmall?: Maybe<Asset>;
   sys: Sys;
 };
 
@@ -300,11 +300,9 @@ export type AssetsLogoLightArgs = {
 
 
 /** Logo and social media links [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/assets) */
-export type AssetsSocialMediaCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>;
+export type AssetsLogoSmallArgs = {
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
-  skip?: InputMaybe<Scalars['Int']>;
 };
 
 export type AssetsCollection = {
@@ -321,7 +319,7 @@ export type AssetsFilter = {
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
   logoDark_exists?: InputMaybe<Scalars['Boolean']>;
   logoLight_exists?: InputMaybe<Scalars['Boolean']>;
-  socialMediaCollection_exists?: InputMaybe<Scalars['Boolean']>;
+  logoSmall_exists?: InputMaybe<Scalars['Boolean']>;
   sys?: InputMaybe<SysFilter>;
 };
 
@@ -339,6 +337,116 @@ export type AssetsLinkingCollectionsEntryCollectionArgs = {
 };
 
 export enum AssetsOrder {
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
+
+/** Contact Information in Footer and Contact Page [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentContact) */
+export type ComponentContact = Entry & {
+  __typename?: 'ComponentContact';
+  contentfulMetadata: ContentfulMetadata;
+  email?: Maybe<Scalars['String']>;
+  linkedFrom?: Maybe<ComponentContactLinkingCollections>;
+  location?: Maybe<Scalars['String']>;
+  phone?: Maybe<Scalars['String']>;
+  sys: Sys;
+};
+
+
+/** Contact Information in Footer and Contact Page [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentContact) */
+export type ComponentContactEmailArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Contact Information in Footer and Contact Page [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentContact) */
+export type ComponentContactLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+/** Contact Information in Footer and Contact Page [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentContact) */
+export type ComponentContactLocationArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Contact Information in Footer and Contact Page [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentContact) */
+export type ComponentContactPhoneArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+export type ComponentContactCollection = {
+  __typename?: 'ComponentContactCollection';
+  items: Array<Maybe<ComponentContact>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
+};
+
+export type ComponentContactFilter = {
+  AND?: InputMaybe<Array<InputMaybe<ComponentContactFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<ComponentContactFilter>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  email?: InputMaybe<Scalars['String']>;
+  email_contains?: InputMaybe<Scalars['String']>;
+  email_exists?: InputMaybe<Scalars['Boolean']>;
+  email_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  email_not?: InputMaybe<Scalars['String']>;
+  email_not_contains?: InputMaybe<Scalars['String']>;
+  email_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  location?: InputMaybe<Scalars['String']>;
+  location_contains?: InputMaybe<Scalars['String']>;
+  location_exists?: InputMaybe<Scalars['Boolean']>;
+  location_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  location_not?: InputMaybe<Scalars['String']>;
+  location_not_contains?: InputMaybe<Scalars['String']>;
+  location_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  phone?: InputMaybe<Scalars['String']>;
+  phone_contains?: InputMaybe<Scalars['String']>;
+  phone_exists?: InputMaybe<Scalars['Boolean']>;
+  phone_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  phone_not?: InputMaybe<Scalars['String']>;
+  phone_not_contains?: InputMaybe<Scalars['String']>;
+  phone_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  sys?: InputMaybe<SysFilter>;
+};
+
+export type ComponentContactLinkingCollections = {
+  __typename?: 'ComponentContactLinkingCollections';
+  entryCollection?: Maybe<EntryCollection>;
+  pageContactCollection?: Maybe<PageContactCollection>;
+};
+
+
+export type ComponentContactLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type ComponentContactLinkingCollectionsPageContactCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+export enum ComponentContactOrder {
+  EmailAsc = 'email_ASC',
+  EmailDesc = 'email_DESC',
+  LocationAsc = 'location_ASC',
+  LocationDesc = 'location_DESC',
+  PhoneAsc = 'phone_ASC',
+  PhoneDesc = 'phone_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -616,6 +724,91 @@ export type ComponentSliderLinkingCollectionsPageProjectCollectionArgs = {
 };
 
 export enum ComponentSliderOrder {
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
+
+/** Social Media Links in Footer [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSocialMedia) */
+export type ComponentSocialMedia = Entry & {
+  __typename?: 'ComponentSocialMedia';
+  contentfulMetadata: ContentfulMetadata;
+  link?: Maybe<Scalars['String']>;
+  linkedFrom?: Maybe<ComponentSocialMediaLinkingCollections>;
+  name?: Maybe<Scalars['String']>;
+  sys: Sys;
+};
+
+
+/** Social Media Links in Footer [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSocialMedia) */
+export type ComponentSocialMediaLinkArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Social Media Links in Footer [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSocialMedia) */
+export type ComponentSocialMediaLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+/** Social Media Links in Footer [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSocialMedia) */
+export type ComponentSocialMediaNameArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+export type ComponentSocialMediaCollection = {
+  __typename?: 'ComponentSocialMediaCollection';
+  items: Array<Maybe<ComponentSocialMedia>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
+};
+
+export type ComponentSocialMediaFilter = {
+  AND?: InputMaybe<Array<InputMaybe<ComponentSocialMediaFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<ComponentSocialMediaFilter>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  link?: InputMaybe<Scalars['String']>;
+  link_contains?: InputMaybe<Scalars['String']>;
+  link_exists?: InputMaybe<Scalars['Boolean']>;
+  link_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  link_not?: InputMaybe<Scalars['String']>;
+  link_not_contains?: InputMaybe<Scalars['String']>;
+  link_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  name?: InputMaybe<Scalars['String']>;
+  name_contains?: InputMaybe<Scalars['String']>;
+  name_exists?: InputMaybe<Scalars['Boolean']>;
+  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  name_not?: InputMaybe<Scalars['String']>;
+  name_not_contains?: InputMaybe<Scalars['String']>;
+  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  sys?: InputMaybe<SysFilter>;
+};
+
+export type ComponentSocialMediaLinkingCollections = {
+  __typename?: 'ComponentSocialMediaLinkingCollections';
+  entryCollection?: Maybe<EntryCollection>;
+};
+
+
+export type ComponentSocialMediaLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+export enum ComponentSocialMediaOrder {
+  LinkAsc = 'link_ASC',
+  LinkDesc = 'link_DESC',
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -1042,15 +1235,20 @@ export enum PageAboutOrder {
 /** Contact page template [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageContact) */
 export type PageContact = Entry & {
   __typename?: 'PageContact';
+  contactInformation?: Maybe<ComponentContact>;
   contentfulMetadata: ContentfulMetadata;
   description?: Maybe<PageContactDescription>;
-  email?: Maybe<Scalars['String']>;
   linkedFrom?: Maybe<PageContactLinkingCollections>;
-  locations?: Maybe<Array<Maybe<Scalars['String']>>>;
-  phone?: Maybe<Scalars['String']>;
   seo?: Maybe<ComponentSeo>;
   sys: Sys;
   title?: Maybe<Scalars['String']>;
+};
+
+
+/** Contact page template [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageContact) */
+export type PageContactContactInformationArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
 };
 
 
@@ -1061,26 +1259,8 @@ export type PageContactDescriptionArgs = {
 
 
 /** Contact page template [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageContact) */
-export type PageContactEmailArgs = {
-  locale?: InputMaybe<Scalars['String']>;
-};
-
-
-/** Contact page template [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageContact) */
 export type PageContactLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-/** Contact page template [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageContact) */
-export type PageContactLocationsArgs = {
-  locale?: InputMaybe<Scalars['String']>;
-};
-
-
-/** Contact page template [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageContact) */
-export type PageContactPhoneArgs = {
-  locale?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -1132,28 +1312,12 @@ export type PageContactDescriptionLinks = {
 export type PageContactFilter = {
   AND?: InputMaybe<Array<InputMaybe<PageContactFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<PageContactFilter>>>;
+  contactInformation?: InputMaybe<CfComponentContactNestedFilter>;
+  contactInformation_exists?: InputMaybe<Scalars['Boolean']>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
   description_contains?: InputMaybe<Scalars['String']>;
   description_exists?: InputMaybe<Scalars['Boolean']>;
   description_not_contains?: InputMaybe<Scalars['String']>;
-  email?: InputMaybe<Scalars['String']>;
-  email_contains?: InputMaybe<Scalars['String']>;
-  email_exists?: InputMaybe<Scalars['Boolean']>;
-  email_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  email_not?: InputMaybe<Scalars['String']>;
-  email_not_contains?: InputMaybe<Scalars['String']>;
-  email_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  locations_contains_all?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  locations_contains_none?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  locations_contains_some?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  locations_exists?: InputMaybe<Scalars['Boolean']>;
-  phone?: InputMaybe<Scalars['String']>;
-  phone_contains?: InputMaybe<Scalars['String']>;
-  phone_exists?: InputMaybe<Scalars['Boolean']>;
-  phone_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  phone_not?: InputMaybe<Scalars['String']>;
-  phone_not_contains?: InputMaybe<Scalars['String']>;
-  phone_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   seo?: InputMaybe<CfComponentSeoNestedFilter>;
   seo_exists?: InputMaybe<Scalars['Boolean']>;
   sys?: InputMaybe<SysFilter>;
@@ -1180,10 +1344,6 @@ export type PageContactLinkingCollectionsEntryCollectionArgs = {
 };
 
 export enum PageContactOrder {
-  EmailAsc = 'email_ASC',
-  EmailDesc = 'email_DESC',
-  PhoneAsc = 'phone_ASC',
-  PhoneDesc = 'phone_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -1255,6 +1415,7 @@ export type PageHomeFilter = {
   AND?: InputMaybe<Array<InputMaybe<PageHomeFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<PageHomeFilter>>>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  projects?: InputMaybe<CfPageProjectNestedFilter>;
   projectsCollection_exists?: InputMaybe<Scalars['Boolean']>;
   seo?: InputMaybe<CfComponentSeoNestedFilter>;
   seo_exists?: InputMaybe<Scalars['Boolean']>;
@@ -1399,6 +1560,7 @@ export type PageLandingFilter = {
   internalName_not?: InputMaybe<Scalars['String']>;
   internalName_not_contains?: InputMaybe<Scalars['String']>;
   internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  products?: InputMaybe<CfPageProductNestedFilter>;
   productsCollection_exists?: InputMaybe<Scalars['Boolean']>;
   seoFields?: InputMaybe<CfComponentSeoNestedFilter>;
   seoFields_exists?: InputMaybe<Scalars['Boolean']>;
@@ -1572,6 +1734,7 @@ export type PageProductFilter = {
   price_not?: InputMaybe<Scalars['Float']>;
   price_not_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
   productImagesCollection_exists?: InputMaybe<Scalars['Boolean']>;
+  relatedProducts?: InputMaybe<CfPageProductNestedFilter>;
   relatedProductsCollection_exists?: InputMaybe<Scalars['Boolean']>;
   seoFields?: InputMaybe<CfComponentSeoNestedFilter>;
   seoFields_exists?: InputMaybe<Scalars['Boolean']>;
@@ -1831,10 +1994,14 @@ export type Query = {
   assetCollection?: Maybe<AssetCollection>;
   assets?: Maybe<Assets>;
   assetsCollection?: Maybe<AssetsCollection>;
+  componentContact?: Maybe<ComponentContact>;
+  componentContactCollection?: Maybe<ComponentContactCollection>;
   componentSeo?: Maybe<ComponentSeo>;
   componentSeoCollection?: Maybe<ComponentSeoCollection>;
   componentSlider?: Maybe<ComponentSlider>;
   componentSliderCollection?: Maybe<ComponentSliderCollection>;
+  componentSocialMedia?: Maybe<ComponentSocialMedia>;
+  componentSocialMediaCollection?: Maybe<ComponentSocialMediaCollection>;
   entryCollection?: Maybe<EntryCollection>;
   menu?: Maybe<Menu>;
   menuCollection?: Maybe<MenuCollection>;
@@ -1889,6 +2056,23 @@ export type QueryAssetsCollectionArgs = {
 };
 
 
+export type QueryComponentContactArgs = {
+  id: Scalars['String'];
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+export type QueryComponentContactCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<ComponentContactOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ComponentContactFilter>;
+};
+
+
 export type QueryComponentSeoArgs = {
   id: Scalars['String'];
   locale?: InputMaybe<Scalars['String']>;
@@ -1920,6 +2104,23 @@ export type QueryComponentSliderCollectionArgs = {
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<ComponentSliderFilter>;
+};
+
+
+export type QueryComponentSocialMediaArgs = {
+  id: Scalars['String'];
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+export type QueryComponentSocialMediaCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<ComponentSocialMediaOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ComponentSocialMediaFilter>;
 };
 
 
@@ -2200,6 +2401,34 @@ export enum TranslationsOrder {
   TranslationDesc = 'translation_DESC'
 }
 
+export type CfComponentContactNestedFilter = {
+  AND?: InputMaybe<Array<InputMaybe<CfComponentContactNestedFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<CfComponentContactNestedFilter>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  email?: InputMaybe<Scalars['String']>;
+  email_contains?: InputMaybe<Scalars['String']>;
+  email_exists?: InputMaybe<Scalars['Boolean']>;
+  email_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  email_not?: InputMaybe<Scalars['String']>;
+  email_not_contains?: InputMaybe<Scalars['String']>;
+  email_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  location?: InputMaybe<Scalars['String']>;
+  location_contains?: InputMaybe<Scalars['String']>;
+  location_exists?: InputMaybe<Scalars['Boolean']>;
+  location_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  location_not?: InputMaybe<Scalars['String']>;
+  location_not_contains?: InputMaybe<Scalars['String']>;
+  location_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  phone?: InputMaybe<Scalars['String']>;
+  phone_contains?: InputMaybe<Scalars['String']>;
+  phone_exists?: InputMaybe<Scalars['Boolean']>;
+  phone_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  phone_not?: InputMaybe<Scalars['String']>;
+  phone_not_contains?: InputMaybe<Scalars['String']>;
+  phone_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  sys?: InputMaybe<SysFilter>;
+};
+
 export type CfComponentSeoNestedFilter = {
   AND?: InputMaybe<Array<InputMaybe<CfComponentSeoNestedFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<CfComponentSeoNestedFilter>>>;
@@ -2250,6 +2479,96 @@ export type CfComponentSliderNestedFilter = {
   sys?: InputMaybe<SysFilter>;
 };
 
+export type CfPageProductNestedFilter = {
+  AND?: InputMaybe<Array<InputMaybe<CfPageProductNestedFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<CfPageProductNestedFilter>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  description?: InputMaybe<Scalars['String']>;
+  description_contains?: InputMaybe<Scalars['String']>;
+  description_exists?: InputMaybe<Scalars['Boolean']>;
+  description_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  description_not?: InputMaybe<Scalars['String']>;
+  description_not_contains?: InputMaybe<Scalars['String']>;
+  description_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  featuredProductImage_exists?: InputMaybe<Scalars['Boolean']>;
+  internalName?: InputMaybe<Scalars['String']>;
+  internalName_contains?: InputMaybe<Scalars['String']>;
+  internalName_exists?: InputMaybe<Scalars['Boolean']>;
+  internalName_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  internalName_not?: InputMaybe<Scalars['String']>;
+  internalName_not_contains?: InputMaybe<Scalars['String']>;
+  internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  name?: InputMaybe<Scalars['String']>;
+  name_contains?: InputMaybe<Scalars['String']>;
+  name_exists?: InputMaybe<Scalars['Boolean']>;
+  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  name_not?: InputMaybe<Scalars['String']>;
+  name_not_contains?: InputMaybe<Scalars['String']>;
+  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  price?: InputMaybe<Scalars['Float']>;
+  price_exists?: InputMaybe<Scalars['Boolean']>;
+  price_gt?: InputMaybe<Scalars['Float']>;
+  price_gte?: InputMaybe<Scalars['Float']>;
+  price_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
+  price_lt?: InputMaybe<Scalars['Float']>;
+  price_lte?: InputMaybe<Scalars['Float']>;
+  price_not?: InputMaybe<Scalars['Float']>;
+  price_not_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
+  productImagesCollection_exists?: InputMaybe<Scalars['Boolean']>;
+  relatedProductsCollection_exists?: InputMaybe<Scalars['Boolean']>;
+  seoFields_exists?: InputMaybe<Scalars['Boolean']>;
+  slug?: InputMaybe<Scalars['String']>;
+  slug_contains?: InputMaybe<Scalars['String']>;
+  slug_exists?: InputMaybe<Scalars['Boolean']>;
+  slug_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  slug_not?: InputMaybe<Scalars['String']>;
+  slug_not_contains?: InputMaybe<Scalars['String']>;
+  slug_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  sys?: InputMaybe<SysFilter>;
+};
+
+export type CfPageProjectNestedFilter = {
+  AND?: InputMaybe<Array<InputMaybe<CfPageProjectNestedFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<CfPageProjectNestedFilter>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  date?: InputMaybe<Scalars['DateTime']>;
+  date_exists?: InputMaybe<Scalars['Boolean']>;
+  date_gt?: InputMaybe<Scalars['DateTime']>;
+  date_gte?: InputMaybe<Scalars['DateTime']>;
+  date_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  date_lt?: InputMaybe<Scalars['DateTime']>;
+  date_lte?: InputMaybe<Scalars['DateTime']>;
+  date_not?: InputMaybe<Scalars['DateTime']>;
+  date_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  description_contains?: InputMaybe<Scalars['String']>;
+  description_exists?: InputMaybe<Scalars['Boolean']>;
+  description_not_contains?: InputMaybe<Scalars['String']>;
+  slider_exists?: InputMaybe<Scalars['Boolean']>;
+  slug?: InputMaybe<Scalars['String']>;
+  slug_contains?: InputMaybe<Scalars['String']>;
+  slug_exists?: InputMaybe<Scalars['Boolean']>;
+  slug_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  slug_not?: InputMaybe<Scalars['String']>;
+  slug_not_contains?: InputMaybe<Scalars['String']>;
+  slug_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  subtitle?: InputMaybe<Scalars['String']>;
+  subtitle_contains?: InputMaybe<Scalars['String']>;
+  subtitle_exists?: InputMaybe<Scalars['Boolean']>;
+  subtitle_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  subtitle_not?: InputMaybe<Scalars['String']>;
+  subtitle_not_contains?: InputMaybe<Scalars['String']>;
+  subtitle_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  sys?: InputMaybe<SysFilter>;
+  thumbnail_exists?: InputMaybe<Scalars['Boolean']>;
+  title?: InputMaybe<Scalars['String']>;
+  title_contains?: InputMaybe<Scalars['String']>;
+  title_exists?: InputMaybe<Scalars['Boolean']>;
+  title_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  title_not?: InputMaybe<Scalars['String']>;
+  title_not_contains?: InputMaybe<Scalars['String']>;
+  title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
 export type ImageFieldsFragment = { __typename: 'Asset', title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, contentType?: string | null, sys: { __typename?: 'Sys', id: string } };
 
 export type PageLandingFieldsFragment = { __typename: 'PageLanding', internalName?: string | null, heroBannerHeadline?: string | null, heroBannerHeadlineColor?: string | null, sys: { __typename?: 'Sys', id: string, spaceId: string }, seoFields?: (
@@ -2277,7 +2596,7 @@ export type LayoutQueryVariables = Exact<{
 }>;
 
 
-export type LayoutQuery = { __typename?: 'Query', menuCollection?: { __typename?: 'MenuCollection', items: Array<{ __typename?: 'Menu', name?: string | null, link?: string | null, isProject?: boolean | null, indexOrder?: number | null } | null> } | null, assetsCollection?: { __typename?: 'AssetsCollection', items: Array<{ __typename?: 'Assets', logoLight?: { __typename?: 'Asset', url?: string | null, description?: string | null } | null, logoDark?: { __typename?: 'Asset', url?: string | null, description?: string | null } | null, socialMediaCollection?: { __typename?: 'AssetCollection', items: Array<{ __typename?: 'Asset', url?: string | null, description?: string | null, fileName?: string | null } | null> } | null } | null> } | null };
+export type LayoutQuery = { __typename?: 'Query', menuCollection?: { __typename?: 'MenuCollection', items: Array<{ __typename?: 'Menu', name?: string | null, link?: string | null, isProject?: boolean | null, indexOrder?: number | null } | null> } | null, assetsCollection?: { __typename?: 'AssetsCollection', items: Array<{ __typename?: 'Assets', logoLight?: { __typename?: 'Asset', url?: string | null, description?: string | null } | null, logoDark?: { __typename?: 'Asset', url?: string | null, description?: string | null } | null, logoSmall?: { __typename?: 'Asset', url?: string | null, description?: string | null } | null } | null> } | null, componentContactCollection?: { __typename?: 'ComponentContactCollection', items: Array<{ __typename?: 'ComponentContact', location?: string | null, email?: string | null, phone?: string | null } | null> } | null, componentSocialMediaCollection?: { __typename?: 'ComponentSocialMediaCollection', items: Array<{ __typename?: 'ComponentSocialMedia', name?: string | null, link?: string | null } | null> } | null };
 
 export type PageLandingCollectionQueryVariables = Exact<{
   locale?: InputMaybe<Scalars['String']>;
@@ -2487,13 +2806,23 @@ export const LayoutDocument = gql`
         url
         description
       }
-      socialMediaCollection {
-        items {
-          url
-          description
-          fileName
-        }
+      logoSmall {
+        url
+        description
       }
+    }
+  }
+  componentContactCollection(limit: 1, locale: $locale, preview: $preview) {
+    items {
+      location
+      email
+      phone
+    }
+  }
+  componentSocialMediaCollection(limit: 10, locale: $locale, preview: $preview) {
+    items {
+      name
+      link
     }
   }
 }

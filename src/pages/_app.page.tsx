@@ -15,6 +15,8 @@ const App = ({ Component, pageProps, data }: AppProperties) => {
     <Layout
       menuContent={data?.menuCollection?.items?.sort((a, b) => (a?.indexOrder ?? 0) - (b?.indexOrder ?? 0))}
       assetContent={data?.assetsCollection?.items[0]}
+      contactContent={data?.componentContactCollection?.items[0]}
+      socialMediaContent={data?.componentSocialMediaCollection?.items}
     >
       <Component {...pageProps} />
     </Layout>

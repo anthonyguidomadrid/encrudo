@@ -17,13 +17,27 @@ query layout($locale: String, $preview: Boolean) {
         url
         description
       }
-      socialMediaCollection {
-        items {
-          url
-          description
-          fileName
-        }
+      logoSmall {
+        url
+        description
       }
+    }
+  }
+  componentContactCollection(limit: 1, locale: $locale, preview: $preview) {
+    items {
+      location
+      email
+      phone
+    }
+  }
+  componentSocialMediaCollection(
+    limit: 10
+    locale: $locale
+    preview: $preview
+  ) {
+    items {
+      name
+      link
     }
   }
 }

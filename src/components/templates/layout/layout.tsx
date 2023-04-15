@@ -1,5 +1,6 @@
 import { ReactNode } from 'react'
 
+import { Footer } from '../footer'
 import { Header } from '../header'
 
 export type SocialMedia = {
@@ -22,22 +23,35 @@ export type MenuItem = {
 export type AssetContent = {
   logoLight?: Logo
   logoDark?: Logo
-  socialMediaCollection?: {
-    items?: SocialMedia[] | null
-  } | null
+  logoSmall?: Logo
 } | null
+
+export type ContactContent = {
+  location?: string | null
+  email?: string | null
+  phone?: string | null
+} | null
+
+export type SocialMediaContent = {
+  name?: string | null
+  link?: string | null
+} | null
+
 interface LayoutProps {
   children: ReactNode
   menuContent?: MenuItem[]
   assetContent?: AssetContent
+  contactContent?: ContactContent
+  socialMediaContent?: SocialMediaContent[]
 }
 
 export const Layout = ({
   children,
   menuContent,
-  assetContent
+  assetContent,
+  contactContent,
+  socialMediaContent
 }: LayoutProps) => {
-
   return (
     <>
       <Header
@@ -46,7 +60,12 @@ export const Layout = ({
         logoDark={assetContent?.logoDark}
       />
       <div className="h-screen">{children}</div>
-      <h1>Footer</h1>
+      <Footer
+        logo={assetContent?.logoSmall}
+        contactContent={contactContent}
+        menuContent={menuContent}
+        socialMediaContent={socialMediaContent}
+      />
     </>
   )
 }
