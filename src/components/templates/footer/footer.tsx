@@ -75,17 +75,14 @@ export const Footer = ({
       </section>
       <footer className="bg-grey-dark text-white text-sm">
         <div className="max-w-7xl m-auto flex text-center flex-col md:flex-row gap-2 justify-between p-3">
+          <p>{t('footer.copyright', { year: new Date().getFullYear() })}</p>
           <p>
-            Copyright © {new Date().getFullYear()} Juan Pablo Carriazo Vaicius
-          </p>
-          <p>
-            Website{' '}
             <a
               href="https://anthonyguido.dev/"
               target={'_blank'}
               rel="noreferrer"
             >
-              Anthony Guido
+              {t('footer.website')}
             </a>
           </p>
         </div>

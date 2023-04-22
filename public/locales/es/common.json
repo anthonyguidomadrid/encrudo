@@ -2,7 +2,9 @@
   "footer": {
     "contact": "Contacto",
     "link": "Enlaces",
-    "social": "Redes Sociales"
+    "social": "Redes Sociales",
+    "copyright": "Copyright © {{year}} En Crudo Taller",
+    "website": "Web Anthony Guido"
   }
 }
   

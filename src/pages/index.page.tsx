@@ -1,37 +1,19 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
-import Image from 'next/image'
-import { Splide, SplideSlide } from 'splide-nextjs/react-splide'
 
 import { getServerSideTranslations } from './utils/get-serverside-translations'
 
+import { HomeSlider } from '@src/components/features/homeSlider'
 import { SeoFields } from '@src/components/features/seo'
 import { client } from '@src/lib/client'
 
 const Page = ({
   page
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  console.log('page', page.slider.imageCollection)
   return (
     <>
       {page.seoFields && <SeoFields {...page.seoFields} />}
       {page.slider?.imageCollection?.items?.length > 0 && (
-        <Splide aria-label="My Favorite Images">
-          {page.slider.imageCollection?.items?.map((image, idx) => {
-            return (
-              <SplideSlide key={idx}>
-                <div
-                  className="h-screen"
-                  style={{
-                    backgroundImage: `url(${image?.url})`,
-                    backgroundRepeat: 'no-repeat',
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center'
-                  }}
-                />
-              </SplideSlide>
-            )
-          })}
-        </Splide>
+        <HomeSlider items={page.slider?.imageCollection?.items} />
       )}
     </>
   )
