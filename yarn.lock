@@ -6468,6 +6468,11 @@ sourcemap-codec@^1.4.8:
   resolved "https://registry.npmjs.org/sourcemap-codec/-/sourcemap-codec-1.4.8.tgz"
   integrity sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==
 
+splide-nextjs@^2.4.23:
+  version "2.4.23"
+  resolved "https://registry.yarnpkg.com/splide-nextjs/-/splide-nextjs-2.4.23.tgz#d9d0a56d11b52d3d4c634423f758d2349073b8e6"
+  integrity sha512-LkHmTNiWq7HIPoziALpk4NEfkLwyB86dWJYMDWV3Y0fZDapEfBHtdYaxZ/P61iZHsf29kuJtrW4WXWFIPa96Jw==
+
 sponge-case@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npmjs.org/sponge-case/-/sponge-case-1.0.1.tgz"

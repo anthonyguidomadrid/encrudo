@@ -1,35 +1,31 @@
-fragment PageLandingFields on PageLanding {
-  __typename
-  sys {
-    id
-    spaceId
-  }
-  internalName
-  seoFields {
-    ...SeoFields
-  }
-  # Tutorial: contentful-and-the-starter-template.md
-  # Uncomment the line below to add the Greeting field to the query
-  # greeting
-  heroBannerHeadline
-  heroBannerHeadlineColor
-  heroBannerImage {
-    ...ImageFields
-  }
-  productsCollection(limit: 6) {
-    items {
-      ...PageProductFields
-    }
-  }
-}
-
 query pageLanding($locale: String, $preview: Boolean) {
-  menuCollection(limit: 10, locale: $locale, preview: $preview) {
+  pageHomeCollection(limit: 1, locale: $locale, preview: $preview) {
     items {
-      name
-      link
-      isProject
-      isCta
+      __typename
+      sys {
+        id
+        spaceId
+      }
+      title
+      slider {
+        imageCollection {
+          items {
+            description
+            url
+          }
+        }
+      }
+      projectsCollection(limit: 9, locale: $locale, preview: $preview) {
+        items {
+          title
+          subtitle
+          slug
+          thumbnail {
+            url
+            description
+          }
+        }
+      }
     }
   }
 }

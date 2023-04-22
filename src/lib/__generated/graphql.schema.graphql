@@ -1141,6 +1141,7 @@ type PageProject implements Entry {
   slug(locale: String): String
   subtitle(locale: String): String
   sys: Sys!
+  tags(locale: String): [String]
   thumbnail(locale: String, preview: Boolean): Asset
   title(locale: String): String
 }
@@ -1206,6 +1207,10 @@ input PageProjectFilter {
   subtitle_not_contains: String
   subtitle_not_in: [String]
   sys: SysFilter
+  tags_contains_all: [String]
+  tags_contains_none: [String]
+  tags_contains_some: [String]
+  tags_exists: Boolean
   thumbnail_exists: Boolean
   title: String
   title_contains: String
@@ -1539,6 +1544,10 @@ input cfPageProjectNestedFilter {
   subtitle_not_contains: String
   subtitle_not_in: [String]
   sys: SysFilter
+  tags_contains_all: [String]
+  tags_contains_none: [String]
+  tags_contains_some: [String]
+  tags_exists: Boolean
   thumbnail_exists: Boolean
   title: String
   title_contains: String

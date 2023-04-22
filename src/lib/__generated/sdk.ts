@@ -1817,6 +1817,7 @@ export type PageProject = Entry & {
   slug?: Maybe<Scalars['String']>;
   subtitle?: Maybe<Scalars['String']>;
   sys: Sys;
+  tags?: Maybe<Array<Maybe<Scalars['String']>>>;
   thumbnail?: Maybe<Asset>;
   title?: Maybe<Scalars['String']>;
 };
@@ -1855,6 +1856,12 @@ export type PageProjectSlugArgs = {
 
 /** Single page for projects [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProject) */
 export type PageProjectSubtitleArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Single page for projects [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProject) */
+export type PageProjectTagsArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
@@ -1937,6 +1944,10 @@ export type PageProjectFilter = {
   subtitle_not_contains?: InputMaybe<Scalars['String']>;
   subtitle_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   sys?: InputMaybe<SysFilter>;
+  tags_contains_all?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  tags_contains_none?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  tags_contains_some?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  tags_exists?: InputMaybe<Scalars['Boolean']>;
   thumbnail_exists?: InputMaybe<Scalars['Boolean']>;
   title?: InputMaybe<Scalars['String']>;
   title_contains?: InputMaybe<Scalars['String']>;
@@ -2559,6 +2570,10 @@ export type CfPageProjectNestedFilter = {
   subtitle_not_contains?: InputMaybe<Scalars['String']>;
   subtitle_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   sys?: InputMaybe<SysFilter>;
+  tags_contains_all?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  tags_contains_none?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  tags_contains_some?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  tags_exists?: InputMaybe<Scalars['Boolean']>;
   thumbnail_exists?: InputMaybe<Scalars['Boolean']>;
   title?: InputMaybe<Scalars['String']>;
   title_contains?: InputMaybe<Scalars['String']>;
@@ -2568,6 +2583,14 @@ export type CfPageProjectNestedFilter = {
   title_not_contains?: InputMaybe<Scalars['String']>;
   title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
+
+export type HomeQueryVariables = Exact<{
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+}>;
+
+
+export type HomeQuery = { __typename?: 'Query', pageHomeCollection?: { __typename?: 'PageHomeCollection', items: Array<{ __typename?: 'PageHome', slider?: { __typename?: 'ComponentSlider', imageCollection?: { __typename?: 'AssetCollection', items: Array<{ __typename?: 'Asset', url?: string | null, description?: string | null, title?: string | null } | null> } | null } | null, projectsCollection?: { __typename?: 'PageHomeProjectsCollection', items: Array<{ __typename?: 'PageProject', title?: string | null, subtitle?: string | null, slug?: string | null, thumbnail?: { __typename?: 'Asset', url?: string | null, description?: string | null } | null } | null> } | null, seo?: { __typename?: 'ComponentSeo', pageTitle?: string | null, pageDescription?: string | null } | null } | null> } | null };
 
 export type ImageFieldsFragment = { __typename: 'Asset', title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, contentType?: string | null, sys: { __typename?: 'Sys', id: string } };
 
@@ -2588,7 +2611,7 @@ export type PageLandingQueryVariables = Exact<{
 }>;
 
 
-export type PageLandingQuery = { __typename?: 'Query', menuCollection?: { __typename?: 'MenuCollection', items: Array<{ __typename?: 'Menu', name?: string | null, link?: string | null, isProject?: boolean | null, isCta?: boolean | null } | null> } | null };
+export type PageLandingQuery = { __typename?: 'Query', pageHomeCollection?: { __typename?: 'PageHomeCollection', items: Array<{ __typename: 'PageHome', title?: string | null, sys: { __typename?: 'Sys', id: string, spaceId: string }, slider?: { __typename?: 'ComponentSlider', imageCollection?: { __typename?: 'AssetCollection', items: Array<{ __typename?: 'Asset', description?: string | null, url?: string | null } | null> } | null } | null, projectsCollection?: { __typename?: 'PageHomeProjectsCollection', items: Array<{ __typename?: 'PageProject', title?: string | null, subtitle?: string | null, slug?: string | null, thumbnail?: { __typename?: 'Asset', url?: string | null, description?: string | null } | null } | null> } | null } | null> } | null };
 
 export type LayoutQueryVariables = Exact<{
   locale?: InputMaybe<Scalars['String']>;
@@ -2774,14 +2797,67 @@ export const SitemapPagesFieldsFragmentDoc = gql`
   }
 }
     `;
+export const HomeDocument = gql`
+    query home($locale: String, $preview: Boolean) {
+  pageHomeCollection(limit: 1) {
+    items {
+      slider {
+        imageCollection {
+          items {
+            url
+            description
+            title
+          }
+        }
+      }
+      projectsCollection(limit: 9) {
+        items {
+          title
+          subtitle
+          slug
+          thumbnail {
+            url
+            description
+          }
+        }
+      }
+      seo {
+        pageTitle
+        pageDescription
+      }
+    }
+  }
+}
+    `;
 export const PageLandingDocument = gql`
     query pageLanding($locale: String, $preview: Boolean) {
-  menuCollection(limit: 10, locale: $locale, preview: $preview) {
+  pageHomeCollection(limit: 1, locale: $locale, preview: $preview) {
     items {
-      name
-      link
-      isProject
-      isCta
+      __typename
+      sys {
+        id
+        spaceId
+      }
+      title
+      slider {
+        imageCollection {
+          items {
+            description
+            url
+          }
+        }
+      }
+      projectsCollection(limit: 9, locale: $locale, preview: $preview) {
+        items {
+          title
+          subtitle
+          slug
+          thumbnail {
+            url
+            description
+          }
+        }
+      }
     }
   }
 }
@@ -2882,6 +2958,9 @@ const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationTy
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
+    home(variables?: HomeQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<HomeQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<HomeQuery>(HomeDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'home', 'query');
+    },
     pageLanding(variables?: PageLandingQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PageLandingQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<PageLandingQuery>(PageLandingDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pageLanding', 'query');
     },

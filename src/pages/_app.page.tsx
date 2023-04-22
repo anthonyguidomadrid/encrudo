@@ -5,6 +5,7 @@ import { Layout } from '@src/components/templates/layout'
 import { LayoutQuery } from '@src/lib/__generated/sdk'
 import { client } from '@src/lib/client'
 import '../../styles/global.css'
+import 'splide-nextjs/splide/dist/css/themes/splide-default.min.css'
 
 export type AppProperties = AppProps & {
   data: LayoutQuery
@@ -13,7 +14,9 @@ export type AppProperties = AppProps & {
 const App = ({ Component, pageProps, data }: AppProperties) => {
   return (
     <Layout
-      menuContent={data?.menuCollection?.items?.sort((a, b) => (a?.indexOrder ?? 0) - (b?.indexOrder ?? 0))}
+      menuContent={data?.menuCollection?.items?.sort(
+        (a, b) => (a?.indexOrder ?? 0) - (b?.indexOrder ?? 0)
+      )}
       assetContent={data?.assetsCollection?.items[0]}
       contactContent={data?.componentContactCollection?.items[0]}
       socialMediaContent={data?.componentSocialMediaCollection?.items}
