@@ -4,7 +4,7 @@ export type HomeSliderProps = {
   items: { url: string }[]
 }
 
-export const HomeSlider = ({ items }: HomeSliderProps) => {
+export const SliderBackground = ({ items }: HomeSliderProps) => {
   return (
     <Splide
       aria-label="Home Slider"

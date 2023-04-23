@@ -26,6 +26,9 @@ query pageLanding($locale: String, $preview: Boolean) {
           }
         }
       }
+      seo {
+        ...SeoFields
+      }
     }
   }
 }

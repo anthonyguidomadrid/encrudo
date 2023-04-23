@@ -2594,24 +2594,16 @@ export type HomeQuery = { __typename?: 'Query', pageHomeCollection?: { __typenam
 
 export type ImageFieldsFragment = { __typename: 'Asset', title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, contentType?: string | null, sys: { __typename?: 'Sys', id: string } };
 
-export type PageLandingFieldsFragment = { __typename: 'PageLanding', internalName?: string | null, heroBannerHeadline?: string | null, heroBannerHeadlineColor?: string | null, sys: { __typename?: 'Sys', id: string, spaceId: string }, seoFields?: (
-    { __typename?: 'ComponentSeo' }
-    & SeoFieldsFragment
-  ) | null, heroBannerImage?: (
-    { __typename?: 'Asset' }
-    & ImageFieldsFragment
-  ) | null, productsCollection?: { __typename?: 'PageLandingProductsCollection', items: Array<(
-      { __typename?: 'PageProduct' }
-      & PageProductFieldsFragment
-    ) | null> } | null };
-
 export type PageLandingQueryVariables = Exact<{
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
 }>;
 
 
-export type PageLandingQuery = { __typename?: 'Query', pageHomeCollection?: { __typename?: 'PageHomeCollection', items: Array<{ __typename: 'PageHome', title?: string | null, sys: { __typename?: 'Sys', id: string, spaceId: string }, slider?: { __typename?: 'ComponentSlider', imageCollection?: { __typename?: 'AssetCollection', items: Array<{ __typename?: 'Asset', description?: string | null, url?: string | null } | null> } | null } | null, projectsCollection?: { __typename?: 'PageHomeProjectsCollection', items: Array<{ __typename?: 'PageProject', title?: string | null, subtitle?: string | null, slug?: string | null, thumbnail?: { __typename?: 'Asset', url?: string | null, description?: string | null } | null } | null> } | null } | null> } | null };
+export type PageLandingQuery = { __typename?: 'Query', pageHomeCollection?: { __typename?: 'PageHomeCollection', items: Array<{ __typename: 'PageHome', title?: string | null, sys: { __typename?: 'Sys', id: string, spaceId: string }, slider?: { __typename?: 'ComponentSlider', imageCollection?: { __typename?: 'AssetCollection', items: Array<{ __typename?: 'Asset', description?: string | null, url?: string | null } | null> } | null } | null, projectsCollection?: { __typename?: 'PageHomeProjectsCollection', items: Array<{ __typename?: 'PageProject', title?: string | null, subtitle?: string | null, slug?: string | null, thumbnail?: { __typename?: 'Asset', url?: string | null, description?: string | null } | null } | null> } | null, seo?: (
+        { __typename?: 'ComponentSeo' }
+        & SeoFieldsFragment
+      ) | null } | null> } | null };
 
 export type LayoutQueryVariables = Exact<{
   locale?: InputMaybe<Scalars['String']>;
@@ -2620,17 +2612,6 @@ export type LayoutQueryVariables = Exact<{
 
 
 export type LayoutQuery = { __typename?: 'Query', menuCollection?: { __typename?: 'MenuCollection', items: Array<{ __typename?: 'Menu', name?: string | null, link?: string | null, isProject?: boolean | null, indexOrder?: number | null } | null> } | null, assetsCollection?: { __typename?: 'AssetsCollection', items: Array<{ __typename?: 'Assets', logoLight?: { __typename?: 'Asset', url?: string | null, description?: string | null } | null, logoDark?: { __typename?: 'Asset', url?: string | null, description?: string | null } | null, logoSmall?: { __typename?: 'Asset', url?: string | null, description?: string | null } | null } | null> } | null, componentContactCollection?: { __typename?: 'ComponentContactCollection', items: Array<{ __typename?: 'ComponentContact', location?: string | null, email?: string | null, phone?: string | null } | null> } | null, componentSocialMediaCollection?: { __typename?: 'ComponentSocialMediaCollection', items: Array<{ __typename?: 'ComponentSocialMedia', name?: string | null, link?: string | null } | null> } | null };
-
-export type PageLandingCollectionQueryVariables = Exact<{
-  locale?: InputMaybe<Scalars['String']>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-}>;
-
-
-export type PageLandingCollectionQuery = { __typename?: 'Query', pageLandingCollection?: { __typename?: 'PageLandingCollection', items: Array<(
-      { __typename?: 'PageLanding' }
-      & PageLandingFieldsFragment
-    ) | null> } | null };
 
 export type BasePageProductFieldsFragment = { __typename: 'PageProduct', internalName?: string | null, slug?: string | null, name?: string | null, description?: string | null, price?: number | null, sys: { __typename?: 'Sys', id: string, spaceId: string }, seoFields?: (
     { __typename?: 'ComponentSeo' }
@@ -2755,29 +2736,6 @@ export const PageProductFieldsFragmentDoc = gql`
   }
 }
     `;
-export const PageLandingFieldsFragmentDoc = gql`
-    fragment PageLandingFields on PageLanding {
-  __typename
-  sys {
-    id
-    spaceId
-  }
-  internalName
-  seoFields {
-    ...SeoFields
-  }
-  heroBannerHeadline
-  heroBannerHeadlineColor
-  heroBannerImage {
-    ...ImageFields
-  }
-  productsCollection(limit: 6) {
-    items {
-      ...PageProductFields
-    }
-  }
-}
-    `;
 export const SitemapPagesFieldsFragmentDoc = gql`
     fragment sitemapPagesFields on Query {
   pageProductCollection(limit: 100, locale: $locale) {
@@ -2858,10 +2816,14 @@ export const PageLandingDocument = gql`
           }
         }
       }
+      seo {
+        ...SeoFields
+      }
     }
   }
 }
-    `;
+    ${SeoFieldsFragmentDoc}
+${ImageFieldsFragmentDoc}`;
 export const LayoutDocument = gql`
     query layout($locale: String, $preview: Boolean) {
   menuCollection(limit: 10, locale: $locale, preview: $preview) {
@@ -2903,19 +2865,6 @@ export const LayoutDocument = gql`
   }
 }
     `;
-export const PageLandingCollectionDocument = gql`
-    query pageLandingCollection($locale: String, $preview: Boolean) {
-  pageLandingCollection(limit: 100, locale: $locale, preview: $preview) {
-    items {
-      ...PageLandingFields
-    }
-  }
-}
-    ${PageLandingFieldsFragmentDoc}
-${SeoFieldsFragmentDoc}
-${ImageFieldsFragmentDoc}
-${PageProductFieldsFragmentDoc}
-${BasePageProductFieldsFragmentDoc}`;
 export const PageProductDocument = gql`
     query pageProduct($slug: String!, $locale: String, $preview: Boolean) {
   pageProductCollection(
@@ -2966,9 +2915,6 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     layout(variables?: LayoutQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<LayoutQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<LayoutQuery>(LayoutDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'layout', 'query');
-    },
-    pageLandingCollection(variables?: PageLandingCollectionQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PageLandingCollectionQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<PageLandingCollectionQuery>(PageLandingCollectionDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pageLandingCollection', 'query');
     },
     pageProduct(variables: PageProductQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PageProductQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<PageProductQuery>(PageProductDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pageProduct', 'query');
