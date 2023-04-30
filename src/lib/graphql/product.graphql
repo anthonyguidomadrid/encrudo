@@ -16,6 +16,9 @@ query pageProduct($slug: String!, $locale: String, $preview: Boolean) {
           description
         }
       }
+      seo {
+        ...SeoFields
+      }
     }
   }
 }

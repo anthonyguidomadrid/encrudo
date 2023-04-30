@@ -308,6 +308,7 @@ type ComponentSeoLinkingCollections {
   pageHomeCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageHomeCollection
   pageLandingCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageLandingCollection
   pageProductCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageProductCollection
+  pageProjectCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageProjectCollection
 }
 
 enum ComponentSeoOrder {
@@ -1137,6 +1138,7 @@ type PageProject implements Entry {
   galleryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): AssetCollection
   header(locale: String, preview: Boolean): Asset
   linkedFrom(allowedLocales: [String]): PageProjectLinkingCollections
+  seo(locale: String, preview: Boolean): ComponentSeo
   slug(locale: String): String
   subtitle(locale: String): String
   sys: Sys!
@@ -1181,6 +1183,8 @@ input PageProjectFilter {
   description_not_contains: String
   galleryCollection_exists: Boolean
   header_exists: Boolean
+  seo: cfComponentSeoNestedFilter
+  seo_exists: Boolean
   slug: String
   slug_contains: String
   slug_exists: Boolean
@@ -1504,6 +1508,7 @@ input cfPageProjectNestedFilter {
   description_not_contains: String
   galleryCollection_exists: Boolean
   header_exists: Boolean
+  seo_exists: Boolean
   slug: String
   slug_contains: String
   slug_exists: Boolean

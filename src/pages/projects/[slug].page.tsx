@@ -2,7 +2,9 @@ import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { useTranslation } from 'next-i18next'
 
+import ArrowLeft from '@icons/arrow-left.svg'
 import { Button } from '@src/components/button'
+import { SeoFields } from '@src/components/features/seo'
 import { Gallery } from '@src/components/gallery'
 import { ProjectHeader } from '@src/components/projectHeader'
 import { client } from '@src/lib/client'
@@ -11,37 +13,23 @@ import { getServerSideTranslations } from '@src/pages/utils/get-serverside-trans
 const Page = ({
   product
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const { title, subtitle, header, description } = product
+  const { title, subtitle, header, description, seo } = product
   const { t } = useTranslation()
 
   return (
     <>
+      {seo && <SeoFields {...seo} />}
       <ProjectHeader
         title={title}
         subtitle={subtitle}
         image={header}
         description={documentToHtmlString(description?.json)}
       />
-      <Gallery photos={product.galleryCollection?.items} columnAmount={3}/>
+      <Gallery photos={product.galleryCollection?.items} columnAmount={3} />
       <div className="flex my-10">
         <Button
           label={t('project.back-btn')}
-          icon={
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="w-6 h-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
-              />
-            </svg>
-          }
+          icon={<ArrowLeft className={'h-7'} />}
           link={'/#projects'}
         />
       </div>

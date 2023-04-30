@@ -581,6 +581,7 @@ export type ComponentSeoLinkingCollections = {
   pageHomeCollection?: Maybe<PageHomeCollection>;
   pageLandingCollection?: Maybe<PageLandingCollection>;
   pageProductCollection?: Maybe<PageProductCollection>;
+  pageProjectCollection?: Maybe<PageProjectCollection>;
 };
 
 
@@ -625,6 +626,14 @@ export type ComponentSeoLinkingCollectionsPageLandingCollectionArgs = {
 
 
 export type ComponentSeoLinkingCollectionsPageProductCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type ComponentSeoLinkingCollectionsPageProjectCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
@@ -1805,6 +1814,7 @@ export type PageProject = Entry & {
   galleryCollection?: Maybe<AssetCollection>;
   header?: Maybe<Asset>;
   linkedFrom?: Maybe<PageProjectLinkingCollections>;
+  seo?: Maybe<ComponentSeo>;
   slug?: Maybe<Scalars['String']>;
   subtitle?: Maybe<Scalars['String']>;
   sys: Sys;
@@ -1838,6 +1848,13 @@ export type PageProjectHeaderArgs = {
 /** Single page for projects [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProject) */
 export type PageProjectLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+/** Single page for projects [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProject) */
+export type PageProjectSeoArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
 };
 
 
@@ -1907,6 +1924,8 @@ export type PageProjectFilter = {
   description_not_contains?: InputMaybe<Scalars['String']>;
   galleryCollection_exists?: InputMaybe<Scalars['Boolean']>;
   header_exists?: InputMaybe<Scalars['Boolean']>;
+  seo?: InputMaybe<CfComponentSeoNestedFilter>;
+  seo_exists?: InputMaybe<Scalars['Boolean']>;
   slug?: InputMaybe<Scalars['String']>;
   slug_contains?: InputMaybe<Scalars['String']>;
   slug_exists?: InputMaybe<Scalars['Boolean']>;
@@ -2519,6 +2538,7 @@ export type CfPageProjectNestedFilter = {
   description_not_contains?: InputMaybe<Scalars['String']>;
   galleryCollection_exists?: InputMaybe<Scalars['Boolean']>;
   header_exists?: InputMaybe<Scalars['Boolean']>;
+  seo_exists?: InputMaybe<Scalars['Boolean']>;
   slug?: InputMaybe<Scalars['String']>;
   slug_contains?: InputMaybe<Scalars['String']>;
   slug_exists?: InputMaybe<Scalars['Boolean']>;
@@ -2572,7 +2592,10 @@ export type PageProductQueryVariables = Exact<{
 }>;
 
 
-export type PageProductQuery = { __typename?: 'Query', pageProjectCollection?: { __typename?: 'PageProjectCollection', items: Array<{ __typename?: 'PageProject', title?: string | null, subtitle?: string | null, description?: { __typename?: 'PageProjectDescription', json: any } | null, header?: { __typename?: 'Asset', url?: string | null, description?: string | null } | null, galleryCollection?: { __typename?: 'AssetCollection', items: Array<{ __typename?: 'Asset', url?: string | null, description?: string | null } | null> } | null } | null> } | null };
+export type PageProductQuery = { __typename?: 'Query', pageProjectCollection?: { __typename?: 'PageProjectCollection', items: Array<{ __typename?: 'PageProject', title?: string | null, subtitle?: string | null, description?: { __typename?: 'PageProjectDescription', json: any } | null, header?: { __typename?: 'Asset', url?: string | null, description?: string | null } | null, galleryCollection?: { __typename?: 'AssetCollection', items: Array<{ __typename?: 'Asset', url?: string | null, description?: string | null } | null> } | null, seo?: (
+        { __typename?: 'ComponentSeo' }
+        & SeoFieldsFragment
+      ) | null } | null> } | null };
 
 export type SeoFieldsFragment = { __typename: 'ComponentSeo', pageTitle?: string | null, pageDescription?: string | null, canonicalUrl?: string | null, nofollow?: boolean | null, noindex?: boolean | null, shareImagesCollection?: { __typename?: 'AssetCollection', items: Array<(
       { __typename?: 'Asset' }
@@ -2736,10 +2759,14 @@ export const PageProductDocument = gql`
           description
         }
       }
+      seo {
+        ...SeoFields
+      }
     }
   }
 }
-    `;
+    ${SeoFieldsFragmentDoc}
+${ImageFieldsFragmentDoc}`;
 export const SitemapPagesDocument = gql`
     query sitemapPages($locale: String!) {
   ...sitemapPagesFields

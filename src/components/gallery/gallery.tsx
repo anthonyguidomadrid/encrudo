@@ -2,11 +2,10 @@ import Image from 'next/image'
 import { useState } from 'react'
 import Lightbox from 'react-image-lightbox'
 
+import { Picture } from '../types'
+
 export type GalleryProps = {
-  photos: {
-    url: string
-    description: string
-  }[]
+  photos: Picture[]
   columnAmount: number
 }
 

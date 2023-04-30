@@ -1,15 +1,13 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { Picture } from '../types'
 
 export type ProductTileProps = {
   project: {
     title: string
     subtitle: string
     slug: string
-    thumbnail: {
-      description: string
-      url: string
-    }
+    thumbnail: Picture
   }
 }
 
