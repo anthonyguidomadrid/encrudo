@@ -8,6 +8,7 @@ import { Logo, MenuItem } from '../layout'
 import { LanguageSelector } from './'
 
 import HamburgerMenu from '@icons/menu.svg'
+import CrossIcon from '@icons/cross.svg'
 
 export type HeaderProps = {
   logoLight?: Logo
@@ -54,7 +55,7 @@ export const Header: FunctionComponent<HeaderProps> = ({
                   ? logoDark?.description ?? ''
                   : logoLight?.description ?? ''
               }
-              className="h-7"
+              className="h-7 mb-3"
               width="100"
               height="28"
             />
@@ -65,12 +66,16 @@ export const Header: FunctionComponent<HeaderProps> = ({
             className="flex items-center"
             onClick={() => setMenuOpen(!isMenuOpen)}
           >
-            <HamburgerMenu
-              className={classNames('h-6 w-6', {
-                'fill-white': !isDark,
-                'fill-primary': isDark
-              })}
-            />
+            {isMenuOpen ? (
+              <CrossIcon className={'h-6 w-6 text-primary'} />
+            ) : (
+              <HamburgerMenu
+                className={classNames('h-6 w-6', {
+                  'fill-white': !isDark,
+                  'fill-primary': isDark
+                })}
+              />
+            )}
           </button>
         </div>
         <div
