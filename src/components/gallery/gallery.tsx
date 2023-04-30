@@ -56,7 +56,7 @@ export const Gallery = ({ photos, columnAmount }: GalleryProps) => {
                 }}
               >
                 <Image
-                  className="h-full w-full hover:scale-105 transition duration-300 ease-in-out"
+                  className="h-full w-full object-cover object-center hover:scale-105 transition duration-300 ease-in-out"
                   src={photo.url}
                   alt={photo.description}
                   width={1200}
