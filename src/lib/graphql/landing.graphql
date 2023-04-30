@@ -3,7 +3,7 @@ query pageLanding($locale: String, $preview: Boolean) {
     items {
       title
       slider {
-        imageCollection(limit: 5) {
+        imageCollection(limit: 10) {
           items {
             description
             url
@@ -20,6 +20,9 @@ query pageLanding($locale: String, $preview: Boolean) {
             description
           }
         }
+      }
+      seo {
+        ...SeoFields
       }
     }
   }

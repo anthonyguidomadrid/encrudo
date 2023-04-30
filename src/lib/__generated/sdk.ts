@@ -2552,7 +2552,10 @@ export type PageLandingQueryVariables = Exact<{
 }>;
 
 
-export type PageLandingQuery = { __typename?: 'Query', pageHomeCollection?: { __typename?: 'PageHomeCollection', items: Array<{ __typename?: 'PageHome', title?: string | null, slider?: { __typename?: 'ComponentSlider', imageCollection?: { __typename?: 'AssetCollection', items: Array<{ __typename?: 'Asset', description?: string | null, url?: string | null } | null> } | null } | null, projectsCollection?: { __typename?: 'PageHomeProjectsCollection', items: Array<{ __typename?: 'PageProject', title?: string | null, subtitle?: string | null, slug?: string | null, thumbnail?: { __typename?: 'Asset', url?: string | null, description?: string | null } | null } | null> } | null } | null> } | null };
+export type PageLandingQuery = { __typename?: 'Query', pageHomeCollection?: { __typename?: 'PageHomeCollection', items: Array<{ __typename?: 'PageHome', title?: string | null, slider?: { __typename?: 'ComponentSlider', imageCollection?: { __typename?: 'AssetCollection', items: Array<{ __typename?: 'Asset', description?: string | null, url?: string | null } | null> } | null } | null, projectsCollection?: { __typename?: 'PageHomeProjectsCollection', items: Array<{ __typename?: 'PageProject', title?: string | null, subtitle?: string | null, slug?: string | null, thumbnail?: { __typename?: 'Asset', url?: string | null, description?: string | null } | null } | null> } | null, seo?: (
+        { __typename?: 'ComponentSeo' }
+        & SeoFieldsFragment
+      ) | null } | null> } | null };
 
 export type LayoutQueryVariables = Exact<{
   locale?: InputMaybe<Scalars['String']>;
@@ -2642,7 +2645,7 @@ export const PageLandingDocument = gql`
     items {
       title
       slider {
-        imageCollection(limit: 5) {
+        imageCollection(limit: 10) {
           items {
             description
             url
@@ -2660,10 +2663,14 @@ export const PageLandingDocument = gql`
           }
         }
       }
+      seo {
+        ...SeoFields
+      }
     }
   }
 }
-    `;
+    ${SeoFieldsFragmentDoc}
+${ImageFieldsFragmentDoc}`;
 export const LayoutDocument = gql`
     query layout($locale: String, $preview: Boolean) {
   menuCollection(limit: 10, locale: $locale, preview: $preview) {
