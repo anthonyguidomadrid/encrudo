@@ -359,7 +359,6 @@ input ComponentSliderFilter {
 type ComponentSliderLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
   pageHomeCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageHomeCollection
-  pageProjectCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageProjectCollection
 }
 
 enum ComponentSliderOrder {
@@ -1134,14 +1133,13 @@ Single page for projects [See type definition](https://app.contentful.com/spaces
 """
 type PageProject implements Entry {
   contentfulMetadata: ContentfulMetadata!
-  date(locale: String): DateTime
   description(locale: String): PageProjectDescription
+  galleryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): AssetCollection
+  header(locale: String, preview: Boolean): Asset
   linkedFrom(allowedLocales: [String]): PageProjectLinkingCollections
-  slider(locale: String, preview: Boolean): ComponentSlider
   slug(locale: String): String
   subtitle(locale: String): String
   sys: Sys!
-  tags(locale: String): [String]
   thumbnail(locale: String, preview: Boolean): Asset
   title(locale: String): String
 }
@@ -1178,20 +1176,11 @@ input PageProjectFilter {
   AND: [PageProjectFilter]
   OR: [PageProjectFilter]
   contentfulMetadata: ContentfulMetadataFilter
-  date: DateTime
-  date_exists: Boolean
-  date_gt: DateTime
-  date_gte: DateTime
-  date_in: [DateTime]
-  date_lt: DateTime
-  date_lte: DateTime
-  date_not: DateTime
-  date_not_in: [DateTime]
   description_contains: String
   description_exists: Boolean
   description_not_contains: String
-  slider: cfComponentSliderNestedFilter
-  slider_exists: Boolean
+  galleryCollection_exists: Boolean
+  header_exists: Boolean
   slug: String
   slug_contains: String
   slug_exists: Boolean
@@ -1207,10 +1196,6 @@ input PageProjectFilter {
   subtitle_not_contains: String
   subtitle_not_in: [String]
   sys: SysFilter
-  tags_contains_all: [String]
-  tags_contains_none: [String]
-  tags_contains_some: [String]
-  tags_exists: Boolean
   thumbnail_exists: Boolean
   title: String
   title_contains: String
@@ -1227,8 +1212,6 @@ type PageProjectLinkingCollections {
 }
 
 enum PageProjectOrder {
-  date_ASC
-  date_DESC
   slug_ASC
   slug_DESC
   subtitle_ASC
@@ -1516,19 +1499,11 @@ input cfPageProjectNestedFilter {
   AND: [cfPageProjectNestedFilter]
   OR: [cfPageProjectNestedFilter]
   contentfulMetadata: ContentfulMetadataFilter
-  date: DateTime
-  date_exists: Boolean
-  date_gt: DateTime
-  date_gte: DateTime
-  date_in: [DateTime]
-  date_lt: DateTime
-  date_lte: DateTime
-  date_not: DateTime
-  date_not_in: [DateTime]
   description_contains: String
   description_exists: Boolean
   description_not_contains: String
-  slider_exists: Boolean
+  galleryCollection_exists: Boolean
+  header_exists: Boolean
   slug: String
   slug_contains: String
   slug_exists: Boolean
@@ -1544,10 +1519,6 @@ input cfPageProjectNestedFilter {
   subtitle_not_contains: String
   subtitle_not_in: [String]
   sys: SysFilter
-  tags_contains_all: [String]
-  tags_contains_none: [String]
-  tags_contains_some: [String]
-  tags_exists: Boolean
   thumbnail_exists: Boolean
   title: String
   title_contains: String

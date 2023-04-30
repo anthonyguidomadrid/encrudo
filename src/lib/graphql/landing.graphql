@@ -1,14 +1,9 @@
 query pageLanding($locale: String, $preview: Boolean) {
   pageHomeCollection(limit: 1, locale: $locale, preview: $preview) {
     items {
-      __typename
-      sys {
-        id
-        spaceId
-      }
       title
       slider {
-        imageCollection {
+        imageCollection(limit: 5) {
           items {
             description
             url
@@ -25,9 +20,6 @@ query pageLanding($locale: String, $preview: Boolean) {
             description
           }
         }
-      }
-      seo {
-        ...SeoFields
       }
     }
   }

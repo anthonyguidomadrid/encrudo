@@ -696,7 +696,6 @@ export type ComponentSliderLinkingCollections = {
   __typename?: 'ComponentSliderLinkingCollections';
   entryCollection?: Maybe<EntryCollection>;
   pageHomeCollection?: Maybe<PageHomeCollection>;
-  pageProjectCollection?: Maybe<PageProjectCollection>;
 };
 
 
@@ -709,14 +708,6 @@ export type ComponentSliderLinkingCollectionsEntryCollectionArgs = {
 
 
 export type ComponentSliderLinkingCollectionsPageHomeCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>;
-  locale?: InputMaybe<Scalars['String']>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-  skip?: InputMaybe<Scalars['Int']>;
-};
-
-
-export type ComponentSliderLinkingCollectionsPageProjectCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
@@ -1810,22 +1801,15 @@ export type PageProductRelatedProductsCollection = {
 export type PageProject = Entry & {
   __typename?: 'PageProject';
   contentfulMetadata: ContentfulMetadata;
-  date?: Maybe<Scalars['DateTime']>;
   description?: Maybe<PageProjectDescription>;
+  galleryCollection?: Maybe<AssetCollection>;
+  header?: Maybe<Asset>;
   linkedFrom?: Maybe<PageProjectLinkingCollections>;
-  slider?: Maybe<ComponentSlider>;
   slug?: Maybe<Scalars['String']>;
   subtitle?: Maybe<Scalars['String']>;
   sys: Sys;
-  tags?: Maybe<Array<Maybe<Scalars['String']>>>;
   thumbnail?: Maybe<Asset>;
   title?: Maybe<Scalars['String']>;
-};
-
-
-/** Single page for projects [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProject) */
-export type PageProjectDateArgs = {
-  locale?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -1836,15 +1820,24 @@ export type PageProjectDescriptionArgs = {
 
 
 /** Single page for projects [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProject) */
-export type PageProjectLinkedFromArgs = {
-  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+export type PageProjectGalleryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** Single page for projects [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProject) */
-export type PageProjectSliderArgs = {
+export type PageProjectHeaderArgs = {
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+/** Single page for projects [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProject) */
+export type PageProjectLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 
@@ -1856,12 +1849,6 @@ export type PageProjectSlugArgs = {
 
 /** Single page for projects [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProject) */
 export type PageProjectSubtitleArgs = {
-  locale?: InputMaybe<Scalars['String']>;
-};
-
-
-/** Single page for projects [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProject) */
-export type PageProjectTagsArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
@@ -1915,20 +1902,11 @@ export type PageProjectFilter = {
   AND?: InputMaybe<Array<InputMaybe<PageProjectFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<PageProjectFilter>>>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
-  date?: InputMaybe<Scalars['DateTime']>;
-  date_exists?: InputMaybe<Scalars['Boolean']>;
-  date_gt?: InputMaybe<Scalars['DateTime']>;
-  date_gte?: InputMaybe<Scalars['DateTime']>;
-  date_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
-  date_lt?: InputMaybe<Scalars['DateTime']>;
-  date_lte?: InputMaybe<Scalars['DateTime']>;
-  date_not?: InputMaybe<Scalars['DateTime']>;
-  date_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
   description_contains?: InputMaybe<Scalars['String']>;
   description_exists?: InputMaybe<Scalars['Boolean']>;
   description_not_contains?: InputMaybe<Scalars['String']>;
-  slider?: InputMaybe<CfComponentSliderNestedFilter>;
-  slider_exists?: InputMaybe<Scalars['Boolean']>;
+  galleryCollection_exists?: InputMaybe<Scalars['Boolean']>;
+  header_exists?: InputMaybe<Scalars['Boolean']>;
   slug?: InputMaybe<Scalars['String']>;
   slug_contains?: InputMaybe<Scalars['String']>;
   slug_exists?: InputMaybe<Scalars['Boolean']>;
@@ -1944,10 +1922,6 @@ export type PageProjectFilter = {
   subtitle_not_contains?: InputMaybe<Scalars['String']>;
   subtitle_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   sys?: InputMaybe<SysFilter>;
-  tags_contains_all?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  tags_contains_none?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  tags_contains_some?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  tags_exists?: InputMaybe<Scalars['Boolean']>;
   thumbnail_exists?: InputMaybe<Scalars['Boolean']>;
   title?: InputMaybe<Scalars['String']>;
   title_contains?: InputMaybe<Scalars['String']>;
@@ -1981,8 +1955,6 @@ export type PageProjectLinkingCollectionsPageHomeCollectionArgs = {
 };
 
 export enum PageProjectOrder {
-  DateAsc = 'date_ASC',
-  DateDesc = 'date_DESC',
   SlugAsc = 'slug_ASC',
   SlugDesc = 'slug_DESC',
   SubtitleAsc = 'subtitle_ASC',
@@ -2542,19 +2514,11 @@ export type CfPageProjectNestedFilter = {
   AND?: InputMaybe<Array<InputMaybe<CfPageProjectNestedFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<CfPageProjectNestedFilter>>>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
-  date?: InputMaybe<Scalars['DateTime']>;
-  date_exists?: InputMaybe<Scalars['Boolean']>;
-  date_gt?: InputMaybe<Scalars['DateTime']>;
-  date_gte?: InputMaybe<Scalars['DateTime']>;
-  date_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
-  date_lt?: InputMaybe<Scalars['DateTime']>;
-  date_lte?: InputMaybe<Scalars['DateTime']>;
-  date_not?: InputMaybe<Scalars['DateTime']>;
-  date_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
   description_contains?: InputMaybe<Scalars['String']>;
   description_exists?: InputMaybe<Scalars['Boolean']>;
   description_not_contains?: InputMaybe<Scalars['String']>;
-  slider_exists?: InputMaybe<Scalars['Boolean']>;
+  galleryCollection_exists?: InputMaybe<Scalars['Boolean']>;
+  header_exists?: InputMaybe<Scalars['Boolean']>;
   slug?: InputMaybe<Scalars['String']>;
   slug_contains?: InputMaybe<Scalars['String']>;
   slug_exists?: InputMaybe<Scalars['Boolean']>;
@@ -2570,10 +2534,6 @@ export type CfPageProjectNestedFilter = {
   subtitle_not_contains?: InputMaybe<Scalars['String']>;
   subtitle_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   sys?: InputMaybe<SysFilter>;
-  tags_contains_all?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  tags_contains_none?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  tags_contains_some?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  tags_exists?: InputMaybe<Scalars['Boolean']>;
   thumbnail_exists?: InputMaybe<Scalars['Boolean']>;
   title?: InputMaybe<Scalars['String']>;
   title_contains?: InputMaybe<Scalars['String']>;
@@ -2584,14 +2544,6 @@ export type CfPageProjectNestedFilter = {
   title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
-export type HomeQueryVariables = Exact<{
-  locale?: InputMaybe<Scalars['String']>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-}>;
-
-
-export type HomeQuery = { __typename?: 'Query', pageHomeCollection?: { __typename?: 'PageHomeCollection', items: Array<{ __typename?: 'PageHome', slider?: { __typename?: 'ComponentSlider', imageCollection?: { __typename?: 'AssetCollection', items: Array<{ __typename?: 'Asset', url?: string | null, description?: string | null, title?: string | null } | null> } | null } | null, projectsCollection?: { __typename?: 'PageHomeProjectsCollection', items: Array<{ __typename?: 'PageProject', title?: string | null, subtitle?: string | null, slug?: string | null, thumbnail?: { __typename?: 'Asset', url?: string | null, description?: string | null } | null } | null> } | null, seo?: { __typename?: 'ComponentSeo', pageTitle?: string | null, pageDescription?: string | null } | null } | null> } | null };
-
 export type ImageFieldsFragment = { __typename: 'Asset', title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, contentType?: string | null, sys: { __typename?: 'Sys', id: string } };
 
 export type PageLandingQueryVariables = Exact<{
@@ -2600,10 +2552,7 @@ export type PageLandingQueryVariables = Exact<{
 }>;
 
 
-export type PageLandingQuery = { __typename?: 'Query', pageHomeCollection?: { __typename?: 'PageHomeCollection', items: Array<{ __typename: 'PageHome', title?: string | null, sys: { __typename?: 'Sys', id: string, spaceId: string }, slider?: { __typename?: 'ComponentSlider', imageCollection?: { __typename?: 'AssetCollection', items: Array<{ __typename?: 'Asset', description?: string | null, url?: string | null } | null> } | null } | null, projectsCollection?: { __typename?: 'PageHomeProjectsCollection', items: Array<{ __typename?: 'PageProject', title?: string | null, subtitle?: string | null, slug?: string | null, thumbnail?: { __typename?: 'Asset', url?: string | null, description?: string | null } | null } | null> } | null, seo?: (
-        { __typename?: 'ComponentSeo' }
-        & SeoFieldsFragment
-      ) | null } | null> } | null };
+export type PageLandingQuery = { __typename?: 'Query', pageHomeCollection?: { __typename?: 'PageHomeCollection', items: Array<{ __typename?: 'PageHome', title?: string | null, slider?: { __typename?: 'ComponentSlider', imageCollection?: { __typename?: 'AssetCollection', items: Array<{ __typename?: 'Asset', description?: string | null, url?: string | null } | null> } | null } | null, projectsCollection?: { __typename?: 'PageHomeProjectsCollection', items: Array<{ __typename?: 'PageProject', title?: string | null, subtitle?: string | null, slug?: string | null, thumbnail?: { __typename?: 'Asset', url?: string | null, description?: string | null } | null } | null> } | null } | null> } | null };
 
 export type LayoutQueryVariables = Exact<{
   locale?: InputMaybe<Scalars['String']>;
@@ -2613,25 +2562,6 @@ export type LayoutQueryVariables = Exact<{
 
 export type LayoutQuery = { __typename?: 'Query', menuCollection?: { __typename?: 'MenuCollection', items: Array<{ __typename?: 'Menu', name?: string | null, link?: string | null, isProject?: boolean | null, indexOrder?: number | null } | null> } | null, assetsCollection?: { __typename?: 'AssetsCollection', items: Array<{ __typename?: 'Assets', logoLight?: { __typename?: 'Asset', url?: string | null, description?: string | null } | null, logoDark?: { __typename?: 'Asset', url?: string | null, description?: string | null } | null, logoSmall?: { __typename?: 'Asset', url?: string | null, description?: string | null } | null } | null> } | null, componentContactCollection?: { __typename?: 'ComponentContactCollection', items: Array<{ __typename?: 'ComponentContact', location?: string | null, email?: string | null, phone?: string | null } | null> } | null, componentSocialMediaCollection?: { __typename?: 'ComponentSocialMediaCollection', items: Array<{ __typename?: 'ComponentSocialMedia', name?: string | null, link?: string | null } | null> } | null };
 
-export type BasePageProductFieldsFragment = { __typename: 'PageProduct', internalName?: string | null, slug?: string | null, name?: string | null, description?: string | null, price?: number | null, sys: { __typename?: 'Sys', id: string, spaceId: string }, seoFields?: (
-    { __typename?: 'ComponentSeo' }
-    & SeoFieldsFragment
-  ) | null, featuredProductImage?: (
-    { __typename?: 'Asset' }
-    & ImageFieldsFragment
-  ) | null, productImagesCollection?: { __typename?: 'AssetCollection', items: Array<(
-      { __typename?: 'Asset' }
-      & ImageFieldsFragment
-    ) | null> } | null };
-
-export type PageProductFieldsFragment = (
-  { __typename?: 'PageProduct', relatedProductsCollection?: { __typename?: 'PageProductRelatedProductsCollection', items: Array<(
-      { __typename?: 'PageProduct' }
-      & BasePageProductFieldsFragment
-    ) | null> } | null }
-  & BasePageProductFieldsFragment
-);
-
 export type PageProductQueryVariables = Exact<{
   slug: Scalars['String'];
   locale?: InputMaybe<Scalars['String']>;
@@ -2639,21 +2569,7 @@ export type PageProductQueryVariables = Exact<{
 }>;
 
 
-export type PageProductQuery = { __typename?: 'Query', pageProductCollection?: { __typename?: 'PageProductCollection', items: Array<(
-      { __typename?: 'PageProduct' }
-      & PageProductFieldsFragment
-    ) | null> } | null };
-
-export type PageProductCollectionQueryVariables = Exact<{
-  locale?: InputMaybe<Scalars['String']>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-}>;
-
-
-export type PageProductCollectionQuery = { __typename?: 'Query', pageProductCollection?: { __typename?: 'PageProductCollection', items: Array<(
-      { __typename?: 'PageProduct' }
-      & PageProductFieldsFragment
-    ) | null> } | null };
+export type PageProductQuery = { __typename?: 'Query', pageProjectCollection?: { __typename?: 'PageProjectCollection', items: Array<{ __typename?: 'PageProject', title?: string | null, subtitle?: string | null, description?: { __typename?: 'PageProjectDescription', json: any } | null, header?: { __typename?: 'Asset', url?: string | null, description?: string | null } | null, galleryCollection?: { __typename?: 'AssetCollection', items: Array<{ __typename?: 'Asset', url?: string | null, description?: string | null } | null> } | null } | null> } | null };
 
 export type SeoFieldsFragment = { __typename: 'ComponentSeo', pageTitle?: string | null, pageDescription?: string | null, canonicalUrl?: string | null, nofollow?: boolean | null, noindex?: boolean | null, shareImagesCollection?: { __typename?: 'AssetCollection', items: Array<(
       { __typename?: 'Asset' }
@@ -2701,41 +2617,6 @@ export const SeoFieldsFragmentDoc = gql`
   }
 }
     `;
-export const BasePageProductFieldsFragmentDoc = gql`
-    fragment BasePageProductFields on PageProduct {
-  __typename
-  sys {
-    id
-    spaceId
-  }
-  internalName
-  slug
-  seoFields {
-    ...SeoFields
-  }
-  name
-  description
-  price
-  featuredProductImage {
-    ...ImageFields
-  }
-  productImagesCollection(limit: 6) {
-    items {
-      ...ImageFields
-    }
-  }
-}
-    `;
-export const PageProductFieldsFragmentDoc = gql`
-    fragment PageProductFields on PageProduct {
-  ...BasePageProductFields
-  relatedProductsCollection(limit: 6) {
-    items {
-      ...BasePageProductFields
-    }
-  }
-}
-    `;
 export const SitemapPagesFieldsFragmentDoc = gql`
     fragment sitemapPagesFields on Query {
   pageProductCollection(limit: 100, locale: $locale) {
@@ -2755,50 +2636,13 @@ export const SitemapPagesFieldsFragmentDoc = gql`
   }
 }
     `;
-export const HomeDocument = gql`
-    query home($locale: String, $preview: Boolean) {
-  pageHomeCollection(limit: 1) {
-    items {
-      slider {
-        imageCollection {
-          items {
-            url
-            description
-            title
-          }
-        }
-      }
-      projectsCollection(limit: 9) {
-        items {
-          title
-          subtitle
-          slug
-          thumbnail {
-            url
-            description
-          }
-        }
-      }
-      seo {
-        pageTitle
-        pageDescription
-      }
-    }
-  }
-}
-    `;
 export const PageLandingDocument = gql`
     query pageLanding($locale: String, $preview: Boolean) {
   pageHomeCollection(limit: 1, locale: $locale, preview: $preview) {
     items {
-      __typename
-      sys {
-        id
-        spaceId
-      }
       title
       slider {
-        imageCollection {
+        imageCollection(limit: 5) {
           items {
             description
             url
@@ -2816,14 +2660,10 @@ export const PageLandingDocument = gql`
           }
         }
       }
-      seo {
-        ...SeoFields
-      }
     }
   }
 }
-    ${SeoFieldsFragmentDoc}
-${ImageFieldsFragmentDoc}`;
+    `;
 export const LayoutDocument = gql`
     query layout($locale: String, $preview: Boolean) {
   menuCollection(limit: 10, locale: $locale, preview: $preview) {
@@ -2867,33 +2707,32 @@ export const LayoutDocument = gql`
     `;
 export const PageProductDocument = gql`
     query pageProduct($slug: String!, $locale: String, $preview: Boolean) {
-  pageProductCollection(
+  pageProjectCollection(
     limit: 1
     where: {slug: $slug}
     locale: $locale
     preview: $preview
   ) {
     items {
-      ...PageProductFields
+      title
+      subtitle
+      description {
+        json
+      }
+      header {
+        url
+        description
+      }
+      galleryCollection {
+        items {
+          url
+          description
+        }
+      }
     }
   }
 }
-    ${PageProductFieldsFragmentDoc}
-${BasePageProductFieldsFragmentDoc}
-${SeoFieldsFragmentDoc}
-${ImageFieldsFragmentDoc}`;
-export const PageProductCollectionDocument = gql`
-    query pageProductCollection($locale: String, $preview: Boolean) {
-  pageProductCollection(limit: 100, locale: $locale, preview: $preview) {
-    items {
-      ...PageProductFields
-    }
-  }
-}
-    ${PageProductFieldsFragmentDoc}
-${BasePageProductFieldsFragmentDoc}
-${SeoFieldsFragmentDoc}
-${ImageFieldsFragmentDoc}`;
+    `;
 export const SitemapPagesDocument = gql`
     query sitemapPages($locale: String!) {
   ...sitemapPagesFields
@@ -2907,9 +2746,6 @@ const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationTy
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
-    home(variables?: HomeQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<HomeQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<HomeQuery>(HomeDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'home', 'query');
-    },
     pageLanding(variables?: PageLandingQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PageLandingQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<PageLandingQuery>(PageLandingDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pageLanding', 'query');
     },
@@ -2918,9 +2754,6 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     pageProduct(variables: PageProductQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PageProductQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<PageProductQuery>(PageProductDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pageProduct', 'query');
-    },
-    pageProductCollection(variables?: PageProductCollectionQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PageProductCollectionQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<PageProductCollectionQuery>(PageProductCollectionDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pageProductCollection', 'query');
     },
     sitemapPages(variables: SitemapPagesQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<SitemapPagesQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<SitemapPagesQuery>(SitemapPagesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'sitemapPages', 'query');
