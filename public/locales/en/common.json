@@ -5,5 +5,8 @@
     "social": "Social",
     "copyright": "Copyright © {{year}} En Crudo Taller",
     "website": "Website Anthony Guido"
+  },
+  "project": {
+    "back-btn": "Back to projects"
   }
 }

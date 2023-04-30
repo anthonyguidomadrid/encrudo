@@ -33,7 +33,6 @@ const Page = ({
 export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
   try {
     const data = await client.pageLanding({ locale })
-    console.log({ data })
     const page = data.pageHomeCollection?.items[0]
 
     if (!page) {

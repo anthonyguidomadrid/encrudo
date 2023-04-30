@@ -59,7 +59,7 @@ export const Layout = ({
         logoLight={assetContent?.logoLight}
         logoDark={assetContent?.logoDark}
       />
-      {children}
+      <main>{children}</main>
       <Footer
         logo={assetContent?.logoSmall}
         contactContent={contactContent}

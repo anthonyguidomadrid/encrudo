@@ -7,6 +7,18 @@
     src: url("../public/fonts/bangla-sangam-mn.ttf");
 }
 
+@layer base {
+  h1 {
+    @apply text-4xl uppercase;
+  }
+  h2 {
+    @apply text-xl;
+  }
+  h3 {
+    @apply text-lg;
+  }
+}
+
 html {
   font-size: 14px;
 }

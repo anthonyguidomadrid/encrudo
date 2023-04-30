@@ -2730,7 +2730,7 @@ export const PageProductDocument = gql`
         url
         description
       }
-      galleryCollection {
+      galleryCollection(limit: 15) {
         items {
           url
           description
