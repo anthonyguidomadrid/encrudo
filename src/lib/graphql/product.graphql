@@ -7,13 +7,11 @@ query pageProduct($slug: String!, $locale: String, $preview: Boolean) {
         json
       }
       header {
-        url
-        description
+        ...ImageFields
       }
       galleryCollection (limit: 15) {
         items {
-          url
-          description
+          ...ImageFields
         }
       }
       seo {

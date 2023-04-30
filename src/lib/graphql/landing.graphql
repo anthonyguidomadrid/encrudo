@@ -5,8 +5,7 @@ query pageLanding($locale: String, $preview: Boolean) {
       slider {
         imageCollection(limit: 10) {
           items {
-            description
-            url
+            ...ImageFields
           }
         }
       }
@@ -16,8 +15,7 @@ query pageLanding($locale: String, $preview: Boolean) {
           subtitle
           slug
           thumbnail {
-            url
-            description
+            ...ImageFields
           }
         }
       }

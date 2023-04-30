@@ -10,16 +10,13 @@ query layout($locale: String, $preview: Boolean) {
   assetsCollection(limit: 1, locale: $locale, preview: $preview) {
     items {
       logoLight {
-        url
-        description
+        ...ImageFields
       }
       logoDark {
-        url
-        description
+        ...ImageFields
       }
       logoSmall {
-        url
-        description
+        ...ImageFields
       }
     }
   }
