@@ -6,6 +6,7 @@ import { LayoutQuery } from '@src/lib/__generated/sdk'
 import { client } from '@src/lib/client'
 import '../../styles/global.css'
 import 'splide-nextjs/splide/dist/css/themes/splide-default.min.css'
+import 'react-image-lightbox/style.css'
 
 export type AppProperties = AppProps & {
   data: LayoutQuery
