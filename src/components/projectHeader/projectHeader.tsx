@@ -15,14 +15,9 @@ export const ProjectHeader = ({
 }: ProjectHeaderProps) => {
   return (
     <div
-      className="h-screen flex flex-col justify-center text-center text-white p-10 drop-shadow"
+      className={`h-screen flex flex-col justify-center text-center text-white p-10 drop-shadow bg-gray-400 bg-blend-multiply	bg-cover bg-no-repeat bg-center`}
       style={{
-        backgroundColor: '#9ca3af',
-        backgroundBlendMode: 'multiply',
-        backgroundImage: `url(${image?.url})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center'
+        backgroundImage: `url(${image?.url})`
       }}
     >
       <h1 className="pb-3">{title}</h1>

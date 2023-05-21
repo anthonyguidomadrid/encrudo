@@ -21,6 +21,7 @@ export const Footer = ({
   const phoneNumber =
     contactContent?.phone &&
     contactContent.phone.replace(/ /g, '').replace('+', '00')
+
   return (
     <>
       <section className="bg-beige-light text-primary">
@@ -35,7 +36,7 @@ export const Footer = ({
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 text-center pb-10">
             <div className="flex flex-col gap-2">
-              <p className="uppercase font-semibold">{t('footer.contact')}</p>
+              <p className="uppercase font-medium">{t('footer.contact')}</p>
               <span>{contactContent?.location}</span>
               <a href={`mailto: ${contactContent?.email}`}>
                 {contactContent?.email}
@@ -43,7 +44,7 @@ export const Footer = ({
               <a href={`tel:${phoneNumber}`}>{contactContent?.phone}</a>
             </div>
             <div className="flex flex-col gap-2">
-              <p className="uppercase font-semibold">{t('footer.link')}</p>
+              <p className="uppercase font-medium">{t('footer.link')}</p>
               {menuContent?.map((menuItem, index) => {
                 return (
                   <a key={index} href={menuItem?.link ?? ''}>
@@ -53,7 +54,7 @@ export const Footer = ({
               })}
             </div>
             <div className="flex flex-col gap-2">
-              <p className="uppercase font-semibold">{t('footer.social')}</p>
+              <p className="uppercase font-medium">{t('footer.social')}</p>
               {socialMediaContent?.map((menuItem, index) => {
                 return (
                   <a

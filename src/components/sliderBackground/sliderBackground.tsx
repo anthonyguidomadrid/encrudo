@@ -20,16 +20,12 @@ export const SliderBackground = ({ items }: HomeSliderProps) => {
       }}
     >
       {items?.map((image, idx) => {
-        console.log({ image })
         return (
           <SplideSlide key={idx}>
             <div
-              className="h-screen"
+              className="h-screen	bg-cover bg-no-repeat bg-center"
               style={{
-                backgroundImage: `url(${image?.url})`,
-                backgroundRepeat: 'no-repeat',
-                backgroundSize: 'cover',
-                backgroundPosition: 'center'
+                backgroundImage: `url(${image?.url})`
               }}
             />
           </SplideSlide>
