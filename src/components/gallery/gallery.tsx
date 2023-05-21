@@ -39,6 +39,8 @@ export const Gallery = ({ photos, columnAmount }: GalleryProps) => {
           onMoveNextRequest={() =>
             setCurrentIdx((currentIdx + 1) % photoLinks.length)
           }
+          enableZoom={false}
+          imageCaption={photos[currentIdx].description}
         />
       )}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10 pt-10">
@@ -55,7 +57,7 @@ export const Gallery = ({ photos, columnAmount }: GalleryProps) => {
                 }}
               >
                 <Image
-                  className="h-full w-full object-cover object-center hover:scale-105 transition duration-300 ease-in-out"
+                  className="h-full w-full object-cover object-center hover:scale-105 transition duration-500 ease-in-out"
                   src={photo.url}
                   alt={photo.description}
                   width={1200}

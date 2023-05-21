@@ -3,9 +3,13 @@ import { useRouter } from 'next/router'
 
 export type LanguageSelectorProps = {
   isDark?: boolean
+  onClick?: () => void
 }
 
-export const LanguageSelector = ({ isDark = true }: LanguageSelectorProps) => {
+export const LanguageSelector = ({
+  isDark = true,
+  onClick
+}: LanguageSelectorProps) => {
   const { locales } = useRouter()
   const router = useRouter()
 
@@ -31,7 +35,10 @@ export const LanguageSelector = ({ isDark = true }: LanguageSelectorProps) => {
               'border-r pr-2': !isLast,
               'border-primary': isDark
             })}
-            onClick={() => changeLocale(locale)}
+            onClick={() => {
+              changeLocale(locale)
+              onClick && onClick()
+            }}
           >
             {locale}
           </button>

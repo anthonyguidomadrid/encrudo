@@ -7,8 +7,8 @@ import { Logo, MenuItem } from '../layout'
 
 import { LanguageSelector } from './'
 
-import HamburgerMenu from '@icons/menu.svg'
 import CrossIcon from '@icons/cross.svg'
+import HamburgerMenu from '@icons/menu.svg'
 
 export type HeaderProps = {
   logoLight?: Logo
@@ -103,7 +103,10 @@ export const Header: FunctionComponent<HeaderProps> = ({
             </div>
           </div>
           <div>
-            <LanguageSelector isDark={isDark} />
+            <LanguageSelector
+              isDark={isDark}
+              onClick={() => setMenuOpen(false)}
+            />
           </div>
         </div>
       </nav>

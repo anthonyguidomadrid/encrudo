@@ -8,6 +8,11 @@
   },
   "project": {
     "back-btn": "Ver todos"
+  },
+  "not-found": {
+    "title": "Página no encontrada",
+    "description": "Lo sentimos, no se pudo encontrar la página solicitada. Por favor, vuelve a la página de inicio.",
+    "button": "Ir a la página de inicio"
   }
 }
   
