@@ -20,6 +20,7 @@ export const SliderBackground = ({ items }: HomeSliderProps) => {
       }}
     >
       {items?.map((image, idx) => {
+        console.log({ image })
         return (
           <SplideSlide key={idx}>
             <div

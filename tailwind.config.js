@@ -22,7 +22,8 @@ module.exports = {
         }
       },
       fontFamily: {
-        sans: ['Bangla', 'cursive'],
+        sans: ['Montserrat'],
+        header: ['Italiana']
       },
     },
   },

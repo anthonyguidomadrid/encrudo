@@ -17,7 +17,7 @@ export const ProjectHeader = ({
     <div
       className="h-screen flex flex-col justify-center text-center text-white p-10 drop-shadow"
       style={{
-        backgroundColor: '#bfbfbf',
+        backgroundColor: '#9ca3af',
         backgroundBlendMode: 'multiply',
         backgroundImage: `url(${image?.url})`,
         backgroundRepeat: 'no-repeat',

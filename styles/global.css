@@ -2,17 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-    font-family: "Bangla";
-    src: url("../public/fonts/bangla-sangam-mn.ttf");
-}
-
 @layer base {
   h1 {
     @apply text-4xl uppercase;
+    @apply font-header
   }
   h2 {
     @apply text-xl;
+    @apply font-header
   }
   h3 {
     @apply text-lg;
