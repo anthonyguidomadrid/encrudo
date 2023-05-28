@@ -42,7 +42,7 @@ export const Header: FunctionComponent<HeaderProps> = ({
         className={classNames(
           'flex items-center justify-between flex-wrap p-5 uppercase fixed top-0 w-full z-50 text-white',
           {
-            'bg-white bg-opacity-80 text-primary': isDark
+            'bg-white bg-opacity-90 text-primary': isDark
           }
         )}
       >

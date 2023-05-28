@@ -1,0 +1,18 @@
+query pageAbout($locale: String, $preview: Boolean) {
+  pageAboutCollection(limit: 1, locale: $locale, preview: $preview) {
+    items {
+      title
+      description {
+        json
+      }
+      mainPicture {
+        ...ImageFields
+      }
+      picturesOfReferenceCollection {
+        items {
+          ...ImageFields
+        }
+      }
+    }
+  }
+}

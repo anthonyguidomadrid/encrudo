@@ -176,6 +176,7 @@ export type AssetLinkingCollections = {
   entryCollection?: Maybe<EntryCollection>;
   pageAboutCollection?: Maybe<PageAboutCollection>;
   pageLandingCollection?: Maybe<PageLandingCollection>;
+  pageNotFoundCollection?: Maybe<PageNotFoundCollection>;
   pageProductCollection?: Maybe<PageProductCollection>;
   pageProjectCollection?: Maybe<PageProjectCollection>;
 };
@@ -222,6 +223,14 @@ export type AssetLinkingCollectionsPageAboutCollectionArgs = {
 
 
 export type AssetLinkingCollectionsPageLandingCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type AssetLinkingCollectionsPageNotFoundCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
@@ -1605,6 +1614,128 @@ export type PageLandingProductsCollection = {
   total: Scalars['Int'];
 };
 
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageNotFound) */
+export type PageNotFound = Entry & {
+  __typename?: 'PageNotFound';
+  backgroundImage?: Maybe<Asset>;
+  contentfulMetadata: ContentfulMetadata;
+  description?: Maybe<PageNotFoundDescription>;
+  linkedFrom?: Maybe<PageNotFoundLinkingCollections>;
+  logo?: Maybe<Asset>;
+  sys: Sys;
+  title?: Maybe<Scalars['String']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageNotFound) */
+export type PageNotFoundBackgroundImageArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageNotFound) */
+export type PageNotFoundDescriptionArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageNotFound) */
+export type PageNotFoundLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageNotFound) */
+export type PageNotFoundLogoArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageNotFound) */
+export type PageNotFoundTitleArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+export type PageNotFoundCollection = {
+  __typename?: 'PageNotFoundCollection';
+  items: Array<Maybe<PageNotFound>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
+};
+
+export type PageNotFoundDescription = {
+  __typename?: 'PageNotFoundDescription';
+  json: Scalars['JSON'];
+  links: PageNotFoundDescriptionLinks;
+};
+
+export type PageNotFoundDescriptionAssets = {
+  __typename?: 'PageNotFoundDescriptionAssets';
+  block: Array<Maybe<Asset>>;
+  hyperlink: Array<Maybe<Asset>>;
+};
+
+export type PageNotFoundDescriptionEntries = {
+  __typename?: 'PageNotFoundDescriptionEntries';
+  block: Array<Maybe<Entry>>;
+  hyperlink: Array<Maybe<Entry>>;
+  inline: Array<Maybe<Entry>>;
+};
+
+export type PageNotFoundDescriptionLinks = {
+  __typename?: 'PageNotFoundDescriptionLinks';
+  assets: PageNotFoundDescriptionAssets;
+  entries: PageNotFoundDescriptionEntries;
+};
+
+export type PageNotFoundFilter = {
+  AND?: InputMaybe<Array<InputMaybe<PageNotFoundFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<PageNotFoundFilter>>>;
+  backgroundImage_exists?: InputMaybe<Scalars['Boolean']>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  description_contains?: InputMaybe<Scalars['String']>;
+  description_exists?: InputMaybe<Scalars['Boolean']>;
+  description_not_contains?: InputMaybe<Scalars['String']>;
+  logo_exists?: InputMaybe<Scalars['Boolean']>;
+  sys?: InputMaybe<SysFilter>;
+  title?: InputMaybe<Scalars['String']>;
+  title_contains?: InputMaybe<Scalars['String']>;
+  title_exists?: InputMaybe<Scalars['Boolean']>;
+  title_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  title_not?: InputMaybe<Scalars['String']>;
+  title_not_contains?: InputMaybe<Scalars['String']>;
+  title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type PageNotFoundLinkingCollections = {
+  __typename?: 'PageNotFoundLinkingCollections';
+  entryCollection?: Maybe<EntryCollection>;
+};
+
+
+export type PageNotFoundLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+export enum PageNotFoundOrder {
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC'
+}
+
 /** To output data for a single product [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProduct) */
 export type PageProduct = Entry & {
   __typename?: 'PageProduct';
@@ -2015,6 +2146,8 @@ export type Query = {
   pageHomeCollection?: Maybe<PageHomeCollection>;
   pageLanding?: Maybe<PageLanding>;
   pageLandingCollection?: Maybe<PageLandingCollection>;
+  pageNotFound?: Maybe<PageNotFound>;
+  pageNotFoundCollection?: Maybe<PageNotFoundCollection>;
   pageProduct?: Maybe<PageProduct>;
   pageProductCollection?: Maybe<PageProductCollection>;
   pageProject?: Maybe<PageProject>;
@@ -2218,6 +2351,23 @@ export type QueryPageLandingCollectionArgs = {
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<PageLandingFilter>;
+};
+
+
+export type QueryPageNotFoundArgs = {
+  id: Scalars['String'];
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+export type QueryPageNotFoundCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<PageNotFoundOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<PageNotFoundFilter>;
 };
 
 
@@ -2564,6 +2714,20 @@ export type CfPageProjectNestedFilter = {
   title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
+export type PageAboutQueryVariables = Exact<{
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+}>;
+
+
+export type PageAboutQuery = { __typename?: 'Query', pageAboutCollection?: { __typename?: 'PageAboutCollection', items: Array<{ __typename?: 'PageAbout', title?: string | null, description?: { __typename?: 'PageAboutDescription', json: any } | null, mainPicture?: (
+        { __typename?: 'Asset' }
+        & ImageFieldsFragment
+      ) | null, picturesOfReferenceCollection?: { __typename?: 'AssetCollection', items: Array<(
+          { __typename?: 'Asset' }
+          & ImageFieldsFragment
+        ) | null> } | null } | null> } | null };
+
 export type ImageFieldsFragment = { __typename: 'Asset', title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, contentType?: string | null, sys: { __typename?: 'Sys', id: string } };
 
 export type PageLandingQueryVariables = Exact<{
@@ -2683,6 +2847,26 @@ export const SitemapPagesFieldsFragmentDoc = gql`
   }
 }
     `;
+export const PageAboutDocument = gql`
+    query pageAbout($locale: String, $preview: Boolean) {
+  pageAboutCollection(limit: 1, locale: $locale, preview: $preview) {
+    items {
+      title
+      description {
+        json
+      }
+      mainPicture {
+        ...ImageFields
+      }
+      picturesOfReferenceCollection {
+        items {
+          ...ImageFields
+        }
+      }
+    }
+  }
+}
+    ${ImageFieldsFragmentDoc}`;
 export const PageLandingDocument = gql`
     query pageLanding($locale: String, $preview: Boolean) {
   pageHomeCollection(limit: 1, locale: $locale, preview: $preview) {
@@ -2794,6 +2978,9 @@ const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationTy
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
+    pageAbout(variables?: PageAboutQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PageAboutQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<PageAboutQuery>(PageAboutDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pageAbout', 'query');
+    },
     pageLanding(variables?: PageLandingQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PageLandingQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<PageLandingQuery>(PageLandingDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pageLanding', 'query');
     },

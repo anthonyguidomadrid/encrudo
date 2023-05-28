@@ -3,6 +3,7 @@ import Image from 'next/image'
 
 import { LanguageSelector } from '../header'
 import { ContactContent, Logo, SocialMediaContent, MenuItem } from '../layout'
+import { FooterWrapper } from '.'
 
 export type FooterProps = {
   logo?: Logo
@@ -30,44 +31,37 @@ export const Footer = ({
             <Image
               src={logo?.url ?? ''}
               alt={logo?.description ?? ''}
-              width={100}
-              height={100}
+              width={75}
+              height={75}
             />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 text-center pb-10">
-            <div className="flex flex-col gap-2">
-              <p className="uppercase font-medium">{t('footer.contact')}</p>
+            <FooterWrapper title={t('footer.contact')}>
               <span>{contactContent?.location}</span>
               <a href={`mailto: ${contactContent?.email}`}>
                 {contactContent?.email}
               </a>
               <a href={`tel:${phoneNumber}`}>{contactContent?.phone}</a>
-            </div>
-            <div className="flex flex-col gap-2">
-              <p className="uppercase font-medium">{t('footer.link')}</p>
-              {menuContent?.map((menuItem, index) => {
-                return (
-                  <a key={index} href={menuItem?.link ?? ''}>
-                    {menuItem?.name}
-                  </a>
-                )
-              })}
-            </div>
-            <div className="flex flex-col gap-2">
-              <p className="uppercase font-medium">{t('footer.social')}</p>
-              {socialMediaContent?.map((menuItem, index) => {
-                return (
-                  <a
-                    key={index}
-                    href={menuItem?.link ?? ''}
-                    target={'_blank'}
-                    rel="noreferrer"
-                  >
-                    {menuItem?.name}
-                  </a>
-                )
-              })}
-            </div>
+            </FooterWrapper>
+            <FooterWrapper title={t('footer.link')}>
+              {menuContent?.map((menuItem, index) => (
+                <a key={index} href={menuItem?.link ?? ''}>
+                  {menuItem?.name}
+                </a>
+              ))}
+            </FooterWrapper>
+            <FooterWrapper title={t('footer.social')}>
+              {socialMediaContent?.map((menuItem, index) => (
+                <a
+                  key={index}
+                  href={menuItem?.link ?? ''}
+                  target={'_blank'}
+                  rel="noreferrer"
+                >
+                  {menuItem?.name}
+                </a>
+              ))}
+            </FooterWrapper>
           </div>
           <div className="flex justify-center py-2">
             <LanguageSelector />

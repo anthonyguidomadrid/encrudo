@@ -96,6 +96,7 @@ type AssetLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
   pageAboutCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageAboutCollection
   pageLandingCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageLandingCollection
+  pageNotFoundCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageNotFoundCollection
   pageProductCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageProductCollection
   pageProjectCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageProjectCollection
 }
@@ -1023,6 +1024,83 @@ type PageLandingProductsCollection {
 }
 
 """
+[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageNotFound)
+"""
+type PageNotFound implements Entry {
+  backgroundImage(locale: String, preview: Boolean): Asset
+  contentfulMetadata: ContentfulMetadata!
+  description(locale: String): PageNotFoundDescription
+  linkedFrom(allowedLocales: [String]): PageNotFoundLinkingCollections
+  logo(locale: String, preview: Boolean): Asset
+  sys: Sys!
+  title(locale: String): String
+}
+
+type PageNotFoundCollection {
+  items: [PageNotFound]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+type PageNotFoundDescription {
+  json: JSON!
+  links: PageNotFoundDescriptionLinks!
+}
+
+type PageNotFoundDescriptionAssets {
+  block: [Asset]!
+  hyperlink: [Asset]!
+}
+
+type PageNotFoundDescriptionEntries {
+  block: [Entry]!
+  hyperlink: [Entry]!
+  inline: [Entry]!
+}
+
+type PageNotFoundDescriptionLinks {
+  assets: PageNotFoundDescriptionAssets!
+  entries: PageNotFoundDescriptionEntries!
+}
+
+input PageNotFoundFilter {
+  AND: [PageNotFoundFilter]
+  OR: [PageNotFoundFilter]
+  backgroundImage_exists: Boolean
+  contentfulMetadata: ContentfulMetadataFilter
+  description_contains: String
+  description_exists: Boolean
+  description_not_contains: String
+  logo_exists: Boolean
+  sys: SysFilter
+  title: String
+  title_contains: String
+  title_exists: Boolean
+  title_in: [String]
+  title_not: String
+  title_not_contains: String
+  title_not_in: [String]
+}
+
+type PageNotFoundLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum PageNotFoundOrder {
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
+}
+
+"""
 To output data for a single product [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProduct)
 """
 type PageProduct implements Entry {
@@ -1261,6 +1339,8 @@ type Query {
   pageHomeCollection(limit: Int = 100, locale: String, order: [PageHomeOrder], preview: Boolean, skip: Int = 0, where: PageHomeFilter): PageHomeCollection
   pageLanding(id: String!, locale: String, preview: Boolean): PageLanding
   pageLandingCollection(limit: Int = 100, locale: String, order: [PageLandingOrder], preview: Boolean, skip: Int = 0, where: PageLandingFilter): PageLandingCollection
+  pageNotFound(id: String!, locale: String, preview: Boolean): PageNotFound
+  pageNotFoundCollection(limit: Int = 100, locale: String, order: [PageNotFoundOrder], preview: Boolean, skip: Int = 0, where: PageNotFoundFilter): PageNotFoundCollection
   pageProduct(id: String!, locale: String, preview: Boolean): PageProduct
   pageProductCollection(limit: Int = 100, locale: String, order: [PageProductOrder], preview: Boolean, skip: Int = 0, where: PageProductFilter): PageProductCollection
   pageProject(id: String!, locale: String, preview: Boolean): PageProject

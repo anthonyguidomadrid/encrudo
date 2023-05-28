@@ -7,7 +7,6 @@ export type HomeSliderProps = {
 export const SliderBackground = ({ items }: HomeSliderProps) => {
   return (
     <Splide
-      aria-label="Home Slider"
       options={{
         type: 'fade',
         rewind: true,
