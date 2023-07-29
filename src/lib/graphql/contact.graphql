@@ -1,0 +1,15 @@
+query pageContact($locale: String, $preview: Boolean) {
+  pageContactCollection(limit: 1, locale: $locale, preview: $preview) {
+    items {
+      pageHeader {
+        ...PageHeaderFields
+      }
+      contactInformation {
+        ...ContactFields
+      }
+      seo {
+        ...SeoFields
+      }
+    }
+  }
+}

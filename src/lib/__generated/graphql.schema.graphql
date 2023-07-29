@@ -90,15 +90,151 @@ input AssetFilter {
 }
 
 type AssetLinkingCollections {
-  assetsCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): AssetsCollection
-  componentSeoCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentSeoCollection
-  componentSliderCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentSliderCollection
+  assetsCollection(limit: Int = 100, locale: String, order: [AssetLinkingCollectionsAssetsCollectionOrder], preview: Boolean, skip: Int = 0): AssetsCollection
+  componentPageHeaderCollection(limit: Int = 100, locale: String, order: [AssetLinkingCollectionsComponentPageHeaderCollectionOrder], preview: Boolean, skip: Int = 0): ComponentPageHeaderCollection
+  componentSeoCollection(limit: Int = 100, locale: String, order: [AssetLinkingCollectionsComponentSeoCollectionOrder], preview: Boolean, skip: Int = 0): ComponentSeoCollection
+  componentSliderCollection(limit: Int = 100, locale: String, order: [AssetLinkingCollectionsComponentSliderCollectionOrder], preview: Boolean, skip: Int = 0): ComponentSliderCollection
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  pageAboutCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageAboutCollection
-  pageLandingCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageLandingCollection
-  pageNotFoundCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageNotFoundCollection
-  pageProductCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageProductCollection
-  pageProjectCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageProjectCollection
+  pageAboutCollection(limit: Int = 100, locale: String, order: [AssetLinkingCollectionsPageAboutCollectionOrder], preview: Boolean, skip: Int = 0): PageAboutCollection
+  pageLandingCollection(limit: Int = 100, locale: String, order: [AssetLinkingCollectionsPageLandingCollectionOrder], preview: Boolean, skip: Int = 0): PageLandingCollection
+  pageNotFoundCollection(limit: Int = 100, locale: String, order: [AssetLinkingCollectionsPageNotFoundCollectionOrder], preview: Boolean, skip: Int = 0): PageNotFoundCollection
+  pageProductCollection(limit: Int = 100, locale: String, order: [AssetLinkingCollectionsPageProductCollectionOrder], preview: Boolean, skip: Int = 0): PageProductCollection
+  pageProjectCollection(limit: Int = 100, locale: String, order: [AssetLinkingCollectionsPageProjectCollectionOrder], preview: Boolean, skip: Int = 0): PageProjectCollection
+}
+
+enum AssetLinkingCollectionsAssetsCollectionOrder {
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+enum AssetLinkingCollectionsComponentPageHeaderCollectionOrder {
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
+}
+
+enum AssetLinkingCollectionsComponentSeoCollectionOrder {
+  canonicalUrl_ASC
+  canonicalUrl_DESC
+  internalName_ASC
+  internalName_DESC
+  nofollow_ASC
+  nofollow_DESC
+  noindex_ASC
+  noindex_DESC
+  pageTitle_ASC
+  pageTitle_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+enum AssetLinkingCollectionsComponentSliderCollectionOrder {
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+enum AssetLinkingCollectionsPageAboutCollectionOrder {
+  pageName_ASC
+  pageName_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+enum AssetLinkingCollectionsPageLandingCollectionOrder {
+  heroBannerHeadlineColor_ASC
+  heroBannerHeadlineColor_DESC
+  heroBannerHeadline_ASC
+  heroBannerHeadline_DESC
+  internalName_ASC
+  internalName_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+enum AssetLinkingCollectionsPageNotFoundCollectionOrder {
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
+}
+
+enum AssetLinkingCollectionsPageProductCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  name_ASC
+  name_DESC
+  price_ASC
+  price_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+enum AssetLinkingCollectionsPageProjectCollectionOrder {
+  slug_ASC
+  slug_DESC
+  subtitle_ASC
+  subtitle_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
 }
 
 enum AssetOrder {
@@ -217,7 +353,20 @@ input ComponentContactFilter {
 
 type ComponentContactLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  pageContactCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageContactCollection
+  pageContactCollection(limit: Int = 100, locale: String, order: [ComponentContactLinkingCollectionsPageContactCollectionOrder], preview: Boolean, skip: Int = 0): PageContactCollection
+}
+
+enum ComponentContactLinkingCollectionsPageContactCollectionOrder {
+  pageName_ASC
+  pageName_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
 }
 
 enum ComponentContactOrder {
@@ -235,6 +384,114 @@ enum ComponentContactOrder {
   sys_publishedAt_DESC
   sys_publishedVersion_ASC
   sys_publishedVersion_DESC
+}
+
+"""
+Page header with banner image, title and description [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentPageHeader)
+"""
+type ComponentPageHeader implements Entry {
+  contentfulMetadata: ContentfulMetadata!
+  description(locale: String): ComponentPageHeaderDescription
+  header(locale: String, preview: Boolean): Asset
+  linkedFrom(allowedLocales: [String]): ComponentPageHeaderLinkingCollections
+  sys: Sys!
+  title(locale: String): String
+}
+
+type ComponentPageHeaderCollection {
+  items: [ComponentPageHeader]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+type ComponentPageHeaderDescription {
+  json: JSON!
+  links: ComponentPageHeaderDescriptionLinks!
+}
+
+type ComponentPageHeaderDescriptionAssets {
+  block: [Asset]!
+  hyperlink: [Asset]!
+}
+
+type ComponentPageHeaderDescriptionEntries {
+  block: [Entry]!
+  hyperlink: [Entry]!
+  inline: [Entry]!
+}
+
+type ComponentPageHeaderDescriptionLinks {
+  assets: ComponentPageHeaderDescriptionAssets!
+  entries: ComponentPageHeaderDescriptionEntries!
+  resources: ComponentPageHeaderDescriptionResources!
+}
+
+type ComponentPageHeaderDescriptionResources {
+  block: [ResourceLink!]!
+}
+
+input ComponentPageHeaderFilter {
+  AND: [ComponentPageHeaderFilter]
+  OR: [ComponentPageHeaderFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  description_contains: String
+  description_exists: Boolean
+  description_not_contains: String
+  header_exists: Boolean
+  sys: SysFilter
+  title: String
+  title_contains: String
+  title_exists: Boolean
+  title_in: [String]
+  title_not: String
+  title_not_contains: String
+  title_not_in: [String]
+}
+
+type ComponentPageHeaderLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  pageAboutCollection(limit: Int = 100, locale: String, order: [ComponentPageHeaderLinkingCollectionsPageAboutCollectionOrder], preview: Boolean, skip: Int = 0): PageAboutCollection
+  pageContactCollection(limit: Int = 100, locale: String, order: [ComponentPageHeaderLinkingCollectionsPageContactCollectionOrder], preview: Boolean, skip: Int = 0): PageContactCollection
+}
+
+enum ComponentPageHeaderLinkingCollectionsPageAboutCollectionOrder {
+  pageName_ASC
+  pageName_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+enum ComponentPageHeaderLinkingCollectionsPageContactCollectionOrder {
+  pageName_ASC
+  pageName_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+enum ComponentPageHeaderOrder {
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
 }
 
 """
@@ -304,12 +561,104 @@ input ComponentSeoFilter {
 
 type ComponentSeoLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  pageAboutCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageAboutCollection
-  pageContactCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageContactCollection
-  pageHomeCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageHomeCollection
-  pageLandingCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageLandingCollection
-  pageProductCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageProductCollection
-  pageProjectCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageProjectCollection
+  pageAboutCollection(limit: Int = 100, locale: String, order: [ComponentSeoLinkingCollectionsPageAboutCollectionOrder], preview: Boolean, skip: Int = 0): PageAboutCollection
+  pageContactCollection(limit: Int = 100, locale: String, order: [ComponentSeoLinkingCollectionsPageContactCollectionOrder], preview: Boolean, skip: Int = 0): PageContactCollection
+  pageHomeCollection(limit: Int = 100, locale: String, order: [ComponentSeoLinkingCollectionsPageHomeCollectionOrder], preview: Boolean, skip: Int = 0): PageHomeCollection
+  pageLandingCollection(limit: Int = 100, locale: String, order: [ComponentSeoLinkingCollectionsPageLandingCollectionOrder], preview: Boolean, skip: Int = 0): PageLandingCollection
+  pageProductCollection(limit: Int = 100, locale: String, order: [ComponentSeoLinkingCollectionsPageProductCollectionOrder], preview: Boolean, skip: Int = 0): PageProductCollection
+  pageProjectCollection(limit: Int = 100, locale: String, order: [ComponentSeoLinkingCollectionsPageProjectCollectionOrder], preview: Boolean, skip: Int = 0): PageProjectCollection
+}
+
+enum ComponentSeoLinkingCollectionsPageAboutCollectionOrder {
+  pageName_ASC
+  pageName_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+enum ComponentSeoLinkingCollectionsPageContactCollectionOrder {
+  pageName_ASC
+  pageName_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+enum ComponentSeoLinkingCollectionsPageHomeCollectionOrder {
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
+}
+
+enum ComponentSeoLinkingCollectionsPageLandingCollectionOrder {
+  heroBannerHeadlineColor_ASC
+  heroBannerHeadlineColor_DESC
+  heroBannerHeadline_ASC
+  heroBannerHeadline_DESC
+  internalName_ASC
+  internalName_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+enum ComponentSeoLinkingCollectionsPageProductCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  name_ASC
+  name_DESC
+  price_ASC
+  price_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+enum ComponentSeoLinkingCollectionsPageProjectCollectionOrder {
+  slug_ASC
+  slug_DESC
+  subtitle_ASC
+  subtitle_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
 }
 
 enum ComponentSeoOrder {
@@ -360,7 +709,20 @@ input ComponentSliderFilter {
 
 type ComponentSliderLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  pageHomeCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageHomeCollection
+  pageHomeCollection(limit: Int = 100, locale: String, order: [ComponentSliderLinkingCollectionsPageHomeCollectionOrder], preview: Boolean, skip: Int = 0): PageHomeCollection
+}
+
+enum ComponentSliderLinkingCollectionsPageHomeCollectionOrder {
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
 }
 
 enum ComponentSliderOrder {
@@ -722,13 +1084,12 @@ About page template [See type definition](https://app.contentful.com/spaces/7hpj
 """
 type PageAbout implements Entry {
   contentfulMetadata: ContentfulMetadata!
-  description(locale: String): PageAboutDescription
   linkedFrom(allowedLocales: [String]): PageAboutLinkingCollections
-  mainPicture(locale: String, preview: Boolean): Asset
+  pageHeader(locale: String, preview: Boolean, where: ComponentPageHeaderFilter): ComponentPageHeader
+  pageName(locale: String): String
   picturesOfReferenceCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): AssetCollection
-  seo(locale: String, preview: Boolean): ComponentSeo
+  seo(locale: String, preview: Boolean, where: ComponentSeoFilter): ComponentSeo
   sys: Sys!
-  title(locale: String): String
 }
 
 type PageAboutCollection {
@@ -738,46 +1099,23 @@ type PageAboutCollection {
   total: Int!
 }
 
-type PageAboutDescription {
-  json: JSON!
-  links: PageAboutDescriptionLinks!
-}
-
-type PageAboutDescriptionAssets {
-  block: [Asset]!
-  hyperlink: [Asset]!
-}
-
-type PageAboutDescriptionEntries {
-  block: [Entry]!
-  hyperlink: [Entry]!
-  inline: [Entry]!
-}
-
-type PageAboutDescriptionLinks {
-  assets: PageAboutDescriptionAssets!
-  entries: PageAboutDescriptionEntries!
-}
-
 input PageAboutFilter {
   AND: [PageAboutFilter]
   OR: [PageAboutFilter]
   contentfulMetadata: ContentfulMetadataFilter
-  description_contains: String
-  description_exists: Boolean
-  description_not_contains: String
-  mainPicture_exists: Boolean
+  pageHeader: cfComponentPageHeaderNestedFilter
+  pageHeader_exists: Boolean
+  pageName: String
+  pageName_contains: String
+  pageName_exists: Boolean
+  pageName_in: [String]
+  pageName_not: String
+  pageName_not_contains: String
+  pageName_not_in: [String]
   picturesOfReferenceCollection_exists: Boolean
   seo: cfComponentSeoNestedFilter
   seo_exists: Boolean
   sys: SysFilter
-  title: String
-  title_contains: String
-  title_exists: Boolean
-  title_in: [String]
-  title_not: String
-  title_not_contains: String
-  title_not_in: [String]
 }
 
 type PageAboutLinkingCollections {
@@ -785,6 +1123,8 @@ type PageAboutLinkingCollections {
 }
 
 enum PageAboutOrder {
+  pageName_ASC
+  pageName_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC
@@ -793,21 +1133,19 @@ enum PageAboutOrder {
   sys_publishedAt_DESC
   sys_publishedVersion_ASC
   sys_publishedVersion_DESC
-  title_ASC
-  title_DESC
 }
 
 """
 Contact page template [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageContact)
 """
 type PageContact implements Entry {
-  contactInformation(locale: String, preview: Boolean): ComponentContact
+  contactInformation(locale: String, preview: Boolean, where: ComponentContactFilter): ComponentContact
   contentfulMetadata: ContentfulMetadata!
-  description(locale: String): PageContactDescription
   linkedFrom(allowedLocales: [String]): PageContactLinkingCollections
-  seo(locale: String, preview: Boolean): ComponentSeo
+  pageHeader(locale: String, preview: Boolean, where: ComponentPageHeaderFilter): ComponentPageHeader
+  pageName(locale: String): String
+  seo(locale: String, preview: Boolean, where: ComponentSeoFilter): ComponentSeo
   sys: Sys!
-  title(locale: String): String
 }
 
 type PageContactCollection {
@@ -817,46 +1155,24 @@ type PageContactCollection {
   total: Int!
 }
 
-type PageContactDescription {
-  json: JSON!
-  links: PageContactDescriptionLinks!
-}
-
-type PageContactDescriptionAssets {
-  block: [Asset]!
-  hyperlink: [Asset]!
-}
-
-type PageContactDescriptionEntries {
-  block: [Entry]!
-  hyperlink: [Entry]!
-  inline: [Entry]!
-}
-
-type PageContactDescriptionLinks {
-  assets: PageContactDescriptionAssets!
-  entries: PageContactDescriptionEntries!
-}
-
 input PageContactFilter {
   AND: [PageContactFilter]
   OR: [PageContactFilter]
   contactInformation: cfComponentContactNestedFilter
   contactInformation_exists: Boolean
   contentfulMetadata: ContentfulMetadataFilter
-  description_contains: String
-  description_exists: Boolean
-  description_not_contains: String
+  pageHeader: cfComponentPageHeaderNestedFilter
+  pageHeader_exists: Boolean
+  pageName: String
+  pageName_contains: String
+  pageName_exists: Boolean
+  pageName_in: [String]
+  pageName_not: String
+  pageName_not_contains: String
+  pageName_not_in: [String]
   seo: cfComponentSeoNestedFilter
   seo_exists: Boolean
   sys: SysFilter
-  title: String
-  title_contains: String
-  title_exists: Boolean
-  title_in: [String]
-  title_not: String
-  title_not_contains: String
-  title_not_in: [String]
 }
 
 type PageContactLinkingCollections {
@@ -864,6 +1180,8 @@ type PageContactLinkingCollections {
 }
 
 enum PageContactOrder {
+  pageName_ASC
+  pageName_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC
@@ -872,8 +1190,6 @@ enum PageContactOrder {
   sys_publishedAt_DESC
   sys_publishedVersion_ASC
   sys_publishedVersion_DESC
-  title_ASC
-  title_DESC
 }
 
 """
@@ -882,9 +1198,9 @@ Home Page [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/c
 type PageHome implements Entry {
   contentfulMetadata: ContentfulMetadata!
   linkedFrom(allowedLocales: [String]): PageHomeLinkingCollections
-  projectsCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageHomeProjectsCollection
-  seo(locale: String, preview: Boolean): ComponentSeo
-  slider(locale: String, preview: Boolean): ComponentSlider
+  projectsCollection(limit: Int = 100, locale: String, order: [PageHomeProjectsCollectionOrder], preview: Boolean, skip: Int = 0, where: PageProjectFilter): PageHomeProjectsCollection
+  seo(locale: String, preview: Boolean, where: ComponentSeoFilter): ComponentSeo
+  slider(locale: String, preview: Boolean, where: ComponentSliderFilter): ComponentSlider
   sys: Sys!
   title(locale: String): String
 }
@@ -940,6 +1256,23 @@ type PageHomeProjectsCollection {
   total: Int!
 }
 
+enum PageHomeProjectsCollectionOrder {
+  slug_ASC
+  slug_DESC
+  subtitle_ASC
+  subtitle_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
+}
+
 """
 To have an entry point for the app [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageLanding)
 """
@@ -950,8 +1283,8 @@ type PageLanding implements Entry {
   heroBannerImage(locale: String, preview: Boolean): Asset
   internalName(locale: String): String
   linkedFrom(allowedLocales: [String]): PageLandingLinkingCollections
-  productsCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageLandingProductsCollection
-  seoFields(locale: String, preview: Boolean): ComponentSeo
+  productsCollection(limit: Int = 100, locale: String, order: [PageLandingProductsCollectionOrder], preview: Boolean, skip: Int = 0, where: PageProductFilter): PageLandingProductsCollection
+  seoFields(locale: String, preview: Boolean, where: ComponentSeoFilter): ComponentSeo
   sys: Sys!
 }
 
@@ -1023,6 +1356,25 @@ type PageLandingProductsCollection {
   total: Int!
 }
 
+enum PageLandingProductsCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  name_ASC
+  name_DESC
+  price_ASC
+  price_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
 """
 [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageNotFound)
 """
@@ -1062,6 +1414,11 @@ type PageNotFoundDescriptionEntries {
 type PageNotFoundDescriptionLinks {
   assets: PageNotFoundDescriptionAssets!
   entries: PageNotFoundDescriptionEntries!
+  resources: PageNotFoundDescriptionResources!
+}
+
+type PageNotFoundDescriptionResources {
+  block: [ResourceLink!]!
 }
 
 input PageNotFoundFilter {
@@ -1112,8 +1469,8 @@ type PageProduct implements Entry {
   name(locale: String): String
   price(locale: String): Float
   productImagesCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): AssetCollection
-  relatedProductsCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageProductRelatedProductsCollection
-  seoFields(locale: String, preview: Boolean): ComponentSeo
+  relatedProductsCollection(limit: Int = 100, locale: String, order: [PageProductRelatedProductsCollectionOrder], preview: Boolean, skip: Int = 0, where: PageProductFilter): PageProductRelatedProductsCollection
+  seoFields(locale: String, preview: Boolean, where: ComponentSeoFilter): ComponentSeo
   slug(locale: String): String
   sys: Sys!
 }
@@ -1177,8 +1534,44 @@ input PageProductFilter {
 
 type PageProductLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  pageLandingCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageLandingCollection
-  pageProductCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageProductCollection
+  pageLandingCollection(limit: Int = 100, locale: String, order: [PageProductLinkingCollectionsPageLandingCollectionOrder], preview: Boolean, skip: Int = 0): PageLandingCollection
+  pageProductCollection(limit: Int = 100, locale: String, order: [PageProductLinkingCollectionsPageProductCollectionOrder], preview: Boolean, skip: Int = 0): PageProductCollection
+}
+
+enum PageProductLinkingCollectionsPageLandingCollectionOrder {
+  heroBannerHeadlineColor_ASC
+  heroBannerHeadlineColor_DESC
+  heroBannerHeadline_ASC
+  heroBannerHeadline_DESC
+  internalName_ASC
+  internalName_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+enum PageProductLinkingCollectionsPageProductCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  name_ASC
+  name_DESC
+  price_ASC
+  price_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
 }
 
 enum PageProductOrder {
@@ -1207,6 +1600,25 @@ type PageProductRelatedProductsCollection {
   total: Int!
 }
 
+enum PageProductRelatedProductsCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  name_ASC
+  name_DESC
+  price_ASC
+  price_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
 """
 Single page for projects [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProject)
 """
@@ -1216,7 +1628,7 @@ type PageProject implements Entry {
   galleryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): AssetCollection
   header(locale: String, preview: Boolean): Asset
   linkedFrom(allowedLocales: [String]): PageProjectLinkingCollections
-  seo(locale: String, preview: Boolean): ComponentSeo
+  seo(locale: String, preview: Boolean, where: ComponentSeoFilter): ComponentSeo
   slug(locale: String): String
   subtitle(locale: String): String
   sys: Sys!
@@ -1250,6 +1662,11 @@ type PageProjectDescriptionEntries {
 type PageProjectDescriptionLinks {
   assets: PageProjectDescriptionAssets!
   entries: PageProjectDescriptionEntries!
+  resources: PageProjectDescriptionResources!
+}
+
+type PageProjectDescriptionResources {
+  block: [ResourceLink!]!
 }
 
 input PageProjectFilter {
@@ -1290,7 +1707,20 @@ input PageProjectFilter {
 
 type PageProjectLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  pageHomeCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageHomeCollection
+  pageHomeCollection(limit: Int = 100, locale: String, order: [PageProjectLinkingCollectionsPageHomeCollectionOrder], preview: Boolean, skip: Int = 0): PageHomeCollection
+}
+
+enum PageProjectLinkingCollectionsPageHomeCollectionOrder {
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
 }
 
 enum PageProjectOrder {
@@ -1322,6 +1752,8 @@ type Query {
   assetsCollection(limit: Int = 100, locale: String, order: [AssetsOrder], preview: Boolean, skip: Int = 0, where: AssetsFilter): AssetsCollection
   componentContact(id: String!, locale: String, preview: Boolean): ComponentContact
   componentContactCollection(limit: Int = 100, locale: String, order: [ComponentContactOrder], preview: Boolean, skip: Int = 0, where: ComponentContactFilter): ComponentContactCollection
+  componentPageHeader(id: String!, locale: String, preview: Boolean): ComponentPageHeader
+  componentPageHeaderCollection(limit: Int = 100, locale: String, order: [ComponentPageHeaderOrder], preview: Boolean, skip: Int = 0, where: ComponentPageHeaderFilter): ComponentPageHeaderCollection
   componentSeo(id: String!, locale: String, preview: Boolean): ComponentSeo
   componentSeoCollection(limit: Int = 100, locale: String, order: [ComponentSeoOrder], preview: Boolean, skip: Int = 0, where: ComponentSeoFilter): ComponentSeoCollection
   componentSlider(id: String!, locale: String, preview: Boolean): ComponentSlider
@@ -1347,6 +1779,16 @@ type Query {
   pageProjectCollection(limit: Int = 100, locale: String, order: [PageProjectOrder], preview: Boolean, skip: Int = 0, where: PageProjectFilter): PageProjectCollection
   translations(id: String!, locale: String, preview: Boolean): Translations
   translationsCollection(limit: Int = 100, locale: String, order: [TranslationsOrder], preview: Boolean, skip: Int = 0, where: TranslationsFilter): TranslationsCollection
+}
+
+type ResourceLink {
+  sys: ResourceSys!
+}
+
+type ResourceSys {
+  linkType: String!
+  type: String!
+  urn: String!
 }
 
 type Sys {
@@ -1479,6 +1921,24 @@ input cfComponentContactNestedFilter {
   phone_not_contains: String
   phone_not_in: [String]
   sys: SysFilter
+}
+
+input cfComponentPageHeaderNestedFilter {
+  AND: [cfComponentPageHeaderNestedFilter]
+  OR: [cfComponentPageHeaderNestedFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  description_contains: String
+  description_exists: Boolean
+  description_not_contains: String
+  header_exists: Boolean
+  sys: SysFilter
+  title: String
+  title_contains: String
+  title_exists: Boolean
+  title_in: [String]
+  title_not: String
+  title_not_contains: String
+  title_not_in: [String]
 }
 
 input cfComponentSeoNestedFilter {

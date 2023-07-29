@@ -4,19 +4,14 @@ import Image from 'next/image'
 import { Splide, SplideSlide } from 'splide-nextjs/react-splide'
 
 import { SeoFields } from '@src/components/features/seo'
+import { PageHeader } from '@src/components/pageHeader'
 import { client } from '@src/lib/client'
 import { getServerSideTranslations } from '@src/pages/utils/get-serverside-translations'
 
 const Page = ({
   page
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const {
-    title,
-    description,
-    mainPicture,
-    picturesOfReferenceCollection,
-    seo
-  } = page
+  const { pageHeader, picturesOfReferenceCollection, seo } = page
 
   const SLIDE_DIMENSION = {
     width: 384,
@@ -28,21 +23,11 @@ const Page = ({
       {seo && <SeoFields {...seo} />}
       {
         <>
-          <div
-            className={`h-screen bg-cover bg-no-repeat bg-center`}
-            style={{
-              backgroundImage: `url(${mainPicture?.url})`
-            }}
+          <PageHeader
+            bannerUrl={pageHeader.header.url}
+            title={pageHeader.title}
+            description={pageHeader.description.json}
           />
-          <div className="text-center py-20 px-10">
-            <h1>{title}</h1>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: documentToHtmlString(description?.json)
-              }}
-              className="max-w-2xl mx-auto pt-5"
-            />
-          </div>
           <Splide
             options={{
               type: 'loop',

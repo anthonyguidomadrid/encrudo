@@ -1,17 +1,16 @@
 query pageAbout($locale: String, $preview: Boolean) {
   pageAboutCollection(limit: 1, locale: $locale, preview: $preview) {
     items {
-      title
-      description {
-        json
+      pageHeader {
+        ...PageHeaderFields
       }
-      mainPicture {
-        ...ImageFields
-      }
-      picturesOfReferenceCollection {
+      picturesOfReferenceCollection(limit: 20) {
         items {
           ...ImageFields
         }
+      }
+      seo {
+        ...SeoFields
       }
     }
   }

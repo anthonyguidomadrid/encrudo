@@ -22,9 +22,7 @@ query layout($locale: String, $preview: Boolean) {
   }
   componentContactCollection(limit: 1, locale: $locale, preview: $preview) {
     items {
-      location
-      email
-      phone
+      ...ContactFields
     }
   }
   componentSocialMediaCollection(

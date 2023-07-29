@@ -1,0 +1,9 @@
+fragment PageHeaderFields on ComponentPageHeader {
+  title
+  description {
+    json
+  }
+  header {
+    ...ImageFields
+  }
+}
