@@ -23,11 +23,7 @@ const Page = ({
       {seo && <SeoFields {...seo} />}
       {
         <>
-          <PageHeader
-            bannerUrl={pageHeader.header.url}
-            title={pageHeader.title}
-            description={pageHeader.description.json}
-          />
+          <PageHeader {...pageHeader} />
           <Splide
             options={{
               type: 'loop',

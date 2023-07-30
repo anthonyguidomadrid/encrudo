@@ -3,7 +3,9 @@ import Image from 'next/image'
 
 import { LanguageSelector } from '../header'
 import { ContactContent, Logo, SocialMediaContent, MenuItem } from '../layout'
+
 import { FooterWrapper } from '.'
+import { transformPhoneNumberToLink } from '@src/helpers/transformPhoneNumber'
 
 export type FooterProps = {
   logo?: Logo
@@ -19,9 +21,7 @@ export const Footer = ({
   menuContent
 }: FooterProps) => {
   const { t } = useTranslation()
-  const phoneNumber =
-    contactContent?.phone &&
-    contactContent.phone.replace(/ /g, '').replace('+', '00')
+  const phoneNumber = transformPhoneNumberToLink(contactContent?.phone)
 
   return (
     <>
