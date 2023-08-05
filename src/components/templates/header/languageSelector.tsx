@@ -26,15 +26,15 @@ export const LanguageSelector = ({
   return (
     <div className={classNames('flex', { 'text-primary': isDark })}>
       {locales?.map((locale, idx) => {
-        const isLast = idx + 1 === locales.length
         return (
           <button
             key={idx}
-            className={classNames('uppercase', {
-              'pl-2': isLast,
-              'border-r pr-2': !isLast,
-              'border-primary': isDark
-            })}
+            className={classNames(
+              'uppercase border-r pr-2 last:pl-2 last:border-0 last:pr-0',
+              {
+                'border-primary': isDark
+              }
+            )}
             onClick={() => {
               changeLocale(locale)
               onClick && onClick()

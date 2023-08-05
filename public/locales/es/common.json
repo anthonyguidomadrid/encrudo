@@ -13,6 +13,19 @@
     "title": "Página no encontrada",
     "description": "Lo sentimos, no se pudo encontrar la página solicitada. Por favor, vuelve a la página de inicio.",
     "button": "Volver a la página de inicio"
+  },
+  "form": {
+    "fields": {
+      "name": "Nombre",
+      "email": "Email",
+      "phone": "Teléfono",
+      "message": "Mensaje",
+      "button": "Enviar mensaje"
+    },
+    "result": {
+      "success": "Su mensaje ha sido enviado con éxito, ¡le responderemos en breve!",
+      "error": "Hubo un error al intentar enviar su mensaje. Le recomendamos que se ponga en contacto con nosotros directamente a través de la información de contacto arriba."
+    }
   }
 }
   

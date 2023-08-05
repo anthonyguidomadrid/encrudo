@@ -13,5 +13,18 @@
     "title": "Page not found",
     "description": "We're sorry, the page you requested could not be found. Please come back to the home page",
     "button": "Back Home"
+  },
+  "form": {
+    "fields" : {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "message": "Message",
+      "button": "Send Message"
+    },
+    "result": {
+      "success": "Your message has been sent, we will answer you as soon as possible!",
+      "error": "An error occurred while trying to send your message. We recommend that you contact us directly using the contact details above."
+    }
   }
 }

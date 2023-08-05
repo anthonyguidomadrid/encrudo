@@ -3,18 +3,19 @@ import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import EmailIcon from '@icons/email.svg'
 import LocationIcon from '@icons/location.svg'
 import PhoneIcon from '@icons/phone.svg'
-
+import { ContactForm } from '@src/components/contactForm'
 import { SeoFields } from '@src/components/features/seo'
 import { PageHeader } from '@src/components/pageHeader'
+import { transformPhoneNumberToLink } from '@src/helpers/transformPhoneNumber'
 import { client } from '@src/lib/client'
 import { getServerSideTranslations } from '@src/pages/utils/get-serverside-translations'
-import { transformPhoneNumberToLink } from '@src/helpers/transformPhoneNumber'
 
 const Page = ({
   page
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { pageHeader, contactInformation, seo } = page
   const phoneNumberLink = transformPhoneNumberToLink(contactInformation?.phone)
+  const contactClass = 'flex justify-center gap-2'
 
   return (
     <>
@@ -22,22 +23,23 @@ const Page = ({
       {
         <>
           <PageHeader {...pageHeader} />
-          <div className="p-5 border-2 mx-5 mb-10 sm:max-w-lg sm:mx-auto flex flex-col gap-4">
-            <p className="flex justify-center gap-2 text-red-950">
+          <div className="mx-5 mb-10 flex flex-col gap-4">
+            <p className={contactClass}>
               <PhoneIcon className="h-5" />
-              <a href={`tel:${phoneNumberLink}`}>{contactInformation.phone}</a>
+              <a href={`tel:${phoneNumberLink}`}>{contactInformation?.phone}</a>
             </p>
-            <div className="flex justify-center gap-2">
+            <div className={contactClass}>
               <EmailIcon className="h-5" />
-              <a href={`mailto: ${contactInformation.email}`}>
-                {contactInformation.email}
+              <a href={`mailto: ${contactInformation?.email}`}>
+                {contactInformation?.email}
               </a>
             </div>
-            <div className="flex justify-center gap-2">
+            <div className={contactClass}>
               <LocationIcon className="h-5" />
-              {contactInformation.location}
+              {contactInformation?.location}
             </div>
           </div>
+          <ContactForm />
         </>
       }
     </>
