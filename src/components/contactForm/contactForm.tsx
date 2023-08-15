@@ -1,7 +1,8 @@
 'use client'
 
 import { useTranslation } from 'next-i18next'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
+import ReCAPTCHA from 'react-google-recaptcha'
 
 import ErrorIcon from '@icons/error.svg'
 import SuccessIcon from '@icons/success.svg'
@@ -10,14 +11,24 @@ export const ContactForm = () => {
   const [loading, setLoading] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
   const [isError, setIsError] = useState(false)
+  const [captchaValue, setCaptchaValue] = useState({
+    callback: 'not fired',
+    value: '[empty]',
+    load: false,
+    expired: 'false',
+    recaptchaLoaded: false
+  })
   const { t } = useTranslation()
 
   const status = isSuccess ? 'success' : 'error'
 
   const inputClass = 'border-b pt-10 outline-none'
 
+  const recaptchaRef = useRef({ execute: () => undefined })
+
   async function handleSubmit(event: any) {
     event.preventDefault()
+    await recaptchaRef.current?.execute()
     setLoading(true)
 
     const data = {
@@ -44,6 +55,23 @@ export const ContactForm = () => {
       setIsError(true)
     }
   }
+
+  const asyncScriptOnLoad = () => {
+    setCaptchaValue(prev => {
+      return { ...prev, callback: 'called!', recaptchaLoaded: true }
+    })
+  }
+
+  const handleCaptchaChange = value => {
+    setCaptchaValue(prev => {
+      return { ...prev, value }
+    })
+    if (value === null)
+      setCaptchaValue(prev => {
+        return { ...prev, expired: 'true' }
+      })
+  }
+
   return isSuccess || isError ? (
     <div className="text-center max-w-2xl mx-auto py-48 px-10 sm:px-0 flex flex-col items-center gap-5">
       {isSuccess ? (
@@ -96,9 +124,16 @@ export const ContactForm = () => {
         disabled={loading}
         required
       />
+      <ReCAPTCHA
+        sitekey="6LcZ1asnAAAAAImVcnGAw_oPG1MdLMpfyPwtFJrt"
+        onChange={handleCaptchaChange}
+        size="invisible"
+        ref={recaptchaRef}
+        asyncScriptOnLoad={asyncScriptOnLoad}
+      />
       <button
         type="submit"
-        disabled={loading}
+        disabled={loading || !captchaValue.recaptchaLoaded}
         className="mt-10 uppercase mx-auto w-fit px-5 py-2 border border-primary hover:border-grey-light hover:text-grey-light"
       >
         {t('form.fields.button')}
