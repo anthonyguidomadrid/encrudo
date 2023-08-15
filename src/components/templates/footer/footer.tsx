@@ -1,10 +1,12 @@
 import { useTranslation } from 'next-i18next'
 import Image from 'next/image'
+import Link from 'next/link'
 
 import { LanguageSelector } from '../header'
 import { ContactContent, Logo, SocialMediaContent, MenuItem } from '../layout'
 
 import { FooterWrapper } from '.'
+
 import { transformPhoneNumberToLink } from '@src/helpers/transformPhoneNumber'
 
 export type FooterProps = {
@@ -38,28 +40,32 @@ export const Footer = ({
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 text-center pb-10">
             <FooterWrapper title={t('footer.contact')}>
               <span>{contactContent?.location}</span>
-              <a href={`mailto: ${contactContent?.email}`}>
+              <Link
+                href={`mailto: ${contactContent?.email}`}
+                target={'_blank'}
+                rel="noreferrer"
+              >
                 {contactContent?.email}
-              </a>
-              <a href={`tel:${phoneNumber}`}>{contactContent?.phone}</a>
+              </Link>
+              <Link href={`tel:${phoneNumber}`}>{contactContent?.phone}</Link>
             </FooterWrapper>
             <FooterWrapper title={t('footer.link')}>
               {menuContent?.map((menuItem, index) => (
-                <a key={index} href={menuItem?.link ?? ''}>
+                <Link key={index} href={menuItem?.link ?? ''}>
                   {menuItem?.name}
-                </a>
+                </Link>
               ))}
             </FooterWrapper>
             <FooterWrapper title={t('footer.social')}>
               {socialMediaContent?.map((menuItem, index) => (
-                <a
+                <Link
                   key={index}
                   href={menuItem?.link ?? ''}
                   target={'_blank'}
                   rel="noreferrer"
                 >
                   {menuItem?.name}
-                </a>
+                </Link>
               ))}
             </FooterWrapper>
           </div>
@@ -72,13 +78,13 @@ export const Footer = ({
         <div className="max-w-7xl m-auto flex text-center flex-col md:flex-row gap-2 justify-between p-3">
           <p>{t('footer.copyright', { year: new Date().getFullYear() })}</p>
           <p>
-            <a
+            <Link
               href="https://anthonyguido.dev/"
               target={'_blank'}
               rel="noreferrer"
             >
               {t('footer.website')}
-            </a>
+            </Link>
           </p>
         </div>
       </footer>
