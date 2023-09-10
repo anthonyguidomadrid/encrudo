@@ -110,7 +110,7 @@ export const ContactForm = () => {
         name="phone"
         placeholder={t('form.fields.phone')}
         className={inputClass}
-        pattern="^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$"
+        pattern="^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\.0-9]*$"
         maxLength={150}
         disabled={loading}
         required
@@ -125,7 +125,7 @@ export const ContactForm = () => {
         required
       />
       <ReCAPTCHA
-        sitekey="6LcZ1asnAAAAAImVcnGAw_oPG1MdLMpfyPwtFJrt"
+        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_CLIENT_KEY}
         onChange={handleCaptchaChange}
         size="invisible"
         ref={recaptchaRef}
