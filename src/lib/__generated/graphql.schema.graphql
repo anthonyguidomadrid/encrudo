@@ -563,6 +563,7 @@ type ComponentSeoLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
   pageAboutCollection(limit: Int = 100, locale: String, order: [ComponentSeoLinkingCollectionsPageAboutCollectionOrder], preview: Boolean, skip: Int = 0): PageAboutCollection
   pageContactCollection(limit: Int = 100, locale: String, order: [ComponentSeoLinkingCollectionsPageContactCollectionOrder], preview: Boolean, skip: Int = 0): PageContactCollection
+  pageEditorCollection(limit: Int = 100, locale: String, order: [ComponentSeoLinkingCollectionsPageEditorCollectionOrder], preview: Boolean, skip: Int = 0): PageEditorCollection
   pageHomeCollection(limit: Int = 100, locale: String, order: [ComponentSeoLinkingCollectionsPageHomeCollectionOrder], preview: Boolean, skip: Int = 0): PageHomeCollection
   pageLandingCollection(limit: Int = 100, locale: String, order: [ComponentSeoLinkingCollectionsPageLandingCollectionOrder], preview: Boolean, skip: Int = 0): PageLandingCollection
   pageProductCollection(limit: Int = 100, locale: String, order: [ComponentSeoLinkingCollectionsPageProductCollectionOrder], preview: Boolean, skip: Int = 0): PageProductCollection
@@ -585,6 +586,21 @@ enum ComponentSeoLinkingCollectionsPageAboutCollectionOrder {
 enum ComponentSeoLinkingCollectionsPageContactCollectionOrder {
   pageName_ASC
   pageName_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+enum ComponentSeoLinkingCollectionsPageEditorCollectionOrder {
+  pageName_ASC
+  pageName_DESC
+  pageSlug_ASC
+  pageSlug_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC
@@ -1193,6 +1209,97 @@ enum PageContactOrder {
 }
 
 """
+[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageEditor)
+"""
+type PageEditor implements Entry {
+  content(locale: String): PageEditorContent
+  contentfulMetadata: ContentfulMetadata!
+  linkedFrom(allowedLocales: [String]): PageEditorLinkingCollections
+  pageName(locale: String): String
+  pageSlug(locale: String): String
+  seo(locale: String, preview: Boolean, where: ComponentSeoFilter): ComponentSeo
+  sys: Sys!
+}
+
+type PageEditorCollection {
+  items: [PageEditor]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+type PageEditorContent {
+  json: JSON!
+  links: PageEditorContentLinks!
+}
+
+type PageEditorContentAssets {
+  block: [Asset]!
+  hyperlink: [Asset]!
+}
+
+type PageEditorContentEntries {
+  block: [Entry]!
+  hyperlink: [Entry]!
+  inline: [Entry]!
+}
+
+type PageEditorContentLinks {
+  assets: PageEditorContentAssets!
+  entries: PageEditorContentEntries!
+  resources: PageEditorContentResources!
+}
+
+type PageEditorContentResources {
+  block: [ResourceLink!]!
+}
+
+input PageEditorFilter {
+  AND: [PageEditorFilter]
+  OR: [PageEditorFilter]
+  content_contains: String
+  content_exists: Boolean
+  content_not_contains: String
+  contentfulMetadata: ContentfulMetadataFilter
+  pageName: String
+  pageName_contains: String
+  pageName_exists: Boolean
+  pageName_in: [String]
+  pageName_not: String
+  pageName_not_contains: String
+  pageName_not_in: [String]
+  pageSlug: String
+  pageSlug_contains: String
+  pageSlug_exists: Boolean
+  pageSlug_in: [String]
+  pageSlug_not: String
+  pageSlug_not_contains: String
+  pageSlug_not_in: [String]
+  seo: cfComponentSeoNestedFilter
+  seo_exists: Boolean
+  sys: SysFilter
+}
+
+type PageEditorLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum PageEditorOrder {
+  pageName_ASC
+  pageName_DESC
+  pageSlug_ASC
+  pageSlug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+"""
 Home Page [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageHome)
 """
 type PageHome implements Entry {
@@ -1767,6 +1874,8 @@ type Query {
   pageAboutCollection(limit: Int = 100, locale: String, order: [PageAboutOrder], preview: Boolean, skip: Int = 0, where: PageAboutFilter): PageAboutCollection
   pageContact(id: String!, locale: String, preview: Boolean): PageContact
   pageContactCollection(limit: Int = 100, locale: String, order: [PageContactOrder], preview: Boolean, skip: Int = 0, where: PageContactFilter): PageContactCollection
+  pageEditor(id: String!, locale: String, preview: Boolean): PageEditor
+  pageEditorCollection(limit: Int = 100, locale: String, order: [PageEditorOrder], preview: Boolean, skip: Int = 0, where: PageEditorFilter): PageEditorCollection
   pageHome(id: String!, locale: String, preview: Boolean): PageHome
   pageHomeCollection(limit: Int = 100, locale: String, order: [PageHomeOrder], preview: Boolean, skip: Int = 0, where: PageHomeFilter): PageHomeCollection
   pageLanding(id: String!, locale: String, preview: Boolean): PageLanding

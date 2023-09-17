@@ -90,7 +90,7 @@ export const Header: FunctionComponent<HeaderProps> = ({
                 return (
                   <Link
                     key={idx}
-                    className={classNames({
+                    className={classNames('no-underline', {
                       'text-primary': isDark
                     })}
                     href={item?.link ?? ''}

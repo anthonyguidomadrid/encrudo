@@ -15,12 +15,14 @@ export const Button = ({
   additionalClasses
 }: ButtonProps) => {
   return (
-    <Link href={link} className="mx-auto">
+    <Link href={link} className="mx-auto no-underline">
       <button
-        className={`flex items-center gap-3 hover:opacity-80 uppercase bg-transparent text-grey-dark py-2 px-4 hover:border-transparent ${additionalClasses}`}
+        className={`flex items-center gap-3 hover:opacity-80 uppercase bg-transparent text-grey-dark py-2 px-4 hover:border-transparent ${
+          additionalClasses && additionalClasses
+        }`}
       >
         {icon}
-        {label}
+        <p>{label}</p>
       </button>
     </Link>
   )

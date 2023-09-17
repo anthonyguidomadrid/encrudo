@@ -4,7 +4,8 @@
     "link": "Links",
     "social": "Social",
     "copyright": "Copyright © {{year}} En Crudo Taller",
-    "website": "Website Anthony Guido"
+    "legal": "Legal Notice",
+    "privacy": "Data Policy"
   },
   "project": {
     "back-btn": "Back to projects"
@@ -25,6 +26,10 @@
     "result": {
       "success": "Your message has been sent, we will answer you as soon as possible!",
       "error": "An error occurred while trying to send your message. We recommend that you contact us directly using the contact details above."
+    },
+    "gdpr": {
+      "start": "By submitting this form you agree to our",
+      "between": "and"
     }
   }
 }

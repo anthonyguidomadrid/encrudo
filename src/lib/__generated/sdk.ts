@@ -919,6 +919,7 @@ export type ComponentSeoLinkingCollections = {
   entryCollection?: Maybe<EntryCollection>;
   pageAboutCollection?: Maybe<PageAboutCollection>;
   pageContactCollection?: Maybe<PageContactCollection>;
+  pageEditorCollection?: Maybe<PageEditorCollection>;
   pageHomeCollection?: Maybe<PageHomeCollection>;
   pageLandingCollection?: Maybe<PageLandingCollection>;
   pageProductCollection?: Maybe<PageProductCollection>;
@@ -947,6 +948,15 @@ export type ComponentSeoLinkingCollectionsPageContactCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
   order?: InputMaybe<Array<InputMaybe<ComponentSeoLinkingCollectionsPageContactCollectionOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type ComponentSeoLinkingCollectionsPageEditorCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<ComponentSeoLinkingCollectionsPageEditorCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
@@ -1003,6 +1013,21 @@ export enum ComponentSeoLinkingCollectionsPageAboutCollectionOrder {
 export enum ComponentSeoLinkingCollectionsPageContactCollectionOrder {
   PageNameAsc = 'pageName_ASC',
   PageNameDesc = 'pageName_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
+
+export enum ComponentSeoLinkingCollectionsPageEditorCollectionOrder {
+  PageNameAsc = 'pageName_ASC',
+  PageNameDesc = 'pageName_DESC',
+  PageSlugAsc = 'pageSlug_ASC',
+  PageSlugDesc = 'pageSlug_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -1745,6 +1770,143 @@ export type PageContactLinkingCollectionsEntryCollectionArgs = {
 export enum PageContactOrder {
   PageNameAsc = 'pageName_ASC',
   PageNameDesc = 'pageName_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
+
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageEditor) */
+export type PageEditor = Entry & {
+  __typename?: 'PageEditor';
+  content?: Maybe<PageEditorContent>;
+  contentfulMetadata: ContentfulMetadata;
+  linkedFrom?: Maybe<PageEditorLinkingCollections>;
+  pageName?: Maybe<Scalars['String']>;
+  pageSlug?: Maybe<Scalars['String']>;
+  seo?: Maybe<ComponentSeo>;
+  sys: Sys;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageEditor) */
+export type PageEditorContentArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageEditor) */
+export type PageEditorLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageEditor) */
+export type PageEditorPageNameArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageEditor) */
+export type PageEditorPageSlugArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageEditor) */
+export type PageEditorSeoArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  where?: InputMaybe<ComponentSeoFilter>;
+};
+
+export type PageEditorCollection = {
+  __typename?: 'PageEditorCollection';
+  items: Array<Maybe<PageEditor>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
+};
+
+export type PageEditorContent = {
+  __typename?: 'PageEditorContent';
+  json: Scalars['JSON'];
+  links: PageEditorContentLinks;
+};
+
+export type PageEditorContentAssets = {
+  __typename?: 'PageEditorContentAssets';
+  block: Array<Maybe<Asset>>;
+  hyperlink: Array<Maybe<Asset>>;
+};
+
+export type PageEditorContentEntries = {
+  __typename?: 'PageEditorContentEntries';
+  block: Array<Maybe<Entry>>;
+  hyperlink: Array<Maybe<Entry>>;
+  inline: Array<Maybe<Entry>>;
+};
+
+export type PageEditorContentLinks = {
+  __typename?: 'PageEditorContentLinks';
+  assets: PageEditorContentAssets;
+  entries: PageEditorContentEntries;
+  resources: PageEditorContentResources;
+};
+
+export type PageEditorContentResources = {
+  __typename?: 'PageEditorContentResources';
+  block: Array<ResourceLink>;
+};
+
+export type PageEditorFilter = {
+  AND?: InputMaybe<Array<InputMaybe<PageEditorFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<PageEditorFilter>>>;
+  content_contains?: InputMaybe<Scalars['String']>;
+  content_exists?: InputMaybe<Scalars['Boolean']>;
+  content_not_contains?: InputMaybe<Scalars['String']>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  pageName?: InputMaybe<Scalars['String']>;
+  pageName_contains?: InputMaybe<Scalars['String']>;
+  pageName_exists?: InputMaybe<Scalars['Boolean']>;
+  pageName_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  pageName_not?: InputMaybe<Scalars['String']>;
+  pageName_not_contains?: InputMaybe<Scalars['String']>;
+  pageName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  pageSlug?: InputMaybe<Scalars['String']>;
+  pageSlug_contains?: InputMaybe<Scalars['String']>;
+  pageSlug_exists?: InputMaybe<Scalars['Boolean']>;
+  pageSlug_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  pageSlug_not?: InputMaybe<Scalars['String']>;
+  pageSlug_not_contains?: InputMaybe<Scalars['String']>;
+  pageSlug_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  seo?: InputMaybe<CfComponentSeoNestedFilter>;
+  seo_exists?: InputMaybe<Scalars['Boolean']>;
+  sys?: InputMaybe<SysFilter>;
+};
+
+export type PageEditorLinkingCollections = {
+  __typename?: 'PageEditorLinkingCollections';
+  entryCollection?: Maybe<EntryCollection>;
+};
+
+
+export type PageEditorLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+export enum PageEditorOrder {
+  PageNameAsc = 'pageName_ASC',
+  PageNameDesc = 'pageName_DESC',
+  PageSlugAsc = 'pageSlug_ASC',
+  PageSlugDesc = 'pageSlug_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -2664,6 +2826,8 @@ export type Query = {
   pageAboutCollection?: Maybe<PageAboutCollection>;
   pageContact?: Maybe<PageContact>;
   pageContactCollection?: Maybe<PageContactCollection>;
+  pageEditor?: Maybe<PageEditor>;
+  pageEditorCollection?: Maybe<PageEditorCollection>;
   pageHome?: Maybe<PageHome>;
   pageHomeCollection?: Maybe<PageHomeCollection>;
   pageLanding?: Maybe<PageLanding>;
@@ -2856,6 +3020,23 @@ export type QueryPageContactCollectionArgs = {
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<PageContactFilter>;
+};
+
+
+export type QueryPageEditorArgs = {
+  id: Scalars['String'];
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+export type QueryPageEditorCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<PageEditorOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<PageEditorFilter>;
 };
 
 
@@ -3319,6 +3500,18 @@ export type PageContactQuery = { __typename?: 'Query', pageContactCollection?: {
 
 export type ContactFieldsFragment = { __typename?: 'ComponentContact', location?: string | null, email?: string | null, phone?: string | null };
 
+export type PageEditorQueryVariables = Exact<{
+  slug: Scalars['String'];
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+}>;
+
+
+export type PageEditorQuery = { __typename?: 'Query', pageEditorCollection?: { __typename?: 'PageEditorCollection', items: Array<{ __typename?: 'PageEditor', pageName?: string | null, content?: { __typename?: 'PageEditorContent', json: any } | null, seo?: (
+        { __typename?: 'ComponentSeo' }
+        & SeoFieldsFragment
+      ) | null } | null> } | null };
+
 export type ImageFieldsFragment = { __typename: 'Asset', title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, contentType?: string | null, sys: { __typename?: 'Sys', id: string } };
 
 export type PageLandingQueryVariables = Exact<{
@@ -3505,6 +3698,27 @@ export const PageContactDocument = gql`
 ${ImageFieldsFragmentDoc}
 ${ContactFieldsFragmentDoc}
 ${SeoFieldsFragmentDoc}`;
+export const PageEditorDocument = gql`
+    query pageEditor($slug: String!, $locale: String, $preview: Boolean) {
+  pageEditorCollection(
+    limit: 1
+    where: {pageSlug: $slug}
+    locale: $locale
+    preview: $preview
+  ) {
+    items {
+      pageName
+      content {
+        json
+      }
+      seo {
+        ...SeoFields
+      }
+    }
+  }
+}
+    ${SeoFieldsFragmentDoc}
+${ImageFieldsFragmentDoc}`;
 export const PageLandingDocument = gql`
     query pageLanding($locale: String, $preview: Boolean) {
   pageHomeCollection(limit: 1, locale: $locale, preview: $preview) {
@@ -3620,6 +3834,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     pageContact(variables?: PageContactQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PageContactQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<PageContactQuery>(PageContactDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pageContact', 'query');
+    },
+    pageEditor(variables: PageEditorQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PageEditorQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<PageEditorQuery>(PageEditorDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pageEditor', 'query');
     },
     pageLanding(variables?: PageLandingQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PageLandingQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<PageLandingQuery>(PageLandingDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pageLanding', 'query');

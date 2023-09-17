@@ -1,6 +1,7 @@
 'use client'
 
 import { useTranslation } from 'next-i18next'
+import Link from 'next/link'
 import { useRef, useState } from 'react'
 import ReCAPTCHA from 'react-google-recaptcha'
 
@@ -131,6 +132,12 @@ export const ContactForm = () => {
         ref={recaptchaRef}
         asyncScriptOnLoad={asyncScriptOnLoad}
       />
+      <p className="pt-5 text-sm">
+        {t('form.gdpr.start')}{' '}
+        <Link href={'/data-policy'}>{t('footer.privacy')}</Link>{' '}
+        {t('form.gdpr.between')}{' '}
+        <Link href={'/legal-notice'}>{t('footer.legal')}</Link>
+      </p>
       <button
         type="submit"
         disabled={loading || !captchaValue.recaptchaLoaded}

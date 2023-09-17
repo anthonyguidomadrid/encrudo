@@ -7,13 +7,19 @@
     @apply text-4xl uppercase;
   }
   h2 {
-    @apply text-xl;
+    @apply text-2xl mt-5;
   }
   h3 {
     @apply text-lg;
   }
   h1, h2, h3 {
     @apply font-header
+  }
+  ul, ol {
+    @apply list-disc ms-5;
+  }
+  a {
+    @apply underline;
   }
 }
 

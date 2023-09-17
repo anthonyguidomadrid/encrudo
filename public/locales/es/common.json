@@ -4,7 +4,8 @@
     "link": "Enlaces",
     "social": "Redes Sociales",
     "copyright": "Copyright © {{year}} En Crudo Taller",
-    "website": "Web Anthony Guido"
+    "legal": "Aviso Legal",
+    "privacy": "Protección de Datos"
   },
   "project": {
     "back-btn": "Ver todos"
@@ -20,12 +21,18 @@
       "email": "Email",
       "phone": "Teléfono",
       "message": "Mensaje",
-      "button": "Enviar mensaje"
+      "button": "Enviar mensaje"  
     },
     "result": {
       "success": "Su mensaje ha sido enviado con éxito, ¡le responderemos en breve!",
       "error": "Hubo un error al intentar enviar su mensaje. Le recomendamos que se ponga en contacto con nosotros directamente a través de la información de contacto arriba."
-    }
+    },
+    "gdpr": {
+      "start": "Al enviar este formulario usted acepta nuestras políticas de",
+      "data": "Protección de datos",
+      "between": "y de",
+      "legal": "Aviso Legal"
+    } 
   }
 }
   

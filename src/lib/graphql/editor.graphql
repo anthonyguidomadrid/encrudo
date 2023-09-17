@@ -1,0 +1,13 @@
+query pageEditor($slug: String!, $locale: String, $preview: Boolean) {
+  pageEditorCollection(limit: 1, where: { pageSlug: $slug }, locale: $locale, preview: $preview) {
+    items {
+      pageName
+      content {
+        json
+      }
+      seo {
+        ...SeoFields
+      }
+    }
+  }
+}

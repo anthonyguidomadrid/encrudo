@@ -26,11 +26,16 @@ const Page = ({
           <div className="mx-5 mb-10 flex flex-col gap-4">
             <p className={contactClass}>
               <PhoneIcon className="h-5" />
-              <a href={`tel:${phoneNumberLink}`}>{contactInformation?.phone}</a>
+              <a className="no-underline" href={`tel:${phoneNumberLink}`}>
+                {contactInformation?.phone}
+              </a>
             </p>
             <div className={contactClass}>
               <EmailIcon className="h-5" />
-              <a href={`mailto: ${contactInformation?.email}`}>
+              <a
+                href={`mailto: ${contactInformation?.email}`}
+                className="no-underline"
+              >
                 {contactInformation?.email}
               </a>
             </div>

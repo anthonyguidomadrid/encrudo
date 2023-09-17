@@ -43,15 +43,22 @@ export const Footer = ({
               <Link
                 href={`mailto: ${contactContent?.email}`}
                 target={'_blank'}
+                className="no-underline"
                 rel="noreferrer"
               >
                 {contactContent?.email}
               </Link>
-              <Link href={`tel:${phoneNumber}`}>{contactContent?.phone}</Link>
+              <Link href={`tel:${phoneNumber}`} className="no-underline">
+                {contactContent?.phone}
+              </Link>
             </FooterWrapper>
             <FooterWrapper title={t('footer.link')}>
               {menuContent?.map((menuItem, index) => (
-                <Link key={index} href={menuItem?.link ?? ''}>
+                <Link
+                  key={index}
+                  href={menuItem?.link ?? ''}
+                  className="no-underline"
+                >
                   {menuItem?.name}
                 </Link>
               ))}
@@ -62,6 +69,7 @@ export const Footer = ({
                   key={index}
                   href={menuItem?.link ?? ''}
                   target={'_blank'}
+                  className="no-underline"
                   rel="noreferrer"
                 >
                   {menuItem?.name}
@@ -77,15 +85,18 @@ export const Footer = ({
       <footer className="bg-grey-dark text-white text-sm">
         <div className="max-w-7xl m-auto flex text-center flex-col md:flex-row gap-2 justify-between p-3">
           <p>{t('footer.copyright', { year: new Date().getFullYear() })}</p>
-          <p>
+          <div className="flex gap-5">
             <Link
-              href="https://anthonyguido.dev/"
-              target={'_blank'}
+              href="/legal-notice"
               rel="noreferrer"
+              className="no-underline"
             >
-              {t('footer.website')}
+              {t('footer.legal')}
             </Link>
-          </p>
+            <Link href="/data-policy" rel="noreferrer" className="no-underline">
+              {t('footer.privacy')}
+            </Link>
+          </div>
         </div>
       </footer>
     </>
