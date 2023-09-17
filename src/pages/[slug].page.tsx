@@ -1,6 +1,5 @@
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
-import { useTranslation } from 'next-i18next'
 
 import { SeoFields } from '@src/components/features/seo'
 import { client } from '@src/lib/client'
@@ -14,7 +13,6 @@ const Page = ({
     content: { json },
     seo
   } = page
-  const { t } = useTranslation()
 
   return (
     <>

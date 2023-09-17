@@ -1,50 +1,13 @@
-# Contentful Ecommerce Starter Template
+# Encrudo Taller App
 
-An Ecommerce Starter Template powered by Next.js & Contentful, pre-designed with optimized & adjustable pages, components, and data management.
+Encrudo Taller is an architecture application, which can be visited on the following link: [encrudotaller.com](https://www.encrudotaller.com/) 
 
-![The homepage of the Ecommerce Starter Template](ecommerce-starter-template.jpg 'The homepage of the Ecommerce Starter Template')
+## Previews
 
-$~$
+![Home page preview](https://github.com/anthonyguidomadrid/encrudo/assets/80059432/2a87db74-03d2-43a9-9d3d-6484142bc7dc)
 
-## What is Contentful?
+![Project page preview](https://github.com/anthonyguidomadrid/encrudo/assets/80059432/53287590-0dfe-49a2-b0d8-c79194e5fabf)
 
-[Contentful](https://www.contentful.com/) provides content infrastructure for digital teams to power websites, apps, and devices. Unlike a CMS, Contentful was built to integrate with the modern software stack. It offers a central hub for structured content, powerful management, and delivery APIs, and a customizable web app that enables developers and content creators to ship their products faster.
-
-$~$
-
-## DISCLAIMER ⚠️
-
-The Starter Templates experience is currently only available to new users.
-
-To benefit from this experience, please follow this link to create a new
-account: [https://www.contentful.com/sign-up/?action=create_starter_template](https://www.contentful.com/sign-up/?action=create_starter_template&utm_source=github.com&utm_medium=referral&utm_campaign=template-ecommerce-webapp-nextjs).
-
-To immediately start auto installation of this template after creating a new account,
-please follow this link:
-[https://www.contentful.com/sign-up/?action=create_starter_template&template_name=ecommerce](https://www.contentful.com/sign-up/?action=create_starter_template&template_name=ecommerce&utm_source=github.com&utm_medium=referral&utm_campaign=template-ecommerce-webapp-nextjs).
-
-$~$
-
-## Begin your journey with Contentful and the Ecommerce Starter Template
-
-Follow this [guide](https://github.com/contentful/template-ecommerce-webapp-nextjs/blob/main/docs/tutorials/contentful-and-the-starter-template.md/?utm_source=github.com-guide&utm_medium=referral&utm_campaign=template-ecommerce-webapp-nextjs) to understand the relationship between
-Contentful and the Starter Template source code through guided steps:
-
-- Entry editing, and updates preview in the Starter Template application (online/locally)
-- Content type editing in the Contentful web app, as well as in the Starter Template's code
-
-$~$
-
-## Features
-
-- Composable content through powerful & flexible content modeling.
-- Localization ready.
-- SEO ready.
-- Server-side rendering with Next.js[^1].
-- Generation of GraphQL[^2] typed code (schema, and types), in sync with the content types through graphql-codegen[^3].
-- Enhanced Developer Experience with TypeScript[^4].
-
-$~$
 
 ## Getting started
 
@@ -56,7 +19,6 @@ To get started, read the following guidelines.
 - [Contentful API & GraphQL](./README.md#contentful-api--graphql)
 - [Deployment](./README.md#deployment)
 
-$~$
 
 ### Environment variables
 
@@ -65,10 +27,13 @@ In order to authenticate the requests to the Contentful APIs, the following valu
 - Your space ID: [https://www.contentful.com/help/find-space-id/](https://www.contentful.com/help/find-space-id/)
 - Contentful Delivery API token: [https://www.contentful.com/developers/docs/references/content-delivery-api/](https://www.contentful.com/developers/docs/references/content-delivery-api/)
 - Contentful Preview API token: [https://www.contentful.com/developers/docs/references/content-preview-api/](https://www.contentful.com/developers/docs/references/content-preview-api/)
+- Email Auth User: Gmail email
+- Email Auth Pass: Gmail password
+- Email Recipient: The email to which messages will be sent from the contact form.
+- Recaptcha client key: [https://developers.google.com/recaptcha/intro](https://developers.google.com/recaptcha/intro)
 
 Rename the `.env.example` file to `.env` and add the necessary values.
 
-$~$
 
 ### Dependencies
 
@@ -88,15 +53,11 @@ The Starter Template should be up and running on `http://localhost:3000`.
 
 All necessary dependencies are installed under `node_modules` and any necessary tools can be accessed via npm scripts.
 
-$~$
-
 ## Development
 
 ### Node
 
 It is recommended to use the Node version listed in the `.nvmrc` file, we recommend using [nvm](https://github.com/nvm-sh/nvm) to easily switch between Node versions.
-
-$~$
 
 ### Husky & git hooks
 
@@ -130,8 +91,6 @@ In case of wanting to bypass the `pre-commit` or `pre-push` hooks, pass a `--noV
 
 ⚠️ Make sure you only use this if you know why you're using it. ⚠️
 
-$~$
-
 ### Contentful API & GraphQL
 
 This project makes use of Contentful's [GraphQL API](https://www.contentful.com/developers/docs/references/graphql/).
@@ -144,8 +103,6 @@ The types are generated from the `.graphql` files located in the `/lib/graphql/`
 2. `lib/__generated/sdk.ts` is generated
 3. Within the generated file, they types and a new `getSdk` function are generated
 4. The `getSdk` function can now be imported and used within the `getStaticProps` in the pages files
-
-$~$
 
 ### GraphQL & code generation
 
@@ -177,62 +134,24 @@ The TS types for these files are generated in the same location, in a `__generat
 
 The configuration for the codegen can be found in `codegen.ts`, located in the root of the project.
 
-$~$
-
 ---
-
-$~$
 
 ## Deployment
 
-The Starter Template can be deployed to your hosting provider of choice.
-
-We offer integrations with Vercel and Netlify to speed up the process by clicking one of the deploy buttons below. The GitHub repository and
-the necessary environment variables keys are pre-configured in the hosting provider space.
-
-| Vercel                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Netlify                                                                                                                                                                                                                                                                                                                                     |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fcontentful%2Ftemplate-ecommerce-webapp-nextjs&env=CONTENTFUL_SPACE_ID,CONTENTFUL_DELIVERY_API_TOKEN,CONTENTFUL_PREVIEW_API_TOKEN&envDescription=API%20Keys%20needed%20for%20the%20application&envLink=https%3A%2F%2Fgithub.com%2Fcontentful%2Ftemplate-ecommerce-webapp-nextjs%23environment-variables) | [![Deploy to Netlify Button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https%3A%2F%2Fgithub.com%2Fcontentful%2Ftemplate-ecommerce-webapp-nextjs#CONTENTFUL_SPACE_ID=&CONTENTFUL_DELIVERY_API_TOKEN=&CONTENTFUL_PREVIEW_API_TOKEN=) |
-| [Environment variables docs](https://vercel.com/docs/concepts/projects/environment-variables)                                                                                                                                                                                                                                                                                                                                                                                      | [Environment variables docs](https://docs.netlify.com/environment-variables/overview/)                                                                                                                                                                                                                                                      |
-
-Make sure to add the necessary [environment variables values](./README.md#environment-variables) to the hosting provider
-environment variables.
+Currently deployed on the following domain: [encrudotaller.com](https://www.encrudotaller.com/) through [Vercel](https://vercel.com/dashboard).
 
 ---
 
-### Content preview
+## Author
 
-Once you have the Starter Template deployed on your hosting provider, you can update the Content preview URL in your space settings.
+**Anthony Guido**
 
-You can follow our guide to learn how to do so: [https://www.contentful.com/help/setup-content-preview](https://www.contentful.com/help/setup-content-preview/?utm_source=github.com-preview-guide&utm_medium=referral&utm_campaign=template-ecommerce-webapp-nextjs).
-
-$~$
-
----
-
-$~$
-
-## Support
-
-If you have a problem with this Starter Template, post a message in our [Contentful Community Slack](https://www.contentful.com/slack/).
-
-Can't find your answer there? You can file a feedback issue through [this template](https://github.com/contentful/template-ecommerce-webapp-nextjs/tree/main/.github/ISSUE_TEMPLATE/feedback.md).
-
-If you have other problems with Contentful not related to the Starter Template, you can contact the [Customer Support](https://support.contentful.com/).
-
-$~$
-
-## Contributing
-
-See [CONTRIBUTING.md](./CONTRIBUTING.md).
-
-$~$
+- Github: [@anthonyguidomadrid](https://github.com/anthonyguidomadrid/)
+- LinkedIn: [@anthony-guido](https://www.linkedin.com/in/anthony-guido/)
 
 ## License
 
-MIT License, see [LICENSE](./LICENSE).
-
-$~$
+Copyright © 2023 [Anthony Guido](https://github.com/anthonyguidomadrid/).
 
 <!-- FOOTNOTES -->
 
