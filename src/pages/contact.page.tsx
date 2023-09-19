@@ -23,7 +23,7 @@ const Page = ({
       {
         <>
           <PageHeader {...pageHeader} />
-          <div className="mx-5 mb-10 flex flex-col gap-4">
+          <div className="mx-5 flex flex-col gap-4">
             <p className={contactClass}>
               <PhoneIcon className="h-5" />
               <a className="no-underline" href={`tel:${phoneNumberLink}`}>

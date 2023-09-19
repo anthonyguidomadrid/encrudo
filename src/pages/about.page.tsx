@@ -13,7 +13,7 @@ const Page = ({
   const { pageHeader, picturesOfReferenceCollection, seo } = page
 
   const SLIDE_DIMENSION = {
-    width: 384,
+    width: 216,
     height: 288
   }
 
