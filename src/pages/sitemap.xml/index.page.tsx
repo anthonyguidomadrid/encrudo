@@ -39,7 +39,12 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
                 ? undefined
                 : locales?.[index]
             const url = new URI(origin)
-              .segment([localeForUrl || '', item?.slug || item?.pageSlug || ''])
+              .segment([
+                localeForUrl || '',
+                (item?.slug && `/projects/${item?.slug}`) ||
+                  item?.pageSlug ||
+                  ''
+              ])
               .toString()
 
             return item && !item.seoFields?.excludeFromSitemap
