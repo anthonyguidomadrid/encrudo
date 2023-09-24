@@ -1,19 +1,41 @@
 fragment sitemapPagesFields on Query {
-  pageProductCollection(limit: 100, locale: $locale) {
+  pageHomeCollection(limit: 1, locale: $locale) {
+    items {
+      sys {
+        publishedAt
+      }
+    }
+  }
+  pageAboutCollection(limit: 1, locale: $locale) {
+    items {
+      sys {
+        publishedAt
+      }
+    }
+  }
+  pageContactCollection(limit: 1, locale: $locale) {
+    items {
+      sys {
+        publishedAt
+      }
+    }
+  }
+  pageEditorCollection(limit: 10, locale: $locale) {
+    items {
+      pageSlug
+      sys {
+        publishedAt
+      }
+    }
+  }
+  pageProjectCollection(limit: 20, locale: $locale) {
     items {
       slug
       sys {
         publishedAt
       }
     }
-  }
-  pageLandingCollection(limit: 1, locale: $locale) {
-    items {
-      sys {
-        publishedAt
-      }
-    }
-  }
+  } 
 }
 
 

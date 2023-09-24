@@ -3579,7 +3579,7 @@ export type SeoFieldsFragment = { __typename: 'ComponentSeo', pageTitle?: string
       & ImageFieldsFragment
     ) | null> } | null };
 
-export type SitemapPagesFieldsFragment = { __typename?: 'Query', pageProductCollection?: { __typename?: 'PageProductCollection', items: Array<{ __typename?: 'PageProduct', slug?: string | null, sys: { __typename?: 'Sys', publishedAt?: any | null } } | null> } | null, pageLandingCollection?: { __typename?: 'PageLandingCollection', items: Array<{ __typename?: 'PageLanding', sys: { __typename?: 'Sys', publishedAt?: any | null } } | null> } | null };
+export type SitemapPagesFieldsFragment = { __typename?: 'Query', pageHomeCollection?: { __typename?: 'PageHomeCollection', items: Array<{ __typename?: 'PageHome', sys: { __typename?: 'Sys', publishedAt?: any | null } } | null> } | null, pageAboutCollection?: { __typename?: 'PageAboutCollection', items: Array<{ __typename?: 'PageAbout', sys: { __typename?: 'Sys', publishedAt?: any | null } } | null> } | null, pageContactCollection?: { __typename?: 'PageContactCollection', items: Array<{ __typename?: 'PageContact', sys: { __typename?: 'Sys', publishedAt?: any | null } } | null> } | null, pageEditorCollection?: { __typename?: 'PageEditorCollection', items: Array<{ __typename?: 'PageEditor', pageSlug?: string | null, sys: { __typename?: 'Sys', publishedAt?: any | null } } | null> } | null, pageProjectCollection?: { __typename?: 'PageProjectCollection', items: Array<{ __typename?: 'PageProject', slug?: string | null, sys: { __typename?: 'Sys', publishedAt?: any | null } } | null> } | null };
 
 export type SitemapPagesQueryVariables = Exact<{
   locale: Scalars['String'];
@@ -3640,16 +3640,38 @@ export const SeoFieldsFragmentDoc = gql`
     `;
 export const SitemapPagesFieldsFragmentDoc = gql`
     fragment sitemapPagesFields on Query {
-  pageProductCollection(limit: 100, locale: $locale) {
+  pageHomeCollection(limit: 1, locale: $locale) {
     items {
-      slug
       sys {
         publishedAt
       }
     }
   }
-  pageLandingCollection(limit: 1, locale: $locale) {
+  pageAboutCollection(limit: 1, locale: $locale) {
     items {
+      sys {
+        publishedAt
+      }
+    }
+  }
+  pageContactCollection(limit: 1, locale: $locale) {
+    items {
+      sys {
+        publishedAt
+      }
+    }
+  }
+  pageEditorCollection(limit: 10, locale: $locale) {
+    items {
+      pageSlug
+      sys {
+        publishedAt
+      }
+    }
+  }
+  pageProjectCollection(limit: 20, locale: $locale) {
+    items {
+      slug
       sys {
         publishedAt
       }

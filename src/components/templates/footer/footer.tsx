@@ -85,7 +85,7 @@ export const Footer = ({
       <footer className="bg-grey-dark text-white text-sm">
         <div className="max-w-7xl m-auto flex text-center flex-col md:flex-row gap-2 justify-between p-3">
           <p>{t('footer.copyright', { year: new Date().getFullYear() })}</p>
-          <div className="flex gap-5">
+          <div className="flex gap-5 justify-center">
             <Link
               href="/legal-notice"
               rel="noreferrer"
