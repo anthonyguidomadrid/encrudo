@@ -5,6 +5,8 @@ import Link from 'next/link'
 import { useRef, useState } from 'react'
 import ReCAPTCHA from 'react-google-recaptcha'
 
+import * as gtag from '../../helpers/gtag'
+
 import ErrorIcon from '@icons/error.svg'
 import SuccessIcon from '@icons/success.svg'
 
@@ -28,6 +30,7 @@ export const ContactForm = () => {
   const recaptchaRef = useRef({ execute: () => undefined })
 
   async function handleSubmit(event: any) {
+    gtag.event('form_contact', {})
     event.preventDefault()
     await recaptchaRef.current?.execute()
     setLoading(true)
@@ -134,9 +137,9 @@ export const ContactForm = () => {
       />
       <p className="pt-5 text-sm">
         {t('form.gdpr.start')}{' '}
-        <Link href={'/data-policy'}>{t('footer.privacy')}</Link>{' '}
+        <Link href={'/proteccion-datos'}>{t('footer.privacy')}</Link>{' '}
         {t('form.gdpr.between')}{' '}
-        <Link href={'/legal-notice'}>{t('footer.legal')}</Link>
+        <Link href={'/aviso-legal'}>{t('footer.legal')}</Link>
       </p>
       <button
         type="submit"

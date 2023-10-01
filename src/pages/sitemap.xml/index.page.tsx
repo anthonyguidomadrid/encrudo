@@ -41,7 +41,7 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
             const url = new URI(origin)
               .segment([
                 localeForUrl || '',
-                (item?.slug && `/projects/${item?.slug}`) ||
+                (item?.slug && `/proyectos/${item?.slug}`) ||
                   item?.pageSlug ||
                   ''
               ])

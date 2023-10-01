@@ -10,6 +10,7 @@ import { client } from '@src/lib/client'
 const Page = ({
   page
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  console.log({ page })
   return (
     <>
       {page.seo && <SeoFields {...page.seo} />}
@@ -18,7 +19,7 @@ const Page = ({
       )}
       {page.projectsCollection?.items?.length && (
         <section
-          id="projects"
+          id="proyectos"
           className="max-w-7xl mx-auto p-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 grid-flow-row gap-10"
         >
           {page.projectsCollection.items.map((project, idx) => {

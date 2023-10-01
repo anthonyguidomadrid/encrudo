@@ -86,14 +86,14 @@ export const Footer = ({
         <div className="max-w-7xl m-auto flex text-center flex-col md:flex-row gap-2 justify-between p-3">
           <p>{t('footer.copyright', { year: new Date().getFullYear() })}</p>
           <div className="flex gap-5 justify-center">
+            <Link href="/aviso-legal" rel="noreferrer" className="no-underline">
+              {t('footer.legal')}
+            </Link>
             <Link
-              href="/legal-notice"
+              href="/proteccion-datos"
               rel="noreferrer"
               className="no-underline"
             >
-              {t('footer.legal')}
-            </Link>
-            <Link href="/data-policy" rel="noreferrer" className="no-underline">
               {t('footer.privacy')}
             </Link>
           </div>

@@ -30,7 +30,7 @@ const Page = ({
         <Button
           label={t('project.back-btn')}
           icon={<ArrowLeft className={'h-7'} />}
-          link={'/#projects'}
+          link={'/#proyectos'}
         />
       </div>
     </>

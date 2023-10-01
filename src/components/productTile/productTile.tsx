@@ -14,7 +14,7 @@ export type ProductTileProps = {
 
 export const ProductTile = ({ project }: ProductTileProps) => {
   return (
-    <Link href={`/projects/${project.slug}`}>
+    <Link href={`/proyectos/${project.slug}`}>
       <div className="flex items-center justify-center">
         <div className="overflow-hidden cursor-pointer relative group uppercase text-center">
           <div className="z-10 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition duration-300 ease-in-out cursor-pointer absolute from-black/80 to-transparent bg-gradient-to-t inset-x-0 -bottom-2 pt-30 text-white h-full flex justify-center items-end">
@@ -28,7 +28,7 @@ export const ProductTile = ({ project }: ProductTileProps) => {
           </div>
           <Image
             alt={project.thumbnail.description}
-            className="object-cover w-full aspect-square sm:group-hover:scale-110 transition duration-300 ease-in-out"
+            className="object-cover aspect-square sm:group-hover:scale-110 transition duration-300 ease-in-out"
             src={project.thumbnail.url}
             width={500}
             height={500}

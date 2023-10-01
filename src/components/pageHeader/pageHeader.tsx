@@ -28,7 +28,7 @@ export const PageHeader = ({
           dangerouslySetInnerHTML={{
             __html: documentToHtmlString(json)
           }}
-          className="max-w-2xl mx-auto pt-5"
+          className="max-w-2xl mx-auto pt-5 space-y-4"
         />
       </div>
     </>

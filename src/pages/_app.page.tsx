@@ -13,7 +13,6 @@ import '../../styles/global.css'
 import 'splide-nextjs/splide/dist/css/themes/splide-default.min.css'
 import 'react-image-lightbox/style.css'
 
-
 export type AppProperties = AppProps & {
   data: LayoutQuery
 }
@@ -21,7 +20,7 @@ export type AppProperties = AppProps & {
 const App = ({ Component, pageProps, data }: AppProperties) => {
   const router = useRouter()
   useEffect(() => {
-    const handleRouteChange = url => {
+    const handleRouteChange = (url: URL) => {
       gtag.pageView(url)
     }
     router.events.on('routeChangeComplete', handleRouteChange)

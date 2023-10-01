@@ -18,7 +18,9 @@ const Page = ({
     <>
       {seo && <SeoFields {...seo} />}
       <div className="bg-grey-light pt-36 pb-16">
-        <h1 className="max-w-4xl mx-auto px-5 text-white text-center">{pageName}</h1>
+        <h1 className="max-w-4xl mx-auto px-5 text-white text-center">
+          {pageName}
+        </h1>
       </div>
       <div
         dangerouslySetInnerHTML={{

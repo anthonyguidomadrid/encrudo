@@ -10,6 +10,7 @@ import { transformPhoneNumberToLink } from '@src/helpers/transformPhoneNumber'
 import { client } from '@src/lib/client'
 import { getServerSideTranslations } from '@src/pages/utils/get-serverside-translations'
 
+
 const Page = ({
   page
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
