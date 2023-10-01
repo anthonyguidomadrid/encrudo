@@ -1,5 +1,7 @@
 export const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_ID as string
 
+type CustomEvent = 'form_contact'
+
 /**
  * This function is used to track page views.
  * https://developers.google.com/analytics/devguides/collection/gtagjs/pages
@@ -15,7 +17,7 @@ export const pageView = (url: URL) => {
  * https://developers.google.com/analytics/devguides/collection/gtagjs/events
  * If you want to track events, you can use the gtag.js event method.
  * */
-export const event = (action: Gtag.EventNames, { event_category, event_label, value }: Gtag.EventParams) => {
+export const event = (action: Gtag.EventNames | CustomEvent, { event_category, event_label, value }: Gtag.EventParams) => {
   window.gtag('event', action, {
     event_category,
     event_label,
