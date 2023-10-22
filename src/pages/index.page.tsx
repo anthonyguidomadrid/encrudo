@@ -10,7 +10,6 @@ import { client } from '@src/lib/client'
 const Page = ({
   page
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  console.log({ page })
   return (
     <>
       {page.seo && <SeoFields {...page.seo} />}

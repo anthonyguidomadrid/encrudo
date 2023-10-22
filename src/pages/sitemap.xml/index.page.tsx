@@ -29,6 +29,14 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
     promiseArr
   )
 
+  const getPageUrl = (item): string => {
+    if (item.slug) return `/proyectos/${item?.slug}`
+    if (item.pageSlug) return item.pageSlug
+    if (item.pageName === 'Contact') return 'contacto'
+    if (item.pageName === 'About') return 'sobre-nosotros'
+    return ''
+  }
+
   const fields = dataPerLocale
     .map((localeData, index) =>
       Object.values(localeData).flatMap(
@@ -39,12 +47,7 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
                 ? undefined
                 : locales?.[index]
             const url = new URI(origin)
-              .segment([
-                localeForUrl || '',
-                (item?.slug && `/proyectos/${item?.slug}`) ||
-                  item?.pageSlug ||
-                  ''
-              ])
+              .segment([localeForUrl || '', getPageUrl(item)])
               .toString()
 
             return item && !item.seoFields?.excludeFromSitemap

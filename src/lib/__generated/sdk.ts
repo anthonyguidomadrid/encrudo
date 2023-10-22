@@ -3579,7 +3579,7 @@ export type SeoFieldsFragment = { __typename: 'ComponentSeo', pageTitle?: string
       & ImageFieldsFragment
     ) | null> } | null };
 
-export type SitemapPagesFieldsFragment = { __typename?: 'Query', pageHomeCollection?: { __typename?: 'PageHomeCollection', items: Array<{ __typename?: 'PageHome', sys: { __typename?: 'Sys', publishedAt?: any | null } } | null> } | null, pageAboutCollection?: { __typename?: 'PageAboutCollection', items: Array<{ __typename?: 'PageAbout', sys: { __typename?: 'Sys', publishedAt?: any | null } } | null> } | null, pageContactCollection?: { __typename?: 'PageContactCollection', items: Array<{ __typename?: 'PageContact', sys: { __typename?: 'Sys', publishedAt?: any | null } } | null> } | null, pageEditorCollection?: { __typename?: 'PageEditorCollection', items: Array<{ __typename?: 'PageEditor', pageSlug?: string | null, sys: { __typename?: 'Sys', publishedAt?: any | null } } | null> } | null, pageProjectCollection?: { __typename?: 'PageProjectCollection', items: Array<{ __typename?: 'PageProject', slug?: string | null, sys: { __typename?: 'Sys', publishedAt?: any | null } } | null> } | null };
+export type SitemapPagesFieldsFragment = { __typename?: 'Query', pageHomeCollection?: { __typename?: 'PageHomeCollection', items: Array<{ __typename?: 'PageHome', sys: { __typename?: 'Sys', publishedAt?: any | null } } | null> } | null, pageAboutCollection?: { __typename?: 'PageAboutCollection', items: Array<{ __typename?: 'PageAbout', pageName?: string | null, sys: { __typename?: 'Sys', publishedAt?: any | null } } | null> } | null, pageContactCollection?: { __typename?: 'PageContactCollection', items: Array<{ __typename?: 'PageContact', pageName?: string | null, sys: { __typename?: 'Sys', publishedAt?: any | null } } | null> } | null, pageEditorCollection?: { __typename?: 'PageEditorCollection', items: Array<{ __typename?: 'PageEditor', pageSlug?: string | null, sys: { __typename?: 'Sys', publishedAt?: any | null } } | null> } | null, pageProjectCollection?: { __typename?: 'PageProjectCollection', items: Array<{ __typename?: 'PageProject', slug?: string | null, sys: { __typename?: 'Sys', publishedAt?: any | null } } | null> } | null };
 
 export type SitemapPagesQueryVariables = Exact<{
   locale: Scalars['String'];
@@ -3649,6 +3649,7 @@ export const SitemapPagesFieldsFragmentDoc = gql`
   }
   pageAboutCollection(limit: 1, locale: $locale) {
     items {
+      pageName
       sys {
         publishedAt
       }
@@ -3656,6 +3657,7 @@ export const SitemapPagesFieldsFragmentDoc = gql`
   }
   pageContactCollection(limit: 1, locale: $locale) {
     items {
+      pageName
       sys {
         publishedAt
       }

@@ -27,9 +27,9 @@ export const Footer = ({
 
   return (
     <>
-      <section className="bg-beige-light text-primary">
-        <div className="max-w-7xl m-auto px-5">
-          <div className="flex justify-center py-10">
+      <section className="text-primary">
+        <div className="max-w-7xl m-auto px-10">
+          <div className="flex justify-center py-10 border-t-2">
             <Image
               src={logo?.url ?? ''}
               alt={logo?.description ?? ''}
@@ -82,8 +82,8 @@ export const Footer = ({
           </div>
         </div>
       </section>
-      <footer className="bg-grey-dark text-white text-sm">
-        <div className="max-w-7xl m-auto flex text-center flex-col md:flex-row gap-2 justify-between p-3">
+      <footer className="bg-beige-light text-primary text-sm">
+        <div className="max-w-7xl m-auto flex text-center flex-col md:flex-row gap-2 justify-between py-3 px-10">
           <p>{t('footer.copyright', { year: new Date().getFullYear() })}</p>
           <div className="flex gap-5 justify-center">
             <Link href="/aviso-legal" rel="noreferrer" className="no-underline">

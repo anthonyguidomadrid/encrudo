@@ -8,6 +8,7 @@ fragment sitemapPagesFields on Query {
   }
   pageAboutCollection(limit: 1, locale: $locale) {
     items {
+      pageName
       sys {
         publishedAt
       }
@@ -15,6 +16,7 @@ fragment sitemapPagesFields on Query {
   }
   pageContactCollection(limit: 1, locale: $locale) {
     items {
+      pageName
       sys {
         publishedAt
       }

@@ -24,7 +24,7 @@ export const ProjectHeader = ({
       <p className="pb-4 text-lg uppercase">{subtitle}</p>
       <div
         dangerouslySetInnerHTML={{ __html: description }}
-        className="max-w-4xl mx-auto"
+        className="max-w-4xl mx-auto space-y-4"
       />
     </div>
   )
