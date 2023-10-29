@@ -6,13 +6,13 @@ export type PageHeaderProps = {
     url: string
   }
   title: string
-  description: { json: Document }
+  description?: { json: Document }
 }
 
 export const PageHeader = ({
   header: { url },
   title,
-  description: { json }
+  description
 }: PageHeaderProps) => {
   return (
     <>
@@ -24,12 +24,14 @@ export const PageHeader = ({
       />
       <div className="text-center py-20 px-10">
         <h1>{title}</h1>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: documentToHtmlString(json)
-          }}
-          className="max-w-2xl mx-auto pt-5 space-y-4"
-        />
+        {description && (
+          <div
+            dangerouslySetInnerHTML={{
+              __html: documentToHtmlString(description.json)
+            }}
+            className="max-w-2xl mx-auto pt-5 space-y-4"
+          />
+        )}
       </div>
     </>
   )
