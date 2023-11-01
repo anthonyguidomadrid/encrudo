@@ -37,6 +37,7 @@ export default function Document() {
           color="#5bbad5"
         />
         <link rel="icon" type="image/x-icon" href="/favicons/favicon.ico" />
+        <link rel="icon" href="/favicons/favicon.ico" />
         <meta name="msapplication-TileColor" content="#ffffff" />
         <meta
           name="msapplication-config"
