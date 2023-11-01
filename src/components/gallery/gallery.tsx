@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { useState } from 'react'
 import Lightbox from 'react-image-lightbox'
+import { motion } from 'framer-motion'
 
 import { Picture } from '../types'
 
@@ -47,7 +48,7 @@ export const Gallery = ({ photos, columnAmount }: GalleryProps) => {
         {photosColumns.map((photoArray, idx) => (
           <div className="grid gap-10" key={idx}>
             {photoArray.map((photo, idx) => (
-              <button
+              <motion.button
                 key={idx}
                 onClick={() => {
                   setLightBoxOpen(true)
@@ -55,6 +56,8 @@ export const Gallery = ({ photos, columnAmount }: GalleryProps) => {
                     photos.findIndex(picture => picture.url === photo.url) ?? 0
                   )
                 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
               >
                 <Image
                   className="h-full w-full object-cover object-center hover:scale-105 transition duration-500 ease-in-out"
@@ -63,7 +66,7 @@ export const Gallery = ({ photos, columnAmount }: GalleryProps) => {
                   width={1200}
                   height={900}
                 />
-              </button>
+              </motion.button>
             ))}
           </div>
         ))}

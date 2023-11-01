@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -16,7 +17,11 @@ export const ProductTile = ({ project }: ProductTileProps) => {
   return (
     <Link href={`/proyectos/${project.slug}`}>
       <div className="flex items-center justify-center">
-        <div className="overflow-hidden cursor-pointer relative group uppercase text-center">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          className="overflow-hidden cursor-pointer relative group uppercase text-center"
+        >
           <div className="z-10 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition duration-300 ease-in-out cursor-pointer absolute from-black/80 to-transparent bg-gradient-to-t inset-x-0 -bottom-2 pt-30 text-white h-full flex justify-center items-end">
             <div>
               <div className="transform-gpu p-4 space-y-3 text-xl group-hover:opacity-100 group-hover:translate-y-0 translate-y-4 pb-10 transform transition duration-300 ease-in-out w-full">
@@ -33,7 +38,7 @@ export const ProductTile = ({ project }: ProductTileProps) => {
             width={500}
             height={500}
           />
-        </div>
+        </motion.div>
       </div>
     </Link>
   )
