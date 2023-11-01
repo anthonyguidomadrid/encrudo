@@ -30,7 +30,7 @@ export const LanguageSelector = ({
           <button
             key={idx}
             className={classNames(
-              'uppercase border-r pr-2 last:pl-2 last:border-0 last:pr-0',
+              'uppercase border-r pr-2 last:pl-2 last:border-0 last:pr-0 hover:opacity-70',
               {
                 'border-primary': isDark
               }

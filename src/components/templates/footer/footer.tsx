@@ -24,6 +24,7 @@ export const Footer = ({
 }: FooterProps) => {
   const { t } = useTranslation()
   const phoneNumber = transformPhoneNumberToLink(contactContent?.phone)
+  const linkClassName = 'no-underline hover:opacity-70'
 
   return (
     <>
@@ -43,12 +44,12 @@ export const Footer = ({
               <Link
                 href={`mailto: ${contactContent?.email}`}
                 target={'_blank'}
-                className="no-underline"
+                className={linkClassName}
                 rel="noreferrer"
               >
                 {contactContent?.email}
               </Link>
-              <Link href={`tel:${phoneNumber}`} className="no-underline">
+              <Link href={`tel:${phoneNumber}`} className={linkClassName}>
                 {contactContent?.phone}
               </Link>
             </FooterWrapper>
@@ -57,7 +58,7 @@ export const Footer = ({
                 <Link
                   key={index}
                   href={menuItem?.link ?? ''}
-                  className="no-underline"
+                  className={linkClassName}
                 >
                   {menuItem?.name}
                 </Link>
@@ -69,7 +70,7 @@ export const Footer = ({
                   key={index}
                   href={menuItem?.link ?? ''}
                   target={'_blank'}
-                  className="no-underline"
+                  className={linkClassName}
                   rel="noreferrer"
                 >
                   {menuItem?.name}
