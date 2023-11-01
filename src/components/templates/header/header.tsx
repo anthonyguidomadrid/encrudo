@@ -40,7 +40,7 @@ export const Header: FunctionComponent<HeaderProps> = ({
     <>
       <nav
         className={classNames(
-          'flex items-center justify-between flex-wrap p-5 uppercase fixed top-0 w-full z-50 text-white',
+          'flex items-center justify-between flex-wrap p-7 uppercase fixed top-0 w-full z-50 text-white',
           {
             'bg-white bg-opacity-90 text-primary': isDark
           }
@@ -55,9 +55,9 @@ export const Header: FunctionComponent<HeaderProps> = ({
                   ? logoDark?.description ?? ''
                   : logoLight?.description ?? ''
               }
-              className="h-7 mb-3"
+              className="w-auto h-7"
               width="100"
-              height="28"
+              height="27"
             />
           </Link>
         </div>

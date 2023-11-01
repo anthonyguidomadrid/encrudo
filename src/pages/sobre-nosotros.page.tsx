@@ -43,11 +43,11 @@ const Page = ({
               arrows: false
             }}
           >
-            {picturesOfReferenceCollection.items.map(slide => (
-              <SplideSlide key={slide.alt}>
+            {picturesOfReferenceCollection.items.map((slide, idx) => (
+              <SplideSlide key={idx}>
                 <Image
                   src={slide.url}
-                  alt={slide.alt}
+                  alt={slide.description}
                   width={SLIDE_DIMENSION.width}
                   height={SLIDE_DIMENSION.height}
                 />
