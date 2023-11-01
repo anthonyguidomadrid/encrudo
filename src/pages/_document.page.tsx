@@ -24,6 +24,12 @@ export default function Document() {
           sizes="16x16"
           href="/favicons/favicon-16x16.png"
         />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="48x48"
+          href="/favicons/favicon-48x48.png"
+        />
         <link rel="manifest" href="/favicons/site.webmanifest" />
         <link
           rel="mask-icon"
@@ -31,6 +37,7 @@ export default function Document() {
           color="#5bbad5"
         />
         <link rel="shortcut icon" href="/favicons/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="/favicons/favicon.ico" />
         <meta name="msapplication-TileColor" content="#ffffff" />
         <meta
           name="msapplication-config"
@@ -42,14 +49,14 @@ export default function Document() {
           rel="stylesheet"
         />
         <Script
-            id={GA_TRACKING_ID}
-            strategy='afterInteractive'
-            src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`} 
-           />
-
-          <Script
           id={GA_TRACKING_ID}
-          strategy='afterInteractive'
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+        />
+
+        <Script
+          id={GA_TRACKING_ID}
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
             window.dataLayer = window.dataLayer || [];
