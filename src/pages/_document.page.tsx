@@ -36,8 +36,7 @@ export default function Document() {
           href="/favicons/safari-pinned-tab.svg"
           color="#5bbad5"
         />
-        <link rel="shortcut icon" href="/favicons/favicon.ico" />
-        <link rel="icon" type="image/x-icon" href="/favicons/favicon.ico" />
+        <link rel="icon" href="/favicons/favicon.ico" />
         <meta name="msapplication-TileColor" content="#ffffff" />
         <meta
           name="msapplication-config"
