@@ -1,7 +1,8 @@
 import classNames from 'classnames'
+import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { FunctionComponent, useState } from 'react'
+import { FunctionComponent, useEffect, useMemo, useState } from 'react'
 
 import { Logo, MenuItem } from '../layout'
 
@@ -9,6 +10,7 @@ import { LanguageSelector } from './'
 
 import CrossIcon from '@icons/cross.svg'
 import HamburgerMenu from '@icons/menu.svg'
+import { OutsideClickDetector } from '@src/helpers/detectOutsideClick'
 
 export type HeaderProps = {
   logoLight?: Logo
@@ -27,6 +29,7 @@ export const Header: FunctionComponent<HeaderProps> = ({
   const scrollFunction = () => {
     if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
       setIsPageScrolled(true)
+      isMenuOpen && setMenuOpen(false)
     } else {
       setIsPageScrolled(false)
     }
@@ -37,7 +40,7 @@ export const Header: FunctionComponent<HeaderProps> = ({
   const isDark = ispageScrolled || isMenuOpen
 
   return (
-    <>
+    <OutsideClickDetector isMenuOpen={isMenuOpen} setMenuOpen={setMenuOpen}>
       <nav
         className={classNames(
           'flex items-center justify-between flex-wrap p-7 uppercase fixed top-0 w-full z-50 text-white',
@@ -64,7 +67,10 @@ export const Header: FunctionComponent<HeaderProps> = ({
         <div className="block md:hidden">
           <button
             className="flex items-center"
-            onClick={() => setMenuOpen(!isMenuOpen)}
+            onClick={e => {
+              e.stopPropagation()
+              setMenuOpen(!isMenuOpen)
+            }}
           >
             {isMenuOpen ? (
               <CrossIcon className={'h-6 w-6 text-primary'} />
@@ -84,7 +90,7 @@ export const Header: FunctionComponent<HeaderProps> = ({
             { hidden: !isMenuOpen }
           )}
         >
-          <div className="text-sm md:flex-grow">
+          <motion.div className="text-sm md:flex-grow">
             <div className="flex flex-col md:flex-row md:justify-center gap-5 my-5 md:my-0">
               {menuContent?.map((item, idx) => {
                 return (
@@ -101,7 +107,7 @@ export const Header: FunctionComponent<HeaderProps> = ({
                 )
               })}
             </div>
-          </div>
+          </motion.div>
           <div>
             <LanguageSelector
               isDark={isDark}
@@ -110,6 +116,6 @@ export const Header: FunctionComponent<HeaderProps> = ({
           </div>
         </div>
       </nav>
-    </>
+    </OutsideClickDetector>
   )
 }

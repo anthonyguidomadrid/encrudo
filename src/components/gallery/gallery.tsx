@@ -1,7 +1,7 @@
+import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { useState } from 'react'
 import Lightbox from 'react-image-lightbox'
-import { motion } from 'framer-motion'
 
 import { Picture } from '../types'
 
