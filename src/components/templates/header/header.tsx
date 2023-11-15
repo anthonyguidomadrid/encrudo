@@ -1,43 +1,45 @@
-import classNames from 'classnames';
-import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
-import Link from 'next/link';
-import { FunctionComponent, useState } from 'react';
+import classNames from 'classnames'
+import { motion, AnimatePresence } from 'framer-motion'
+import Image from 'next/image'
+import Link from 'next/link'
+import { FunctionComponent, useState } from 'react'
 
-import { Logo, MenuItem } from '../layout';
+import { Logo, MenuItem } from '../layout'
 
-import { LanguageSelector } from './';
+import { LanguageSelector } from './'
 
-import CrossIcon from '@icons/cross.svg';
-import HamburgerMenu from '@icons/menu.svg';
-import { OutsideClickDetector } from '@src/helpers/detectOutsideClick';
+import CrossIcon from '@icons/cross.svg'
+import HamburgerMenu from '@icons/menu.svg'
+import { OutsideClickDetector } from '@src/helpers/detectOutsideClick'
+import { useDesktop } from '@src/hooks/useDesktop'
 
 export type HeaderProps = {
-  logoLight?: Logo;
-  logoDark?: Logo;
-  menuContent?: MenuItem[];
-};
+  logoLight?: Logo
+  logoDark?: Logo
+  menuContent?: MenuItem[]
+}
 
 export const Header: FunctionComponent<HeaderProps> = ({
   logoLight,
   logoDark,
-  menuContent,
+  menuContent
 }) => {
-  const [isMenuOpen, setMenuOpen] = useState(false);
-  const [ispageScrolled, setIsPageScrolled] = useState(false);
+  const [isMenuOpen, setMenuOpen] = useState(false)
+  const [ispageScrolled, setIsPageScrolled] = useState(false)
+  const { isDesktop } = useDesktop()
 
   const scrollFunction = () => {
     if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
-      setIsPageScrolled(true);
-      isMenuOpen && setMenuOpen(false);
+      setIsPageScrolled(true)
+      isMenuOpen && setMenuOpen(false)
     } else {
-      setIsPageScrolled(false);
+      setIsPageScrolled(false)
     }
-  };
+  }
 
-  global.onscroll = () => scrollFunction();
+  global.onscroll = () => scrollFunction()
 
-  const isDark = ispageScrolled || isMenuOpen;
+  const isDark = ispageScrolled || isMenuOpen
 
   return (
     <OutsideClickDetector isMenuOpen={isMenuOpen} setMenuOpen={setMenuOpen}>
@@ -45,7 +47,7 @@ export const Header: FunctionComponent<HeaderProps> = ({
         className={classNames(
           'flex items-center justify-between flex-wrap p-7 uppercase fixed top-0 w-full z-50 text-white',
           {
-            'bg-white bg-opacity-90 text-primary': isDark,
+            'bg-white bg-opacity-90 text-primary': isDark
           }
         )}
       >
@@ -67,9 +69,9 @@ export const Header: FunctionComponent<HeaderProps> = ({
         <div className="block md:hidden">
           <button
             className="flex items-center"
-            onClick={(e) => {
-              e.stopPropagation();
-              setMenuOpen(!isMenuOpen);
+            onClick={e => {
+              e.stopPropagation()
+              setMenuOpen(!isMenuOpen)
             }}
           >
             {isMenuOpen ? (
@@ -78,14 +80,14 @@ export const Header: FunctionComponent<HeaderProps> = ({
               <HamburgerMenu
                 className={classNames('h-6 w-6', {
                   'fill-white': !isDark,
-                  'fill-primary': isDark,
+                  'fill-primary': isDark
                 })}
               />
             )}
           </button>
         </div>
         <AnimatePresence>
-          {isMenuOpen && (
+          {(isDesktop || isMenuOpen) && (
             <motion.div
               key="menu"
               initial={{ opacity: 0 }}
@@ -93,7 +95,7 @@ export const Header: FunctionComponent<HeaderProps> = ({
               exit={{ opacity: 0 }}
               className={classNames(
                 'w-full block flex-grow md:flex md:items-center md:w-auto',
-                { hidden: !isMenuOpen }
+                { hidden: !isMenuOpen && !isDesktop }
               )}
             >
               <motion.div
@@ -108,7 +110,7 @@ export const Header: FunctionComponent<HeaderProps> = ({
                     <Link
                       key={idx}
                       className={classNames('no-underline hover:opacity-70', {
-                        'text-primary': isDark,
+                        'text-primary': isDark
                       })}
                       href={item?.link ?? ''}
                       onClick={() => setMenuOpen && setMenuOpen(false)}
@@ -134,5 +136,5 @@ export const Header: FunctionComponent<HeaderProps> = ({
         </AnimatePresence>
       </nav>
     </OutsideClickDetector>
-  );
-};
+  )
+}
