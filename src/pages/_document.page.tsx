@@ -5,7 +5,7 @@ import { GA_TRACKING_ID } from '@src/helpers/gtag'
 
 export default function Document() {
   return (
-    <Html lang="en">
+    <Html lang="en" className="scroll-smooth">
       <Head>
         <link
           rel="apple-touch-icon"

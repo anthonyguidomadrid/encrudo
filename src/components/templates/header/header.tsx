@@ -114,6 +114,7 @@ export const Header: FunctionComponent<HeaderProps> = ({
                       })}
                       href={item?.link ?? ''}
                       onClick={() => setMenuOpen && setMenuOpen(false)}
+                      scroll={false}
                     >
                       {item?.name}
                     </Link>
