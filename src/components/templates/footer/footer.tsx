@@ -59,6 +59,7 @@ export const Footer = ({
                   key={index}
                   href={menuItem?.link ?? ''}
                   className={linkClassName}
+                  scroll={!menuItem?.link?.includes('#')}
                 >
                   {menuItem?.name}
                 </Link>
