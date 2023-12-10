@@ -114,7 +114,7 @@ export const Header: FunctionComponent<HeaderProps> = ({
                       })}
                       href={item?.link ?? ''}
                       onClick={() => setMenuOpen && setMenuOpen(false)}
-                      scroll={false}
+                      scroll={!item?.link?.includes('#')}
                     >
                       {item?.name}
                     </Link>
