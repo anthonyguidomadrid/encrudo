@@ -9,7 +9,7 @@ import { PageHeader } from '@src/components/pageHeader'
 import { transformPhoneNumberToLink } from '@src/helpers/transformPhoneNumber'
 import { client } from '@src/lib/client'
 import { getServerSideTranslations } from '@src/pages/utils/get-serverside-translations'
-
+import { GoogleMap } from '@src/components/googleMap'
 
 const Page = ({
   page
@@ -46,6 +46,7 @@ const Page = ({
             </div>
           </div>
           <ContactForm />
+          <GoogleMap />
         </>
       }
     </>
