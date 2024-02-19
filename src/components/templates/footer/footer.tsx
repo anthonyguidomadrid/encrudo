@@ -84,10 +84,9 @@ export const Footer = ({
           <div className="flex justify-center mt-6 mb-10 md:mb-6">
             <MailchimpSubscribe
               url={process.env.NEXT_PUBLIC_MAILCHIMP_URL}
-              render={({ subscribe, status, message }) => (
+              render={({ subscribe, status }) => (
                 <NewsletterForm
                   status={status}
-                  message={message}
                   onValidated={formData => subscribe(formData)}
                 />
               )}
