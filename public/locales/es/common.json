@@ -33,6 +33,12 @@
       "between": "y de",
       "legal": "Aviso Legal"
     } 
+  },
+  "newsletter": {
+    "placeholder": "Suscríbete a nuestro newsletter",
+    "sending": "Enviando...",
+    "error": "Ha occurido un error, intentálo de nuevo",
+    "success": "¡Gracias por suscribirte!"
   }
 }
   

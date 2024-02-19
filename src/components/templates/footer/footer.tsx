@@ -1,13 +1,15 @@
 import { useTranslation } from 'next-i18next'
 import Image from 'next/image'
 import Link from 'next/link'
+import MailchimpSubscribe from 'react-mailchimp-subscribe'
 
-import { LanguageSelector } from '../header'
 import { ContactContent, Logo, SocialMediaContent, MenuItem } from '../layout'
 
 import { FooterWrapper } from '.'
 
+import ArrowDown from '@icons/arrow-down.svg'
 import { transformPhoneNumberToLink } from '@src/helpers/transformPhoneNumber'
+import { NewsletterForm } from '@src/components/newsletterForm'
 
 export type FooterProps = {
   logo?: Logo
@@ -79,8 +81,17 @@ export const Footer = ({
               ))}
             </FooterWrapper>
           </div>
-          <div className="flex justify-center py-2">
-            <LanguageSelector />
+          <div className="flex justify-center mt-6 mb-10 md:mb-6">
+            <MailchimpSubscribe
+              url={process.env.NEXT_PUBLIC_MAILCHIMP_URL}
+              render={({ subscribe, status, message }) => (
+                <NewsletterForm
+                  status={status}
+                  message={message}
+                  onValidated={formData => subscribe(formData)}
+                />
+              )}
+            />
           </div>
         </div>
       </section>

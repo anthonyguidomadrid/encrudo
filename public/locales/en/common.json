@@ -31,5 +31,11 @@
       "start": "By submitting this form you agree to our",
       "between": "and"
     }
+  },
+  "newsletter": {
+    "placeholder": "Subscribe to our newsletter",
+    "sending": "Sending...",
+    "error": "An error occurred, please try again",
+    "success": "Thanks for subscribing!"
   }
 }
