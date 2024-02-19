@@ -5,11 +5,11 @@ import LocationIcon from '@icons/location.svg'
 import PhoneIcon from '@icons/phone.svg'
 import { ContactForm } from '@src/components/contactForm'
 import { SeoFields } from '@src/components/features/seo'
+import { GoogleMap } from '@src/components/googleMap'
 import { PageHeader } from '@src/components/pageHeader'
 import { transformPhoneNumberToLink } from '@src/helpers/transformPhoneNumber'
 import { client } from '@src/lib/client'
 import { getServerSideTranslations } from '@src/pages/utils/get-serverside-translations'
-import { GoogleMap } from '@src/components/googleMap'
 
 const Page = ({
   page

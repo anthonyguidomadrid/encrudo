@@ -7,9 +7,8 @@ import { ContactContent, Logo, SocialMediaContent, MenuItem } from '../layout'
 
 import { FooterWrapper } from '.'
 
-import ArrowDown from '@icons/arrow-down.svg'
-import { transformPhoneNumberToLink } from '@src/helpers/transformPhoneNumber'
 import { NewsletterForm } from '@src/components/newsletterForm'
+import { transformPhoneNumberToLink } from '@src/helpers/transformPhoneNumber'
 
 export type FooterProps = {
   logo?: Logo
