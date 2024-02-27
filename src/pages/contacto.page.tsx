@@ -1,6 +1,6 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
-
 import Script from 'next/script'
+
 import EmailIcon from '@icons/email.svg'
 import LocationIcon from '@icons/location.svg'
 import PhoneIcon from '@icons/phone.svg'
