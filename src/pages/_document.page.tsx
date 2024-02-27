@@ -1,7 +1,7 @@
 import { Html, Head, Main, NextScript } from 'next/document'
 import Script from 'next/script'
 
-import { GA_TRACKING_ID } from '@src/helpers/gtag'
+import { GA_TRACKING_ID, GTAG_TRACKING_ID } from '@src/helpers/gtag'
 
 export default function Document() {
   return (
@@ -68,6 +68,18 @@ export default function Document() {
           `
           }}
         />
+        <Script
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=${GTAG_TRACKING_ID}`}
+        />
+        <Script id="gtag-config" strategy="afterInteractive">
+          {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${GTAG_TRACKING_ID}');
+        `}
+        </Script>
       </Head>
       <body>
         <Main />

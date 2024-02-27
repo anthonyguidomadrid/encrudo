@@ -1,4 +1,5 @@
 export const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_ID as string
+export const GTAG_TRACKING_ID = process.env.NEXT_PUBLIC_GTAG_ID
 
 type CustomEvent = 'form_contact'
 

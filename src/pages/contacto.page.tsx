@@ -1,5 +1,6 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 
+import Script from 'next/script'
 import EmailIcon from '@icons/email.svg'
 import LocationIcon from '@icons/location.svg'
 import PhoneIcon from '@icons/phone.svg'
@@ -7,6 +8,7 @@ import { ContactForm } from '@src/components/contactForm'
 import { SeoFields } from '@src/components/features/seo'
 import { GoogleMap } from '@src/components/googleMap'
 import { PageHeader } from '@src/components/pageHeader'
+import { GTAG_TRACKING_ID } from '@src/helpers/gtag'
 import { transformPhoneNumberToLink } from '@src/helpers/transformPhoneNumber'
 import { client } from '@src/lib/client'
 import { getServerSideTranslations } from '@src/pages/utils/get-serverside-translations'
@@ -23,6 +25,9 @@ const Page = ({
       {seo && <SeoFields {...seo} />}
       {
         <>
+          <Script id="conversion-script">
+            {`gtag('event', 'conversion', {'send_to': '${GTAG_TRACKING_ID}/SvDsCKq_ppYZEMGphqED'});`}
+          </Script>
           <PageHeader {...pageHeader} />
           <div className="mx-5 flex flex-col gap-4">
             <p className={contactClass}>

@@ -2,6 +2,8 @@ import { ReactNode } from 'react'
 
 import { Footer } from '../footer'
 import { Header } from '../header'
+import Script from 'next/script'
+import { GTAG_TRACKING_ID } from '@src/helpers/gtag'
 
 export type SocialMedia = {
   url?: string | null
