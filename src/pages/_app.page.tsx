@@ -1,3 +1,4 @@
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { appWithTranslation } from 'next-i18next'
 import type { AppContext, AppProps } from 'next/app'
 import { useRouter } from 'next/router'
@@ -38,6 +39,7 @@ const App = ({ Component, pageProps, data }: AppProperties) => {
       socialMediaContent={data?.componentSocialMediaCollection?.items}
     >
       <Component {...pageProps} />
+      <SpeedInsights />
     </Layout>
   )
 }
