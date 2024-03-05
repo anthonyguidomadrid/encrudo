@@ -1,7 +1,7 @@
 'use client'
 
-import { useTranslation } from 'next-i18next'
 import Link from 'next/link'
+import { useTranslation } from 'next-i18next'
 import { useRef, useState } from 'react'
 import ReCAPTCHA from 'react-google-recaptcha'
 
@@ -10,9 +10,13 @@ import * as gtag from '../../helpers/gtag'
 import ErrorIcon from '@icons/error.svg'
 import SuccessIcon from '@icons/success.svg'
 
-export const ContactForm = () => {
+type ContactFormProps = {
+  isSuccess: boolean
+  setIsSuccess: (param: boolean) => void
+}
+
+export const ContactForm = ({isSuccess, setIsSuccess}: ContactFormProps) => {
   const [loading, setLoading] = useState(false)
-  const [isSuccess, setIsSuccess] = useState(false)
   const [isError, setIsError] = useState(false)
   const [captchaValue, setCaptchaValue] = useState({
     callback: 'not fired',
