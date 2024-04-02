@@ -1,5 +1,3 @@
-'use client'
-
 import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 import { useRef, useState } from 'react'
@@ -15,7 +13,7 @@ type ContactFormProps = {
   setIsSuccess: (param: boolean) => void
 }
 
-export const ContactForm = ({isSuccess, setIsSuccess}: ContactFormProps) => {
+export const ContactForm = ({ isSuccess, setIsSuccess }: ContactFormProps) => {
   const [loading, setLoading] = useState(false)
   const [isError, setIsError] = useState(false)
   const [captchaValue, setCaptchaValue] = useState({
@@ -34,17 +32,17 @@ export const ContactForm = ({isSuccess, setIsSuccess}: ContactFormProps) => {
   const recaptchaRef = useRef({ execute: () => undefined })
 
   async function handleSubmit(event: any) {
-    gtag.event('form_contact', {})
-    event.preventDefault()
-    await recaptchaRef.current?.execute()
-    setLoading(true)
-
     const data = {
       name: event.target.name.value,
       email: event.target.email.value,
       phone: event.target.phone.value,
       message: event.target.message.value
     }
+
+    gtag.event('form_contact', data)
+    event.preventDefault()
+    await recaptchaRef.current?.execute()
+    setLoading(true)
 
     const response = await fetch('/api/contact', {
       method: 'POST',

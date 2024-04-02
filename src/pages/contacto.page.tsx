@@ -1,6 +1,5 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import Script from 'next/script'
-
 import { useState } from 'react'
 
 import EmailIcon from '@icons/email.svg'
@@ -21,14 +20,14 @@ const Page = ({
   const { pageHeader, contactInformation, seo } = page
   const phoneNumberLink = transformPhoneNumberToLink(contactInformation?.phone)
   const contactClass = 'flex justify-center gap-2'
-  const [isSuccess, setIsSuccess] = useState(false)
+  const [isContactMsgSent, setIsContactMsgSent] = useState(false)
 
   return (
     <>
       {seo && <SeoFields {...seo} />}
       {
         <>
-          {isSuccess && (
+          {isContactMsgSent && (
             <Script id="conversion-script">
               {`gtag('event', 'conversion', {'send_to': '${GTAG_TRACKING_ID}/SvDsCKq_ppYZEMGphqED'});`}
             </Script>
@@ -55,7 +54,10 @@ const Page = ({
               {contactInformation?.location}
             </div>
           </div>
-          <ContactForm isSuccess={isSuccess} setIsSuccess={setIsSuccess} />
+          <ContactForm
+            isSuccess={isContactMsgSent}
+            setIsSuccess={setIsContactMsgSent}
+          />
           <GoogleMap />
         </>
       }
