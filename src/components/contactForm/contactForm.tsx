@@ -39,7 +39,10 @@ export const ContactForm = ({ isSuccess, setIsSuccess }: ContactFormProps) => {
       message: event.target.message.value
     }
 
-    gtag.event('form_contact', data)
+    gtag.event('form_contact', {
+      ...data,
+      email: data.email.replace('@', '')
+    })
     event.preventDefault()
     await recaptchaRef.current?.execute()
     setLoading(true)
