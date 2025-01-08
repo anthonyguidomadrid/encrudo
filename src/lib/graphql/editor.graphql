@@ -5,6 +5,7 @@ query pageEditor($slug: String!, $locale: String, $preview: Boolean) {
       content {
         json
       }
+      html
       seo {
         ...SeoFields
       }

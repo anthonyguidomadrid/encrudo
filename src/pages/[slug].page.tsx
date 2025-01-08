@@ -1,4 +1,5 @@
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
+import { BLOCKS } from '@contentful/rich-text-types'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 
 import { SeoFields } from '@src/components/features/seo'
@@ -11,7 +12,8 @@ const Page = ({
   const {
     pageName,
     content: { json },
-    seo
+    seo,
+    html
   } = page
 
   return (
@@ -28,6 +30,13 @@ const Page = ({
         }}
         className="max-w-4xl mx-auto py-10 px-5 space-y-4"
       />
+
+      {html && (
+        <div
+          dangerouslySetInnerHTML={{ __html: html }}
+          className="max-w-4xl mx-auto pb-10 px-5 space-y-4 flex justify-center"
+        />
+      )}
     </>
   )
 }

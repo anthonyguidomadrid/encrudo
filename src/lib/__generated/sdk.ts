@@ -176,9 +176,6 @@ export type AssetLinkingCollections = {
   componentSliderCollection?: Maybe<ComponentSliderCollection>;
   entryCollection?: Maybe<EntryCollection>;
   pageAboutCollection?: Maybe<PageAboutCollection>;
-  pageLandingCollection?: Maybe<PageLandingCollection>;
-  pageNotFoundCollection?: Maybe<PageNotFoundCollection>;
-  pageProductCollection?: Maybe<PageProductCollection>;
   pageProjectCollection?: Maybe<PageProjectCollection>;
 };
 
@@ -186,7 +183,6 @@ export type AssetLinkingCollections = {
 export type AssetLinkingCollectionsAssetsCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
-  order?: InputMaybe<Array<InputMaybe<AssetLinkingCollectionsAssetsCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
@@ -195,7 +191,6 @@ export type AssetLinkingCollectionsAssetsCollectionArgs = {
 export type AssetLinkingCollectionsComponentPageHeaderCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
-  order?: InputMaybe<Array<InputMaybe<AssetLinkingCollectionsComponentPageHeaderCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
@@ -204,7 +199,6 @@ export type AssetLinkingCollectionsComponentPageHeaderCollectionArgs = {
 export type AssetLinkingCollectionsComponentSeoCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
-  order?: InputMaybe<Array<InputMaybe<AssetLinkingCollectionsComponentSeoCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
@@ -213,7 +207,6 @@ export type AssetLinkingCollectionsComponentSeoCollectionArgs = {
 export type AssetLinkingCollectionsComponentSliderCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
-  order?: InputMaybe<Array<InputMaybe<AssetLinkingCollectionsComponentSliderCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
@@ -230,34 +223,6 @@ export type AssetLinkingCollectionsEntryCollectionArgs = {
 export type AssetLinkingCollectionsPageAboutCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
-  order?: InputMaybe<Array<InputMaybe<AssetLinkingCollectionsPageAboutCollectionOrder>>>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-  skip?: InputMaybe<Scalars['Int']>;
-};
-
-
-export type AssetLinkingCollectionsPageLandingCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>;
-  locale?: InputMaybe<Scalars['String']>;
-  order?: InputMaybe<Array<InputMaybe<AssetLinkingCollectionsPageLandingCollectionOrder>>>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-  skip?: InputMaybe<Scalars['Int']>;
-};
-
-
-export type AssetLinkingCollectionsPageNotFoundCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>;
-  locale?: InputMaybe<Scalars['String']>;
-  order?: InputMaybe<Array<InputMaybe<AssetLinkingCollectionsPageNotFoundCollectionOrder>>>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-  skip?: InputMaybe<Scalars['Int']>;
-};
-
-
-export type AssetLinkingCollectionsPageProductCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>;
-  locale?: InputMaybe<Scalars['String']>;
-  order?: InputMaybe<Array<InputMaybe<AssetLinkingCollectionsPageProductCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
@@ -266,145 +231,9 @@ export type AssetLinkingCollectionsPageProductCollectionArgs = {
 export type AssetLinkingCollectionsPageProjectCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
-  order?: InputMaybe<Array<InputMaybe<AssetLinkingCollectionsPageProjectCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
-
-export enum AssetLinkingCollectionsAssetsCollectionOrder {
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
-  SysIdAsc = 'sys_id_ASC',
-  SysIdDesc = 'sys_id_DESC',
-  SysPublishedAtAsc = 'sys_publishedAt_ASC',
-  SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
-}
-
-export enum AssetLinkingCollectionsComponentPageHeaderCollectionOrder {
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
-  SysIdAsc = 'sys_id_ASC',
-  SysIdDesc = 'sys_id_DESC',
-  SysPublishedAtAsc = 'sys_publishedAt_ASC',
-  SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
-  TitleAsc = 'title_ASC',
-  TitleDesc = 'title_DESC'
-}
-
-export enum AssetLinkingCollectionsComponentSeoCollectionOrder {
-  CanonicalUrlAsc = 'canonicalUrl_ASC',
-  CanonicalUrlDesc = 'canonicalUrl_DESC',
-  InternalNameAsc = 'internalName_ASC',
-  InternalNameDesc = 'internalName_DESC',
-  NofollowAsc = 'nofollow_ASC',
-  NofollowDesc = 'nofollow_DESC',
-  NoindexAsc = 'noindex_ASC',
-  NoindexDesc = 'noindex_DESC',
-  PageTitleAsc = 'pageTitle_ASC',
-  PageTitleDesc = 'pageTitle_DESC',
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
-  SysIdAsc = 'sys_id_ASC',
-  SysIdDesc = 'sys_id_DESC',
-  SysPublishedAtAsc = 'sys_publishedAt_ASC',
-  SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
-}
-
-export enum AssetLinkingCollectionsComponentSliderCollectionOrder {
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
-  SysIdAsc = 'sys_id_ASC',
-  SysIdDesc = 'sys_id_DESC',
-  SysPublishedAtAsc = 'sys_publishedAt_ASC',
-  SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
-}
-
-export enum AssetLinkingCollectionsPageAboutCollectionOrder {
-  PageNameAsc = 'pageName_ASC',
-  PageNameDesc = 'pageName_DESC',
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
-  SysIdAsc = 'sys_id_ASC',
-  SysIdDesc = 'sys_id_DESC',
-  SysPublishedAtAsc = 'sys_publishedAt_ASC',
-  SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
-}
-
-export enum AssetLinkingCollectionsPageLandingCollectionOrder {
-  HeroBannerHeadlineColorAsc = 'heroBannerHeadlineColor_ASC',
-  HeroBannerHeadlineColorDesc = 'heroBannerHeadlineColor_DESC',
-  HeroBannerHeadlineAsc = 'heroBannerHeadline_ASC',
-  HeroBannerHeadlineDesc = 'heroBannerHeadline_DESC',
-  InternalNameAsc = 'internalName_ASC',
-  InternalNameDesc = 'internalName_DESC',
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
-  SysIdAsc = 'sys_id_ASC',
-  SysIdDesc = 'sys_id_DESC',
-  SysPublishedAtAsc = 'sys_publishedAt_ASC',
-  SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
-}
-
-export enum AssetLinkingCollectionsPageNotFoundCollectionOrder {
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
-  SysIdAsc = 'sys_id_ASC',
-  SysIdDesc = 'sys_id_DESC',
-  SysPublishedAtAsc = 'sys_publishedAt_ASC',
-  SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
-  TitleAsc = 'title_ASC',
-  TitleDesc = 'title_DESC'
-}
-
-export enum AssetLinkingCollectionsPageProductCollectionOrder {
-  InternalNameAsc = 'internalName_ASC',
-  InternalNameDesc = 'internalName_DESC',
-  NameAsc = 'name_ASC',
-  NameDesc = 'name_DESC',
-  PriceAsc = 'price_ASC',
-  PriceDesc = 'price_DESC',
-  SlugAsc = 'slug_ASC',
-  SlugDesc = 'slug_DESC',
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
-  SysIdAsc = 'sys_id_ASC',
-  SysIdDesc = 'sys_id_DESC',
-  SysPublishedAtAsc = 'sys_publishedAt_ASC',
-  SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
-}
-
-export enum AssetLinkingCollectionsPageProjectCollectionOrder {
-  SlugAsc = 'slug_ASC',
-  SlugDesc = 'slug_DESC',
-  SubtitleAsc = 'subtitle_ASC',
-  SubtitleDesc = 'subtitle_DESC',
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
-  SysIdAsc = 'sys_id_ASC',
-  SysIdDesc = 'sys_id_DESC',
-  SysPublishedAtAsc = 'sys_publishedAt_ASC',
-  SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
-  TitleAsc = 'title_ASC',
-  TitleDesc = 'title_DESC'
-}
 
 export enum AssetOrder {
   ContentTypeAsc = 'contentType_ASC',
@@ -430,8 +259,9 @@ export enum AssetOrder {
 }
 
 /** Logo and social media links [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/assets) */
-export type Assets = Entry & {
+export type Assets = Entry & _Node & {
   __typename?: 'Assets';
+  _id: Scalars['ID'];
   contentfulMetadata: ContentfulMetadata;
   linkedFrom?: Maybe<AssetsLinkingCollections>;
   logoDark?: Maybe<Asset>;
@@ -510,8 +340,9 @@ export enum AssetsOrder {
 }
 
 /** Contact Information in Footer and Contact Page [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentContact) */
-export type ComponentContact = Entry & {
+export type ComponentContact = Entry & _Node & {
   __typename?: 'ComponentContact';
+  _id: Scalars['ID'];
   contentfulMetadata: ContentfulMetadata;
   email?: Maybe<Scalars['String']>;
   linkedFrom?: Maybe<ComponentContactLinkingCollections>;
@@ -634,8 +465,9 @@ export enum ComponentContactOrder {
 }
 
 /** Page header with banner image, title and description [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentPageHeader) */
-export type ComponentPageHeader = Entry & {
+export type ComponentPageHeader = Entry & _Node & {
   __typename?: 'ComponentPageHeader';
+  _id: Scalars['ID'];
   contentfulMetadata: ContentfulMetadata;
   description?: Maybe<ComponentPageHeaderDescription>;
   header?: Maybe<Asset>;
@@ -705,7 +537,24 @@ export type ComponentPageHeaderDescriptionLinks = {
 
 export type ComponentPageHeaderDescriptionResources = {
   __typename?: 'ComponentPageHeaderDescriptionResources';
-  block: Array<ResourceLink>;
+  block: Array<ComponentPageHeaderDescriptionResourcesBlock>;
+  hyperlink: Array<ComponentPageHeaderDescriptionResourcesHyperlink>;
+  inline: Array<ComponentPageHeaderDescriptionResourcesInline>;
+};
+
+export type ComponentPageHeaderDescriptionResourcesBlock = ResourceLink & {
+  __typename?: 'ComponentPageHeaderDescriptionResourcesBlock';
+  sys: ResourceSys;
+};
+
+export type ComponentPageHeaderDescriptionResourcesHyperlink = ResourceLink & {
+  __typename?: 'ComponentPageHeaderDescriptionResourcesHyperlink';
+  sys: ResourceSys;
+};
+
+export type ComponentPageHeaderDescriptionResourcesInline = ResourceLink & {
+  __typename?: 'ComponentPageHeaderDescriptionResourcesInline';
+  sys: ResourceSys;
 };
 
 export type ComponentPageHeaderFilter = {
@@ -799,8 +648,9 @@ export enum ComponentPageHeaderOrder {
 }
 
 /** To have SEO-related properties in the pages we render [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSeo) */
-export type ComponentSeo = Entry & {
+export type ComponentSeo = Entry & _Node & {
   __typename?: 'ComponentSeo';
+  _id: Scalars['ID'];
   canonicalUrl?: Maybe<Scalars['String']>;
   contentfulMetadata: ContentfulMetadata;
   internalName?: Maybe<Scalars['String']>;
@@ -921,8 +771,6 @@ export type ComponentSeoLinkingCollections = {
   pageContactCollection?: Maybe<PageContactCollection>;
   pageEditorCollection?: Maybe<PageEditorCollection>;
   pageHomeCollection?: Maybe<PageHomeCollection>;
-  pageLandingCollection?: Maybe<PageLandingCollection>;
-  pageProductCollection?: Maybe<PageProductCollection>;
   pageProjectCollection?: Maybe<PageProjectCollection>;
 };
 
@@ -966,24 +814,6 @@ export type ComponentSeoLinkingCollectionsPageHomeCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
   order?: InputMaybe<Array<InputMaybe<ComponentSeoLinkingCollectionsPageHomeCollectionOrder>>>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-  skip?: InputMaybe<Scalars['Int']>;
-};
-
-
-export type ComponentSeoLinkingCollectionsPageLandingCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>;
-  locale?: InputMaybe<Scalars['String']>;
-  order?: InputMaybe<Array<InputMaybe<ComponentSeoLinkingCollectionsPageLandingCollectionOrder>>>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-  skip?: InputMaybe<Scalars['Int']>;
-};
-
-
-export type ComponentSeoLinkingCollectionsPageProductCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>;
-  locale?: InputMaybe<Scalars['String']>;
-  order?: InputMaybe<Array<InputMaybe<ComponentSeoLinkingCollectionsPageProductCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
@@ -1051,42 +881,6 @@ export enum ComponentSeoLinkingCollectionsPageHomeCollectionOrder {
   TitleDesc = 'title_DESC'
 }
 
-export enum ComponentSeoLinkingCollectionsPageLandingCollectionOrder {
-  HeroBannerHeadlineColorAsc = 'heroBannerHeadlineColor_ASC',
-  HeroBannerHeadlineColorDesc = 'heroBannerHeadlineColor_DESC',
-  HeroBannerHeadlineAsc = 'heroBannerHeadline_ASC',
-  HeroBannerHeadlineDesc = 'heroBannerHeadline_DESC',
-  InternalNameAsc = 'internalName_ASC',
-  InternalNameDesc = 'internalName_DESC',
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
-  SysIdAsc = 'sys_id_ASC',
-  SysIdDesc = 'sys_id_DESC',
-  SysPublishedAtAsc = 'sys_publishedAt_ASC',
-  SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
-}
-
-export enum ComponentSeoLinkingCollectionsPageProductCollectionOrder {
-  InternalNameAsc = 'internalName_ASC',
-  InternalNameDesc = 'internalName_DESC',
-  NameAsc = 'name_ASC',
-  NameDesc = 'name_DESC',
-  PriceAsc = 'price_ASC',
-  PriceDesc = 'price_DESC',
-  SlugAsc = 'slug_ASC',
-  SlugDesc = 'slug_DESC',
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
-  SysIdAsc = 'sys_id_ASC',
-  SysIdDesc = 'sys_id_DESC',
-  SysPublishedAtAsc = 'sys_publishedAt_ASC',
-  SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
-}
-
 export enum ComponentSeoLinkingCollectionsPageProjectCollectionOrder {
   SlugAsc = 'slug_ASC',
   SlugDesc = 'slug_DESC',
@@ -1126,8 +920,9 @@ export enum ComponentSeoOrder {
 }
 
 /** Home page & product page sliders [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSlider) */
-export type ComponentSlider = Entry & {
+export type ComponentSlider = Entry & _Node & {
   __typename?: 'ComponentSlider';
+  _id: Scalars['ID'];
   contentfulMetadata: ContentfulMetadata;
   imageCollection?: Maybe<AssetCollection>;
   linkedFrom?: Maybe<ComponentSliderLinkingCollections>;
@@ -1213,8 +1008,9 @@ export enum ComponentSliderOrder {
 }
 
 /** Social Media Links in Footer [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSocialMedia) */
-export type ComponentSocialMedia = Entry & {
+export type ComponentSocialMedia = Entry & _Node & {
   __typename?: 'ComponentSocialMedia';
+  _id: Scalars['ID'];
   contentfulMetadata: ContentfulMetadata;
   link?: Maybe<Scalars['String']>;
   linkedFrom?: Maybe<ComponentSocialMediaLinkingCollections>;
@@ -1299,10 +1095,26 @@ export enum ComponentSocialMediaOrder {
 
 export type ContentfulMetadata = {
   __typename?: 'ContentfulMetadata';
+  concepts: Array<Maybe<TaxonomyConcept>>;
   tags: Array<Maybe<ContentfulTag>>;
 };
 
+export type ContentfulMetadataConceptsDescendantsFilter = {
+  id_contains_all?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  id_contains_none?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  id_contains_some?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type ContentfulMetadataConceptsFilter = {
+  descendants?: InputMaybe<ContentfulMetadataConceptsDescendantsFilter>;
+  id_contains_all?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  id_contains_none?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  id_contains_some?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
 export type ContentfulMetadataFilter = {
+  concepts?: InputMaybe<ContentfulMetadataConceptsFilter>;
+  concepts_exists?: InputMaybe<Scalars['Boolean']>;
   tags?: InputMaybe<ContentfulMetadataTagsFilter>;
   tags_exists?: InputMaybe<Scalars['Boolean']>;
 };
@@ -1315,7 +1127,7 @@ export type ContentfulMetadataTagsFilter = {
 
 /**
  * Represents a tag entity for finding and organizing content easily.
- *     Find out more here: https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/content-tags
+ *       Find out more here: https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/content-tags
  */
 export type ContentfulTag = {
   __typename?: 'ContentfulTag';
@@ -1450,8 +1262,9 @@ export type ImageTransformOptions = {
 };
 
 /** Menu items: name, link, index and CTA [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/menu) */
-export type Menu = Entry & {
+export type Menu = Entry & _Node & {
   __typename?: 'Menu';
+  _id: Scalars['ID'];
   contentfulMetadata: ContentfulMetadata;
   indexOrder?: Maybe<Scalars['Int']>;
   isCta?: Maybe<Scalars['Boolean']>;
@@ -1577,8 +1390,9 @@ export enum MenuOrder {
 }
 
 /** About page template [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageAbout) */
-export type PageAbout = Entry & {
+export type PageAbout = Entry & _Node & {
   __typename?: 'PageAbout';
+  _id: Scalars['ID'];
   contentfulMetadata: ContentfulMetadata;
   linkedFrom?: Maybe<PageAboutLinkingCollections>;
   pageHeader?: Maybe<ComponentPageHeader>;
@@ -1679,8 +1493,9 @@ export enum PageAboutOrder {
 }
 
 /** Contact page template [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageContact) */
-export type PageContact = Entry & {
+export type PageContact = Entry & _Node & {
   __typename?: 'PageContact';
+  _id: Scalars['ID'];
   contactInformation?: Maybe<ComponentContact>;
   contentfulMetadata: ContentfulMetadata;
   linkedFrom?: Maybe<PageContactLinkingCollections>;
@@ -1781,10 +1596,12 @@ export enum PageContactOrder {
 }
 
 /** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageEditor) */
-export type PageEditor = Entry & {
+export type PageEditor = Entry & _Node & {
   __typename?: 'PageEditor';
+  _id: Scalars['ID'];
   content?: Maybe<PageEditorContent>;
   contentfulMetadata: ContentfulMetadata;
+  html?: Maybe<Scalars['String']>;
   linkedFrom?: Maybe<PageEditorLinkingCollections>;
   pageName?: Maybe<Scalars['String']>;
   pageSlug?: Maybe<Scalars['String']>;
@@ -1795,6 +1612,12 @@ export type PageEditor = Entry & {
 
 /** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageEditor) */
 export type PageEditorContentArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageEditor) */
+export type PageEditorHtmlArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
@@ -1860,7 +1683,24 @@ export type PageEditorContentLinks = {
 
 export type PageEditorContentResources = {
   __typename?: 'PageEditorContentResources';
-  block: Array<ResourceLink>;
+  block: Array<PageEditorContentResourcesBlock>;
+  hyperlink: Array<PageEditorContentResourcesHyperlink>;
+  inline: Array<PageEditorContentResourcesInline>;
+};
+
+export type PageEditorContentResourcesBlock = ResourceLink & {
+  __typename?: 'PageEditorContentResourcesBlock';
+  sys: ResourceSys;
+};
+
+export type PageEditorContentResourcesHyperlink = ResourceLink & {
+  __typename?: 'PageEditorContentResourcesHyperlink';
+  sys: ResourceSys;
+};
+
+export type PageEditorContentResourcesInline = ResourceLink & {
+  __typename?: 'PageEditorContentResourcesInline';
+  sys: ResourceSys;
 };
 
 export type PageEditorFilter = {
@@ -1870,6 +1710,13 @@ export type PageEditorFilter = {
   content_exists?: InputMaybe<Scalars['Boolean']>;
   content_not_contains?: InputMaybe<Scalars['String']>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  html?: InputMaybe<Scalars['String']>;
+  html_contains?: InputMaybe<Scalars['String']>;
+  html_exists?: InputMaybe<Scalars['Boolean']>;
+  html_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  html_not?: InputMaybe<Scalars['String']>;
+  html_not_contains?: InputMaybe<Scalars['String']>;
+  html_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   pageName?: InputMaybe<Scalars['String']>;
   pageName_contains?: InputMaybe<Scalars['String']>;
   pageName_exists?: InputMaybe<Scalars['Boolean']>;
@@ -1918,8 +1765,9 @@ export enum PageEditorOrder {
 }
 
 /** Home Page [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageHome) */
-export type PageHome = Entry & {
+export type PageHome = Entry & _Node & {
   __typename?: 'PageHome';
+  _id: Scalars['ID'];
   contentfulMetadata: ContentfulMetadata;
   linkedFrom?: Maybe<PageHomeLinkingCollections>;
   projectsCollection?: Maybe<PageHomeProjectsCollection>;
@@ -2047,560 +1895,10 @@ export enum PageHomeProjectsCollectionOrder {
   TitleDesc = 'title_DESC'
 }
 
-/** To have an entry point for the app [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageLanding) */
-export type PageLanding = Entry & {
-  __typename?: 'PageLanding';
-  contentfulMetadata: ContentfulMetadata;
-  heroBannerHeadline?: Maybe<Scalars['String']>;
-  heroBannerHeadlineColor?: Maybe<Scalars['String']>;
-  heroBannerImage?: Maybe<Asset>;
-  internalName?: Maybe<Scalars['String']>;
-  linkedFrom?: Maybe<PageLandingLinkingCollections>;
-  productsCollection?: Maybe<PageLandingProductsCollection>;
-  seoFields?: Maybe<ComponentSeo>;
-  sys: Sys;
-};
-
-
-/** To have an entry point for the app [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageLanding) */
-export type PageLandingHeroBannerHeadlineArgs = {
-  locale?: InputMaybe<Scalars['String']>;
-};
-
-
-/** To have an entry point for the app [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageLanding) */
-export type PageLandingHeroBannerHeadlineColorArgs = {
-  locale?: InputMaybe<Scalars['String']>;
-};
-
-
-/** To have an entry point for the app [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageLanding) */
-export type PageLandingHeroBannerImageArgs = {
-  locale?: InputMaybe<Scalars['String']>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-};
-
-
-/** To have an entry point for the app [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageLanding) */
-export type PageLandingInternalNameArgs = {
-  locale?: InputMaybe<Scalars['String']>;
-};
-
-
-/** To have an entry point for the app [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageLanding) */
-export type PageLandingLinkedFromArgs = {
-  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-/** To have an entry point for the app [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageLanding) */
-export type PageLandingProductsCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>;
-  locale?: InputMaybe<Scalars['String']>;
-  order?: InputMaybe<Array<InputMaybe<PageLandingProductsCollectionOrder>>>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-  skip?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<PageProductFilter>;
-};
-
-
-/** To have an entry point for the app [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageLanding) */
-export type PageLandingSeoFieldsArgs = {
-  locale?: InputMaybe<Scalars['String']>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-  where?: InputMaybe<ComponentSeoFilter>;
-};
-
-export type PageLandingCollection = {
-  __typename?: 'PageLandingCollection';
-  items: Array<Maybe<PageLanding>>;
-  limit: Scalars['Int'];
-  skip: Scalars['Int'];
-  total: Scalars['Int'];
-};
-
-export type PageLandingFilter = {
-  AND?: InputMaybe<Array<InputMaybe<PageLandingFilter>>>;
-  OR?: InputMaybe<Array<InputMaybe<PageLandingFilter>>>;
-  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
-  heroBannerHeadline?: InputMaybe<Scalars['String']>;
-  heroBannerHeadlineColor?: InputMaybe<Scalars['String']>;
-  heroBannerHeadlineColor_contains?: InputMaybe<Scalars['String']>;
-  heroBannerHeadlineColor_exists?: InputMaybe<Scalars['Boolean']>;
-  heroBannerHeadlineColor_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  heroBannerHeadlineColor_not?: InputMaybe<Scalars['String']>;
-  heroBannerHeadlineColor_not_contains?: InputMaybe<Scalars['String']>;
-  heroBannerHeadlineColor_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  heroBannerHeadline_contains?: InputMaybe<Scalars['String']>;
-  heroBannerHeadline_exists?: InputMaybe<Scalars['Boolean']>;
-  heroBannerHeadline_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  heroBannerHeadline_not?: InputMaybe<Scalars['String']>;
-  heroBannerHeadline_not_contains?: InputMaybe<Scalars['String']>;
-  heroBannerHeadline_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  heroBannerImage_exists?: InputMaybe<Scalars['Boolean']>;
-  internalName?: InputMaybe<Scalars['String']>;
-  internalName_contains?: InputMaybe<Scalars['String']>;
-  internalName_exists?: InputMaybe<Scalars['Boolean']>;
-  internalName_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  internalName_not?: InputMaybe<Scalars['String']>;
-  internalName_not_contains?: InputMaybe<Scalars['String']>;
-  internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  products?: InputMaybe<CfPageProductNestedFilter>;
-  productsCollection_exists?: InputMaybe<Scalars['Boolean']>;
-  seoFields?: InputMaybe<CfComponentSeoNestedFilter>;
-  seoFields_exists?: InputMaybe<Scalars['Boolean']>;
-  sys?: InputMaybe<SysFilter>;
-};
-
-export type PageLandingLinkingCollections = {
-  __typename?: 'PageLandingLinkingCollections';
-  entryCollection?: Maybe<EntryCollection>;
-};
-
-
-export type PageLandingLinkingCollectionsEntryCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>;
-  locale?: InputMaybe<Scalars['String']>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-  skip?: InputMaybe<Scalars['Int']>;
-};
-
-export enum PageLandingOrder {
-  HeroBannerHeadlineColorAsc = 'heroBannerHeadlineColor_ASC',
-  HeroBannerHeadlineColorDesc = 'heroBannerHeadlineColor_DESC',
-  HeroBannerHeadlineAsc = 'heroBannerHeadline_ASC',
-  HeroBannerHeadlineDesc = 'heroBannerHeadline_DESC',
-  InternalNameAsc = 'internalName_ASC',
-  InternalNameDesc = 'internalName_DESC',
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
-  SysIdAsc = 'sys_id_ASC',
-  SysIdDesc = 'sys_id_DESC',
-  SysPublishedAtAsc = 'sys_publishedAt_ASC',
-  SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
-}
-
-export type PageLandingProductsCollection = {
-  __typename?: 'PageLandingProductsCollection';
-  items: Array<Maybe<PageProduct>>;
-  limit: Scalars['Int'];
-  skip: Scalars['Int'];
-  total: Scalars['Int'];
-};
-
-export enum PageLandingProductsCollectionOrder {
-  InternalNameAsc = 'internalName_ASC',
-  InternalNameDesc = 'internalName_DESC',
-  NameAsc = 'name_ASC',
-  NameDesc = 'name_DESC',
-  PriceAsc = 'price_ASC',
-  PriceDesc = 'price_DESC',
-  SlugAsc = 'slug_ASC',
-  SlugDesc = 'slug_DESC',
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
-  SysIdAsc = 'sys_id_ASC',
-  SysIdDesc = 'sys_id_DESC',
-  SysPublishedAtAsc = 'sys_publishedAt_ASC',
-  SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
-}
-
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageNotFound) */
-export type PageNotFound = Entry & {
-  __typename?: 'PageNotFound';
-  backgroundImage?: Maybe<Asset>;
-  contentfulMetadata: ContentfulMetadata;
-  description?: Maybe<PageNotFoundDescription>;
-  linkedFrom?: Maybe<PageNotFoundLinkingCollections>;
-  logo?: Maybe<Asset>;
-  sys: Sys;
-  title?: Maybe<Scalars['String']>;
-};
-
-
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageNotFound) */
-export type PageNotFoundBackgroundImageArgs = {
-  locale?: InputMaybe<Scalars['String']>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-};
-
-
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageNotFound) */
-export type PageNotFoundDescriptionArgs = {
-  locale?: InputMaybe<Scalars['String']>;
-};
-
-
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageNotFound) */
-export type PageNotFoundLinkedFromArgs = {
-  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageNotFound) */
-export type PageNotFoundLogoArgs = {
-  locale?: InputMaybe<Scalars['String']>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-};
-
-
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageNotFound) */
-export type PageNotFoundTitleArgs = {
-  locale?: InputMaybe<Scalars['String']>;
-};
-
-export type PageNotFoundCollection = {
-  __typename?: 'PageNotFoundCollection';
-  items: Array<Maybe<PageNotFound>>;
-  limit: Scalars['Int'];
-  skip: Scalars['Int'];
-  total: Scalars['Int'];
-};
-
-export type PageNotFoundDescription = {
-  __typename?: 'PageNotFoundDescription';
-  json: Scalars['JSON'];
-  links: PageNotFoundDescriptionLinks;
-};
-
-export type PageNotFoundDescriptionAssets = {
-  __typename?: 'PageNotFoundDescriptionAssets';
-  block: Array<Maybe<Asset>>;
-  hyperlink: Array<Maybe<Asset>>;
-};
-
-export type PageNotFoundDescriptionEntries = {
-  __typename?: 'PageNotFoundDescriptionEntries';
-  block: Array<Maybe<Entry>>;
-  hyperlink: Array<Maybe<Entry>>;
-  inline: Array<Maybe<Entry>>;
-};
-
-export type PageNotFoundDescriptionLinks = {
-  __typename?: 'PageNotFoundDescriptionLinks';
-  assets: PageNotFoundDescriptionAssets;
-  entries: PageNotFoundDescriptionEntries;
-  resources: PageNotFoundDescriptionResources;
-};
-
-export type PageNotFoundDescriptionResources = {
-  __typename?: 'PageNotFoundDescriptionResources';
-  block: Array<ResourceLink>;
-};
-
-export type PageNotFoundFilter = {
-  AND?: InputMaybe<Array<InputMaybe<PageNotFoundFilter>>>;
-  OR?: InputMaybe<Array<InputMaybe<PageNotFoundFilter>>>;
-  backgroundImage_exists?: InputMaybe<Scalars['Boolean']>;
-  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
-  description_contains?: InputMaybe<Scalars['String']>;
-  description_exists?: InputMaybe<Scalars['Boolean']>;
-  description_not_contains?: InputMaybe<Scalars['String']>;
-  logo_exists?: InputMaybe<Scalars['Boolean']>;
-  sys?: InputMaybe<SysFilter>;
-  title?: InputMaybe<Scalars['String']>;
-  title_contains?: InputMaybe<Scalars['String']>;
-  title_exists?: InputMaybe<Scalars['Boolean']>;
-  title_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  title_not?: InputMaybe<Scalars['String']>;
-  title_not_contains?: InputMaybe<Scalars['String']>;
-  title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-export type PageNotFoundLinkingCollections = {
-  __typename?: 'PageNotFoundLinkingCollections';
-  entryCollection?: Maybe<EntryCollection>;
-};
-
-
-export type PageNotFoundLinkingCollectionsEntryCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>;
-  locale?: InputMaybe<Scalars['String']>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-  skip?: InputMaybe<Scalars['Int']>;
-};
-
-export enum PageNotFoundOrder {
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
-  SysIdAsc = 'sys_id_ASC',
-  SysIdDesc = 'sys_id_DESC',
-  SysPublishedAtAsc = 'sys_publishedAt_ASC',
-  SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
-  TitleAsc = 'title_ASC',
-  TitleDesc = 'title_DESC'
-}
-
-/** To output data for a single product [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProduct) */
-export type PageProduct = Entry & {
-  __typename?: 'PageProduct';
-  contentfulMetadata: ContentfulMetadata;
-  description?: Maybe<Scalars['String']>;
-  featuredProductImage?: Maybe<Asset>;
-  internalName?: Maybe<Scalars['String']>;
-  linkedFrom?: Maybe<PageProductLinkingCollections>;
-  name?: Maybe<Scalars['String']>;
-  price?: Maybe<Scalars['Float']>;
-  productImagesCollection?: Maybe<AssetCollection>;
-  relatedProductsCollection?: Maybe<PageProductRelatedProductsCollection>;
-  seoFields?: Maybe<ComponentSeo>;
-  slug?: Maybe<Scalars['String']>;
-  sys: Sys;
-};
-
-
-/** To output data for a single product [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProduct) */
-export type PageProductDescriptionArgs = {
-  locale?: InputMaybe<Scalars['String']>;
-};
-
-
-/** To output data for a single product [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProduct) */
-export type PageProductFeaturedProductImageArgs = {
-  locale?: InputMaybe<Scalars['String']>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-};
-
-
-/** To output data for a single product [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProduct) */
-export type PageProductInternalNameArgs = {
-  locale?: InputMaybe<Scalars['String']>;
-};
-
-
-/** To output data for a single product [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProduct) */
-export type PageProductLinkedFromArgs = {
-  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-/** To output data for a single product [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProduct) */
-export type PageProductNameArgs = {
-  locale?: InputMaybe<Scalars['String']>;
-};
-
-
-/** To output data for a single product [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProduct) */
-export type PageProductPriceArgs = {
-  locale?: InputMaybe<Scalars['String']>;
-};
-
-
-/** To output data for a single product [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProduct) */
-export type PageProductProductImagesCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>;
-  locale?: InputMaybe<Scalars['String']>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-  skip?: InputMaybe<Scalars['Int']>;
-};
-
-
-/** To output data for a single product [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProduct) */
-export type PageProductRelatedProductsCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>;
-  locale?: InputMaybe<Scalars['String']>;
-  order?: InputMaybe<Array<InputMaybe<PageProductRelatedProductsCollectionOrder>>>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-  skip?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<PageProductFilter>;
-};
-
-
-/** To output data for a single product [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProduct) */
-export type PageProductSeoFieldsArgs = {
-  locale?: InputMaybe<Scalars['String']>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-  where?: InputMaybe<ComponentSeoFilter>;
-};
-
-
-/** To output data for a single product [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProduct) */
-export type PageProductSlugArgs = {
-  locale?: InputMaybe<Scalars['String']>;
-};
-
-export type PageProductCollection = {
-  __typename?: 'PageProductCollection';
-  items: Array<Maybe<PageProduct>>;
-  limit: Scalars['Int'];
-  skip: Scalars['Int'];
-  total: Scalars['Int'];
-};
-
-export type PageProductFilter = {
-  AND?: InputMaybe<Array<InputMaybe<PageProductFilter>>>;
-  OR?: InputMaybe<Array<InputMaybe<PageProductFilter>>>;
-  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
-  description?: InputMaybe<Scalars['String']>;
-  description_contains?: InputMaybe<Scalars['String']>;
-  description_exists?: InputMaybe<Scalars['Boolean']>;
-  description_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  description_not?: InputMaybe<Scalars['String']>;
-  description_not_contains?: InputMaybe<Scalars['String']>;
-  description_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  featuredProductImage_exists?: InputMaybe<Scalars['Boolean']>;
-  internalName?: InputMaybe<Scalars['String']>;
-  internalName_contains?: InputMaybe<Scalars['String']>;
-  internalName_exists?: InputMaybe<Scalars['Boolean']>;
-  internalName_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  internalName_not?: InputMaybe<Scalars['String']>;
-  internalName_not_contains?: InputMaybe<Scalars['String']>;
-  internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  name?: InputMaybe<Scalars['String']>;
-  name_contains?: InputMaybe<Scalars['String']>;
-  name_exists?: InputMaybe<Scalars['Boolean']>;
-  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  name_not?: InputMaybe<Scalars['String']>;
-  name_not_contains?: InputMaybe<Scalars['String']>;
-  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  price?: InputMaybe<Scalars['Float']>;
-  price_exists?: InputMaybe<Scalars['Boolean']>;
-  price_gt?: InputMaybe<Scalars['Float']>;
-  price_gte?: InputMaybe<Scalars['Float']>;
-  price_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
-  price_lt?: InputMaybe<Scalars['Float']>;
-  price_lte?: InputMaybe<Scalars['Float']>;
-  price_not?: InputMaybe<Scalars['Float']>;
-  price_not_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
-  productImagesCollection_exists?: InputMaybe<Scalars['Boolean']>;
-  relatedProducts?: InputMaybe<CfPageProductNestedFilter>;
-  relatedProductsCollection_exists?: InputMaybe<Scalars['Boolean']>;
-  seoFields?: InputMaybe<CfComponentSeoNestedFilter>;
-  seoFields_exists?: InputMaybe<Scalars['Boolean']>;
-  slug?: InputMaybe<Scalars['String']>;
-  slug_contains?: InputMaybe<Scalars['String']>;
-  slug_exists?: InputMaybe<Scalars['Boolean']>;
-  slug_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  slug_not?: InputMaybe<Scalars['String']>;
-  slug_not_contains?: InputMaybe<Scalars['String']>;
-  slug_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  sys?: InputMaybe<SysFilter>;
-};
-
-export type PageProductLinkingCollections = {
-  __typename?: 'PageProductLinkingCollections';
-  entryCollection?: Maybe<EntryCollection>;
-  pageLandingCollection?: Maybe<PageLandingCollection>;
-  pageProductCollection?: Maybe<PageProductCollection>;
-};
-
-
-export type PageProductLinkingCollectionsEntryCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>;
-  locale?: InputMaybe<Scalars['String']>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-  skip?: InputMaybe<Scalars['Int']>;
-};
-
-
-export type PageProductLinkingCollectionsPageLandingCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>;
-  locale?: InputMaybe<Scalars['String']>;
-  order?: InputMaybe<Array<InputMaybe<PageProductLinkingCollectionsPageLandingCollectionOrder>>>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-  skip?: InputMaybe<Scalars['Int']>;
-};
-
-
-export type PageProductLinkingCollectionsPageProductCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>;
-  locale?: InputMaybe<Scalars['String']>;
-  order?: InputMaybe<Array<InputMaybe<PageProductLinkingCollectionsPageProductCollectionOrder>>>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-  skip?: InputMaybe<Scalars['Int']>;
-};
-
-export enum PageProductLinkingCollectionsPageLandingCollectionOrder {
-  HeroBannerHeadlineColorAsc = 'heroBannerHeadlineColor_ASC',
-  HeroBannerHeadlineColorDesc = 'heroBannerHeadlineColor_DESC',
-  HeroBannerHeadlineAsc = 'heroBannerHeadline_ASC',
-  HeroBannerHeadlineDesc = 'heroBannerHeadline_DESC',
-  InternalNameAsc = 'internalName_ASC',
-  InternalNameDesc = 'internalName_DESC',
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
-  SysIdAsc = 'sys_id_ASC',
-  SysIdDesc = 'sys_id_DESC',
-  SysPublishedAtAsc = 'sys_publishedAt_ASC',
-  SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
-}
-
-export enum PageProductLinkingCollectionsPageProductCollectionOrder {
-  InternalNameAsc = 'internalName_ASC',
-  InternalNameDesc = 'internalName_DESC',
-  NameAsc = 'name_ASC',
-  NameDesc = 'name_DESC',
-  PriceAsc = 'price_ASC',
-  PriceDesc = 'price_DESC',
-  SlugAsc = 'slug_ASC',
-  SlugDesc = 'slug_DESC',
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
-  SysIdAsc = 'sys_id_ASC',
-  SysIdDesc = 'sys_id_DESC',
-  SysPublishedAtAsc = 'sys_publishedAt_ASC',
-  SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
-}
-
-export enum PageProductOrder {
-  InternalNameAsc = 'internalName_ASC',
-  InternalNameDesc = 'internalName_DESC',
-  NameAsc = 'name_ASC',
-  NameDesc = 'name_DESC',
-  PriceAsc = 'price_ASC',
-  PriceDesc = 'price_DESC',
-  SlugAsc = 'slug_ASC',
-  SlugDesc = 'slug_DESC',
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
-  SysIdAsc = 'sys_id_ASC',
-  SysIdDesc = 'sys_id_DESC',
-  SysPublishedAtAsc = 'sys_publishedAt_ASC',
-  SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
-}
-
-export type PageProductRelatedProductsCollection = {
-  __typename?: 'PageProductRelatedProductsCollection';
-  items: Array<Maybe<PageProduct>>;
-  limit: Scalars['Int'];
-  skip: Scalars['Int'];
-  total: Scalars['Int'];
-};
-
-export enum PageProductRelatedProductsCollectionOrder {
-  InternalNameAsc = 'internalName_ASC',
-  InternalNameDesc = 'internalName_DESC',
-  NameAsc = 'name_ASC',
-  NameDesc = 'name_DESC',
-  PriceAsc = 'price_ASC',
-  PriceDesc = 'price_DESC',
-  SlugAsc = 'slug_ASC',
-  SlugDesc = 'slug_DESC',
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
-  SysIdAsc = 'sys_id_ASC',
-  SysIdDesc = 'sys_id_DESC',
-  SysPublishedAtAsc = 'sys_publishedAt_ASC',
-  SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
-}
-
 /** Single page for projects [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProject) */
-export type PageProject = Entry & {
+export type PageProject = Entry & _Node & {
   __typename?: 'PageProject';
+  _id: Scalars['ID'];
   contentfulMetadata: ContentfulMetadata;
   description?: Maybe<PageProjectDescription>;
   galleryCollection?: Maybe<AssetCollection>;
@@ -2711,7 +2009,24 @@ export type PageProjectDescriptionLinks = {
 
 export type PageProjectDescriptionResources = {
   __typename?: 'PageProjectDescriptionResources';
-  block: Array<ResourceLink>;
+  block: Array<PageProjectDescriptionResourcesBlock>;
+  hyperlink: Array<PageProjectDescriptionResourcesHyperlink>;
+  inline: Array<PageProjectDescriptionResourcesInline>;
+};
+
+export type PageProjectDescriptionResourcesBlock = ResourceLink & {
+  __typename?: 'PageProjectDescriptionResourcesBlock';
+  sys: ResourceSys;
+};
+
+export type PageProjectDescriptionResourcesHyperlink = ResourceLink & {
+  __typename?: 'PageProjectDescriptionResourcesHyperlink';
+  sys: ResourceSys;
+};
+
+export type PageProjectDescriptionResourcesInline = ResourceLink & {
+  __typename?: 'PageProjectDescriptionResourcesInline';
+  sys: ResourceSys;
 };
 
 export type PageProjectFilter = {
@@ -2805,6 +2120,7 @@ export enum PageProjectOrder {
 
 export type Query = {
   __typename?: 'Query';
+  _node?: Maybe<_Node>;
   asset?: Maybe<Asset>;
   assetCollection?: Maybe<AssetCollection>;
   assets?: Maybe<Assets>;
@@ -2830,16 +2146,15 @@ export type Query = {
   pageEditorCollection?: Maybe<PageEditorCollection>;
   pageHome?: Maybe<PageHome>;
   pageHomeCollection?: Maybe<PageHomeCollection>;
-  pageLanding?: Maybe<PageLanding>;
-  pageLandingCollection?: Maybe<PageLandingCollection>;
-  pageNotFound?: Maybe<PageNotFound>;
-  pageNotFoundCollection?: Maybe<PageNotFoundCollection>;
-  pageProduct?: Maybe<PageProduct>;
-  pageProductCollection?: Maybe<PageProductCollection>;
   pageProject?: Maybe<PageProject>;
   pageProjectCollection?: Maybe<PageProjectCollection>;
-  translations?: Maybe<Translations>;
-  translationsCollection?: Maybe<TranslationsCollection>;
+};
+
+
+export type Query_NodeArgs = {
+  id: Scalars['ID'];
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
 };
 
 
@@ -3057,57 +2372,6 @@ export type QueryPageHomeCollectionArgs = {
 };
 
 
-export type QueryPageLandingArgs = {
-  id: Scalars['String'];
-  locale?: InputMaybe<Scalars['String']>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-};
-
-
-export type QueryPageLandingCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>;
-  locale?: InputMaybe<Scalars['String']>;
-  order?: InputMaybe<Array<InputMaybe<PageLandingOrder>>>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-  skip?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<PageLandingFilter>;
-};
-
-
-export type QueryPageNotFoundArgs = {
-  id: Scalars['String'];
-  locale?: InputMaybe<Scalars['String']>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-};
-
-
-export type QueryPageNotFoundCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>;
-  locale?: InputMaybe<Scalars['String']>;
-  order?: InputMaybe<Array<InputMaybe<PageNotFoundOrder>>>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-  skip?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<PageNotFoundFilter>;
-};
-
-
-export type QueryPageProductArgs = {
-  id: Scalars['String'];
-  locale?: InputMaybe<Scalars['String']>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-};
-
-
-export type QueryPageProductCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>;
-  locale?: InputMaybe<Scalars['String']>;
-  order?: InputMaybe<Array<InputMaybe<PageProductOrder>>>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-  skip?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<PageProductFilter>;
-};
-
-
 export type QueryPageProjectArgs = {
   id: Scalars['String'];
   locale?: InputMaybe<Scalars['String']>;
@@ -3124,32 +2388,13 @@ export type QueryPageProjectCollectionArgs = {
   where?: InputMaybe<PageProjectFilter>;
 };
 
-
-export type QueryTranslationsArgs = {
-  id: Scalars['String'];
-  locale?: InputMaybe<Scalars['String']>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-};
-
-
-export type QueryTranslationsCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>;
-  locale?: InputMaybe<Scalars['String']>;
-  order?: InputMaybe<Array<InputMaybe<TranslationsOrder>>>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-  skip?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<TranslationsFilter>;
-};
-
 export type ResourceLink = {
-  __typename?: 'ResourceLink';
   sys: ResourceSys;
 };
 
 export type ResourceSys = {
   __typename?: 'ResourceSys';
   linkType: Scalars['String'];
-  type: Scalars['String'];
   urn: Scalars['String'];
 };
 
@@ -3158,6 +2403,8 @@ export type Sys = {
   environmentId: Scalars['String'];
   firstPublishedAt?: Maybe<Scalars['DateTime']>;
   id: Scalars['String'];
+  /** The locale that was requested. */
+  locale?: Maybe<Scalars['String']>;
   publishedAt?: Maybe<Scalars['DateTime']>;
   publishedVersion?: Maybe<Scalars['Int']>;
   spaceId: Scalars['String'];
@@ -3200,90 +2447,18 @@ export type SysFilter = {
   publishedVersion_not_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
 };
 
-/** I18n string translations [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/translations) */
-export type Translations = Entry & {
-  __typename?: 'Translations';
-  contentfulMetadata: ContentfulMetadata;
-  linkedFrom?: Maybe<TranslationsLinkingCollections>;
-  string?: Maybe<Scalars['String']>;
-  sys: Sys;
-  translation?: Maybe<Scalars['String']>;
+/**
+ * Represents a tag entity for finding and organizing content easily.
+ *         Find out more here: https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/content-concepts
+ */
+export type TaxonomyConcept = {
+  __typename?: 'TaxonomyConcept';
+  id?: Maybe<Scalars['String']>;
 };
 
-
-/** I18n string translations [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/translations) */
-export type TranslationsLinkedFromArgs = {
-  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+export type _Node = {
+  _id: Scalars['ID'];
 };
-
-
-/** I18n string translations [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/translations) */
-export type TranslationsStringArgs = {
-  locale?: InputMaybe<Scalars['String']>;
-};
-
-
-/** I18n string translations [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/translations) */
-export type TranslationsTranslationArgs = {
-  locale?: InputMaybe<Scalars['String']>;
-};
-
-export type TranslationsCollection = {
-  __typename?: 'TranslationsCollection';
-  items: Array<Maybe<Translations>>;
-  limit: Scalars['Int'];
-  skip: Scalars['Int'];
-  total: Scalars['Int'];
-};
-
-export type TranslationsFilter = {
-  AND?: InputMaybe<Array<InputMaybe<TranslationsFilter>>>;
-  OR?: InputMaybe<Array<InputMaybe<TranslationsFilter>>>;
-  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
-  string?: InputMaybe<Scalars['String']>;
-  string_contains?: InputMaybe<Scalars['String']>;
-  string_exists?: InputMaybe<Scalars['Boolean']>;
-  string_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  string_not?: InputMaybe<Scalars['String']>;
-  string_not_contains?: InputMaybe<Scalars['String']>;
-  string_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  sys?: InputMaybe<SysFilter>;
-  translation?: InputMaybe<Scalars['String']>;
-  translation_contains?: InputMaybe<Scalars['String']>;
-  translation_exists?: InputMaybe<Scalars['Boolean']>;
-  translation_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  translation_not?: InputMaybe<Scalars['String']>;
-  translation_not_contains?: InputMaybe<Scalars['String']>;
-  translation_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-export type TranslationsLinkingCollections = {
-  __typename?: 'TranslationsLinkingCollections';
-  entryCollection?: Maybe<EntryCollection>;
-};
-
-
-export type TranslationsLinkingCollectionsEntryCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>;
-  locale?: InputMaybe<Scalars['String']>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-  skip?: InputMaybe<Scalars['Int']>;
-};
-
-export enum TranslationsOrder {
-  StringAsc = 'string_ASC',
-  StringDesc = 'string_DESC',
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
-  SysIdAsc = 'sys_id_ASC',
-  SysIdDesc = 'sys_id_DESC',
-  SysPublishedAtAsc = 'sys_publishedAt_ASC',
-  SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
-  TranslationAsc = 'translation_ASC',
-  TranslationDesc = 'translation_DESC'
-}
 
 export type CfComponentContactNestedFilter = {
   AND?: InputMaybe<Array<InputMaybe<CfComponentContactNestedFilter>>>;
@@ -3381,54 +2556,6 @@ export type CfComponentSliderNestedFilter = {
   sys?: InputMaybe<SysFilter>;
 };
 
-export type CfPageProductNestedFilter = {
-  AND?: InputMaybe<Array<InputMaybe<CfPageProductNestedFilter>>>;
-  OR?: InputMaybe<Array<InputMaybe<CfPageProductNestedFilter>>>;
-  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
-  description?: InputMaybe<Scalars['String']>;
-  description_contains?: InputMaybe<Scalars['String']>;
-  description_exists?: InputMaybe<Scalars['Boolean']>;
-  description_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  description_not?: InputMaybe<Scalars['String']>;
-  description_not_contains?: InputMaybe<Scalars['String']>;
-  description_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  featuredProductImage_exists?: InputMaybe<Scalars['Boolean']>;
-  internalName?: InputMaybe<Scalars['String']>;
-  internalName_contains?: InputMaybe<Scalars['String']>;
-  internalName_exists?: InputMaybe<Scalars['Boolean']>;
-  internalName_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  internalName_not?: InputMaybe<Scalars['String']>;
-  internalName_not_contains?: InputMaybe<Scalars['String']>;
-  internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  name?: InputMaybe<Scalars['String']>;
-  name_contains?: InputMaybe<Scalars['String']>;
-  name_exists?: InputMaybe<Scalars['Boolean']>;
-  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  name_not?: InputMaybe<Scalars['String']>;
-  name_not_contains?: InputMaybe<Scalars['String']>;
-  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  price?: InputMaybe<Scalars['Float']>;
-  price_exists?: InputMaybe<Scalars['Boolean']>;
-  price_gt?: InputMaybe<Scalars['Float']>;
-  price_gte?: InputMaybe<Scalars['Float']>;
-  price_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
-  price_lt?: InputMaybe<Scalars['Float']>;
-  price_lte?: InputMaybe<Scalars['Float']>;
-  price_not?: InputMaybe<Scalars['Float']>;
-  price_not_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
-  productImagesCollection_exists?: InputMaybe<Scalars['Boolean']>;
-  relatedProductsCollection_exists?: InputMaybe<Scalars['Boolean']>;
-  seoFields_exists?: InputMaybe<Scalars['Boolean']>;
-  slug?: InputMaybe<Scalars['String']>;
-  slug_contains?: InputMaybe<Scalars['String']>;
-  slug_exists?: InputMaybe<Scalars['Boolean']>;
-  slug_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  slug_not?: InputMaybe<Scalars['String']>;
-  slug_not_contains?: InputMaybe<Scalars['String']>;
-  slug_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  sys?: InputMaybe<SysFilter>;
-};
-
 export type CfPageProjectNestedFilter = {
   AND?: InputMaybe<Array<InputMaybe<CfPageProjectNestedFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<CfPageProjectNestedFilter>>>;
@@ -3507,7 +2634,7 @@ export type PageEditorQueryVariables = Exact<{
 }>;
 
 
-export type PageEditorQuery = { __typename?: 'Query', pageEditorCollection?: { __typename?: 'PageEditorCollection', items: Array<{ __typename?: 'PageEditor', pageName?: string | null, content?: { __typename?: 'PageEditorContent', json: any } | null, seo?: (
+export type PageEditorQuery = { __typename?: 'Query', pageEditorCollection?: { __typename?: 'PageEditorCollection', items: Array<{ __typename?: 'PageEditor', pageName?: string | null, html?: string | null, content?: { __typename?: 'PageEditorContent', json: any } | null, seo?: (
         { __typename?: 'ComponentSeo' }
         & SeoFieldsFragment
       ) | null } | null> } | null };
@@ -3735,6 +2862,7 @@ export const PageEditorDocument = gql`
       content {
         json
       }
+      html
       seo {
         ...SeoFields
       }
