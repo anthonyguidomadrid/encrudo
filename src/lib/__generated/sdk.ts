@@ -2883,7 +2883,7 @@ export const PageLandingDocument = gql`
           }
         }
       }
-      projectsCollection(limit: 9, locale: $locale, preview: $preview) {
+      projectsCollection(limit: 12, locale: $locale, preview: $preview) {
         items {
           title
           subtitle
