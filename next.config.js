@@ -1,13 +1,13 @@
-const nextComposePlugins = require('next-compose-plugins');
+const nextComposePlugins = require('next-compose-plugins')
 
-const headers = require('./config/headers');
-const plugins = require('./config/plugins');
-const { i18n } = require('./next-i18next.config.js');
+const headers = require('./config/headers')
+const plugins = require('./config/plugins')
+const { i18n } = require('./next-i18next.config.js')
 
 /**
  * https://github.com/cyrilwanner/next-compose-plugins/issues/59
  */
-const { withPlugins } = nextComposePlugins.extend(() => ({}));
+const { withPlugins } = nextComposePlugins.extend(() => ({}))
 
 /**
  * Next config
@@ -20,7 +20,7 @@ module.exports = withPlugins(plugins, {
    * documentation: https://nextjs.org/docs/api-reference/next.config.js/environment-variables
    */
   env: {
-    ENVIRONMENT_NAME: process.env.ENVIRONMENT_NAME,
+    ENVIRONMENT_NAME: process.env.ENVIRONMENT_NAME
   },
 
   /**
@@ -56,7 +56,14 @@ module.exports = withPlugins(plugins, {
    * Settings are the defaults
    */
   images: {
-    domains: ['images.ctfassets.net'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.ctfassets.net',
+        port: '',
+        pathname: '/**'
+      }
+    ]
   },
 
   pageExtensions: ['page.tsx', 'page.ts', 'page.jsx', 'page.js'],
@@ -64,9 +71,9 @@ module.exports = withPlugins(plugins, {
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
-      use: ['@svgr/webpack'],
-    });
+      use: ['@svgr/webpack']
+    })
 
-    return config;
-  },
-});
+    return config
+  }
+})
