@@ -69,11 +69,11 @@ The config for both the `pre-commit` and `pre-push` hooks can be found in the `.
 
 #### Pre-commit
 
-Before allowing a commit, we require a successful result from the TypeScript compiler (`tsc`) and our `lint-staged` script will be run.
+Before allowing a commit, we require a successful result from the TypeScript compiler (`tsc`) and our `lint` script will be run.
 
 This ensures all ESLint and Prettier rules are enforced on the files that are staged to be committed.
 
-The `tsc` command is run separately from the `lint-staged` step because we require the Typescript compiler to sample _all_ files.
+The `tsc` command is run separately from the `lint` step because we require the Typescript compiler to sample _all_ files.
 
 This is important to ensure that no deviating types were introduced by the [codegen](./README.md#graphql--code-generation) for example.
 
