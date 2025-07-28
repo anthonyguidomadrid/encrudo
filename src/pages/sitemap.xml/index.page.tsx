@@ -1,6 +1,5 @@
 import { GetServerSideProps } from 'next'
 import absoluteUrl from 'next-absolute-url'
-import { getServerSideSitemap } from 'next-sitemap'
 import URI from 'urijs'
 
 import { SitemapPagesFieldsFragment } from '@src/lib/__generated/sdk'
@@ -25,9 +24,8 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
   const promiseArr =
     locales?.map(locale => client.sitemapPages({ locale })).filter(Boolean) ||
     []
-  const dataPerLocale: SitemapFieldsWithoutTypename[] = await Promise.all(
-    promiseArr
-  )
+  const dataPerLocale: SitemapFieldsWithoutTypename[] =
+    await Promise.all(promiseArr)
 
   const getPageUrl = (item): string => {
     if (item.slug) return `/proyectos/${item?.slug}`
@@ -62,7 +60,11 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
     .flat()
     .filter(Boolean)
 
-  return getServerSideSitemap(ctx, fields)
+  return {
+    props: {
+      ...fields
+    }
+  }
 }
 
 const Sitemap = () => {

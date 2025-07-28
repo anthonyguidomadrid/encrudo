@@ -119,7 +119,6 @@ export const ContactForm = ({ isSuccess, setIsSuccess }: ContactFormProps) => {
         name="phone"
         placeholder={t('form.fields.phone')}
         className={inputClass}
-        pattern="^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\.0-9]*$"
         maxLength={150}
         disabled={loading}
         required
