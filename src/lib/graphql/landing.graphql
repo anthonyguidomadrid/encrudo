@@ -11,12 +11,7 @@ query pageLanding($locale: String, $preview: Boolean) {
       }
       projectsCollection(limit: 12, locale: $locale, preview: $preview) {
         items {
-          title
-          subtitle
-          slug
-          thumbnail {
-            ...ImageFields
-          }
+          ...ProjectOverviewFields
         }
       }
       seo {

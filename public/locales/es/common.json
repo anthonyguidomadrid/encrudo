@@ -8,7 +8,8 @@
     "privacy": "Protección de Datos"
   },
   "project": {
-    "back-btn": "Ver todos"
+    "back-btn": "Ver todos",
+    "see-more": "Ver más proyectos"
   },
   "not-found": {
     "title": "Página no encontrada",
@@ -21,7 +22,7 @@
       "email": "Email",
       "phone": "Teléfono",
       "message": "Mensaje",
-      "button": "Enviar mensaje"  
+      "button": "Enviar mensaje"
     },
     "result": {
       "success": "Su mensaje ha sido enviado con éxito, ¡le responderemos en breve!",
@@ -32,7 +33,7 @@
       "data": "Protección de datos",
       "between": "y de",
       "legal": "Aviso Legal"
-    } 
+    }
   },
   "newsletter": {
     "placeholder": "Suscríbete a nuestro newsletter",
@@ -41,4 +42,3 @@
     "success": "¡Gracias por suscribirte!"
   }
 }
-  

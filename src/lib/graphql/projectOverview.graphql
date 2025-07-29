@@ -1,0 +1,8 @@
+fragment ProjectOverviewFields on PageProject {
+  title
+  subtitle
+  slug
+  thumbnail {
+    ...ImageFields
+  }
+}

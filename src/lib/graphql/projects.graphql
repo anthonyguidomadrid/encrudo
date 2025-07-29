@@ -1,0 +1,17 @@
+query pageProjects($locale: String, $preview: Boolean) {
+  pageProjectsCollection(limit: 1, locale: $locale, preview: $preview) {
+    items {
+      pageHeader {
+        ...PageHeaderFields
+      }
+      seo {
+        ...SeoFields
+      }
+      projectsCollection(limit: 20) {
+        items {
+          ...ProjectOverviewFields
+        }
+      }
+    }
+  }
+}

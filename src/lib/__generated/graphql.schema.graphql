@@ -1,9 +1,14 @@
 directive @contentSourceMaps on QUERY
 
-"""
-Indicates exactly one field must be supplied and this field must not be `null`.
-"""
-directive @oneOf on INPUT_OBJECT
+directive @delegatedResourceLink(contentTypeId: String, field: JSON) on FIELD_DEFINITION | OBJECT
+
+directive @enumMapper(value: JSON) on ENUM_VALUE
+
+directive @featureFlag(featureName: String) on FIELD
+
+directive @fieldResolver(data: JSON, kind: String) on FIELD_DEFINITION
+
+directive @typeIdentifier(contentTypeId: String) on OBJECT
 
 """Represents a binary file in a space. An asset can be any file type."""
 type Asset {
@@ -130,7 +135,7 @@ enum AssetOrder {
 }
 
 """
-Logo and social media links [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/assets)
+[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/assets)
 """
 type Assets implements Entry & _Node {
   _id: ID!
@@ -175,7 +180,7 @@ enum AssetsOrder {
 }
 
 """
-Contact Information in Footer and Contact Page [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentContact)
+[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentContact)
 """
 type ComponentContact implements Entry & _Node {
   _id: ID!
@@ -258,7 +263,7 @@ enum ComponentContactOrder {
 }
 
 """
-Page header with banner image, title and description [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentPageHeader)
+[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentPageHeader)
 """
 type ComponentPageHeader implements Entry & _Node {
   _id: ID!
@@ -339,6 +344,7 @@ type ComponentPageHeaderLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
   pageAboutCollection(limit: Int = 100, locale: String, order: [ComponentPageHeaderLinkingCollectionsPageAboutCollectionOrder], preview: Boolean, skip: Int = 0): PageAboutCollection
   pageContactCollection(limit: Int = 100, locale: String, order: [ComponentPageHeaderLinkingCollectionsPageContactCollectionOrder], preview: Boolean, skip: Int = 0): PageContactCollection
+  pageProjectsCollection(limit: Int = 100, locale: String, order: [ComponentPageHeaderLinkingCollectionsPageProjectsCollectionOrder], preview: Boolean, skip: Int = 0): PageProjectsCollection
 }
 
 enum ComponentPageHeaderLinkingCollectionsPageAboutCollectionOrder {
@@ -367,6 +373,19 @@ enum ComponentPageHeaderLinkingCollectionsPageContactCollectionOrder {
   sys_publishedVersion_DESC
 }
 
+enum ComponentPageHeaderLinkingCollectionsPageProjectsCollectionOrder {
+  pageName_ASC
+  pageName_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
 enum ComponentPageHeaderOrder {
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
@@ -381,7 +400,7 @@ enum ComponentPageHeaderOrder {
 }
 
 """
-To have SEO-related properties in the pages we render [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSeo)
+[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSeo)
 """
 type ComponentSeo implements Entry & _Node {
   _id: ID!
@@ -453,6 +472,7 @@ type ComponentSeoLinkingCollections {
   pageEditorCollection(limit: Int = 100, locale: String, order: [ComponentSeoLinkingCollectionsPageEditorCollectionOrder], preview: Boolean, skip: Int = 0): PageEditorCollection
   pageHomeCollection(limit: Int = 100, locale: String, order: [ComponentSeoLinkingCollectionsPageHomeCollectionOrder], preview: Boolean, skip: Int = 0): PageHomeCollection
   pageProjectCollection(limit: Int = 100, locale: String, order: [ComponentSeoLinkingCollectionsPageProjectCollectionOrder], preview: Boolean, skip: Int = 0): PageProjectCollection
+  pageProjectsCollection(limit: Int = 100, locale: String, order: [ComponentSeoLinkingCollectionsPageProjectsCollectionOrder], preview: Boolean, skip: Int = 0): PageProjectsCollection
 }
 
 enum ComponentSeoLinkingCollectionsPageAboutCollectionOrder {
@@ -526,6 +546,19 @@ enum ComponentSeoLinkingCollectionsPageProjectCollectionOrder {
   title_DESC
 }
 
+enum ComponentSeoLinkingCollectionsPageProjectsCollectionOrder {
+  pageName_ASC
+  pageName_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
 enum ComponentSeoOrder {
   canonicalUrl_ASC
   canonicalUrl_DESC
@@ -548,7 +581,7 @@ enum ComponentSeoOrder {
 }
 
 """
-Home page & product page sliders [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSlider)
+[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSlider)
 """
 type ComponentSlider implements Entry & _Node {
   _id: ID!
@@ -603,7 +636,7 @@ enum ComponentSliderOrder {
 }
 
 """
-Social Media Links in Footer [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSocialMedia)
+[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSocialMedia)
 """
 type ComponentSocialMedia implements Entry & _Node {
   _id: ID!
@@ -748,6 +781,7 @@ enum EntryOrder {
 scalar HexColor
 
 enum ImageFormat {
+  """AVIF image format."""
   AVIF
 
   """JPG image format."""
@@ -881,7 +915,7 @@ The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://
 scalar JSON
 
 """
-Menu items: name, link, index and CTA [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/menu)
+[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/menu)
 """
 type Menu implements Entry & _Node {
   _id: ID!
@@ -964,7 +998,7 @@ enum MenuOrder {
 }
 
 """
-About page template [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageAbout)
+[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageAbout)
 """
 type PageAbout implements Entry & _Node {
   _id: ID!
@@ -1021,7 +1055,7 @@ enum PageAboutOrder {
 }
 
 """
-Contact page template [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageContact)
+[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageContact)
 """
 type PageContact implements Entry & _Node {
   _id: ID!
@@ -1193,7 +1227,7 @@ enum PageEditorOrder {
 }
 
 """
-Home Page [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageHome)
+[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageHome)
 """
 type PageHome implements Entry & _Node {
   _id: ID!
@@ -1275,7 +1309,7 @@ enum PageHomeProjectsCollectionOrder {
 }
 
 """
-Single page for projects [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProject)
+[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProject)
 """
 type PageProject implements Entry & _Node {
   _id: ID!
@@ -1378,6 +1412,7 @@ input PageProjectFilter {
 type PageProjectLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
   pageHomeCollection(limit: Int = 100, locale: String, order: [PageProjectLinkingCollectionsPageHomeCollectionOrder], preview: Boolean, skip: Int = 0): PageHomeCollection
+  pageProjectsCollection(limit: Int = 100, locale: String, order: [PageProjectLinkingCollectionsPageProjectsCollectionOrder], preview: Boolean, skip: Int = 0): PageProjectsCollection
 }
 
 enum PageProjectLinkingCollectionsPageHomeCollectionOrder {
@@ -1393,7 +1428,102 @@ enum PageProjectLinkingCollectionsPageHomeCollectionOrder {
   title_DESC
 }
 
+enum PageProjectLinkingCollectionsPageProjectsCollectionOrder {
+  pageName_ASC
+  pageName_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
 enum PageProjectOrder {
+  slug_ASC
+  slug_DESC
+  subtitle_ASC
+  subtitle_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
+}
+
+"""
+[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProjects)
+"""
+type PageProjects implements Entry & _Node {
+  _id: ID!
+  contentfulMetadata: ContentfulMetadata!
+  linkedFrom(allowedLocales: [String]): PageProjectsLinkingCollections
+  pageHeader(locale: String, preview: Boolean, where: ComponentPageHeaderFilter): ComponentPageHeader
+  pageName(locale: String): String
+  projectsCollection(limit: Int = 100, locale: String, order: [PageProjectsProjectsCollectionOrder], preview: Boolean, skip: Int = 0, where: PageProjectFilter): PageProjectsProjectsCollection
+  seo(locale: String, preview: Boolean, where: ComponentSeoFilter): ComponentSeo
+  sys: Sys!
+}
+
+type PageProjectsCollection {
+  items: [PageProjects]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input PageProjectsFilter {
+  AND: [PageProjectsFilter]
+  OR: [PageProjectsFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  pageHeader: cfComponentPageHeaderNestedFilter
+  pageHeader_exists: Boolean
+  pageName: String
+  pageName_contains: String
+  pageName_exists: Boolean
+  pageName_in: [String]
+  pageName_not: String
+  pageName_not_contains: String
+  pageName_not_in: [String]
+  projects: cfPageProjectNestedFilter
+  projectsCollection_exists: Boolean
+  seo: cfComponentSeoNestedFilter
+  seo_exists: Boolean
+  sys: SysFilter
+}
+
+type PageProjectsLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum PageProjectsOrder {
+  pageName_ASC
+  pageName_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+type PageProjectsProjectsCollection {
+  items: [PageProject]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+enum PageProjectsProjectsCollectionOrder {
   slug_ASC
   slug_DESC
   subtitle_ASC
@@ -1417,6 +1547,7 @@ scalar Quality
 
 type Query {
   _node(id: ID!, locale: String, preview: Boolean): _Node
+  _nodes(ids: [ID!]!, locale: String, preview: Boolean): [_Node]!
   asset(id: String!, locale: String, preview: Boolean): Asset
   assetCollection(limit: Int = 100, locale: String, order: [AssetOrder], preview: Boolean, skip: Int = 0, where: AssetFilter): AssetCollection
   assets(id: String!, locale: String, preview: Boolean): Assets
@@ -1444,6 +1575,8 @@ type Query {
   pageHomeCollection(limit: Int = 100, locale: String, order: [PageHomeOrder], preview: Boolean, skip: Int = 0, where: PageHomeFilter): PageHomeCollection
   pageProject(id: String!, locale: String, preview: Boolean): PageProject
   pageProjectCollection(limit: Int = 100, locale: String, order: [PageProjectOrder], preview: Boolean, skip: Int = 0, where: PageProjectFilter): PageProjectCollection
+  pageProjects(id: String!, locale: String, preview: Boolean): PageProjects
+  pageProjectsCollection(limit: Int = 100, locale: String, order: [PageProjectsOrder], preview: Boolean, skip: Int = 0, where: PageProjectsFilter): PageProjectsCollection
 }
 
 interface ResourceLink {
@@ -1505,7 +1638,7 @@ input SysFilter {
 }
 
 """
-Represents a tag entity for finding and organizing content easily.
+Represents a taxonomy concept entity for finding and organizing content easily.
         Find out more here: https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/content-concepts
 """
 type TaxonomyConcept {
