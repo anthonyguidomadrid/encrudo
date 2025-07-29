@@ -1,4 +1,4 @@
-import { SpeedInsights } from '@vercel/speed-insights/next';
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import { appWithTranslation } from 'next-i18next'
 import type { AppContext, AppProps } from 'next/app'
 import { useRouter } from 'next/router'

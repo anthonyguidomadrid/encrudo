@@ -1,5 +1,6 @@
 import { GraphQLClient } from 'graphql-request';
-
+// @ts-ignore
+import * as Dom from 'graphql-request/dist/types.dom';
 import gql from 'graphql-tag';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
@@ -3261,28 +3262,28 @@ const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationTy
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
-    pageAbout(variables?: PageAboutQueryVariables, requestHeaders?: RequestInit["headers"]): Promise<PageAboutQuery> {
+    pageAbout(variables?: PageAboutQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PageAboutQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<PageAboutQuery>(PageAboutDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pageAbout', 'query');
     },
-    pageContact(variables?: PageContactQueryVariables, requestHeaders?: RequestInit["headers"]): Promise<PageContactQuery> {
+    pageContact(variables?: PageContactQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PageContactQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<PageContactQuery>(PageContactDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pageContact', 'query');
     },
-    pageEditor(variables: PageEditorQueryVariables, requestHeaders?: RequestInit["headers"]): Promise<PageEditorQuery> {
+    pageEditor(variables: PageEditorQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PageEditorQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<PageEditorQuery>(PageEditorDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pageEditor', 'query');
     },
-    pageLanding(variables?: PageLandingQueryVariables, requestHeaders?: RequestInit["headers"]): Promise<PageLandingQuery> {
+    pageLanding(variables?: PageLandingQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PageLandingQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<PageLandingQuery>(PageLandingDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pageLanding', 'query');
     },
-    layout(variables?: LayoutQueryVariables, requestHeaders?: RequestInit["headers"]): Promise<LayoutQuery> {
+    layout(variables?: LayoutQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<LayoutQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<LayoutQuery>(LayoutDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'layout', 'query');
     },
-    pageProduct(variables: PageProductQueryVariables, requestHeaders?: RequestInit["headers"]): Promise<PageProductQuery> {
+    pageProduct(variables: PageProductQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PageProductQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<PageProductQuery>(PageProductDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pageProduct', 'query');
     },
-    pageProjects(variables?: PageProjectsQueryVariables, requestHeaders?: RequestInit["headers"]): Promise<PageProjectsQuery> {
+    pageProjects(variables?: PageProjectsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PageProjectsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<PageProjectsQuery>(PageProjectsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pageProjects', 'query');
     },
-    sitemapPages(variables: SitemapPagesQueryVariables, requestHeaders?: RequestInit["headers"]): Promise<SitemapPagesQuery> {
+    sitemapPages(variables: SitemapPagesQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<SitemapPagesQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<SitemapPagesQuery>(SitemapPagesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'sitemapPages', 'query');
     }
   };
