@@ -27,6 +27,6 @@
     "isolatedModules": true,
     "incremental": true
   },
-  "exclude": ["node_modules", "next.config.js"],
+  "exclude": ["node_modules", "next.config.js", "src/lib/__generated"],
   "include": ["**/*.ts", "**/*.tsx", "@types/**/*.d.ts", "**/*.d.ts", "src/pages/sitemap.xml/sitemap.xml.ts", "next-sitemap.config.js"]
 }
