@@ -20,42 +20,40 @@ const Page = ({
   return (
     <>
       {seo && <SeoFields {...seo} />}
-      {
-        <>
-          <PageHeader {...pageHeader} />
-          <Splide
-            options={{
-              type: 'loop',
-              pagination: false,
-              fixedWidth: SLIDE_DIMENSION.width,
-              fixedHeight: SLIDE_DIMENSION.height,
-              cover: true,
-              focus: 'center',
-              isNavigation: false,
-              autoplay: true,
-              easing: 'linear',
-              pauseOnHover: false,
-              speed: 5000,
-              interval: 0,
-              pauseOnFocus: false,
-              resetProgress: false,
-              keyboard: false,
-              arrows: false
-            }}
-          >
-            {picturesOfReferenceCollection.items.map((slide, idx) => (
-              <SplideSlide key={idx}>
-                <Image
-                  src={slide.url}
-                  alt={slide.description}
-                  width={SLIDE_DIMENSION.width}
-                  height={SLIDE_DIMENSION.height}
-                />
-              </SplideSlide>
-            ))}
-          </Splide>
-        </>
-      }
+      <PageHeader {...pageHeader} />
+      <section aria-label="Galería de imágenes de referencia">
+        <Splide
+          options={{
+            type: 'loop',
+            pagination: false,
+            fixedWidth: SLIDE_DIMENSION.width,
+            fixedHeight: SLIDE_DIMENSION.height,
+            cover: true,
+            focus: 'center',
+            isNavigation: false,
+            autoplay: true,
+            easing: 'linear',
+            pauseOnHover: false,
+            speed: 5000,
+            interval: 0,
+            pauseOnFocus: false,
+            resetProgress: false,
+            keyboard: false,
+            arrows: false
+          }}
+        >
+          {picturesOfReferenceCollection.items.map((slide, idx) => (
+            <SplideSlide key={idx}>
+              <Image
+                src={slide.url}
+                alt={slide.description}
+                width={SLIDE_DIMENSION.width}
+                height={SLIDE_DIMENSION.height}
+              />
+            </SplideSlide>
+          ))}
+        </Splide>
+      </section>
     </>
   )
 }

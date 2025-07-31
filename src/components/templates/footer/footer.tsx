@@ -28,7 +28,7 @@ export const Footer = ({
   const linkClassName = 'no-underline hover:opacity-70'
 
   return (
-    <>
+    <footer role="contentinfo">
       <section className="text-primary">
         <div className="max-w-7xl m-auto px-10">
           <div className="flex justify-center py-10 border-t-2">
@@ -41,7 +41,9 @@ export const Footer = ({
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 text-center pb-10">
             <FooterWrapper title={t('footer.contact')}>
-              <span>{contactContent?.location}</span>
+              <address className="not-italic">
+                {contactContent?.location}
+              </address>
               <Link
                 href={`mailto: ${contactContent?.email}`}
                 target={'_blank'}
@@ -55,29 +57,39 @@ export const Footer = ({
               </Link>
             </FooterWrapper>
             <FooterWrapper title={t('footer.link')}>
-              {menuContent?.map((menuItem, index) => (
-                <Link
-                  key={index}
-                  href={menuItem?.link ?? ''}
-                  className={linkClassName}
-                  scroll={!menuItem?.link?.includes('#')}
-                >
-                  {menuItem?.name}
-                </Link>
-              ))}
+              <nav aria-label={t('footer.link')}>
+                <ul className="list-none p-0 m-0 flex flex-col items-center gap-1">
+                  {menuContent?.map((menuItem, index) => (
+                    <li key={index}>
+                      <Link
+                        href={menuItem?.link ?? ''}
+                        className={linkClassName}
+                        scroll={!menuItem?.link?.includes('#')}
+                      >
+                        {menuItem?.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
             </FooterWrapper>
             <FooterWrapper title={t('footer.social')}>
-              {socialMediaContent?.map((menuItem, index) => (
-                <Link
-                  key={index}
-                  href={menuItem?.link ?? ''}
-                  target={'_blank'}
-                  className={linkClassName}
-                  rel="noreferrer"
-                >
-                  {menuItem?.name}
-                </Link>
-              ))}
+              <nav aria-label={t('footer.social')}>
+                <ul className="list-none p-0 m-0 flex flex-col items-center gap-1">
+                  {socialMediaContent?.map((menuItem, index) => (
+                    <li key={index}>
+                      <Link
+                        href={menuItem?.link ?? ''}
+                        target={'_blank'}
+                        className={linkClassName}
+                        rel="noreferrer"
+                      >
+                        {menuItem?.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
             </FooterWrapper>
           </div>
           <div className="flex justify-center mt-6 mb-10 md:mb-6">
@@ -93,7 +105,7 @@ export const Footer = ({
           </div>
         </div>
       </section>
-      <footer className="bg-beige-light text-primary text-sm">
+      <div className="bg-beige-light text-primary text-sm">
         <div className="max-w-7xl m-auto flex text-center flex-col md:flex-row gap-2 justify-between py-3 px-10">
           <p>{t('footer.copyright', { year: new Date().getFullYear() })}</p>
           <div className="flex gap-5 justify-center">
@@ -109,7 +121,7 @@ export const Footer = ({
             </Link>
           </div>
         </div>
-      </footer>
-    </>
+      </div>
+    </footer>
   )
 }

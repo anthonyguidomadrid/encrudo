@@ -6,7 +6,13 @@ const CONTENTFUL_ACCESS_TOKEN = process.env.CONTENTFUL_DELIVERY_API_TOKEN
 const CONTENTFUL_ENVIRONMENT = process.env.CONTENTFUL_ENVIRONMENT || 'master'
 const CONTENTFUL_GRAPHQL_URL = `https://graphql.contentful.com/content/v1/spaces/${CONTENTFUL_SPACE_ID}/environments/${CONTENTFUL_ENVIRONMENT}`
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL
-const STATIC_PAGES = ['contacto', 'proyectos', 'sobre-nosotros']
+const STATIC_PAGES = [
+  'contacto',
+  'proyectos',
+  'sobre-nosotros',
+  'proteccion-datos',
+  'aviso-legal'
+]
 const LOCALES = i18n.locales || ['es', 'en']
 
 async function fetchProjectSlugs() {

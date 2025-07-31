@@ -50,13 +50,13 @@ module.exports = withPlugins(plugins, {
       use: ['@svgr/webpack']
     })
     // Remove moment.js locales if present
-    config.plugins = config.plugins || [];
+    config.plugins = config.plugins || []
     config.plugins.push(
-      new (require('webpack')).IgnorePlugin({
+      new (require('webpack').IgnorePlugin)({
         resourceRegExp: /^\.\/locale$/,
         contextRegExp: /moment$/
       })
-    );
+    )
     return config
   }
 })

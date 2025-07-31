@@ -25,42 +25,44 @@ const Page = ({
   return (
     <>
       {seo && <SeoFields {...seo} />}
-      {
-        <>
-          {isContactMsgSent && (
-            <Script id="conversion-script">
-              {`gtag('event', 'conversion', {'send_to': '${GTAG_TRACKING_ID}/SvDsCKq_ppYZEMGphqED'});`}
-            </Script>
-          )}
-          <PageHeader {...pageHeader} />
-          <div className="mx-5 flex flex-col gap-4">
-            <p className={contactClass}>
-              <PhoneIcon className="h-5" />
-              <a className="no-underline" href={`tel:${phoneNumberLink}`}>
-                {contactInformation?.phone}
-              </a>
-            </p>
-            <div className={contactClass}>
-              <EmailIcon className="h-5" />
-              <a
-                href={`mailto: ${contactInformation?.email}`}
-                className="no-underline"
-              >
-                {contactInformation?.email}
-              </a>
-            </div>
-            <div className={contactClass}>
-              <LocationIcon className="h-5" />
-              {contactInformation?.location}
-            </div>
-          </div>
-          <ContactForm
-            isSuccess={isContactMsgSent}
-            setIsSuccess={setIsContactMsgSent}
-          />
-          <GoogleMap />
-        </>
-      }
+      <section>
+        {isContactMsgSent && (
+          <Script id="conversion-script">
+            {`gtag('event', 'conversion', {'send_to': '${GTAG_TRACKING_ID}/SvDsCKq_ppYZEMGphqED'});`}
+          </Script>
+        )}
+        <PageHeader {...pageHeader} />
+        <address className="mx-5 flex flex-col gap-4 not-italic">
+          <p className={contactClass}>
+            <PhoneIcon className="h-5" />
+            <a className="no-underline" href={`tel:${phoneNumberLink}`}>
+              {contactInformation?.phone}
+            </a>
+          </p>
+          <p className={contactClass}>
+            <EmailIcon className="h-5" />
+            <a
+              href={`mailto:${contactInformation?.email}`}
+              className="no-underline"
+            >
+              {contactInformation?.email}
+            </a>
+          </p>
+          <p className={contactClass}>
+            <LocationIcon className="h-5" />
+            {contactInformation?.location}
+          </p>
+        </address>
+      </section>
+      <section>
+        <ContactForm
+          isSuccess={isContactMsgSent}
+          setIsSuccess={setIsContactMsgSent}
+        />
+      </section>
+      <section>
+        <GoogleMap />
+      </section>
     </>
   )
 }

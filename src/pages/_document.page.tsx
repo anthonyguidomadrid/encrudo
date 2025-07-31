@@ -37,13 +37,27 @@ export default function Document() {
           color="#717171"
         />
         <link rel="icon" type="image/x-icon" href="/favicons/favicon.ico" />
-        <link rel="icon" href="/favicons/favicon.ico" />
         <meta name="msapplication-TileColor" content="#717171" />
         <meta
           name="msapplication-config"
           content="/favicons/browserconfig.xml"
         />
         <meta name="theme-color" content="#717171" />
+        <link
+          rel="preconnect"
+          href="https://fonts.googleapis.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          as="style"
+          href="https://fonts.googleapis.com/css2?family=Italiana&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        />
         <link
           href="https://fonts.googleapis.com/css2?family=Italiana&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
           rel="stylesheet"

@@ -51,21 +51,21 @@ export const Layout = ({
   assetContent,
   contactContent,
   socialMediaContent
-}: LayoutProps) => {
-  return (
-    <>
-      <Header
-        menuContent={menuContent}
-        logoLight={assetContent?.logoLight}
-        logoDark={assetContent?.logoDark}
-      />
-      <main>{children}</main>
-      <Footer
-        logo={assetContent?.logoSmall}
-        contactContent={contactContent}
-        menuContent={menuContent}
-        socialMediaContent={socialMediaContent}
-      />
-    </>
-  )
-}
+}: LayoutProps) => (
+  <>
+    <Header
+      menuContent={menuContent}
+      logoLight={assetContent?.logoLight}
+      logoDark={assetContent?.logoDark}
+    />
+    <main id="main-content" role="main" tabIndex={-1}>
+      {children}
+    </main>
+    <Footer
+      logo={assetContent?.logoSmall}
+      contactContent={contactContent}
+      menuContent={menuContent}
+      socialMediaContent={socialMediaContent}
+    />
+  </>
+)

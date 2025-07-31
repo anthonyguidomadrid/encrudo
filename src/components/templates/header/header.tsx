@@ -42,100 +42,114 @@ export const Header: FunctionComponent<HeaderProps> = ({
   const isDark = ispageScrolled || isMenuOpen
 
   return (
-    <OutsideClickDetector isMenuOpen={isMenuOpen} setMenuOpen={setMenuOpen}>
-      <nav
-        className={classNames(
-          'flex items-center justify-between flex-wrap p-7 uppercase fixed top-0 w-full z-50 text-white',
-          {
-            'bg-white bg-opacity-90 text-primary': isDark
-          }
-        )}
-      >
-        <div className="flex items-center flex-shrink-0">
-          <Link href="/" onClick={() => setMenuOpen(false)}>
-            <Image
-              src={isDark ? logoDark?.url ?? '' : logoLight?.url ?? ''}
-              alt={
-                isDark
-                  ? logoDark?.description ?? ''
-                  : logoLight?.description ?? ''
-              }
-              className="w-auto h-7"
-              width="100"
-              height="27"
-            />
-          </Link>
-        </div>
-        <div className="block md:hidden">
-          <button
-            className="flex items-center"
-            onClick={e => {
-              e.stopPropagation()
-              setMenuOpen(!isMenuOpen)
-            }}
-          >
-            {isMenuOpen ? (
-              <CrossIcon className={'h-6 w-6 text-primary'} />
-            ) : (
-              <HamburgerMenu
-                className={classNames('h-6 w-6', {
-                  'fill-white': !isDark,
-                  'fill-primary': isDark
-                })}
-              />
-            )}
-          </button>
-        </div>
-        <AnimatePresence>
-          {(isDesktop || isMenuOpen) && (
-            <motion.div
-              key="menu"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className={classNames(
-                'w-full block flex-grow md:flex md:items-center md:w-auto',
-                { hidden: !isMenuOpen && !isDesktop }
-              )}
-            >
-              <motion.div
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3 }}
-                className="text-sm md:flex-grow"
-              >
-                <div className="flex flex-col md:flex-row md:justify-center gap-5 my-5 md:my-0">
-                  {menuContent?.map((item, idx) => (
-                    <Link
-                      key={idx}
-                      className={classNames('no-underline hover:opacity-70', {
-                        'text-primary': isDark
-                      })}
-                      href={item?.link ?? ''}
-                      onClick={() => setMenuOpen && setMenuOpen(false)}
-                      scroll={!item?.link?.includes('#')}
-                    >
-                      {item?.name}
-                    </Link>
-                  ))}
-                </div>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3 }}
-              >
-                <LanguageSelector
-                  isDark={isDark}
-                  onClick={() => setMenuOpen(false)}
-                />
-              </motion.div>
-            </motion.div>
+    <header>
+      <OutsideClickDetector isMenuOpen={isMenuOpen} setMenuOpen={setMenuOpen}>
+        <nav
+          role="navigation"
+          aria-label="Main navigation"
+          className={classNames(
+            'flex items-center justify-between flex-wrap p-7 uppercase fixed top-0 w-full z-50 text-white',
+            {
+              'bg-white bg-opacity-90 text-primary': isDark
+            }
           )}
-        </AnimatePresence>
-      </nav>
-    </OutsideClickDetector>
+        >
+          <div className="flex items-center flex-shrink-0">
+            <Link href="/" onClick={() => setMenuOpen(false)}>
+              <Image
+                src={isDark ? (logoDark?.url ?? '') : (logoLight?.url ?? '')}
+                alt={
+                  isDark
+                    ? (logoDark?.description ?? '')
+                    : (logoLight?.description ?? '')
+                }
+                className="w-auto h-7"
+                width="100"
+                height="27"
+              />
+            </Link>
+          </div>
+          <div className="block md:hidden">
+            <button
+              className="flex items-center"
+              aria-label={isMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
+              aria-expanded={isMenuOpen}
+              aria-controls="main-menu"
+              onClick={e => {
+                e.stopPropagation()
+                setMenuOpen(!isMenuOpen)
+              }}
+            >
+              {isMenuOpen ? (
+                <CrossIcon className={'h-6 w-6 text-primary'} />
+              ) : (
+                <HamburgerMenu
+                  className={classNames('h-6 w-6', {
+                    'fill-white': !isDark,
+                    'fill-primary': isDark
+                  })}
+                />
+              )}
+            </button>
+          </div>
+          <AnimatePresence>
+            {(isDesktop || isMenuOpen) && (
+              <motion.div
+                key="menu"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className={classNames(
+                  'w-full block flex-grow md:flex md:items-center md:w-auto',
+                  { hidden: !isMenuOpen && !isDesktop }
+                )}
+              >
+                <motion.div
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3 }}
+                  className="text-sm md:flex-grow"
+                >
+                  <ul
+                    id="main-menu"
+                    className="flex flex-col md:flex-row md:justify-center gap-5 my-5 md:my-0 list-none p-0 m-0"
+                  >
+                    {menuContent?.map((item, idx) => (
+                      <li key={idx} className="inline-block">
+                        <Link
+                          className={classNames(
+                            'no-underline hover:opacity-70',
+                            {
+                              'text-primary': isDark
+                            }
+                          )}
+                          href={item?.link ?? ''}
+                          onClick={() => setMenuOpen && setMenuOpen(false)}
+                          scroll={!item?.link?.includes('#')}
+                        >
+                          {item?.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <LanguageSelector
+                    isDark={isDark}
+                    onClick={() => setMenuOpen(false)}
+                  />
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </nav>
+      </OutsideClickDetector>
+    </header>
   )
 }

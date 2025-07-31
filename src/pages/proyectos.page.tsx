@@ -13,22 +13,17 @@ const ProjectsPage = ({
   return (
     <>
       {seo && <SeoFields {...seo} />}
-      {
-        <>
-          <PageHeader {...pageHeader} />
-          {projectsCollection?.items?.length && (
-            <section
-              id="proyectos"
-              className="max-w-7xl mx-auto p-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 grid-flow-row gap-10"
-            >
-              {page.projectsCollection.items.map((project, idx: number) => {
-                console.log({ project })
-                return <ProductTile key={idx} {...{ project }} />
-              })}
-            </section>
-          )}
-        </>
-      }
+      <PageHeader {...pageHeader} />
+      {projectsCollection?.items?.length && (
+        <section
+          id="proyectos"
+          className="max-w-7xl mx-auto p-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 grid-flow-row gap-10"
+        >
+          {page.projectsCollection.items.map((project, idx: number) => (
+            <ProductTile key={idx} {...{ project }} />
+          ))}
+        </section>
+      )}
     </>
   )
 }

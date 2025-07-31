@@ -19,12 +19,12 @@ const Page = ({
   return (
     <>
       {seo && <SeoFields {...seo} />}
-      <div className="bg-grey-light pt-36 pb-16">
+      <section className="bg-grey-light pt-36 pb-16">
         <h1 className="max-w-4xl mx-auto px-5 text-white text-center">
           {pageName}
         </h1>
-      </div>
-      <div
+      </section>
+      <section
         dangerouslySetInnerHTML={{
           __html: documentToHtmlString(json)
         }}
@@ -32,7 +32,7 @@ const Page = ({
       />
 
       {html && (
-        <div
+        <section
           dangerouslySetInnerHTML={{ __html: html }}
           className="max-w-4xl mx-auto pb-10 px-5 space-y-4 flex justify-center"
         />
