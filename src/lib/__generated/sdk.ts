@@ -1,5 +1,4 @@
-import { GraphQLClient } from 'graphql-request';
-import * as Dom from 'graphql-request/dist/types.dom';
+import { GraphQLClient, RequestOptions } from 'graphql-request';
 import gql from 'graphql-tag';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
@@ -8,6 +7,7 @@ export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: 
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
 export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
 export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
+type GraphQLClientRequestHeaders = RequestOptions['requestHeaders'];
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: { input: string; output: string; }
@@ -3194,33 +3194,33 @@ ${ImageFieldsFragmentDoc}
 ${SeoFieldsFragmentDoc}
 ${ProjectOverviewFieldsFragmentDoc}`;
 
-export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string) => Promise<T>;
+export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string, variables?: any) => Promise<T>;
 
 
-const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationType) => action();
+const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationType, _variables) => action();
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
-    pageAbout(variables?: PageAboutQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PageAboutQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<PageAboutQuery>(PageAboutDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pageAbout', 'query');
+    pageAbout(variables?: PageAboutQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<PageAboutQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<PageAboutQuery>({ document: PageAboutDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'pageAbout', 'query', variables);
     },
-    pageContact(variables?: PageContactQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PageContactQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<PageContactQuery>(PageContactDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pageContact', 'query');
+    pageContact(variables?: PageContactQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<PageContactQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<PageContactQuery>({ document: PageContactDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'pageContact', 'query', variables);
     },
-    pageEditor(variables: PageEditorQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PageEditorQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<PageEditorQuery>(PageEditorDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pageEditor', 'query');
+    pageEditor(variables: PageEditorQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<PageEditorQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<PageEditorQuery>({ document: PageEditorDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'pageEditor', 'query', variables);
     },
-    pageLanding(variables?: PageLandingQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PageLandingQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<PageLandingQuery>(PageLandingDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pageLanding', 'query');
+    pageLanding(variables?: PageLandingQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<PageLandingQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<PageLandingQuery>({ document: PageLandingDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'pageLanding', 'query', variables);
     },
-    layout(variables?: LayoutQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<LayoutQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<LayoutQuery>(LayoutDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'layout', 'query');
+    layout(variables?: LayoutQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<LayoutQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<LayoutQuery>({ document: LayoutDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'layout', 'query', variables);
     },
-    pageProject(variables: PageProjectQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PageProjectQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<PageProjectQuery>(PageProjectDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pageProject', 'query');
+    pageProject(variables: PageProjectQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<PageProjectQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<PageProjectQuery>({ document: PageProjectDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'pageProject', 'query', variables);
     },
-    pageProjects(variables?: PageProjectsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PageProjectsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<PageProjectsQuery>(PageProjectsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pageProjects', 'query');
+    pageProjects(variables?: PageProjectsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<PageProjectsQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<PageProjectsQuery>({ document: PageProjectsDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'pageProjects', 'query', variables);
     }
   };
 }
