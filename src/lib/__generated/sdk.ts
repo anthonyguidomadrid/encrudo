@@ -1,5 +1,4 @@
 import { GraphQLClient } from 'graphql-request';
-// @ts-ignore
 import * as Dom from 'graphql-request/dist/types.dom';
 import gql from 'graphql-tag';
 export type Maybe<T> = T | null;
@@ -2872,6 +2871,16 @@ export type PageEditorQuery = { __typename?: 'Query', pageEditorCollection?: { _
 
 export type ImageFieldsFragment = { __typename: 'Asset', title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, contentType?: string | null, sys: { __typename?: 'Sys', id: string } };
 
+export type PageHeaderFieldsFragment = { __typename?: 'ComponentPageHeader', title?: string | null, description?: { __typename?: 'ComponentPageHeaderDescription', json: any } | null, header?: (
+    { __typename?: 'Asset' }
+    & ImageFieldsFragment
+  ) | null };
+
+export type SeoFieldsFragment = { __typename: 'ComponentSeo', pageTitle?: string | null, pageDescription?: string | null, canonicalUrl?: string | null, nofollow?: boolean | null, noindex?: boolean | null, shareImagesCollection?: { __typename?: 'AssetCollection', items: Array<(
+      { __typename?: 'Asset' }
+      & ImageFieldsFragment
+    ) | null> } | null };
+
 export type PageLandingQueryVariables = Exact<{
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
@@ -2909,19 +2918,14 @@ export type LayoutQuery = { __typename?: 'Query', menuCollection?: { __typename?
       & ContactFieldsFragment
     ) | null> } | null, componentSocialMediaCollection?: { __typename?: 'ComponentSocialMediaCollection', items: Array<{ __typename?: 'ComponentSocialMedia', name?: string | null, link?: string | null } | null> } | null };
 
-export type PageHeaderFieldsFragment = { __typename?: 'ComponentPageHeader', title?: string | null, description?: { __typename?: 'ComponentPageHeaderDescription', json: any } | null, header?: (
-    { __typename?: 'Asset' }
-    & ImageFieldsFragment
-  ) | null };
-
-export type PageProductQueryVariables = Exact<{
+export type PageProjectQueryVariables = Exact<{
   slug: Scalars['String']['input'];
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
 }>;
 
 
-export type PageProductQuery = { __typename?: 'Query', pageProjectCollection?: { __typename?: 'PageProjectCollection', items: Array<{ __typename?: 'PageProject', title?: string | null, subtitle?: string | null, description?: { __typename?: 'PageProjectDescription', json: any } | null, header?: (
+export type PageProjectQuery = { __typename?: 'Query', pageProjectCollection?: { __typename?: 'PageProjectCollection', items: Array<{ __typename?: 'PageProject', title?: string | null, subtitle?: string | null, description?: { __typename?: 'PageProjectDescription', json: any } | null, header?: (
         { __typename?: 'Asset' }
         & ImageFieldsFragment
       ) | null, galleryCollection?: { __typename?: 'AssetCollection', items: Array<(
@@ -2953,23 +2957,6 @@ export type PageProjectsQuery = { __typename?: 'Query', pageProjectsCollection?:
           { __typename?: 'PageProject' }
           & ProjectOverviewFieldsFragment
         ) | null> } | null } | null> } | null };
-
-export type SeoFieldsFragment = { __typename: 'ComponentSeo', pageTitle?: string | null, pageDescription?: string | null, canonicalUrl?: string | null, nofollow?: boolean | null, noindex?: boolean | null, shareImagesCollection?: { __typename?: 'AssetCollection', items: Array<(
-      { __typename?: 'Asset' }
-      & ImageFieldsFragment
-    ) | null> } | null };
-
-export type SitemapPagesFieldsFragment = { __typename?: 'Query', pageHomeCollection?: { __typename?: 'PageHomeCollection', items: Array<{ __typename?: 'PageHome', sys: { __typename?: 'Sys', publishedAt?: any | null } } | null> } | null, pageAboutCollection?: { __typename?: 'PageAboutCollection', items: Array<{ __typename?: 'PageAbout', pageName?: string | null, sys: { __typename?: 'Sys', publishedAt?: any | null } } | null> } | null, pageContactCollection?: { __typename?: 'PageContactCollection', items: Array<{ __typename?: 'PageContact', pageName?: string | null, sys: { __typename?: 'Sys', publishedAt?: any | null } } | null> } | null, pageEditorCollection?: { __typename?: 'PageEditorCollection', items: Array<{ __typename?: 'PageEditor', pageSlug?: string | null, sys: { __typename?: 'Sys', publishedAt?: any | null } } | null> } | null, pageProjectCollection?: { __typename?: 'PageProjectCollection', items: Array<{ __typename?: 'PageProject', slug?: string | null, sys: { __typename?: 'Sys', publishedAt?: any | null } } | null> } | null };
-
-export type SitemapPagesQueryVariables = Exact<{
-  locale: Scalars['String']['input'];
-}>;
-
-
-export type SitemapPagesQuery = (
-  { __typename?: 'Query' }
-  & SitemapPagesFieldsFragment
-);
 
 export const ContactFieldsFragmentDoc = gql`
     fragment ContactFields on ComponentContact {
@@ -3003,16 +2990,6 @@ export const PageHeaderFieldsFragmentDoc = gql`
   }
 }
     `;
-export const ProjectOverviewFieldsFragmentDoc = gql`
-    fragment ProjectOverviewFields on PageProject {
-  title
-  subtitle
-  slug
-  thumbnail {
-    ...ImageFields
-  }
-}
-    `;
 export const SeoFieldsFragmentDoc = gql`
     fragment SeoFields on ComponentSeo {
   __typename
@@ -3028,46 +3005,13 @@ export const SeoFieldsFragmentDoc = gql`
   }
 }
     `;
-export const SitemapPagesFieldsFragmentDoc = gql`
-    fragment sitemapPagesFields on Query {
-  pageHomeCollection(limit: 1, locale: $locale) {
-    items {
-      sys {
-        publishedAt
-      }
-    }
-  }
-  pageAboutCollection(limit: 1, locale: $locale) {
-    items {
-      pageName
-      sys {
-        publishedAt
-      }
-    }
-  }
-  pageContactCollection(limit: 1, locale: $locale) {
-    items {
-      pageName
-      sys {
-        publishedAt
-      }
-    }
-  }
-  pageEditorCollection(limit: 10, locale: $locale) {
-    items {
-      pageSlug
-      sys {
-        publishedAt
-      }
-    }
-  }
-  pageProjectCollection(limit: 20, locale: $locale) {
-    items {
-      slug
-      sys {
-        publishedAt
-      }
-    }
+export const ProjectOverviewFieldsFragmentDoc = gql`
+    fragment ProjectOverviewFields on PageProject {
+  title
+  subtitle
+  slug
+  thumbnail {
+    ...ImageFields
   }
 }
     `;
@@ -3197,8 +3141,8 @@ export const LayoutDocument = gql`
 }
     ${ImageFieldsFragmentDoc}
 ${ContactFieldsFragmentDoc}`;
-export const PageProductDocument = gql`
-    query pageProduct($slug: String!, $locale: String, $preview: Boolean) {
+export const PageProjectDocument = gql`
+    query pageProject($slug: String!, $locale: String, $preview: Boolean) {
   pageProjectCollection(
     limit: 1
     where: {slug: $slug}
@@ -3249,11 +3193,6 @@ export const PageProjectsDocument = gql`
 ${ImageFieldsFragmentDoc}
 ${SeoFieldsFragmentDoc}
 ${ProjectOverviewFieldsFragmentDoc}`;
-export const SitemapPagesDocument = gql`
-    query sitemapPages($locale: String!) {
-  ...sitemapPagesFields
-}
-    ${SitemapPagesFieldsFragmentDoc}`;
 
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string) => Promise<T>;
 
@@ -3277,14 +3216,11 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     layout(variables?: LayoutQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<LayoutQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<LayoutQuery>(LayoutDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'layout', 'query');
     },
-    pageProduct(variables: PageProductQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PageProductQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<PageProductQuery>(PageProductDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pageProduct', 'query');
+    pageProject(variables: PageProjectQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PageProjectQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<PageProjectQuery>(PageProjectDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pageProject', 'query');
     },
     pageProjects(variables?: PageProjectsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PageProjectsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<PageProjectsQuery>(PageProjectsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pageProjects', 'query');
-    },
-    sitemapPages(variables: SitemapPagesQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<SitemapPagesQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<SitemapPagesQuery>(SitemapPagesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'sitemapPages', 'query');
     }
   };
 }

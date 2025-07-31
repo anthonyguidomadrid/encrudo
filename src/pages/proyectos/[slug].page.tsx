@@ -48,7 +48,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   }
 
   try {
-    const data = await client.pageProduct({
+    const data = await client.pageProject({
       slug: params.slug.toString(),
       locale
     })

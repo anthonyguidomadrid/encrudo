@@ -1,4 +1,4 @@
-query pageProduct($slug: String!, $locale: String, $preview: Boolean) {
+query pageProject($slug: String!, $locale: String, $preview: Boolean) {
   pageProjectCollection(limit: 1, where: { slug: $slug }, locale: $locale, preview: $preview) {
     items {
       title
