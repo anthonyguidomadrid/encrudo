@@ -46,3 +46,10 @@ next-env.d.ts
 .idea/misc.xml
 .idea/modules.xml
 .idea/vcs.xml
+
+# next-sitemap
+sitemap.xml
+sitemap-index.xml
+robots.txt
+sitemap-0.xml
+

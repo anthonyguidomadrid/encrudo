@@ -28,5 +28,5 @@
     "incremental": true
   },
   "exclude": ["node_modules", "next.config.js"],
-  "include": ["**/*.ts", "**/*.tsx", "@types/**/*.d.ts", "**/*.d.ts"]
+  "include": ["**/*.ts", "**/*.tsx", "@types/**/*.d.ts", "**/*.d.ts", "src/pages/sitemap.xml/sitemap.xml.ts", "next-sitemap.config.js"]
 }

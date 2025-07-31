@@ -1,11 +1,11 @@
-import { NextSeo } from 'next-seo';
-import { useRouter } from 'next/router';
-import URI from 'urijs';
+import { NextSeo } from 'next-seo'
+import { useRouter } from 'next/router'
+import URI from 'urijs'
 
-import { SeoFieldsFragment } from '@src/lib/__generated/sdk';
+import { SeoFieldsFragment } from '@src/lib/__generated/sdk'
 
 const generateUrl = (locale: string, slug: string) =>
-  new URI(process.env.NEXT_PUBLIC_BASE_URL).segment([locale, slug]).toString();
+  new URI(process.env.NEXT_PUBLIC_SITE_URL).segment([locale, slug]).toString()
 
 export const SeoFields = ({
   pageTitle,
@@ -13,17 +13,17 @@ export const SeoFields = ({
   noindex,
   nofollow,
   canonicalUrl,
-  shareImagesCollection,
+  shareImagesCollection
 }: SeoFieldsFragment) => {
-  const { locale, locales, asPath } = useRouter();
+  const { locale, locales, asPath } = useRouter()
 
-  const url = generateUrl(locale || '', asPath);
+  const url = generateUrl(locale || '', asPath)
 
   const languageAlternates =
     locales?.map(locale => ({
       hrefLang: locale,
-      href: generateUrl(locale, asPath),
-    })) || [];
+      href: generateUrl(locale, asPath)
+    })) || []
 
   return (
     <NextSeo
@@ -44,13 +44,13 @@ export const SeoFields = ({
           width: item?.width || 0,
           height: item?.height || 0,
           alt: item?.description || '',
-          type: item?.contentType || '',
-        })),
+          type: item?.contentType || ''
+        }))
       }}
       twitter={{
         site: url,
-        cardType: 'summary_large_image',
+        cardType: 'summary_large_image'
       }}
     />
-  );
-};
+  )
+}

@@ -1,3 +1,9 @@
+# *
 User-agent: *
 Allow: /
+
+# Host
+Host: https://www.encrudotaller.com/
+
+# Sitemaps
 Sitemap: https://www.encrudotaller.com/sitemap.xml
