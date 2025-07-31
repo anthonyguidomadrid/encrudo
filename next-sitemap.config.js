@@ -6,13 +6,8 @@ const CONTENTFUL_ACCESS_TOKEN = process.env.CONTENTFUL_DELIVERY_API_TOKEN
 const CONTENTFUL_ENVIRONMENT = process.env.CONTENTFUL_ENVIRONMENT || 'master'
 const CONTENTFUL_GRAPHQL_URL = `https://graphql.contentful.com/content/v1/spaces/${CONTENTFUL_SPACE_ID}/environments/${CONTENTFUL_ENVIRONMENT}`
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL
-const STATIC_PAGES = [
-  'contacto',
-  'proyectos',
-  'sobre-nosotros',
-  'proteccion-datos',
-  'aviso-legal'
-]
+const STATIC_PAGES = ['contacto', 'proyectos', 'sobre-nosotros']
+const ADDITIONAL_PAGES = ['proteccion-datos', 'aviso-legal']
 const LOCALES = i18n.locales || ['es', 'en']
 
 async function fetchProjectSlugs() {
@@ -68,8 +63,8 @@ module.exports = {
   exclude: ['/404', '**/404', '/500'],
   i18n,
   additionalPaths: async () => {
-    const staticPaths = STATIC_PAGES.map(page => ({
-      loc: `${LOCALES[1]}/${page}`,
+    const staticPaths = [...STATIC_PAGES, ...ADDITIONAL_PAGES].map(slug => ({
+      loc: `${LOCALES[1]}/${slug}`,
       changefreq: 'weekly',
       priority: 0.7,
       lastmod: new Date().toISOString()
@@ -80,6 +75,15 @@ module.exports = {
       changefreq: 'weekly',
       priority: 0.7,
       lastmod: new Date().toISOString()
+    })
+
+    ADDITIONAL_PAGES.forEach(loc => {
+      staticPaths.push({
+        loc,
+        changefreq: 'weekly',
+        priority: 0.7,
+        lastmod: new Date().toISOString()
+      })
     })
 
     const projects = await fetchProjectSlugs()
