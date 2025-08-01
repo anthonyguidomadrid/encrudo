@@ -1,29 +1,38 @@
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
-import { BLOCKS } from '@contentful/rich-text-types'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 
 import { SeoFields } from '@src/components/features/seo'
 import { client } from '@src/lib/client'
 import { getServerSideTranslations } from '@src/pages/utils/get-serverside-translations'
+import { BreadcrumbItem, Breadcrumbs } from '@src/components/breadcrumbs'
+import { LINKS } from '@src/constants/links'
+import { useTranslation } from 'next-i18next'
+import { useRouter } from 'next/router'
 
 const Page = ({
-  page
-}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const {
+  page: {
     pageName,
     content: { json },
     seo,
     html
-  } = page
+  }
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  const { t } = useTranslation()
+  const { asPath } = useRouter()
+  const BREADCRUMBS: BreadcrumbItem[] = [
+    { label: t('link.home'), href: LINKS.HOME },
+    { label: pageName, href: asPath }
+  ]
 
   return (
     <>
       {seo && <SeoFields {...seo} />}
-      <section className="bg-grey-light pt-36 pb-16">
+      <section className="bg-grey-light pt-36 pb-16 mb-5">
         <h1 className="max-w-4xl mx-auto px-5 text-white text-center">
           {pageName}
         </h1>
       </section>
+      <Breadcrumbs items={BREADCRUMBS} />
       <section
         dangerouslySetInnerHTML={{
           __html: documentToHtmlString(json)

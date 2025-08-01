@@ -1,5 +1,11 @@
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
 import { Document } from '@contentful/rich-text-types'
+import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
+import {
+  BreadcrumbItem,
+  Breadcrumbs
+} from '@src/components/breadcrumbs/breadcrumbs'
 
 export type PageHeaderProps = {
   header: {
@@ -14,6 +20,12 @@ export const PageHeader = ({
   title,
   description
 }: PageHeaderProps) => {
+  const { asPath } = useRouter()
+  const { t } = useTranslation()
+  const BREADCRUMBS: BreadcrumbItem[] = [
+    { label: t('link.home'), href: '/' },
+    { label: title, href: asPath }
+  ]
   return (
     <>
       <div
@@ -23,6 +35,7 @@ export const PageHeader = ({
         }}
       />
       <div className="text-center py-20 px-10">
+        <Breadcrumbs items={BREADCRUMBS} />
         <h1>{title}</h1>
         {description && (
           <div

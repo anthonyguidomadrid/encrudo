@@ -17,7 +17,7 @@
     "button": "Back Home"
   },
   "form": {
-    "fields" : {
+    "fields": {
       "name": "Name",
       "email": "Email",
       "phone": "Phone",
@@ -38,5 +38,9 @@
     "sending": "Sending...",
     "error": "An error occurred, please try again",
     "success": "Thanks for subscribing!"
+  },
+  "link": {
+    "home": "Home",
+    "projects": "Projects"
   }
 }

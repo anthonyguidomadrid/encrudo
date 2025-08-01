@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { Picture } from '../types'
+import { LINKS } from '@src/constants/links'
 
 export type ProductTileProps = {
   project: {
@@ -17,7 +18,7 @@ export const ProductTile = ({ project }: ProductTileProps) => {
   return (
     <article className="flex items-center justify-center">
       <Link
-        href={`/proyectos/${project.slug}`}
+        href={`${LINKS.PROJECTS}/${project.slug}`}
         tabIndex={-1}
         aria-label={`Ver proyecto: ${project.title}`}
         className="block w-full h-full"

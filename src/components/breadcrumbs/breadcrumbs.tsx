@@ -1,0 +1,62 @@
+import Link from 'next/link'
+import React from 'react'
+
+export type BreadcrumbItem = {
+  label: string
+  href: string
+}
+
+export type BreadcrumbsProps = {
+  items: BreadcrumbItem[]
+}
+
+export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items }) => {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, idx) => ({
+      '@type': 'ListItem',
+      position: idx + 1,
+      name: item.label,
+      item: `${process.env.NEXT_PUBLIC_SITE_URL || ''}${item.href}`
+    }))
+  }
+
+  return (
+    <nav aria-label="Breadcrumb" className="mb-4">
+      <ol
+        className="flex flex-wrap gap-2 text-sm"
+        itemScope
+        itemType="https://schema.org/BreadcrumbList"
+      >
+        {items.map((item, idx) => {
+          const isLast = idx === items.length - 1
+          return (
+            <li
+              key={item.href}
+              itemProp="itemListElement"
+              itemScope
+              itemType="https://schema.org/ListItem"
+              className="flex items-center"
+            >
+              {idx > 0 && <span className="mx-2">/</span>}
+              <Link href={item.href} itemProp="item">
+                <span
+                  itemProp="name"
+                  className={isLast ? '' : 'underline hover:text-primary'}
+                >
+                  {item.label}
+                </span>
+              </Link>
+              <meta itemProp="position" content={String(idx + 1)} />
+            </li>
+          )
+        })}
+      </ol>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+    </nav>
+  )
+}

@@ -40,5 +40,9 @@
     "sending": "Enviando...",
     "error": "Ha occurido un error, intentálo de nuevo",
     "success": "¡Gracias por suscribirte!"
+  },
+  "link": {
+    "home": "Inicio",
+    "projects": "Proyectos"
   }
 }

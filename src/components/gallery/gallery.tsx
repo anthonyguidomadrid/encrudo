@@ -44,7 +44,7 @@ export const Gallery = ({ photos, columnAmount }: GalleryProps) => {
           imageCaption={photos[currentIdx].description}
         />
       )}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 pt-10">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 pt-5">
         {photosColumns.map((photoArray, idx) => (
           <div className="grid gap-10" key={idx}>
             {photoArray.map((photo, idx) => (

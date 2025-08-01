@@ -8,6 +8,7 @@ import { SliderBackground } from '@src/components/sliderBackground'
 import { client } from '@src/lib/client'
 import { Button } from '@src/components/button'
 import { useTranslation } from 'next-i18next'
+import { LINKS } from '@src/constants/links'
 
 const Page = ({
   page
@@ -29,7 +30,7 @@ const Page = ({
           })}
           <div className="col-span-full flex justify-center">
             <Button
-              link="/proyectos"
+              link={LINKS.PROJECTS}
               label={t('project.see-more')}
               additionalClasses="uppercase px-5 py-2 border border-primary hover:border-primary hover:text-grey-light"
             />
