@@ -19,20 +19,20 @@ const Page = ({
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { pageHeader, contactInformation, seo } = page
   const phoneNumberLink = transformPhoneNumberToLink(contactInformation?.phone)
-  const contactClass = 'flex justify-center gap-2'
+  const contactClass = 'flex items-start sm:justify-center gap-2'
   const [isContactMsgSent, setIsContactMsgSent] = useState(false)
 
   return (
     <>
       {seo && <SeoFields {...seo} />}
+      {isContactMsgSent && (
+        <Script id="conversion-script">
+          {`gtag('event', 'conversion', {'send_to': '${GTAG_TRACKING_ID}/SvDsCKq_ppYZEMGphqED'});`}
+        </Script>
+      )}
       <section>
-        {isContactMsgSent && (
-          <Script id="conversion-script">
-            {`gtag('event', 'conversion', {'send_to': '${GTAG_TRACKING_ID}/SvDsCKq_ppYZEMGphqED'});`}
-          </Script>
-        )}
         <PageHeader {...pageHeader} />
-        <address className="mx-5 flex flex-col gap-4 not-italic">
+        <div className="mx-5 flex flex-col gap-4">
           <p className={contactClass}>
             <PhoneIcon className="h-5" />
             <a className="no-underline" href={`tel:${phoneNumberLink}`}>
@@ -48,11 +48,13 @@ const Page = ({
               {contactInformation?.email}
             </a>
           </p>
-          <p className={contactClass}>
+          <p className={`${contactClass}`}>
             <LocationIcon className="h-5" />
-            {contactInformation?.location}
+            <address className="not-italic">
+              {contactInformation?.location}
+            </address>
           </p>
-        </address>
+        </div>
       </section>
       <section>
         <ContactForm

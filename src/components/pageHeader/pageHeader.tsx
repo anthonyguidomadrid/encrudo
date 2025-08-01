@@ -17,7 +17,7 @@ export const PageHeader = ({
   return (
     <>
       <div
-        className={`h-screen bg-cover bg-no-repeat bg-center`}
+        className={`h-[80vh] bg-cover bg-no-repeat bg-center`}
         style={{
           backgroundImage: `url(${url})`
         }}
