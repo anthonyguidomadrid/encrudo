@@ -50,7 +50,8 @@ export const Header: FunctionComponent<HeaderProps> = ({
           className={classNames(
             'flex items-center justify-between flex-wrap p-7 uppercase fixed top-0 w-full z-50 text-white',
             {
-              'bg-white bg-opacity-90 text-primary': isDark
+              'bg-white bg-opacity-90 text-primary': isDark,
+              'drop-shadow-[0_2px_8px_rgba(0,0,0,0.25)]': ispageScrolled
             }
           )}
         >
@@ -63,7 +64,7 @@ export const Header: FunctionComponent<HeaderProps> = ({
                     ? (logoDark?.description ?? '')
                     : (logoLight?.description ?? '')
                 }
-                className="w-auto h-7"
+                className="w-auto h-7 drop-shadow-[0_2px_8px_rgba(0,0,0,0.25)]"
                 width="100"
                 height="27"
               />
@@ -119,7 +120,7 @@ export const Header: FunctionComponent<HeaderProps> = ({
                       <li key={idx} className="inline-block">
                         <Link
                           className={classNames(
-                            'no-underline hover:opacity-70',
+                            'no-underline hover:opacity-70 drop-shadow-[0_2px_8px_rgba(0,0,0,0.25)]',
                             {
                               'text-primary': isDark
                             }
