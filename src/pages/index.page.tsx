@@ -1,3 +1,4 @@
+import { WebPageJsonLd } from 'next-seo'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 
 import { getServerSideTranslations } from './utils/get-serverside-translations'
@@ -30,9 +31,16 @@ const Page = ({
   page
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { t } = useTranslation()
+  const url = process.env.NEXT_PUBLIC_SITE_URL
   return (
     <>
       {page.seo && <SeoFields {...page.seo} />}
+      <WebPageJsonLd
+        name={page.title}
+        description={page.seo?.pageDescription}
+        id={url!}
+        url={url!}
+      />
       {page.slider?.imageCollection?.items?.length && (
         <SliderBackground items={page.slider?.imageCollection?.items} />
       )}

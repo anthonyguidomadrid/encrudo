@@ -1,8 +1,10 @@
+import { WebPageJsonLd } from 'next-seo'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { SeoFields } from '@src/components/features/seo'
 import { client } from '@src/lib/client'
 import { getServerSideTranslations } from '@src/pages/utils/get-serverside-translations'
 import dynamic from 'next/dynamic'
+import { LINKS } from '@src/constants/links'
 
 const PageHeader = dynamic(
   () =>
@@ -21,10 +23,17 @@ const ProjectsPage = ({
   page
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { pageHeader, projectsCollection, seo } = page
+  const url = `${process.env.NEXT_PUBLIC_SITE_URL}${LINKS.PROJECTS}`
 
   return (
     <>
       {seo && <SeoFields {...seo} />}
+      <WebPageJsonLd
+        name={pageHeader?.title}
+        description={seo?.pageDescription}
+        id={url!}
+        url={url!}
+      />
       <PageHeader {...pageHeader} />
       {projectsCollection?.items?.length && (
         <section

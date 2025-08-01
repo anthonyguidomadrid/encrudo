@@ -3,6 +3,7 @@ import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { useTranslation } from 'next-i18next'
 
 import ArrowLeft from '@icons/arrow-left.svg'
+import { ProductJsonLd } from 'next-seo'
 import { SeoFields } from '@src/components/features/seo'
 import dynamic from 'next/dynamic'
 
@@ -23,23 +24,38 @@ const Button = dynamic(
 )
 import { client } from '@src/lib/client'
 import { getServerSideTranslations } from '@src/pages/utils/get-serverside-translations'
+import { LINKS } from '@src/constants/links'
 
 const Page = ({
   product
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const { title, subtitle, header, description, seo } = product
+  const { title, subtitle, header, description, seo, galleryCollection } =
+    product
   const { t } = useTranslation()
+  const url = `${process.env.NEXT_PUBLIC_SITE_URL}${LINKS.PROJECTS}/${product.slug}`
 
   return (
     <>
       {seo && <SeoFields {...seo} />}
+      <ProductJsonLd
+        productName={title}
+        description={description?.json ? description.json : ''}
+        brand="Encrudo Taller"
+        images={galleryCollection.items.map(item => item?.url || '')}
+        offers={{
+          priceCurrency: 'EUR',
+          availability: 'https://schema.org/InStock',
+          url
+        }}
+        url={url}
+      />
       <ProjectHeader
         title={title}
         subtitle={subtitle}
         image={header}
         description={documentToHtmlString(description?.json)}
       />
-      <Gallery photos={product.galleryCollection?.items} columnAmount={3} />
+      <Gallery photos={galleryCollection?.items} columnAmount={3} />
       <div className="flex my-10">
         <Button
           label={t('project.back-btn')}

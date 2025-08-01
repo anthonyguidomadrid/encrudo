@@ -8,15 +8,13 @@ import dynamic from 'next/dynamic'
 import { BreadcrumbItem } from '@src/components/breadcrumbs'
 
 const Breadcrumbs = dynamic(
-  () =>
-    import('@src/components/breadcrumbs').then(
-      mod => mod.Breadcrumbs
-    ),
+  () => import('@src/components/breadcrumbs').then(mod => mod.Breadcrumbs),
   { ssr: false }
 )
 import { LINKS } from '@src/constants/links'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
+import { WebPageJsonLd } from 'next-seo'
 
 const Page = ({
   page: {
@@ -32,10 +30,17 @@ const Page = ({
     { label: t('link.home'), href: LINKS.HOME },
     { label: pageName, href: asPath }
   ]
+  const url = `${process.env.NEXT_PUBLIC_SITE_URL}/${asPath}`
 
   return (
     <>
       {seo && <SeoFields {...seo} />}
+      <WebPageJsonLd
+        name={pageName}
+        description={seo?.pageDescription}
+        id={url}
+        url={url}
+      />
       <section className="bg-grey-light pt-36 pb-16 mb-5">
         <h1 className="max-w-4xl mx-auto px-5 text-white text-center">
           {pageName}

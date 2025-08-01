@@ -1,3 +1,4 @@
+import { WebPageJsonLd } from 'next-seo'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import Image from 'next/image'
 import { Splide, SplideSlide } from 'splide-nextjs/react-splide'
@@ -12,11 +13,13 @@ const PageHeader = dynamic(
 )
 import { client } from '@src/lib/client'
 import { getServerSideTranslations } from '@src/pages/utils/get-serverside-translations'
+import { LINKS } from '@src/constants/links'
 
 const Page = ({
   page
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { pageHeader, picturesOfReferenceCollection, seo } = page
+  const url = `${process.env.NEXT_PUBLIC_SITE_URL}${LINKS.ABOUT_US}`
 
   const SLIDE_DIMENSION = {
     width: 216,
@@ -26,6 +29,12 @@ const Page = ({
   return (
     <>
       {seo && <SeoFields {...seo} />}
+      <WebPageJsonLd
+        name={pageHeader?.title}
+        description={seo?.pageDescription}
+        id={url!}
+        url={url!}
+      />
       <PageHeader {...pageHeader} />
       <section aria-label="Galería de imágenes de referencia">
         <Splide
