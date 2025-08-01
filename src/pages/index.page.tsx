@@ -3,12 +3,28 @@ import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { getServerSideTranslations } from './utils/get-serverside-translations'
 
 import { SeoFields } from '@src/components/features/seo'
-import { ProductTile } from '@src/components/productTile'
-import { SliderBackground } from '@src/components/sliderBackground'
-import { client } from '@src/lib/client'
-import { Button } from '@src/components/button'
+import dynamic from 'next/dynamic'
+const ProductTile = dynamic(
+  () =>
+    import('@src/components/productTile/productTile').then(
+      mod => mod.ProductTile
+    ),
+  { ssr: false }
+)
+const SliderBackground = dynamic(
+  () =>
+    import('@src/components/sliderBackground/sliderBackground').then(
+      mod => mod.SliderBackground
+    ),
+  { ssr: false }
+)
+const Button = dynamic(
+  () => import('@src/components/button/button').then(mod => mod.Button),
+  { ssr: false }
+)
 import { useTranslation } from 'next-i18next'
 import { LINKS } from '@src/constants/links'
+import { client } from '@src/lib/client'
 
 const Page = ({
   page

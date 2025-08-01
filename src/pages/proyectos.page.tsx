@@ -1,9 +1,21 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { SeoFields } from '@src/components/features/seo'
-import { PageHeader } from '@src/components/pageHeader'
 import { client } from '@src/lib/client'
 import { getServerSideTranslations } from '@src/pages/utils/get-serverside-translations'
-import { ProductTile } from '@src/components/productTile'
+import dynamic from 'next/dynamic'
+
+const PageHeader = dynamic(
+  () =>
+    import('@src/components/pageHeader/pageHeader').then(mod => mod.PageHeader),
+  { ssr: false }
+)
+const ProductTile = dynamic(
+  () =>
+    import('@src/components/productTile/productTile').then(
+      mod => mod.ProductTile
+    ),
+  { ssr: false }
+)
 
 const ProjectsPage = ({
   page

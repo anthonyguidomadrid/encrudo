@@ -4,7 +4,16 @@ import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { SeoFields } from '@src/components/features/seo'
 import { client } from '@src/lib/client'
 import { getServerSideTranslations } from '@src/pages/utils/get-serverside-translations'
-import { BreadcrumbItem, Breadcrumbs } from '@src/components/breadcrumbs'
+import dynamic from 'next/dynamic'
+import { BreadcrumbItem } from '@src/components/breadcrumbs'
+
+const Breadcrumbs = dynamic(
+  () =>
+    import('@src/components/breadcrumbs').then(
+      mod => mod.Breadcrumbs
+    ),
+  { ssr: false }
+)
 import { LINKS } from '@src/constants/links'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'

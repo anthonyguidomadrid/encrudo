@@ -3,10 +3,24 @@ import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { useTranslation } from 'next-i18next'
 
 import ArrowLeft from '@icons/arrow-left.svg'
-import { Button } from '@src/components/button'
 import { SeoFields } from '@src/components/features/seo'
-import { Gallery } from '@src/components/gallery'
-import { ProjectHeader } from '@src/components/projectHeader'
+import dynamic from 'next/dynamic'
+
+const ProjectHeader = dynamic(
+  () =>
+    import('@src/components/projectHeader/projectHeader').then(
+      mod => mod.ProjectHeader
+    ),
+  { ssr: false }
+)
+const Gallery = dynamic(
+  () => import('@src/components/gallery/gallery').then(mod => mod.Gallery),
+  { ssr: false }
+)
+const Button = dynamic(
+  () => import('@src/components/button/button').then(mod => mod.Button),
+  { ssr: false }
+)
 import { client } from '@src/lib/client'
 import { getServerSideTranslations } from '@src/pages/utils/get-serverside-translations'
 

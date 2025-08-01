@@ -3,7 +3,13 @@ import Image from 'next/image'
 import { Splide, SplideSlide } from 'splide-nextjs/react-splide'
 
 import { SeoFields } from '@src/components/features/seo'
-import { PageHeader } from '@src/components/pageHeader'
+import dynamic from 'next/dynamic'
+
+const PageHeader = dynamic(
+  () =>
+    import('@src/components/pageHeader/pageHeader').then(mod => mod.PageHeader),
+  { ssr: false }
+)
 import { client } from '@src/lib/client'
 import { getServerSideTranslations } from '@src/pages/utils/get-serverside-translations'
 

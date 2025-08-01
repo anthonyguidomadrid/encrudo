@@ -5,10 +5,21 @@ import { useState } from 'react'
 import EmailIcon from '@icons/email.svg'
 import LocationIcon from '@icons/location.svg'
 import PhoneIcon from '@icons/phone.svg'
-import { ContactForm } from '@src/components/contactForm'
+import dynamic from 'next/dynamic'
 import { SeoFields } from '@src/components/features/seo'
-import { GoogleMap } from '@src/components/googleMap'
-import { PageHeader } from '@src/components/pageHeader'
+
+const PageHeader = dynamic(
+  () => import('@src/components/pageHeader/pageHeader').then(mod => mod.PageHeader),
+  { ssr: false }
+)
+const ContactForm = dynamic(
+  () => import('@src/components/contactForm/contactForm').then(mod => mod.ContactForm),
+  { ssr: false }
+)
+const GoogleMap = dynamic(
+  () => import('@src/components/googleMap/googleMap').then(mod => mod.GoogleMap),
+  { ssr: false }
+)
 import { GTAG_TRACKING_ID } from '@src/helpers/gtag'
 import { transformPhoneNumberToLink } from '@src/helpers/transformPhoneNumber'
 import { client } from '@src/lib/client'
