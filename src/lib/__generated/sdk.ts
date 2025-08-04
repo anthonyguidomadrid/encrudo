@@ -345,12 +345,34 @@ export enum AssetsOrder {
 export type ComponentContact = Entry & _Node & {
   __typename?: 'ComponentContact';
   _id: Scalars['ID']['output'];
+  addressCountry?: Maybe<Scalars['String']['output']>;
+  addressLocality?: Maybe<Scalars['String']['output']>;
+  addressRegion?: Maybe<Scalars['String']['output']>;
   contentfulMetadata: ContentfulMetadata;
   email?: Maybe<Scalars['String']['output']>;
   linkedFrom?: Maybe<ComponentContactLinkingCollections>;
-  location?: Maybe<Scalars['String']['output']>;
   phone?: Maybe<Scalars['String']['output']>;
+  postalCode?: Maybe<Scalars['String']['output']>;
+  streetAddress?: Maybe<Scalars['String']['output']>;
   sys: Sys;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentContact) */
+export type ComponentContactAddressCountryArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentContact) */
+export type ComponentContactAddressLocalityArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentContact) */
+export type ComponentContactAddressRegionArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
@@ -367,13 +389,19 @@ export type ComponentContactLinkedFromArgs = {
 
 
 /** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentContact) */
-export type ComponentContactLocationArgs = {
+export type ComponentContactPhoneArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentContact) */
-export type ComponentContactPhoneArgs = {
+export type ComponentContactPostalCodeArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentContact) */
+export type ComponentContactStreetAddressArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -388,6 +416,27 @@ export type ComponentContactCollection = {
 export type ComponentContactFilter = {
   AND?: InputMaybe<Array<InputMaybe<ComponentContactFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<ComponentContactFilter>>>;
+  addressCountry?: InputMaybe<Scalars['String']['input']>;
+  addressCountry_contains?: InputMaybe<Scalars['String']['input']>;
+  addressCountry_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  addressCountry_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  addressCountry_not?: InputMaybe<Scalars['String']['input']>;
+  addressCountry_not_contains?: InputMaybe<Scalars['String']['input']>;
+  addressCountry_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  addressLocality?: InputMaybe<Scalars['String']['input']>;
+  addressLocality_contains?: InputMaybe<Scalars['String']['input']>;
+  addressLocality_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  addressLocality_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  addressLocality_not?: InputMaybe<Scalars['String']['input']>;
+  addressLocality_not_contains?: InputMaybe<Scalars['String']['input']>;
+  addressLocality_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  addressRegion?: InputMaybe<Scalars['String']['input']>;
+  addressRegion_contains?: InputMaybe<Scalars['String']['input']>;
+  addressRegion_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  addressRegion_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  addressRegion_not?: InputMaybe<Scalars['String']['input']>;
+  addressRegion_not_contains?: InputMaybe<Scalars['String']['input']>;
+  addressRegion_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
   email?: InputMaybe<Scalars['String']['input']>;
   email_contains?: InputMaybe<Scalars['String']['input']>;
@@ -396,13 +445,6 @@ export type ComponentContactFilter = {
   email_not?: InputMaybe<Scalars['String']['input']>;
   email_not_contains?: InputMaybe<Scalars['String']['input']>;
   email_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  location?: InputMaybe<Scalars['String']['input']>;
-  location_contains?: InputMaybe<Scalars['String']['input']>;
-  location_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  location_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  location_not?: InputMaybe<Scalars['String']['input']>;
-  location_not_contains?: InputMaybe<Scalars['String']['input']>;
-  location_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   phone?: InputMaybe<Scalars['String']['input']>;
   phone_contains?: InputMaybe<Scalars['String']['input']>;
   phone_exists?: InputMaybe<Scalars['Boolean']['input']>;
@@ -410,6 +452,20 @@ export type ComponentContactFilter = {
   phone_not?: InputMaybe<Scalars['String']['input']>;
   phone_not_contains?: InputMaybe<Scalars['String']['input']>;
   phone_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  postalCode?: InputMaybe<Scalars['String']['input']>;
+  postalCode_contains?: InputMaybe<Scalars['String']['input']>;
+  postalCode_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  postalCode_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  postalCode_not?: InputMaybe<Scalars['String']['input']>;
+  postalCode_not_contains?: InputMaybe<Scalars['String']['input']>;
+  postalCode_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  streetAddress?: InputMaybe<Scalars['String']['input']>;
+  streetAddress_contains?: InputMaybe<Scalars['String']['input']>;
+  streetAddress_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  streetAddress_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  streetAddress_not?: InputMaybe<Scalars['String']['input']>;
+  streetAddress_not_contains?: InputMaybe<Scalars['String']['input']>;
+  streetAddress_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sys?: InputMaybe<SysFilter>;
 };
 
@@ -450,12 +506,20 @@ export enum ComponentContactLinkingCollectionsPageContactCollectionOrder {
 }
 
 export enum ComponentContactOrder {
+  AddressCountryAsc = 'addressCountry_ASC',
+  AddressCountryDesc = 'addressCountry_DESC',
+  AddressLocalityAsc = 'addressLocality_ASC',
+  AddressLocalityDesc = 'addressLocality_DESC',
+  AddressRegionAsc = 'addressRegion_ASC',
+  AddressRegionDesc = 'addressRegion_DESC',
   EmailAsc = 'email_ASC',
   EmailDesc = 'email_DESC',
-  LocationAsc = 'location_ASC',
-  LocationDesc = 'location_DESC',
   PhoneAsc = 'phone_ASC',
   PhoneDesc = 'phone_DESC',
+  PostalCodeAsc = 'postalCode_ASC',
+  PostalCodeDesc = 'postalCode_DESC',
+  StreetAddressAsc = 'streetAddress_ASC',
+  StreetAddressDesc = 'streetAddress_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -2693,6 +2757,27 @@ export type _Node = {
 export type CfComponentContactNestedFilter = {
   AND?: InputMaybe<Array<InputMaybe<CfComponentContactNestedFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<CfComponentContactNestedFilter>>>;
+  addressCountry?: InputMaybe<Scalars['String']['input']>;
+  addressCountry_contains?: InputMaybe<Scalars['String']['input']>;
+  addressCountry_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  addressCountry_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  addressCountry_not?: InputMaybe<Scalars['String']['input']>;
+  addressCountry_not_contains?: InputMaybe<Scalars['String']['input']>;
+  addressCountry_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  addressLocality?: InputMaybe<Scalars['String']['input']>;
+  addressLocality_contains?: InputMaybe<Scalars['String']['input']>;
+  addressLocality_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  addressLocality_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  addressLocality_not?: InputMaybe<Scalars['String']['input']>;
+  addressLocality_not_contains?: InputMaybe<Scalars['String']['input']>;
+  addressLocality_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  addressRegion?: InputMaybe<Scalars['String']['input']>;
+  addressRegion_contains?: InputMaybe<Scalars['String']['input']>;
+  addressRegion_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  addressRegion_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  addressRegion_not?: InputMaybe<Scalars['String']['input']>;
+  addressRegion_not_contains?: InputMaybe<Scalars['String']['input']>;
+  addressRegion_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
   email?: InputMaybe<Scalars['String']['input']>;
   email_contains?: InputMaybe<Scalars['String']['input']>;
@@ -2701,13 +2786,6 @@ export type CfComponentContactNestedFilter = {
   email_not?: InputMaybe<Scalars['String']['input']>;
   email_not_contains?: InputMaybe<Scalars['String']['input']>;
   email_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  location?: InputMaybe<Scalars['String']['input']>;
-  location_contains?: InputMaybe<Scalars['String']['input']>;
-  location_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  location_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  location_not?: InputMaybe<Scalars['String']['input']>;
-  location_not_contains?: InputMaybe<Scalars['String']['input']>;
-  location_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   phone?: InputMaybe<Scalars['String']['input']>;
   phone_contains?: InputMaybe<Scalars['String']['input']>;
   phone_exists?: InputMaybe<Scalars['Boolean']['input']>;
@@ -2715,6 +2793,20 @@ export type CfComponentContactNestedFilter = {
   phone_not?: InputMaybe<Scalars['String']['input']>;
   phone_not_contains?: InputMaybe<Scalars['String']['input']>;
   phone_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  postalCode?: InputMaybe<Scalars['String']['input']>;
+  postalCode_contains?: InputMaybe<Scalars['String']['input']>;
+  postalCode_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  postalCode_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  postalCode_not?: InputMaybe<Scalars['String']['input']>;
+  postalCode_not_contains?: InputMaybe<Scalars['String']['input']>;
+  postalCode_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  streetAddress?: InputMaybe<Scalars['String']['input']>;
+  streetAddress_contains?: InputMaybe<Scalars['String']['input']>;
+  streetAddress_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  streetAddress_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  streetAddress_not?: InputMaybe<Scalars['String']['input']>;
+  streetAddress_not_contains?: InputMaybe<Scalars['String']['input']>;
+  streetAddress_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sys?: InputMaybe<SysFilter>;
 };
 
@@ -2855,7 +2947,7 @@ export type PageContactQuery = { __typename?: 'Query', pageContactCollection?: {
         & SeoFieldsFragment
       ) | null } | null> } | null };
 
-export type ContactFieldsFragment = { __typename?: 'ComponentContact', location?: string | null, email?: string | null, phone?: string | null };
+export type ContactFieldsFragment = { __typename?: 'ComponentContact', streetAddress?: string | null, addressLocality?: string | null, addressRegion?: string | null, postalCode?: string | null, addressCountry?: string | null, email?: string | null, phone?: string | null };
 
 export type PageEditorQueryVariables = Exact<{
   slug: Scalars['String']['input'];
@@ -2960,7 +3052,11 @@ export type PageProjectsQuery = { __typename?: 'Query', pageProjectsCollection?:
 
 export const ContactFieldsFragmentDoc = gql`
     fragment ContactFields on ComponentContact {
-  location
+  streetAddress
+  addressLocality
+  addressRegion
+  postalCode
+  addressCountry
   email
   phone
 }

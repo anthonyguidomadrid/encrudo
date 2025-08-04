@@ -58,19 +58,17 @@ const App = ({ Component, pageProps, data }: AppProperties) => {
         url={url}
         telephone={contactContent?.phone!}
         address={{
-          streetAddress: contactContent?.location?.split(',')[0] || '',
-          addressLocality: 'Madrid',
-          addressRegion: 'Madrid',
-          postalCode: '28007',
-          addressCountry: 'ES'
+          streetAddress: contactContent?.streetAddress,
+          addressLocality: contactContent?.addressLocality,
+          addressRegion: contactContent?.addressRegion,
+          postalCode: contactContent?.postalCode,
+          addressCountry: contactContent?.addressCountry
         }}
         openingHours={[
           {
             opens: '09:00',
             closes: '18:00',
-            dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-            validFrom: '2025-01-01',
-            validThrough: '2025-12-31'
+            dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
           }
         ]}
       />

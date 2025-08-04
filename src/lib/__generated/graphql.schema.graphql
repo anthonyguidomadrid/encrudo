@@ -184,11 +184,15 @@ enum AssetsOrder {
 """
 type ComponentContact implements Entry & _Node {
   _id: ID!
+  addressCountry(locale: String): String
+  addressLocality(locale: String): String
+  addressRegion(locale: String): String
   contentfulMetadata: ContentfulMetadata!
   email(locale: String): String
   linkedFrom(allowedLocales: [String]): ComponentContactLinkingCollections
-  location(locale: String): String
   phone(locale: String): String
+  postalCode(locale: String): String
+  streetAddress(locale: String): String
   sys: Sys!
 }
 
@@ -202,6 +206,27 @@ type ComponentContactCollection {
 input ComponentContactFilter {
   AND: [ComponentContactFilter]
   OR: [ComponentContactFilter]
+  addressCountry: String
+  addressCountry_contains: String
+  addressCountry_exists: Boolean
+  addressCountry_in: [String]
+  addressCountry_not: String
+  addressCountry_not_contains: String
+  addressCountry_not_in: [String]
+  addressLocality: String
+  addressLocality_contains: String
+  addressLocality_exists: Boolean
+  addressLocality_in: [String]
+  addressLocality_not: String
+  addressLocality_not_contains: String
+  addressLocality_not_in: [String]
+  addressRegion: String
+  addressRegion_contains: String
+  addressRegion_exists: Boolean
+  addressRegion_in: [String]
+  addressRegion_not: String
+  addressRegion_not_contains: String
+  addressRegion_not_in: [String]
   contentfulMetadata: ContentfulMetadataFilter
   email: String
   email_contains: String
@@ -210,13 +235,6 @@ input ComponentContactFilter {
   email_not: String
   email_not_contains: String
   email_not_in: [String]
-  location: String
-  location_contains: String
-  location_exists: Boolean
-  location_in: [String]
-  location_not: String
-  location_not_contains: String
-  location_not_in: [String]
   phone: String
   phone_contains: String
   phone_exists: Boolean
@@ -224,6 +242,20 @@ input ComponentContactFilter {
   phone_not: String
   phone_not_contains: String
   phone_not_in: [String]
+  postalCode: String
+  postalCode_contains: String
+  postalCode_exists: Boolean
+  postalCode_in: [String]
+  postalCode_not: String
+  postalCode_not_contains: String
+  postalCode_not_in: [String]
+  streetAddress: String
+  streetAddress_contains: String
+  streetAddress_exists: Boolean
+  streetAddress_in: [String]
+  streetAddress_not: String
+  streetAddress_not_contains: String
+  streetAddress_not_in: [String]
   sys: SysFilter
 }
 
@@ -246,12 +278,20 @@ enum ComponentContactLinkingCollectionsPageContactCollectionOrder {
 }
 
 enum ComponentContactOrder {
+  addressCountry_ASC
+  addressCountry_DESC
+  addressLocality_ASC
+  addressLocality_DESC
+  addressRegion_ASC
+  addressRegion_DESC
   email_ASC
   email_DESC
-  location_ASC
-  location_DESC
   phone_ASC
   phone_DESC
+  postalCode_ASC
+  postalCode_DESC
+  streetAddress_ASC
+  streetAddress_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC
@@ -1652,6 +1692,27 @@ interface _Node {
 input cfComponentContactNestedFilter {
   AND: [cfComponentContactNestedFilter]
   OR: [cfComponentContactNestedFilter]
+  addressCountry: String
+  addressCountry_contains: String
+  addressCountry_exists: Boolean
+  addressCountry_in: [String]
+  addressCountry_not: String
+  addressCountry_not_contains: String
+  addressCountry_not_in: [String]
+  addressLocality: String
+  addressLocality_contains: String
+  addressLocality_exists: Boolean
+  addressLocality_in: [String]
+  addressLocality_not: String
+  addressLocality_not_contains: String
+  addressLocality_not_in: [String]
+  addressRegion: String
+  addressRegion_contains: String
+  addressRegion_exists: Boolean
+  addressRegion_in: [String]
+  addressRegion_not: String
+  addressRegion_not_contains: String
+  addressRegion_not_in: [String]
   contentfulMetadata: ContentfulMetadataFilter
   email: String
   email_contains: String
@@ -1660,13 +1721,6 @@ input cfComponentContactNestedFilter {
   email_not: String
   email_not_contains: String
   email_not_in: [String]
-  location: String
-  location_contains: String
-  location_exists: Boolean
-  location_in: [String]
-  location_not: String
-  location_not_contains: String
-  location_not_in: [String]
   phone: String
   phone_contains: String
   phone_exists: Boolean
@@ -1674,6 +1728,20 @@ input cfComponentContactNestedFilter {
   phone_not: String
   phone_not_contains: String
   phone_not_in: [String]
+  postalCode: String
+  postalCode_contains: String
+  postalCode_exists: Boolean
+  postalCode_in: [String]
+  postalCode_not: String
+  postalCode_not_contains: String
+  postalCode_not_in: [String]
+  streetAddress: String
+  streetAddress_contains: String
+  streetAddress_exists: Boolean
+  streetAddress_in: [String]
+  streetAddress_not: String
+  streetAddress_not_contains: String
+  streetAddress_not_in: [String]
   sys: SysFilter
 }
 

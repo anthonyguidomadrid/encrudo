@@ -31,6 +31,7 @@ import { transformPhoneNumberToLink } from '@src/helpers/transformPhoneNumber'
 import { client } from '@src/lib/client'
 import { getServerSideTranslations } from '@src/pages/utils/get-serverside-translations'
 import { LINKS } from '@src/constants/links'
+import { getAddress } from '@src/helpers/getAddress'
 
 const Page = ({
   page
@@ -76,7 +77,7 @@ const Page = ({
           <p className={`${contactClass}`}>
             <LocationIcon className="h-5" />
             <address className="not-italic">
-              {contactInformation?.location}
+              {getAddress(contactInformation)}
             </address>
           </p>
         </div>

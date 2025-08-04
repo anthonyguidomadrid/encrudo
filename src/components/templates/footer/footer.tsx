@@ -9,10 +9,11 @@ import { FooterWrapper } from '.'
 
 import { NewsletterForm } from '@src/components/newsletterForm'
 import { transformPhoneNumberToLink } from '@src/helpers/transformPhoneNumber'
+import { getAddress } from '@src/helpers/getAddress'
 
 export type FooterProps = {
   logo?: Logo
-  contactContent?: ContactContent
+  contactContent: ContactContent | null
   socialMediaContent?: SocialMediaContent[]
   menuContent?: MenuItem[]
 }
@@ -42,7 +43,7 @@ export const Footer = ({
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 text-center pb-10">
             <FooterWrapper title={t('footer.contact')}>
               <address className="not-italic">
-                {contactContent?.location}
+                {getAddress(contactContent)}
               </address>
               <Link
                 href={`mailto: ${contactContent?.email}`}

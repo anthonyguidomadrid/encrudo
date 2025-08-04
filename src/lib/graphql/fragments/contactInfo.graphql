@@ -1,5 +1,9 @@
 fragment ContactFields on ComponentContact {
-  location
+  streetAddress
+  addressLocality
+  addressRegion
+  postalCode
+  addressCountry
   email
   phone
 }

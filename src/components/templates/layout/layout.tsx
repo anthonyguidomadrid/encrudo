@@ -27,7 +27,11 @@ export type AssetContent = {
 } | null
 
 export type ContactContent = {
-  location?: string | null
+  streetAddress?: string | null
+  addressRegion?: string | null
+  postalCode?: string | null
+  addressCountry?: string | null
+  addressLocality?: string | null
   email?: string | null
   phone?: string | null
 } | null
