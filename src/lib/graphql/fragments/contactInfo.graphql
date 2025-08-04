@@ -1,4 +1,5 @@
 fragment ContactFields on ComponentContact {
+  websiteName
   streetAddress
   addressLocality
   addressRegion
@@ -6,4 +7,5 @@ fragment ContactFields on ComponentContact {
   addressCountry
   email
   phone
+  displayNewsletter
 }

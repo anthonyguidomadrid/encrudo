@@ -3,7 +3,7 @@ query layout($locale: String, $preview: Boolean) {
     items {
       name
       link
-      isProject
+      isCta
       indexOrder
     }
   }

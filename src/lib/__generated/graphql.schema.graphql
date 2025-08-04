@@ -135,7 +135,7 @@ enum AssetOrder {
 }
 
 """
-[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/assets)
+[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/assets)
 """
 type Assets implements Entry & _Node {
   _id: ID!
@@ -180,7 +180,7 @@ enum AssetsOrder {
 }
 
 """
-[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentContact)
+[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentContact)
 """
 type ComponentContact implements Entry & _Node {
   _id: ID!
@@ -188,12 +188,14 @@ type ComponentContact implements Entry & _Node {
   addressLocality(locale: String): String
   addressRegion(locale: String): String
   contentfulMetadata: ContentfulMetadata!
+  displayNewsletter(locale: String): Boolean
   email(locale: String): String
   linkedFrom(allowedLocales: [String]): ComponentContactLinkingCollections
   phone(locale: String): String
   postalCode(locale: String): String
   streetAddress(locale: String): String
   sys: Sys!
+  websiteName(locale: String): String
 }
 
 type ComponentContactCollection {
@@ -228,6 +230,9 @@ input ComponentContactFilter {
   addressRegion_not_contains: String
   addressRegion_not_in: [String]
   contentfulMetadata: ContentfulMetadataFilter
+  displayNewsletter: Boolean
+  displayNewsletter_exists: Boolean
+  displayNewsletter_not: Boolean
   email: String
   email_contains: String
   email_exists: Boolean
@@ -257,6 +262,13 @@ input ComponentContactFilter {
   streetAddress_not_contains: String
   streetAddress_not_in: [String]
   sys: SysFilter
+  websiteName: String
+  websiteName_contains: String
+  websiteName_exists: Boolean
+  websiteName_in: [String]
+  websiteName_not: String
+  websiteName_not_contains: String
+  websiteName_not_in: [String]
 }
 
 type ComponentContactLinkingCollections {
@@ -284,6 +296,8 @@ enum ComponentContactOrder {
   addressLocality_DESC
   addressRegion_ASC
   addressRegion_DESC
+  displayNewsletter_ASC
+  displayNewsletter_DESC
   email_ASC
   email_DESC
   phone_ASC
@@ -300,10 +314,12 @@ enum ComponentContactOrder {
   sys_publishedAt_DESC
   sys_publishedVersion_ASC
   sys_publishedVersion_DESC
+  websiteName_ASC
+  websiteName_DESC
 }
 
 """
-[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentPageHeader)
+[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentPageHeader)
 """
 type ComponentPageHeader implements Entry & _Node {
   _id: ID!
@@ -440,7 +456,7 @@ enum ComponentPageHeaderOrder {
 }
 
 """
-[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSeo)
+[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSeo)
 """
 type ComponentSeo implements Entry & _Node {
   _id: ID!
@@ -621,7 +637,7 @@ enum ComponentSeoOrder {
 }
 
 """
-[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSlider)
+[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSlider)
 """
 type ComponentSlider implements Entry & _Node {
   _id: ID!
@@ -676,7 +692,7 @@ enum ComponentSliderOrder {
 }
 
 """
-[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSocialMedia)
+[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSocialMedia)
 """
 type ComponentSocialMedia implements Entry & _Node {
   _id: ID!
@@ -955,14 +971,13 @@ The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://
 scalar JSON
 
 """
-[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/menu)
+[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/menu)
 """
 type Menu implements Entry & _Node {
   _id: ID!
   contentfulMetadata: ContentfulMetadata!
   indexOrder(locale: String): Int
   isCta(locale: String): Boolean
-  isProject(locale: String): Boolean
   link(locale: String): String
   linkedFrom(allowedLocales: [String]): MenuLinkingCollections
   name(locale: String): String
@@ -992,9 +1007,6 @@ input MenuFilter {
   isCta: Boolean
   isCta_exists: Boolean
   isCta_not: Boolean
-  isProject: Boolean
-  isProject_exists: Boolean
-  isProject_not: Boolean
   link: String
   link_contains: String
   link_exists: Boolean
@@ -1021,8 +1033,6 @@ enum MenuOrder {
   indexOrder_DESC
   isCta_ASC
   isCta_DESC
-  isProject_ASC
-  isProject_DESC
   link_ASC
   link_DESC
   name_ASC
@@ -1038,7 +1048,7 @@ enum MenuOrder {
 }
 
 """
-[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageAbout)
+[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageAbout)
 """
 type PageAbout implements Entry & _Node {
   _id: ID!
@@ -1095,7 +1105,7 @@ enum PageAboutOrder {
 }
 
 """
-[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageContact)
+[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageContact)
 """
 type PageContact implements Entry & _Node {
   _id: ID!
@@ -1153,7 +1163,7 @@ enum PageContactOrder {
 }
 
 """
-[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageEditor)
+[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageEditor)
 """
 type PageEditor implements Entry & _Node {
   _id: ID!
@@ -1267,7 +1277,7 @@ enum PageEditorOrder {
 }
 
 """
-[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageHome)
+[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageHome)
 """
 type PageHome implements Entry & _Node {
   _id: ID!
@@ -1349,7 +1359,7 @@ enum PageHomeProjectsCollectionOrder {
 }
 
 """
-[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProject)
+[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageProject)
 """
 type PageProject implements Entry & _Node {
   _id: ID!
@@ -1499,7 +1509,7 @@ enum PageProjectOrder {
 }
 
 """
-[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProjects)
+[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageProjects)
 """
 type PageProjects implements Entry & _Node {
   _id: ID!
@@ -1714,6 +1724,9 @@ input cfComponentContactNestedFilter {
   addressRegion_not_contains: String
   addressRegion_not_in: [String]
   contentfulMetadata: ContentfulMetadataFilter
+  displayNewsletter: Boolean
+  displayNewsletter_exists: Boolean
+  displayNewsletter_not: Boolean
   email: String
   email_contains: String
   email_exists: Boolean
@@ -1743,6 +1756,13 @@ input cfComponentContactNestedFilter {
   streetAddress_not_contains: String
   streetAddress_not_in: [String]
   sys: SysFilter
+  websiteName: String
+  websiteName_contains: String
+  websiteName_exists: Boolean
+  websiteName_in: [String]
+  websiteName_not: String
+  websiteName_not_contains: String
+  websiteName_not_in: [String]
 }
 
 input cfComponentPageHeaderNestedFilter {

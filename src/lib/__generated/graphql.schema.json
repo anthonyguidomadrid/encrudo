@@ -1822,7 +1822,7 @@
       {
         "kind": "OBJECT",
         "name": "Assets",
-        "description": "[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/assets)",
+        "description": "[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/assets)",
         "isOneOf": null,
         "fields": [
           {
@@ -2361,7 +2361,7 @@
       {
         "kind": "OBJECT",
         "name": "ComponentContact",
-        "description": "[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentContact)",
+        "description": "[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentContact)",
         "isOneOf": null,
         "fields": [
           {
@@ -2467,6 +2467,31 @@
                 "name": "ContentfulMetadata",
                 "ofType": null
               }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "displayNewsletter",
+            "description": null,
+            "args": [
+              {
+                "name": "locale",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              }
+            ],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -2612,6 +2637,31 @@
                 "name": "Sys",
                 "ofType": null
               }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "websiteName",
+            "description": null,
+            "args": [
+              {
+                "name": "locale",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              }
+            ],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -3041,6 +3091,42 @@
             "deprecationReason": null
           },
           {
+            "name": "displayNewsletter",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "displayNewsletter_exists",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "displayNewsletter_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "email",
             "description": null,
             "type": {
@@ -3419,6 +3505,98 @@
             "defaultValue": null,
             "isDeprecated": false,
             "deprecationReason": null
+          },
+          {
+            "name": "websiteName",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "websiteName_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "websiteName_exists",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "websiteName_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "websiteName_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "websiteName_not_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "websiteName_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
           }
         ],
         "interfaces": null,
@@ -3693,6 +3871,18 @@
             "deprecationReason": null
           },
           {
+            "name": "displayNewsletter_ASC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "displayNewsletter_DESC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "email_ASC",
             "description": null,
             "isDeprecated": false,
@@ -3787,6 +3977,18 @@
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
+          },
+          {
+            "name": "websiteName_ASC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "websiteName_DESC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
           }
         ],
         "possibleTypes": null
@@ -3794,7 +3996,7 @@
       {
         "kind": "OBJECT",
         "name": "ComponentPageHeader",
-        "description": "[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentPageHeader)",
+        "description": "[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentPageHeader)",
         "isOneOf": null,
         "fields": [
           {
@@ -5275,7 +5477,7 @@
       {
         "kind": "OBJECT",
         "name": "ComponentSeo",
-        "description": "[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSeo)",
+        "description": "[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSeo)",
         "isOneOf": null,
         "fields": [
           {
@@ -7309,7 +7511,7 @@
       {
         "kind": "OBJECT",
         "name": "ComponentSlider",
-        "description": "[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSlider)",
+        "description": "[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSlider)",
         "isOneOf": null,
         "fields": [
           {
@@ -7912,7 +8114,7 @@
       {
         "kind": "OBJECT",
         "name": "ComponentSocialMedia",
-        "description": "[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSocialMedia)",
+        "description": "[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSocialMedia)",
         "isOneOf": null,
         "fields": [
           {
@@ -9568,7 +9770,7 @@
       {
         "kind": "OBJECT",
         "name": "Menu",
-        "description": "[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/menu)",
+        "description": "[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/menu)",
         "isOneOf": null,
         "fields": [
           {
@@ -9630,31 +9832,6 @@
           },
           {
             "name": "isCta",
-            "description": null,
-            "args": [
-              {
-                "name": "locale",
-                "description": null,
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
-              }
-            ],
-            "type": {
-              "kind": "SCALAR",
-              "name": "Boolean",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "isProject",
             "description": null,
             "args": [
               {
@@ -10074,42 +10251,6 @@
             "deprecationReason": null
           },
           {
-            "name": "isProject",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "Boolean",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "isProject_exists",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "Boolean",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "isProject_not",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "Boolean",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "link",
             "description": null,
             "type": {
@@ -10417,18 +10558,6 @@
             "deprecationReason": null
           },
           {
-            "name": "isProject_ASC",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "isProject_DESC",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "link_ASC",
             "description": null,
             "isDeprecated": false,
@@ -10506,7 +10635,7 @@
       {
         "kind": "OBJECT",
         "name": "PageAbout",
-        "description": "[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageAbout)",
+        "description": "[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageAbout)",
         "isOneOf": null,
         "fields": [
           {
@@ -11235,7 +11364,7 @@
       {
         "kind": "OBJECT",
         "name": "PageContact",
-        "description": "[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageContact)",
+        "description": "[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageContact)",
         "isOneOf": null,
         "fields": [
           {
@@ -11964,7 +12093,7 @@
       {
         "kind": "OBJECT",
         "name": "PageEditor",
-        "description": "[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageEditor)",
+        "description": "[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageEditor)",
         "isOneOf": null,
         "fields": [
           {
@@ -13268,7 +13397,7 @@
       {
         "kind": "OBJECT",
         "name": "PageHome",
-        "description": "[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageHome)",
+        "description": "[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageHome)",
         "isOneOf": null,
         "fields": [
           {
@@ -14213,7 +14342,7 @@
       {
         "kind": "OBJECT",
         "name": "PageProject",
-        "description": "[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProject)",
+        "description": "[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageProject)",
         "isOneOf": null,
         "fields": [
           {
@@ -15998,7 +16127,7 @@
       {
         "kind": "OBJECT",
         "name": "PageProjects",
-        "description": "[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProjects)",
+        "description": "[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageProjects)",
         "isOneOf": null,
         "fields": [
           {
@@ -21224,6 +21353,42 @@
             "deprecationReason": null
           },
           {
+            "name": "displayNewsletter",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "displayNewsletter_exists",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "displayNewsletter_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "email",
             "description": null,
             "type": {
@@ -21598,6 +21763,98 @@
               "kind": "INPUT_OBJECT",
               "name": "SysFilter",
               "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "websiteName",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "websiteName_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "websiteName_exists",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "websiteName_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "websiteName_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "websiteName_not_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "websiteName_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
             },
             "defaultValue": null,
             "isDeprecated": false,

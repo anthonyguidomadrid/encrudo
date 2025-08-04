@@ -121,7 +121,8 @@ export const Header: FunctionComponent<HeaderProps> = ({
                           className={classNames(
                             'no-underline hover:opacity-70 drop-shadow-[0_2px_8px_rgba(0,0,0,0.25)]',
                             {
-                              'text-primary': isDark
+                              'text-primary border-primary': isDark,
+                              'border px-3 py-2': item?.isCta
                             }
                           )}
                           href={item?.link ?? ''}

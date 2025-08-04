@@ -260,7 +260,7 @@ export enum AssetOrder {
   WidthDesc = 'width_DESC'
 }
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/assets) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/assets) */
 export type Assets = Entry & _Node & {
   __typename?: 'Assets';
   _id: Scalars['ID']['output'];
@@ -273,27 +273,27 @@ export type Assets = Entry & _Node & {
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/assets) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/assets) */
 export type AssetsLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/assets) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/assets) */
 export type AssetsLogoDarkArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/assets) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/assets) */
 export type AssetsLogoLightArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/assets) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/assets) */
 export type AssetsLogoSmallArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
@@ -341,7 +341,7 @@ export enum AssetsOrder {
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentContact) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentContact) */
 export type ComponentContact = Entry & _Node & {
   __typename?: 'ComponentContact';
   _id: Scalars['ID']['output'];
@@ -349,59 +349,73 @@ export type ComponentContact = Entry & _Node & {
   addressLocality?: Maybe<Scalars['String']['output']>;
   addressRegion?: Maybe<Scalars['String']['output']>;
   contentfulMetadata: ContentfulMetadata;
+  displayNewsletter?: Maybe<Scalars['Boolean']['output']>;
   email?: Maybe<Scalars['String']['output']>;
   linkedFrom?: Maybe<ComponentContactLinkingCollections>;
   phone?: Maybe<Scalars['String']['output']>;
   postalCode?: Maybe<Scalars['String']['output']>;
   streetAddress?: Maybe<Scalars['String']['output']>;
   sys: Sys;
+  websiteName?: Maybe<Scalars['String']['output']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentContact) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentContact) */
 export type ComponentContactAddressCountryArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentContact) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentContact) */
 export type ComponentContactAddressLocalityArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentContact) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentContact) */
 export type ComponentContactAddressRegionArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentContact) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentContact) */
+export type ComponentContactDisplayNewsletterArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentContact) */
 export type ComponentContactEmailArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentContact) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentContact) */
 export type ComponentContactLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentContact) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentContact) */
 export type ComponentContactPhoneArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentContact) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentContact) */
 export type ComponentContactPostalCodeArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentContact) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentContact) */
 export type ComponentContactStreetAddressArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentContact) */
+export type ComponentContactWebsiteNameArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -438,6 +452,9 @@ export type ComponentContactFilter = {
   addressRegion_not_contains?: InputMaybe<Scalars['String']['input']>;
   addressRegion_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  displayNewsletter?: InputMaybe<Scalars['Boolean']['input']>;
+  displayNewsletter_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  displayNewsletter_not?: InputMaybe<Scalars['Boolean']['input']>;
   email?: InputMaybe<Scalars['String']['input']>;
   email_contains?: InputMaybe<Scalars['String']['input']>;
   email_exists?: InputMaybe<Scalars['Boolean']['input']>;
@@ -467,6 +484,13 @@ export type ComponentContactFilter = {
   streetAddress_not_contains?: InputMaybe<Scalars['String']['input']>;
   streetAddress_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sys?: InputMaybe<SysFilter>;
+  websiteName?: InputMaybe<Scalars['String']['input']>;
+  websiteName_contains?: InputMaybe<Scalars['String']['input']>;
+  websiteName_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  websiteName_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  websiteName_not?: InputMaybe<Scalars['String']['input']>;
+  websiteName_not_contains?: InputMaybe<Scalars['String']['input']>;
+  websiteName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 export type ComponentContactLinkingCollections = {
@@ -512,6 +536,8 @@ export enum ComponentContactOrder {
   AddressLocalityDesc = 'addressLocality_DESC',
   AddressRegionAsc = 'addressRegion_ASC',
   AddressRegionDesc = 'addressRegion_DESC',
+  DisplayNewsletterAsc = 'displayNewsletter_ASC',
+  DisplayNewsletterDesc = 'displayNewsletter_DESC',
   EmailAsc = 'email_ASC',
   EmailDesc = 'email_DESC',
   PhoneAsc = 'phone_ASC',
@@ -527,10 +553,12 @@ export enum ComponentContactOrder {
   SysPublishedAtAsc = 'sys_publishedAt_ASC',
   SysPublishedAtDesc = 'sys_publishedAt_DESC',
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  WebsiteNameAsc = 'websiteName_ASC',
+  WebsiteNameDesc = 'websiteName_DESC'
 }
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentPageHeader) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentPageHeader) */
 export type ComponentPageHeader = Entry & _Node & {
   __typename?: 'ComponentPageHeader';
   _id: Scalars['ID']['output'];
@@ -543,26 +571,26 @@ export type ComponentPageHeader = Entry & _Node & {
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentPageHeader) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentPageHeader) */
 export type ComponentPageHeaderDescriptionArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentPageHeader) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentPageHeader) */
 export type ComponentPageHeaderHeaderArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentPageHeader) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentPageHeader) */
 export type ComponentPageHeaderLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentPageHeader) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentPageHeader) */
 export type ComponentPageHeaderTitleArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
@@ -736,7 +764,7 @@ export enum ComponentPageHeaderOrder {
   TitleDesc = 'title_DESC'
 }
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSeo) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSeo) */
 export type ComponentSeo = Entry & _Node & {
   __typename?: 'ComponentSeo';
   _id: Scalars['ID']['output'];
@@ -753,49 +781,49 @@ export type ComponentSeo = Entry & _Node & {
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSeo) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSeo) */
 export type ComponentSeoCanonicalUrlArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSeo) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSeo) */
 export type ComponentSeoInternalNameArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSeo) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSeo) */
 export type ComponentSeoLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSeo) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSeo) */
 export type ComponentSeoNofollowArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSeo) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSeo) */
 export type ComponentSeoNoindexArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSeo) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSeo) */
 export type ComponentSeoPageDescriptionArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSeo) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSeo) */
 export type ComponentSeoPageTitleArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSeo) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSeo) */
 export type ComponentSeoShareImagesCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   locale?: InputMaybe<Scalars['String']['input']>;
@@ -1031,7 +1059,7 @@ export enum ComponentSeoOrder {
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSlider) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSlider) */
 export type ComponentSlider = Entry & _Node & {
   __typename?: 'ComponentSlider';
   _id: Scalars['ID']['output'];
@@ -1042,7 +1070,7 @@ export type ComponentSlider = Entry & _Node & {
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSlider) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSlider) */
 export type ComponentSliderImageCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   locale?: InputMaybe<Scalars['String']['input']>;
@@ -1051,7 +1079,7 @@ export type ComponentSliderImageCollectionArgs = {
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSlider) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSlider) */
 export type ComponentSliderLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
@@ -1119,7 +1147,7 @@ export enum ComponentSliderOrder {
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSocialMedia) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSocialMedia) */
 export type ComponentSocialMedia = Entry & _Node & {
   __typename?: 'ComponentSocialMedia';
   _id: Scalars['ID']['output'];
@@ -1131,19 +1159,19 @@ export type ComponentSocialMedia = Entry & _Node & {
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSocialMedia) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSocialMedia) */
 export type ComponentSocialMediaLinkArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSocialMedia) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSocialMedia) */
 export type ComponentSocialMediaLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSocialMedia) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSocialMedia) */
 export type ComponentSocialMediaNameArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
@@ -1374,14 +1402,13 @@ export type ImageTransformOptions = {
   width?: InputMaybe<Scalars['Dimension']['input']>;
 };
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/menu) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/menu) */
 export type Menu = Entry & _Node & {
   __typename?: 'Menu';
   _id: Scalars['ID']['output'];
   contentfulMetadata: ContentfulMetadata;
   indexOrder?: Maybe<Scalars['Int']['output']>;
   isCta?: Maybe<Scalars['Boolean']['output']>;
-  isProject?: Maybe<Scalars['Boolean']['output']>;
   link?: Maybe<Scalars['String']['output']>;
   linkedFrom?: Maybe<MenuLinkingCollections>;
   name?: Maybe<Scalars['String']['output']>;
@@ -1389,37 +1416,31 @@ export type Menu = Entry & _Node & {
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/menu) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/menu) */
 export type MenuIndexOrderArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/menu) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/menu) */
 export type MenuIsCtaArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/menu) */
-export type MenuIsProjectArgs = {
-  locale?: InputMaybe<Scalars['String']['input']>;
-};
-
-
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/menu) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/menu) */
 export type MenuLinkArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/menu) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/menu) */
 export type MenuLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/menu) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/menu) */
 export type MenuNameArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
@@ -1448,9 +1469,6 @@ export type MenuFilter = {
   isCta?: InputMaybe<Scalars['Boolean']['input']>;
   isCta_exists?: InputMaybe<Scalars['Boolean']['input']>;
   isCta_not?: InputMaybe<Scalars['Boolean']['input']>;
-  isProject?: InputMaybe<Scalars['Boolean']['input']>;
-  isProject_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  isProject_not?: InputMaybe<Scalars['Boolean']['input']>;
   link?: InputMaybe<Scalars['String']['input']>;
   link_contains?: InputMaybe<Scalars['String']['input']>;
   link_exists?: InputMaybe<Scalars['Boolean']['input']>;
@@ -1486,8 +1504,6 @@ export enum MenuOrder {
   IndexOrderDesc = 'indexOrder_DESC',
   IsCtaAsc = 'isCta_ASC',
   IsCtaDesc = 'isCta_DESC',
-  IsProjectAsc = 'isProject_ASC',
-  IsProjectDesc = 'isProject_DESC',
   LinkAsc = 'link_ASC',
   LinkDesc = 'link_DESC',
   NameAsc = 'name_ASC',
@@ -1502,7 +1518,7 @@ export enum MenuOrder {
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageAbout) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageAbout) */
 export type PageAbout = Entry & _Node & {
   __typename?: 'PageAbout';
   _id: Scalars['ID']['output'];
@@ -1516,13 +1532,13 @@ export type PageAbout = Entry & _Node & {
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageAbout) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageAbout) */
 export type PageAboutLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageAbout) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageAbout) */
 export type PageAboutPageHeaderArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
@@ -1530,13 +1546,13 @@ export type PageAboutPageHeaderArgs = {
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageAbout) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageAbout) */
 export type PageAboutPageNameArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageAbout) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageAbout) */
 export type PageAboutPicturesOfReferenceCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   locale?: InputMaybe<Scalars['String']['input']>;
@@ -1545,7 +1561,7 @@ export type PageAboutPicturesOfReferenceCollectionArgs = {
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageAbout) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageAbout) */
 export type PageAboutSeoArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
@@ -1605,7 +1621,7 @@ export enum PageAboutOrder {
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageContact) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageContact) */
 export type PageContact = Entry & _Node & {
   __typename?: 'PageContact';
   _id: Scalars['ID']['output'];
@@ -1619,7 +1635,7 @@ export type PageContact = Entry & _Node & {
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageContact) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageContact) */
 export type PageContactContactInformationArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
@@ -1627,13 +1643,13 @@ export type PageContactContactInformationArgs = {
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageContact) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageContact) */
 export type PageContactLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageContact) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageContact) */
 export type PageContactPageHeaderArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
@@ -1641,13 +1657,13 @@ export type PageContactPageHeaderArgs = {
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageContact) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageContact) */
 export type PageContactPageNameArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageContact) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageContact) */
 export type PageContactSeoArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
@@ -1708,7 +1724,7 @@ export enum PageContactOrder {
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageEditor) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageEditor) */
 export type PageEditor = Entry & _Node & {
   __typename?: 'PageEditor';
   _id: Scalars['ID']['output'];
@@ -1723,37 +1739,37 @@ export type PageEditor = Entry & _Node & {
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageEditor) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageEditor) */
 export type PageEditorContentArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageEditor) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageEditor) */
 export type PageEditorHtmlArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageEditor) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageEditor) */
 export type PageEditorLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageEditor) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageEditor) */
 export type PageEditorPageNameArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageEditor) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageEditor) */
 export type PageEditorPageSlugArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageEditor) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageEditor) */
 export type PageEditorSeoArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
@@ -1877,7 +1893,7 @@ export enum PageEditorOrder {
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageHome) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageHome) */
 export type PageHome = Entry & _Node & {
   __typename?: 'PageHome';
   _id: Scalars['ID']['output'];
@@ -1891,13 +1907,13 @@ export type PageHome = Entry & _Node & {
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageHome) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageHome) */
 export type PageHomeLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageHome) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageHome) */
 export type PageHomeProjectsCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   locale?: InputMaybe<Scalars['String']['input']>;
@@ -1908,7 +1924,7 @@ export type PageHomeProjectsCollectionArgs = {
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageHome) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageHome) */
 export type PageHomeSeoArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
@@ -1916,7 +1932,7 @@ export type PageHomeSeoArgs = {
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageHome) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageHome) */
 export type PageHomeSliderArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
@@ -1924,7 +1940,7 @@ export type PageHomeSliderArgs = {
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageHome) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageHome) */
 export type PageHomeTitleArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
@@ -2008,7 +2024,7 @@ export enum PageHomeProjectsCollectionOrder {
   TitleDesc = 'title_DESC'
 }
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProject) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageProject) */
 export type PageProject = Entry & _Node & {
   __typename?: 'PageProject';
   _id: Scalars['ID']['output'];
@@ -2026,13 +2042,13 @@ export type PageProject = Entry & _Node & {
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProject) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageProject) */
 export type PageProjectDescriptionArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProject) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageProject) */
 export type PageProjectGalleryCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   locale?: InputMaybe<Scalars['String']['input']>;
@@ -2041,20 +2057,20 @@ export type PageProjectGalleryCollectionArgs = {
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProject) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageProject) */
 export type PageProjectHeaderArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProject) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageProject) */
 export type PageProjectLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProject) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageProject) */
 export type PageProjectSeoArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
@@ -2062,26 +2078,26 @@ export type PageProjectSeoArgs = {
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProject) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageProject) */
 export type PageProjectSlugArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProject) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageProject) */
 export type PageProjectSubtitleArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProject) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageProject) */
 export type PageProjectThumbnailArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProject) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageProject) */
 export type PageProjectTitleArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
@@ -2254,7 +2270,7 @@ export enum PageProjectOrder {
   TitleDesc = 'title_DESC'
 }
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProjects) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageProjects) */
 export type PageProjects = Entry & _Node & {
   __typename?: 'PageProjects';
   _id: Scalars['ID']['output'];
@@ -2268,13 +2284,13 @@ export type PageProjects = Entry & _Node & {
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProjects) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageProjects) */
 export type PageProjectsLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProjects) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageProjects) */
 export type PageProjectsPageHeaderArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
@@ -2282,13 +2298,13 @@ export type PageProjectsPageHeaderArgs = {
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProjects) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageProjects) */
 export type PageProjectsPageNameArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProjects) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageProjects) */
 export type PageProjectsProjectsCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   locale?: InputMaybe<Scalars['String']['input']>;
@@ -2299,7 +2315,7 @@ export type PageProjectsProjectsCollectionArgs = {
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProjects) */
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageProjects) */
 export type PageProjectsSeoArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
@@ -2779,6 +2795,9 @@ export type CfComponentContactNestedFilter = {
   addressRegion_not_contains?: InputMaybe<Scalars['String']['input']>;
   addressRegion_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  displayNewsletter?: InputMaybe<Scalars['Boolean']['input']>;
+  displayNewsletter_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  displayNewsletter_not?: InputMaybe<Scalars['Boolean']['input']>;
   email?: InputMaybe<Scalars['String']['input']>;
   email_contains?: InputMaybe<Scalars['String']['input']>;
   email_exists?: InputMaybe<Scalars['Boolean']['input']>;
@@ -2808,6 +2827,13 @@ export type CfComponentContactNestedFilter = {
   streetAddress_not_contains?: InputMaybe<Scalars['String']['input']>;
   streetAddress_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sys?: InputMaybe<SysFilter>;
+  websiteName?: InputMaybe<Scalars['String']['input']>;
+  websiteName_contains?: InputMaybe<Scalars['String']['input']>;
+  websiteName_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  websiteName_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  websiteName_not?: InputMaybe<Scalars['String']['input']>;
+  websiteName_not_contains?: InputMaybe<Scalars['String']['input']>;
+  websiteName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 export type CfComponentPageHeaderNestedFilter = {
@@ -2947,7 +2973,7 @@ export type PageContactQuery = { __typename?: 'Query', pageContactCollection?: {
         & SeoFieldsFragment
       ) | null } | null> } | null };
 
-export type ContactFieldsFragment = { __typename?: 'ComponentContact', streetAddress?: string | null, addressLocality?: string | null, addressRegion?: string | null, postalCode?: string | null, addressCountry?: string | null, email?: string | null, phone?: string | null };
+export type ContactFieldsFragment = { __typename?: 'ComponentContact', websiteName?: string | null, streetAddress?: string | null, addressLocality?: string | null, addressRegion?: string | null, postalCode?: string | null, addressCountry?: string | null, email?: string | null, phone?: string | null, displayNewsletter?: boolean | null };
 
 export type PageEditorQueryVariables = Exact<{
   slug: Scalars['String']['input'];
@@ -2996,7 +3022,7 @@ export type LayoutQueryVariables = Exact<{
 }>;
 
 
-export type LayoutQuery = { __typename?: 'Query', menuCollection?: { __typename?: 'MenuCollection', items: Array<{ __typename?: 'Menu', name?: string | null, link?: string | null, isProject?: boolean | null, indexOrder?: number | null } | null> } | null, assetsCollection?: { __typename?: 'AssetsCollection', items: Array<{ __typename?: 'Assets', logoLight?: (
+export type LayoutQuery = { __typename?: 'Query', menuCollection?: { __typename?: 'MenuCollection', items: Array<{ __typename?: 'Menu', name?: string | null, link?: string | null, isCta?: boolean | null, indexOrder?: number | null } | null> } | null, assetsCollection?: { __typename?: 'AssetsCollection', items: Array<{ __typename?: 'Assets', logoLight?: (
         { __typename?: 'Asset' }
         & ImageFieldsFragment
       ) | null, logoDark?: (
@@ -3052,6 +3078,7 @@ export type PageProjectsQuery = { __typename?: 'Query', pageProjectsCollection?:
 
 export const ContactFieldsFragmentDoc = gql`
     fragment ContactFields on ComponentContact {
+  websiteName
   streetAddress
   addressLocality
   addressRegion
@@ -3059,6 +3086,7 @@ export const ContactFieldsFragmentDoc = gql`
   addressCountry
   email
   phone
+  displayNewsletter
 }
     `;
 export const ImageFieldsFragmentDoc = gql`
@@ -3206,7 +3234,7 @@ export const LayoutDocument = gql`
     items {
       name
       link
-      isProject
+      isCta
       indexOrder
     }
   }

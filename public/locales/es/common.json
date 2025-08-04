@@ -3,7 +3,8 @@
     "contact": "Contacto",
     "link": "Enlaces",
     "social": "Redes Sociales",
-    "copyright": "Copyright © {{year}} En Crudo Taller",
+    "copyright": "Copyright © {{year}} {{siteName}} desarollado por ",
+    "developer": "Anthony Guido",
     "legal": "Aviso Legal",
     "privacy": "Protección de Datos"
   },

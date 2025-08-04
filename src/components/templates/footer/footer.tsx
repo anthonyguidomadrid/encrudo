@@ -93,22 +93,32 @@ export const Footer = ({
               </nav>
             </FooterWrapper>
           </div>
-          <div className="flex justify-center mt-6 mb-10 md:mb-6">
-            <MailchimpSubscribe
-              url={process.env.NEXT_PUBLIC_MAILCHIMP_URL}
-              render={({ subscribe, status }) => (
-                <NewsletterForm
-                  status={status}
-                  onValidated={formData => subscribe(formData)}
-                />
-              )}
-            />
-          </div>
+          {contactContent?.displayNewsletter && (
+            <div className="flex justify-center mt-6 mb-10 md:mb-6">
+              <MailchimpSubscribe
+                url={process.env.NEXT_PUBLIC_MAILCHIMP_URL}
+                render={({ subscribe, status }) => (
+                  <NewsletterForm
+                    status={status}
+                    onValidated={formData => subscribe(formData)}
+                  />
+                )}
+              />
+            </div>
+          )}
         </div>
       </section>
       <div className="bg-beige-light text-primary text-sm">
         <div className="max-w-7xl m-auto flex text-center flex-col md:flex-row gap-2 justify-between py-3 px-10">
-          <p>{t('footer.copyright', { year: new Date().getFullYear() })}</p>
+          <p>
+            {t('footer.copyright', {
+              year: new Date().getFullYear(),
+              siteName: contactContent?.websiteName
+            })}
+            <Link href="https://www.anthonyguido.dev/" rel="noreferrer" target='_blank'>
+              {t('footer.developer')}
+            </Link>
+          </p>
           <div className="flex gap-5 justify-center">
             <Link href="/aviso-legal" rel="noreferrer" className="no-underline">
               {t('footer.legal')}

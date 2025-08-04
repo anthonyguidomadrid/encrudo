@@ -16,7 +16,7 @@ export type Logo = {
 export type MenuItem = {
   name?: string | null
   link?: string | null
-  isProject?: boolean | null
+  isCta?: boolean | null
   indexOrder?: number | null
 } | null
 
@@ -27,6 +27,7 @@ export type AssetContent = {
 } | null
 
 export type ContactContent = {
+  websiteName?: string | null
   streetAddress?: string | null
   addressRegion?: string | null
   postalCode?: string | null
@@ -34,6 +35,7 @@ export type ContactContent = {
   addressLocality?: string | null
   email?: string | null
   phone?: string | null
+  displayNewsletter?: boolean | null
 } | null
 
 export type SocialMediaContent = {
