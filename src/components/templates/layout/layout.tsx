@@ -45,7 +45,7 @@ interface LayoutProps {
   children: ReactNode
   menuContent?: MenuItem[]
   assetContent?: AssetContent
-  contactContent?: ContactContent
+  contactContent: ContactContent | null
   socialMediaContent?: SocialMediaContent[]
 }
 

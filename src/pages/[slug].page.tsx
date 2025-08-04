@@ -5,10 +5,13 @@ import { SeoFields } from '@src/components/features/seo'
 import { client } from '@src/lib/client'
 import { getServerSideTranslations } from '@src/pages/utils/get-serverside-translations'
 import dynamic from 'next/dynamic'
-import { BreadcrumbItem } from '@src/components/breadcrumbs'
+import { BreadcrumbItem } from '@src/components/breadcrumbs/breadcrumbs'
 
 const Breadcrumbs = dynamic(
-  () => import('@src/components/breadcrumbs').then(mod => mod.Breadcrumbs),
+  () =>
+    import('@src/components/breadcrumbs/breadcrumbs').then(
+      mod => mod.Breadcrumbs
+    ),
   { ssr: false }
 )
 import { LINKS } from '@src/constants/links'

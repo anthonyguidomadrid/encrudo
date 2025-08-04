@@ -72,8 +72,7 @@ export const Header: FunctionComponent<HeaderProps> = ({
           </div>
           <div className="block md:hidden">
             <button
-              className="flex items-center"
-              aria-label={isMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
+              className="flex items-center p-5"
               aria-expanded={isMenuOpen}
               aria-controls="main-menu"
               onClick={e => {
