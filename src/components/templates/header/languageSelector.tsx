@@ -24,7 +24,7 @@ export const LanguageSelector = ({
   }
 
   return (
-    <div className={classNames('flex', { 'text-primary': isDark })}>
+    <div className={classNames('flex p-3', { 'text-primary': isDark })}>
       {locales?.map((locale, idx) => {
         return (
           <button

@@ -48,7 +48,7 @@ export const Header: FunctionComponent<HeaderProps> = ({
           role="navigation"
           aria-label="Main navigation"
           className={classNames(
-            'flex items-center justify-between flex-wrap p-7 uppercase fixed top-0 w-full z-50 text-white',
+            'flex items-center justify-between flex-wrap p-5 uppercase fixed top-0 w-full z-50 text-white',
             {
               'bg-white bg-opacity-90 text-primary': isDark,
               'drop-shadow-[0_2px_8px_rgba(0,0,0,0.25)]': ispageScrolled
@@ -72,7 +72,7 @@ export const Header: FunctionComponent<HeaderProps> = ({
           </div>
           <div className="block md:hidden">
             <button
-              className="flex items-center p-5"
+              className="flex items-center p-3"
               aria-expanded={isMenuOpen}
               aria-controls="main-menu"
               onClick={e => {
