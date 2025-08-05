@@ -1,7 +1,13 @@
 import { ReactNode } from 'react'
 
-import { Footer } from '../footer'
-import { Header } from '../header'
+import dynamic from 'next/dynamic'
+
+const Header = dynamic(() => import('../header').then(mod => mod.Header), {
+  ssr: false
+})
+const Footer = dynamic(() => import('../footer').then(mod => mod.Footer), {
+  ssr: false
+})
 
 export type SocialMedia = {
   url?: string | null
