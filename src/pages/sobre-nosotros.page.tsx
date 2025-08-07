@@ -36,7 +36,7 @@ const Page = ({
         url={url!}
       />
       <PageHeader {...pageHeader} />
-      <section aria-label="Galería de imágenes de referencia">
+      <section>
         <Splide
           options={{
             type: 'loop',

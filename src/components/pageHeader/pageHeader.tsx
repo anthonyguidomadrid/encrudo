@@ -34,8 +34,8 @@ export const PageHeader = ({
           backgroundImage: `url(${url})`
         }}
       />
+      <Breadcrumbs items={BREADCRUMBS} />
       <div className="text-center py-20 px-10">
-        <Breadcrumbs items={BREADCRUMBS} />
         <h1>{title}</h1>
         {description && (
           <div

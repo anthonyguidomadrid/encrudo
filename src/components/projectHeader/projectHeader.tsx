@@ -32,7 +32,7 @@ export const ProjectHeader = ({
     <>
       <header
         role="banner"
-        className={`h-[80vh] flex flex-col justify-center text-center text-white p-10 drop-shadow bg-gray-400 bg-blend-multiply\tbg-cover bg-no-repeat bg-center mb-8`}
+        className={`h-[80vh] flex flex-col justify-center text-center text-white p-10 drop-shadow bg-gray-400 bg-blend-multiply\tbg-cover bg-no-repeat bg-center`}
         style={{
           backgroundImage: `url(${image?.url})`
         }}

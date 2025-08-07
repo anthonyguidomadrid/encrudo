@@ -22,7 +22,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items }) => {
           item: `${process.env.NEXT_PUBLIC_SITE_URL || ''}${item.href}`
         }))}
       />
-      <nav aria-label="Breadcrumb" className="mb-4">
+      <nav aria-label="Breadcrumb" className="mb-4 mt-8">
         <ol
           className="flex flex-wrap gap-2 text-sm"
           itemScope
@@ -39,11 +39,12 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items }) => {
                 className="flex items-center"
               >
                 {idx > 0 && <span className="mx-2">/</span>}
-                <Link href={item.href} itemProp="item">
-                  <span
-                    itemProp="name"
-                    className={isLast ? '' : 'underline hover:text-primary'}
-                  >
+                <Link
+                  href={item.href}
+                  itemProp="item"
+                  className={isLast ? 'no-underline' : ''}
+                >
+                  <span itemProp="name" className="hover:text-primary">
                     {item.label}
                   </span>
                 </Link>
