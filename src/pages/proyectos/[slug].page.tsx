@@ -60,7 +60,7 @@ const Page = ({
         <Button
           label={t('project.back-btn')}
           icon={<ArrowLeft className={'h-7'} />}
-          link={'/#proyectos'}
+          link={LINKS.PROJECTS}
         />
       </div>
     </>
