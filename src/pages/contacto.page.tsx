@@ -2,12 +2,12 @@ import { WebPageJsonLd } from 'next-seo'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import Script from 'next/script'
 import { useState } from 'react'
-
-import EmailIcon from '@icons/email.svg'
-import LocationIcon from '@icons/location.svg'
-import PhoneIcon from '@icons/phone.svg'
-import dynamic from 'next/dynamic'
 import { SeoFields } from '@src/components/features/seo'
+import { GTAG_TRACKING_ID } from '@src/helpers/gtag'
+import { client } from '@src/lib/client'
+import { getServerSideTranslations } from '@src/pages/utils/get-serverside-translations'
+import { LINKS } from '@src/constants/links'
+import dynamic from 'next/dynamic'
 
 const PageHeader = dynamic(
   () =>
@@ -26,18 +26,18 @@ const GoogleMap = dynamic(
     import('@src/components/googleMap/googleMap').then(mod => mod.GoogleMap),
   { ssr: false }
 )
-import { GTAG_TRACKING_ID } from '@src/helpers/gtag'
-import { transformPhoneNumberToLink } from '@src/helpers/transformPhoneNumber'
-import { client } from '@src/lib/client'
-import { getServerSideTranslations } from '@src/pages/utils/get-serverside-translations'
-import { LINKS } from '@src/constants/links'
-import { getAddress } from '@src/helpers/getAddress'
+const ContactInfoBlock = dynamic(
+  () =>
+    import('@src/components/contactInfoBlock/contactInfoBlock').then(
+      mod => mod.ContactInfoBlock
+    ),
+  { ssr: false }
+)
 
-const Page = ({
+const ContactPage = ({
   page
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { pageHeader, contactInformation, seo } = page
-  const phoneNumberLink = transformPhoneNumberToLink(contactInformation?.phone)
   const contactClass = 'flex items-start sm:justify-center gap-2'
   const [isContactMsgSent, setIsContactMsgSent] = useState(false)
   const url = `${process.env.NEXT_PUBLIC_SITE_URL}${LINKS.CONTACT}`
@@ -58,29 +58,10 @@ const Page = ({
       )}
       <section>
         <PageHeader {...pageHeader} />
-        <div className="mx-5 flex flex-col gap-4">
-          <p className={contactClass}>
-            <PhoneIcon className="h-5" />
-            <a className="no-underline" href={`tel:${phoneNumberLink}`}>
-              {contactInformation?.phone}
-            </a>
-          </p>
-          <p className={contactClass}>
-            <EmailIcon className="h-5" />
-            <a
-              href={`mailto:${contactInformation?.email}`}
-              className="no-underline"
-            >
-              {contactInformation?.email}
-            </a>
-          </p>
-          <p className={`${contactClass}`}>
-            <LocationIcon className="h-5" />
-            <address className="not-italic">
-              {getAddress(contactInformation)}
-            </address>
-          </p>
-        </div>
+        <ContactInfoBlock
+          contactInformation={contactInformation}
+          contactClass={contactClass}
+        />
       </section>
       <section>
         <ContactForm
@@ -121,4 +102,4 @@ export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
   }
 }
 
-export default Page
+export default ContactPage
