@@ -269,6 +269,7 @@ export type Assets = Entry & _Node & {
   logoDark?: Maybe<Asset>;
   logoLight?: Maybe<Asset>;
   logoSmall?: Maybe<Asset>;
+  notFoundBackgroundImage?: Maybe<Asset>;
   sys: Sys;
 };
 
@@ -299,6 +300,13 @@ export type AssetsLogoSmallArgs = {
   preview?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
+
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/assets) */
+export type AssetsNotFoundBackgroundImageArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
 export type AssetsCollection = {
   __typename?: 'AssetsCollection';
   items: Array<Maybe<Assets>>;
@@ -314,6 +322,7 @@ export type AssetsFilter = {
   logoDark_exists?: InputMaybe<Scalars['Boolean']['input']>;
   logoLight_exists?: InputMaybe<Scalars['Boolean']['input']>;
   logoSmall_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  notFoundBackgroundImage_exists?: InputMaybe<Scalars['Boolean']['input']>;
   sys?: InputMaybe<SysFilter>;
 };
 
@@ -3036,6 +3045,17 @@ export type LayoutQuery = { __typename?: 'Query', menuCollection?: { __typename?
       & ContactFieldsFragment
     ) | null> } | null, componentSocialMediaCollection?: { __typename?: 'ComponentSocialMediaCollection', items: Array<{ __typename?: 'ComponentSocialMedia', name?: string | null, link?: string | null } | null> } | null };
 
+export type NotFoundQueryVariables = Exact<{
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+}>;
+
+
+export type NotFoundQuery = { __typename?: 'Query', assetsCollection?: { __typename?: 'AssetsCollection', items: Array<{ __typename?: 'Assets', notFoundBackgroundImage?: (
+        { __typename?: 'Asset' }
+        & ImageFieldsFragment
+      ) | null } | null> } | null };
+
 export type PageProjectQueryVariables = Exact<{
   slug: Scalars['String']['input'];
   locale?: InputMaybe<Scalars['String']['input']>;
@@ -3265,6 +3285,17 @@ export const LayoutDocument = gql`
 }
     ${ImageFieldsFragmentDoc}
 ${ContactFieldsFragmentDoc}`;
+export const NotFoundDocument = gql`
+    query notFound($locale: String, $preview: Boolean) {
+  assetsCollection(limit: 1, locale: $locale, preview: $preview) {
+    items {
+      notFoundBackgroundImage {
+        ...ImageFields
+      }
+    }
+  }
+}
+    ${ImageFieldsFragmentDoc}`;
 export const PageProjectDocument = gql`
     query pageProject($slug: String!, $locale: String, $preview: Boolean) {
   pageProjectCollection(
@@ -3339,6 +3370,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     layout(variables?: LayoutQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<LayoutQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<LayoutQuery>({ document: LayoutDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'layout', 'query', variables);
+    },
+    notFound(variables?: NotFoundQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<NotFoundQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<NotFoundQuery>({ document: NotFoundDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'notFound', 'query', variables);
     },
     pageProject(variables: PageProjectQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<PageProjectQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<PageProjectQuery>({ document: PageProjectDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'pageProject', 'query', variables);

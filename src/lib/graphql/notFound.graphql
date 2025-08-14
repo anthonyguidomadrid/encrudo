@@ -1,0 +1,9 @@
+query notFound($locale: String, $preview: Boolean) {
+  assetsCollection(limit: 1, locale: $locale, preview: $preview) {
+    items {
+      notFoundBackgroundImage {
+        url
+      }
+    }
+  }
+}

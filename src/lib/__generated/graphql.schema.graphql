@@ -144,6 +144,7 @@ type Assets implements Entry & _Node {
   logoDark(locale: String, preview: Boolean): Asset
   logoLight(locale: String, preview: Boolean): Asset
   logoSmall(locale: String, preview: Boolean): Asset
+  notFoundBackgroundImage(locale: String, preview: Boolean): Asset
   sys: Sys!
 }
 
@@ -161,6 +162,7 @@ input AssetsFilter {
   logoDark_exists: Boolean
   logoLight_exists: Boolean
   logoSmall_exists: Boolean
+  notFoundBackgroundImage_exists: Boolean
   sys: SysFilter
 }
 
