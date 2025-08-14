@@ -2,13 +2,26 @@ import { GetStaticProps } from 'next'
 import { useTranslation } from 'next-i18next'
 
 import { Button } from '@src/components/button'
+import { SeoFields } from '@src/components/features/seo/SeoFields'
 import { getServerSideTranslations } from '@src/pages/utils/get-serverside-translations'
 import { client } from '@src/lib/client'
+import { ImageFieldsFragment } from '@src/lib/__generated/sdk'
 
 const ErrorPage404 = ({ notFoundBackgroundImageUrl }) => {
   const { t } = useTranslation()
   return (
     <>
+      <SeoFields
+        pageTitle={t('not-found.title')}
+        pageDescription={t('not-found.description')}
+        noindex={true}
+        nofollow={true}
+        canonicalUrl={null}
+        shareImagesCollection={{
+          items: [{ url: notFoundBackgroundImageUrl }] as ImageFieldsFragment[]
+        }}
+        __typename={'ComponentSeo'}
+      />
       <section
         className="relative h-screen bg-blend-multiply bg-cover bg-no-repeat bg-center flex justify-center items-center"
         style={{ backgroundImage: `url('${notFoundBackgroundImageUrl}')` }}
