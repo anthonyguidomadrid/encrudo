@@ -1,6 +1,9 @@
-export const GoogleMap = () => (
+interface GoogleMapsProps {
+  googleMapsUrl: string
+}
+export const GoogleMap: React.FC<GoogleMapsProps> = ({ googleMapsUrl }) => (
   <iframe
-    src={process.env.NEXT_PUBLIC_GOOGLE_MAPS_URL}
+    src={googleMapsUrl}
     width="100%"
     height="450"
     style={{

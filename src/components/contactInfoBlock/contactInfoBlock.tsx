@@ -9,10 +9,10 @@ interface ContactInfoBlockProps {
   contactClass: string
 }
 
-export const ContactInfoBlock = ({
+export const ContactInfoBlock: React.FC<ContactInfoBlockProps> = ({
   contactInformation,
   contactClass
-}: ContactInfoBlockProps) => {
+}) => {
   const phoneNumberLink = transformPhoneNumberToLink(contactInformation?.phone)
   return (
     <div className="mx-5 flex flex-col gap-4">

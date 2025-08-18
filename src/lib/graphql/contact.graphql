@@ -10,6 +10,7 @@ query pageContact($locale: String, $preview: Boolean) {
       seo {
         ...SeoFields
       }
+      googleMapsUrl
     }
   }
 }

@@ -1636,6 +1636,7 @@ export type PageContact = Entry & _Node & {
   _id: Scalars['ID']['output'];
   contactInformation?: Maybe<ComponentContact>;
   contentfulMetadata: ContentfulMetadata;
+  googleMapsUrl?: Maybe<Scalars['String']['output']>;
   linkedFrom?: Maybe<PageContactLinkingCollections>;
   pageHeader?: Maybe<ComponentPageHeader>;
   pageName?: Maybe<Scalars['String']['output']>;
@@ -1649,6 +1650,12 @@ export type PageContactContactInformationArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<ComponentContactFilter>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageContact) */
+export type PageContactGoogleMapsUrlArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
@@ -1693,6 +1700,13 @@ export type PageContactFilter = {
   contactInformation?: InputMaybe<CfComponentContactNestedFilter>;
   contactInformation_exists?: InputMaybe<Scalars['Boolean']['input']>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  googleMapsUrl?: InputMaybe<Scalars['String']['input']>;
+  googleMapsUrl_contains?: InputMaybe<Scalars['String']['input']>;
+  googleMapsUrl_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  googleMapsUrl_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  googleMapsUrl_not?: InputMaybe<Scalars['String']['input']>;
+  googleMapsUrl_not_contains?: InputMaybe<Scalars['String']['input']>;
+  googleMapsUrl_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   pageHeader?: InputMaybe<CfComponentPageHeaderNestedFilter>;
   pageHeader_exists?: InputMaybe<Scalars['Boolean']['input']>;
   pageName?: InputMaybe<Scalars['String']['input']>;
@@ -2971,7 +2985,7 @@ export type PageContactQueryVariables = Exact<{
 }>;
 
 
-export type PageContactQuery = { __typename?: 'Query', pageContactCollection?: { __typename?: 'PageContactCollection', items: Array<{ __typename?: 'PageContact', pageHeader?: (
+export type PageContactQuery = { __typename?: 'Query', pageContactCollection?: { __typename?: 'PageContactCollection', items: Array<{ __typename?: 'PageContact', googleMapsUrl?: string | null, pageHeader?: (
         { __typename?: 'ComponentPageHeader' }
         & PageHeaderFieldsFragment
       ) | null, contactInformation?: (
@@ -3051,10 +3065,7 @@ export type NotFoundQueryVariables = Exact<{
 }>;
 
 
-export type NotFoundQuery = { __typename?: 'Query', assetsCollection?: { __typename?: 'AssetsCollection', items: Array<{ __typename?: 'Assets', notFoundBackgroundImage?: (
-        { __typename?: 'Asset' }
-        & ImageFieldsFragment
-      ) | null } | null> } | null };
+export type NotFoundQuery = { __typename?: 'Query', assetsCollection?: { __typename?: 'AssetsCollection', items: Array<{ __typename?: 'Assets', notFoundBackgroundImage?: { __typename?: 'Asset', url?: string | null } | null } | null> } | null };
 
 export type PageProjectQueryVariables = Exact<{
   slug: Scalars['String']['input'];
@@ -3193,6 +3204,7 @@ export const PageContactDocument = gql`
       seo {
         ...SeoFields
       }
+      googleMapsUrl
     }
   }
 }
@@ -3290,12 +3302,12 @@ export const NotFoundDocument = gql`
   assetsCollection(limit: 1, locale: $locale, preview: $preview) {
     items {
       notFoundBackgroundImage {
-        ...ImageFields
+        url
       }
     }
   }
 }
-    ${ImageFieldsFragmentDoc}`;
+    `;
 export const PageProjectDocument = gql`
     query pageProject($slug: String!, $locale: String, $preview: Boolean) {
   pageProjectCollection(

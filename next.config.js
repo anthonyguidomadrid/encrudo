@@ -31,7 +31,6 @@ module.exports = withPlugins(plugins, {
   modularizeImports: {},
   // Ensure only used code is bundled
   optimizeFonts: true,
-  optimizeCss: true,
   headers,
   images: {
     remotePatterns: [

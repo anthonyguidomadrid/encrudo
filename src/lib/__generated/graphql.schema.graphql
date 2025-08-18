@@ -1113,6 +1113,7 @@ type PageContact implements Entry & _Node {
   _id: ID!
   contactInformation(locale: String, preview: Boolean, where: ComponentContactFilter): ComponentContact
   contentfulMetadata: ContentfulMetadata!
+  googleMapsUrl(locale: String): String
   linkedFrom(allowedLocales: [String]): PageContactLinkingCollections
   pageHeader(locale: String, preview: Boolean, where: ComponentPageHeaderFilter): ComponentPageHeader
   pageName(locale: String): String
@@ -1133,6 +1134,13 @@ input PageContactFilter {
   contactInformation: cfComponentContactNestedFilter
   contactInformation_exists: Boolean
   contentfulMetadata: ContentfulMetadataFilter
+  googleMapsUrl: String
+  googleMapsUrl_contains: String
+  googleMapsUrl_exists: Boolean
+  googleMapsUrl_in: [String]
+  googleMapsUrl_not: String
+  googleMapsUrl_not_contains: String
+  googleMapsUrl_not_in: [String]
   pageHeader: cfComponentPageHeaderNestedFilter
   pageHeader_exists: Boolean
   pageName: String

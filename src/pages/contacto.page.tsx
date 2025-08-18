@@ -37,7 +37,7 @@ const ContactInfoBlock = dynamic(
 const ContactPage = ({
   page
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const { pageHeader, contactInformation, seo } = page
+  const { pageHeader, contactInformation, seo, googleMapsUrl } = page
   const contactClass = 'flex items-start sm:justify-center gap-2'
   const [isContactMsgSent, setIsContactMsgSent] = useState(false)
   const url = `${process.env.NEXT_PUBLIC_SITE_URL}${LINKS.CONTACT}`
@@ -70,7 +70,7 @@ const ContactPage = ({
         />
       </section>
       <section>
-        <GoogleMap />
+        <GoogleMap googleMapsUrl={googleMapsUrl} />
       </section>
     </>
   )
