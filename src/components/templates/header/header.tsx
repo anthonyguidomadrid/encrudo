@@ -50,8 +50,9 @@ export const Header: FunctionComponent<HeaderProps> = ({
           className={classNames(
             'flex items-center justify-between flex-wrap p-5 uppercase fixed top-0 w-full z-50 text-white',
             {
-              'bg-white bg-opacity-90 text-primary': isDark,
-              'drop-shadow-[0_2px_8px_rgba(0,0,0,0.25)]': ispageScrolled
+              'bg-white bg-opacity-90 text-primary drop-shadow-[0_2px_8px_rgba(0,0,0,0.25)]':
+                isDark,
+              'bg-gradient-to-b from-black/50 to-transparent': !isDark
             }
           )}
         >
