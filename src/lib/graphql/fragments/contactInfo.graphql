@@ -7,5 +7,5 @@ fragment ContactFields on ComponentContact {
   addressCountry
   email
   phone
-  displayNewsletter
+  mailchimpUrl
 }

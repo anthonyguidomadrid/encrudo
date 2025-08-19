@@ -190,9 +190,9 @@ type ComponentContact implements Entry & _Node {
   addressLocality(locale: String): String
   addressRegion(locale: String): String
   contentfulMetadata: ContentfulMetadata!
-  displayNewsletter(locale: String): Boolean
   email(locale: String): String
   linkedFrom(allowedLocales: [String]): ComponentContactLinkingCollections
+  mailchimpUrl(locale: String): String
   phone(locale: String): String
   postalCode(locale: String): String
   streetAddress(locale: String): String
@@ -232,9 +232,6 @@ input ComponentContactFilter {
   addressRegion_not_contains: String
   addressRegion_not_in: [String]
   contentfulMetadata: ContentfulMetadataFilter
-  displayNewsletter: Boolean
-  displayNewsletter_exists: Boolean
-  displayNewsletter_not: Boolean
   email: String
   email_contains: String
   email_exists: Boolean
@@ -242,6 +239,13 @@ input ComponentContactFilter {
   email_not: String
   email_not_contains: String
   email_not_in: [String]
+  mailchimpUrl: String
+  mailchimpUrl_contains: String
+  mailchimpUrl_exists: Boolean
+  mailchimpUrl_in: [String]
+  mailchimpUrl_not: String
+  mailchimpUrl_not_contains: String
+  mailchimpUrl_not_in: [String]
   phone: String
   phone_contains: String
   phone_exists: Boolean
@@ -298,10 +302,10 @@ enum ComponentContactOrder {
   addressLocality_DESC
   addressRegion_ASC
   addressRegion_DESC
-  displayNewsletter_ASC
-  displayNewsletter_DESC
   email_ASC
   email_DESC
+  mailchimpUrl_ASC
+  mailchimpUrl_DESC
   phone_ASC
   phone_DESC
   postalCode_ASC
@@ -1734,9 +1738,6 @@ input cfComponentContactNestedFilter {
   addressRegion_not_contains: String
   addressRegion_not_in: [String]
   contentfulMetadata: ContentfulMetadataFilter
-  displayNewsletter: Boolean
-  displayNewsletter_exists: Boolean
-  displayNewsletter_not: Boolean
   email: String
   email_contains: String
   email_exists: Boolean
@@ -1744,6 +1745,13 @@ input cfComponentContactNestedFilter {
   email_not: String
   email_not_contains: String
   email_not_in: [String]
+  mailchimpUrl: String
+  mailchimpUrl_contains: String
+  mailchimpUrl_exists: Boolean
+  mailchimpUrl_in: [String]
+  mailchimpUrl_not: String
+  mailchimpUrl_not_contains: String
+  mailchimpUrl_not_in: [String]
   phone: String
   phone_contains: String
   phone_exists: Boolean

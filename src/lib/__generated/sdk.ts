@@ -358,9 +358,9 @@ export type ComponentContact = Entry & _Node & {
   addressLocality?: Maybe<Scalars['String']['output']>;
   addressRegion?: Maybe<Scalars['String']['output']>;
   contentfulMetadata: ContentfulMetadata;
-  displayNewsletter?: Maybe<Scalars['Boolean']['output']>;
   email?: Maybe<Scalars['String']['output']>;
   linkedFrom?: Maybe<ComponentContactLinkingCollections>;
+  mailchimpUrl?: Maybe<Scalars['String']['output']>;
   phone?: Maybe<Scalars['String']['output']>;
   postalCode?: Maybe<Scalars['String']['output']>;
   streetAddress?: Maybe<Scalars['String']['output']>;
@@ -388,12 +388,6 @@ export type ComponentContactAddressRegionArgs = {
 
 
 /** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentContact) */
-export type ComponentContactDisplayNewsletterArgs = {
-  locale?: InputMaybe<Scalars['String']['input']>;
-};
-
-
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentContact) */
 export type ComponentContactEmailArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
@@ -402,6 +396,12 @@ export type ComponentContactEmailArgs = {
 /** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentContact) */
 export type ComponentContactLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentContact) */
+export type ComponentContactMailchimpUrlArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
@@ -461,9 +461,6 @@ export type ComponentContactFilter = {
   addressRegion_not_contains?: InputMaybe<Scalars['String']['input']>;
   addressRegion_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
-  displayNewsletter?: InputMaybe<Scalars['Boolean']['input']>;
-  displayNewsletter_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  displayNewsletter_not?: InputMaybe<Scalars['Boolean']['input']>;
   email?: InputMaybe<Scalars['String']['input']>;
   email_contains?: InputMaybe<Scalars['String']['input']>;
   email_exists?: InputMaybe<Scalars['Boolean']['input']>;
@@ -471,6 +468,13 @@ export type ComponentContactFilter = {
   email_not?: InputMaybe<Scalars['String']['input']>;
   email_not_contains?: InputMaybe<Scalars['String']['input']>;
   email_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  mailchimpUrl?: InputMaybe<Scalars['String']['input']>;
+  mailchimpUrl_contains?: InputMaybe<Scalars['String']['input']>;
+  mailchimpUrl_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  mailchimpUrl_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  mailchimpUrl_not?: InputMaybe<Scalars['String']['input']>;
+  mailchimpUrl_not_contains?: InputMaybe<Scalars['String']['input']>;
+  mailchimpUrl_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   phone?: InputMaybe<Scalars['String']['input']>;
   phone_contains?: InputMaybe<Scalars['String']['input']>;
   phone_exists?: InputMaybe<Scalars['Boolean']['input']>;
@@ -545,10 +549,10 @@ export enum ComponentContactOrder {
   AddressLocalityDesc = 'addressLocality_DESC',
   AddressRegionAsc = 'addressRegion_ASC',
   AddressRegionDesc = 'addressRegion_DESC',
-  DisplayNewsletterAsc = 'displayNewsletter_ASC',
-  DisplayNewsletterDesc = 'displayNewsletter_DESC',
   EmailAsc = 'email_ASC',
   EmailDesc = 'email_DESC',
+  MailchimpUrlAsc = 'mailchimpUrl_ASC',
+  MailchimpUrlDesc = 'mailchimpUrl_DESC',
   PhoneAsc = 'phone_ASC',
   PhoneDesc = 'phone_DESC',
   PostalCodeAsc = 'postalCode_ASC',
@@ -2818,9 +2822,6 @@ export type CfComponentContactNestedFilter = {
   addressRegion_not_contains?: InputMaybe<Scalars['String']['input']>;
   addressRegion_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
-  displayNewsletter?: InputMaybe<Scalars['Boolean']['input']>;
-  displayNewsletter_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  displayNewsletter_not?: InputMaybe<Scalars['Boolean']['input']>;
   email?: InputMaybe<Scalars['String']['input']>;
   email_contains?: InputMaybe<Scalars['String']['input']>;
   email_exists?: InputMaybe<Scalars['Boolean']['input']>;
@@ -2828,6 +2829,13 @@ export type CfComponentContactNestedFilter = {
   email_not?: InputMaybe<Scalars['String']['input']>;
   email_not_contains?: InputMaybe<Scalars['String']['input']>;
   email_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  mailchimpUrl?: InputMaybe<Scalars['String']['input']>;
+  mailchimpUrl_contains?: InputMaybe<Scalars['String']['input']>;
+  mailchimpUrl_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  mailchimpUrl_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  mailchimpUrl_not?: InputMaybe<Scalars['String']['input']>;
+  mailchimpUrl_not_contains?: InputMaybe<Scalars['String']['input']>;
+  mailchimpUrl_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   phone?: InputMaybe<Scalars['String']['input']>;
   phone_contains?: InputMaybe<Scalars['String']['input']>;
   phone_exists?: InputMaybe<Scalars['Boolean']['input']>;
@@ -2996,7 +3004,7 @@ export type PageContactQuery = { __typename?: 'Query', pageContactCollection?: {
         & SeoFieldsFragment
       ) | null } | null> } | null };
 
-export type ContactFieldsFragment = { __typename?: 'ComponentContact', websiteName?: string | null, streetAddress?: string | null, addressLocality?: string | null, addressRegion?: string | null, postalCode?: string | null, addressCountry?: string | null, email?: string | null, phone?: string | null, displayNewsletter?: boolean | null };
+export type ContactFieldsFragment = { __typename?: 'ComponentContact', websiteName?: string | null, streetAddress?: string | null, addressLocality?: string | null, addressRegion?: string | null, postalCode?: string | null, addressCountry?: string | null, email?: string | null, phone?: string | null, mailchimpUrl?: string | null };
 
 export type PageEditorQueryVariables = Exact<{
   slug: Scalars['String']['input'];
@@ -3117,7 +3125,7 @@ export const ContactFieldsFragmentDoc = gql`
   addressCountry
   email
   phone
-  displayNewsletter
+  mailchimpUrl
 }
     `;
 export const ImageFieldsFragmentDoc = gql`

@@ -41,7 +41,7 @@ export type ContactContent = {
   addressLocality?: string | null
   email?: string | null
   phone?: string | null
-  displayNewsletter?: boolean | null
+  mailchimpUrl?: string | null
 } | null
 
 export type SocialMediaContent = {

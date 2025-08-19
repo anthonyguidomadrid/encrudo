@@ -93,10 +93,10 @@ export const Footer = ({
               </nav>
             </FooterWrapper>
           </div>
-          {contactContent?.displayNewsletter && (
+          {contactContent?.mailchimpUrl && (
             <div className="flex justify-center mt-6 mb-10 md:mb-6">
               <MailchimpSubscribe
-                url={process.env.NEXT_PUBLIC_MAILCHIMP_URL}
+                url={contactContent.mailchimpUrl}
                 render={({ subscribe, status }) => (
                   <NewsletterForm
                     status={status}
@@ -115,7 +115,11 @@ export const Footer = ({
               year: new Date().getFullYear(),
               siteName: contactContent?.websiteName
             })}
-            <Link href="https://www.anthonyguido.dev/" rel="noreferrer" target='_blank'>
+            <Link
+              href="https://www.anthonyguido.dev/"
+              rel="noreferrer"
+              target="_blank"
+            >
               {t('footer.developer')}
             </Link>
           </p>
