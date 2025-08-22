@@ -3,9 +3,9 @@ import Script from 'next/script'
 import { GA_TRACKING_ID, GTAG_TRACKING_ID } from '@src/helpers/gtag'
 
 export default function Document(props) {
-  const favicons =
-    props?.__NEXT_DATA__?.props?.data?.assetsCollection?.items?.[0].favicons ||
-    {}
+  const data = props?.__NEXT_DATA__.props?.data
+  const favicons = data?.assetsCollection?.items?.[0].favicons || {}
+  const websiteName = data?.componentContactCollection?.items[0].websiteName
 
   const faviconUrls = {
     appleTouchIcon: favicons?.appleTouchIcon?.url,
@@ -26,6 +26,7 @@ export default function Document(props) {
           sizes="180x180"
           href={faviconUrls.appleTouchIcon}
         />
+        <meta name="apple-mobile-web-app-title" content={websiteName} />
         {/* PNG Favicons */}
         <link
           rel="icon"
