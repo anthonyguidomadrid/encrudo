@@ -14,7 +14,7 @@ export default function Document(props) {
     faviconSvg: favicons?.faviconSvg?.url,
     webAppManifest192: favicons?.webAppManifest192?.url,
     webAppManifest512: favicons?.webAppManifest512?.url,
-    manifestUrl: favicons?.manifestUrl || null
+    manifestJson: favicons?.manifestJson?.url
   }
 
   return (
@@ -50,7 +50,7 @@ export default function Document(props) {
         {/* ICO Favicon */}
         <link rel="icon" type="image/x-icon" href={faviconUrls.faviconIco} />
         {/* Web App Manifest */}
-        <link rel="manifest" href={faviconUrls.manifestUrl} />
+        <link rel="manifest" href={faviconUrls.manifestJson} />
         {/* Web App Manifest PNGs */}
         <link
           rel="icon"

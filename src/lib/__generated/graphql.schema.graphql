@@ -853,8 +853,9 @@ type Favicons implements Entry & _Node {
   favicon96X96(locale: String, preview: Boolean): Asset
   faviconIco(locale: String, preview: Boolean): Asset
   faviconSvg(locale: String, preview: Boolean): Asset
+  favicons(locale: String): String
   linkedFrom(allowedLocales: [String]): FaviconsLinkingCollections
-  manifestUrl(locale: String): String
+  manifestJson(locale: String, preview: Boolean): Asset
   sys: Sys!
   webAppManifest192(locale: String, preview: Boolean): Asset
   webAppManifest512(locale: String, preview: Boolean): Asset
@@ -875,13 +876,14 @@ input FaviconsFilter {
   favicon96x96_exists: Boolean
   faviconIco_exists: Boolean
   faviconSvg_exists: Boolean
-  manifestUrl: String
-  manifestUrl_contains: String
-  manifestUrl_exists: Boolean
-  manifestUrl_in: [String]
-  manifestUrl_not: String
-  manifestUrl_not_contains: String
-  manifestUrl_not_in: [String]
+  favicons: String
+  favicons_contains: String
+  favicons_exists: Boolean
+  favicons_in: [String]
+  favicons_not: String
+  favicons_not_contains: String
+  favicons_not_in: [String]
+  manifestJson_exists: Boolean
   sys: SysFilter
   webAppManifest192_exists: Boolean
   webAppManifest512_exists: Boolean
@@ -904,8 +906,8 @@ enum FaviconsLinkingCollectionsAssetsCollectionOrder {
 }
 
 enum FaviconsOrder {
-  manifestUrl_ASC
-  manifestUrl_DESC
+  favicons_ASC
+  favicons_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC
@@ -1938,13 +1940,14 @@ input cfFaviconsNestedFilter {
   favicon96x96_exists: Boolean
   faviconIco_exists: Boolean
   faviconSvg_exists: Boolean
-  manifestUrl: String
-  manifestUrl_contains: String
-  manifestUrl_exists: Boolean
-  manifestUrl_in: [String]
-  manifestUrl_not: String
-  manifestUrl_not_contains: String
-  manifestUrl_not_in: [String]
+  favicons: String
+  favicons_contains: String
+  favicons_exists: Boolean
+  favicons_in: [String]
+  favicons_not: String
+  favicons_not_contains: String
+  favicons_not_in: [String]
+  manifestJson_exists: Boolean
   sys: SysFilter
   webAppManifest192_exists: Boolean
   webAppManifest512_exists: Boolean

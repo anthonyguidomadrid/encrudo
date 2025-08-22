@@ -1348,8 +1348,9 @@ export type Favicons = Entry & _Node & {
   favicon96X96?: Maybe<Asset>;
   faviconIco?: Maybe<Asset>;
   faviconSvg?: Maybe<Asset>;
+  favicons?: Maybe<Scalars['String']['output']>;
   linkedFrom?: Maybe<FaviconsLinkingCollections>;
-  manifestUrl?: Maybe<Scalars['String']['output']>;
+  manifestJson?: Maybe<Asset>;
   sys: Sys;
   webAppManifest192?: Maybe<Asset>;
   webAppManifest512?: Maybe<Asset>;
@@ -1385,14 +1386,21 @@ export type FaviconsFaviconSvgArgs = {
 
 
 /** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/favicons) */
+export type FaviconsFaviconsArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/favicons) */
 export type FaviconsLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/favicons) */
-export type FaviconsManifestUrlArgs = {
+export type FaviconsManifestJsonArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -1425,13 +1433,14 @@ export type FaviconsFilter = {
   favicon96x96_exists?: InputMaybe<Scalars['Boolean']['input']>;
   faviconIco_exists?: InputMaybe<Scalars['Boolean']['input']>;
   faviconSvg_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  manifestUrl?: InputMaybe<Scalars['String']['input']>;
-  manifestUrl_contains?: InputMaybe<Scalars['String']['input']>;
-  manifestUrl_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  manifestUrl_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  manifestUrl_not?: InputMaybe<Scalars['String']['input']>;
-  manifestUrl_not_contains?: InputMaybe<Scalars['String']['input']>;
-  manifestUrl_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  favicons?: InputMaybe<Scalars['String']['input']>;
+  favicons_contains?: InputMaybe<Scalars['String']['input']>;
+  favicons_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  favicons_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  favicons_not?: InputMaybe<Scalars['String']['input']>;
+  favicons_not_contains?: InputMaybe<Scalars['String']['input']>;
+  favicons_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  manifestJson_exists?: InputMaybe<Scalars['Boolean']['input']>;
   sys?: InputMaybe<SysFilter>;
   webAppManifest192_exists?: InputMaybe<Scalars['Boolean']['input']>;
   webAppManifest512_exists?: InputMaybe<Scalars['Boolean']['input']>;
@@ -1472,8 +1481,8 @@ export enum FaviconsLinkingCollectionsAssetsCollectionOrder {
 }
 
 export enum FaviconsOrder {
-  ManifestUrlAsc = 'manifestUrl_ASC',
-  ManifestUrlDesc = 'manifestUrl_DESC',
+  FaviconsAsc = 'favicons_ASC',
+  FaviconsDesc = 'favicons_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -3127,13 +3136,14 @@ export type CfFaviconsNestedFilter = {
   favicon96x96_exists?: InputMaybe<Scalars['Boolean']['input']>;
   faviconIco_exists?: InputMaybe<Scalars['Boolean']['input']>;
   faviconSvg_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  manifestUrl?: InputMaybe<Scalars['String']['input']>;
-  manifestUrl_contains?: InputMaybe<Scalars['String']['input']>;
-  manifestUrl_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  manifestUrl_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  manifestUrl_not?: InputMaybe<Scalars['String']['input']>;
-  manifestUrl_not_contains?: InputMaybe<Scalars['String']['input']>;
-  manifestUrl_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  favicons?: InputMaybe<Scalars['String']['input']>;
+  favicons_contains?: InputMaybe<Scalars['String']['input']>;
+  favicons_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  favicons_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  favicons_not?: InputMaybe<Scalars['String']['input']>;
+  favicons_not_contains?: InputMaybe<Scalars['String']['input']>;
+  favicons_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  manifestJson_exists?: InputMaybe<Scalars['Boolean']['input']>;
   sys?: InputMaybe<SysFilter>;
   webAppManifest192_exists?: InputMaybe<Scalars['Boolean']['input']>;
   webAppManifest512_exists?: InputMaybe<Scalars['Boolean']['input']>;
@@ -3266,7 +3276,7 @@ export type LayoutQuery = { __typename?: 'Query', menuCollection?: { __typename?
       ) | null, logoSmall?: (
         { __typename?: 'Asset' }
         & ImageFieldsFragment
-      ) | null, favicons?: { __typename?: 'Favicons', manifestUrl?: string | null, appleTouchIcon?: (
+      ) | null, favicons?: { __typename?: 'Favicons', appleTouchIcon?: (
           { __typename?: 'Asset' }
           & ImageFieldsFragment
         ) | null, favicon96X96?: (
@@ -3278,7 +3288,7 @@ export type LayoutQuery = { __typename?: 'Query', menuCollection?: { __typename?
         ) | null, faviconSvg?: (
           { __typename?: 'Asset' }
           & ImageFieldsFragment
-        ) | null, webAppManifest192?: (
+        ) | null, manifestJson?: { __typename?: 'Asset', url?: string | null } | null, webAppManifest192?: (
           { __typename?: 'Asset' }
           & ImageFieldsFragment
         ) | null, webAppManifest512?: (
@@ -3524,7 +3534,9 @@ export const LayoutDocument = gql`
         faviconSvg {
           ...ImageFields
         }
-        manifestUrl
+        manifestJson {
+          url
+        }
         webAppManifest192 {
           ...ImageFields
         }

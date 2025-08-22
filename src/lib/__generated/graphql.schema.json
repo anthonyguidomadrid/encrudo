@@ -9861,6 +9861,31 @@
             "deprecationReason": null
           },
           {
+            "name": "favicons",
+            "description": null,
+            "args": [
+              {
+                "name": "locale",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              }
+            ],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "linkedFrom",
             "description": null,
             "args": [
@@ -9890,7 +9915,7 @@
             "deprecationReason": null
           },
           {
-            "name": "manifestUrl",
+            "name": "manifestJson",
             "description": null,
             "args": [
               {
@@ -9904,11 +9929,23 @@
                 "defaultValue": null,
                 "isDeprecated": false,
                 "deprecationReason": null
+              },
+              {
+                "name": "preview",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Boolean",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
               }
             ],
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
+              "kind": "OBJECT",
+              "name": "Asset",
               "ofType": null
             },
             "isDeprecated": false,
@@ -10201,7 +10238,7 @@
             "deprecationReason": null
           },
           {
-            "name": "manifestUrl",
+            "name": "favicons",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -10213,7 +10250,7 @@
             "deprecationReason": null
           },
           {
-            "name": "manifestUrl_contains",
+            "name": "favicons_contains",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -10225,7 +10262,7 @@
             "deprecationReason": null
           },
           {
-            "name": "manifestUrl_exists",
+            "name": "favicons_exists",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -10237,7 +10274,7 @@
             "deprecationReason": null
           },
           {
-            "name": "manifestUrl_in",
+            "name": "favicons_in",
             "description": null,
             "type": {
               "kind": "LIST",
@@ -10253,7 +10290,7 @@
             "deprecationReason": null
           },
           {
-            "name": "manifestUrl_not",
+            "name": "favicons_not",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -10265,7 +10302,7 @@
             "deprecationReason": null
           },
           {
-            "name": "manifestUrl_not_contains",
+            "name": "favicons_not_contains",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -10277,7 +10314,7 @@
             "deprecationReason": null
           },
           {
-            "name": "manifestUrl_not_in",
+            "name": "favicons_not_in",
             "description": null,
             "type": {
               "kind": "LIST",
@@ -10287,6 +10324,18 @@
                 "name": "String",
                 "ofType": null
               }
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "manifestJson_exists",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
             },
             "defaultValue": null,
             "isDeprecated": false,
@@ -10553,13 +10602,13 @@
         "interfaces": null,
         "enumValues": [
           {
-            "name": "manifestUrl_ASC",
+            "name": "favicons_ASC",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "manifestUrl_DESC",
+            "name": "favicons_DESC",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -24278,7 +24327,7 @@
             "deprecationReason": null
           },
           {
-            "name": "manifestUrl",
+            "name": "favicons",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -24290,7 +24339,7 @@
             "deprecationReason": null
           },
           {
-            "name": "manifestUrl_contains",
+            "name": "favicons_contains",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -24302,7 +24351,7 @@
             "deprecationReason": null
           },
           {
-            "name": "manifestUrl_exists",
+            "name": "favicons_exists",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -24314,7 +24363,7 @@
             "deprecationReason": null
           },
           {
-            "name": "manifestUrl_in",
+            "name": "favicons_in",
             "description": null,
             "type": {
               "kind": "LIST",
@@ -24330,7 +24379,7 @@
             "deprecationReason": null
           },
           {
-            "name": "manifestUrl_not",
+            "name": "favicons_not",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -24342,7 +24391,7 @@
             "deprecationReason": null
           },
           {
-            "name": "manifestUrl_not_contains",
+            "name": "favicons_not_contains",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -24354,7 +24403,7 @@
             "deprecationReason": null
           },
           {
-            "name": "manifestUrl_not_in",
+            "name": "favicons_not_in",
             "description": null,
             "type": {
               "kind": "LIST",
@@ -24364,6 +24413,18 @@
                 "name": "String",
                 "ofType": null
               }
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "manifestJson_exists",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
             },
             "defaultValue": null,
             "isDeprecated": false,

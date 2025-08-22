@@ -31,7 +31,9 @@ query layout($locale: String, $preview: Boolean) {
         faviconSvg {
           ...ImageFields
         }
-        manifestUrl
+        manifestJson {
+          url
+        }
         webAppManifest192 {
           ...ImageFields
         }
