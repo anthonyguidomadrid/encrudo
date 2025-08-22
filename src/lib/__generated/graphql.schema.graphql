@@ -136,7 +136,7 @@ enum AssetOrder {
 }
 
 """
-[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/assets)
+[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/assets)
 """
 type Assets implements Entry & _Node {
   _id: ID!
@@ -186,7 +186,7 @@ enum AssetsOrder {
 }
 
 """
-[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentContact)
+[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentContact)
 """
 type ComponentContact implements Entry & _Node {
   _id: ID!
@@ -329,7 +329,7 @@ enum ComponentContactOrder {
 }
 
 """
-[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentPageHeader)
+[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentPageHeader)
 """
 type ComponentPageHeader implements Entry & _Node {
   _id: ID!
@@ -466,7 +466,7 @@ enum ComponentPageHeaderOrder {
 }
 
 """
-[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSeo)
+[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSeo)
 """
 type ComponentSeo implements Entry & _Node {
   _id: ID!
@@ -647,7 +647,7 @@ enum ComponentSeoOrder {
 }
 
 """
-[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSlider)
+[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSlider)
 """
 type ComponentSlider implements Entry & _Node {
   _id: ID!
@@ -702,7 +702,7 @@ enum ComponentSliderOrder {
 }
 
 """
-[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSocialMedia)
+[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSocialMedia)
 """
 type ComponentSocialMedia implements Entry & _Node {
   _id: ID!
@@ -844,7 +844,7 @@ enum EntryOrder {
 }
 
 """
-[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/favicons)
+[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/favicons)
 """
 type Favicons implements Entry & _Node {
   _id: ID!
@@ -854,7 +854,7 @@ type Favicons implements Entry & _Node {
   faviconIco(locale: String, preview: Boolean): Asset
   faviconSvg(locale: String, preview: Boolean): Asset
   linkedFrom(allowedLocales: [String]): FaviconsLinkingCollections
-  siteManifest(locale: String): JSON
+  manifestUrl(locale: String): String
   sys: Sys!
   webAppManifest192(locale: String, preview: Boolean): Asset
   webAppManifest512(locale: String, preview: Boolean): Asset
@@ -875,7 +875,13 @@ input FaviconsFilter {
   favicon96x96_exists: Boolean
   faviconIco_exists: Boolean
   faviconSvg_exists: Boolean
-  siteManifest_exists: Boolean
+  manifestUrl: String
+  manifestUrl_contains: String
+  manifestUrl_exists: Boolean
+  manifestUrl_in: [String]
+  manifestUrl_not: String
+  manifestUrl_not_contains: String
+  manifestUrl_not_in: [String]
   sys: SysFilter
   webAppManifest192_exists: Boolean
   webAppManifest512_exists: Boolean
@@ -898,6 +904,8 @@ enum FaviconsLinkingCollectionsAssetsCollectionOrder {
 }
 
 enum FaviconsOrder {
+  manifestUrl_ASC
+  manifestUrl_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC
@@ -1046,7 +1054,7 @@ The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://
 scalar JSON
 
 """
-[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/menu)
+[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/menu)
 """
 type Menu implements Entry & _Node {
   _id: ID!
@@ -1123,7 +1131,7 @@ enum MenuOrder {
 }
 
 """
-[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageAbout)
+[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageAbout)
 """
 type PageAbout implements Entry & _Node {
   _id: ID!
@@ -1180,7 +1188,7 @@ enum PageAboutOrder {
 }
 
 """
-[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageContact)
+[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageContact)
 """
 type PageContact implements Entry & _Node {
   _id: ID!
@@ -1246,7 +1254,7 @@ enum PageContactOrder {
 }
 
 """
-[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageEditor)
+[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageEditor)
 """
 type PageEditor implements Entry & _Node {
   _id: ID!
@@ -1360,7 +1368,7 @@ enum PageEditorOrder {
 }
 
 """
-[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageHome)
+[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageHome)
 """
 type PageHome implements Entry & _Node {
   _id: ID!
@@ -1442,7 +1450,7 @@ enum PageHomeProjectsCollectionOrder {
 }
 
 """
-[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProject)
+[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageProject)
 """
 type PageProject implements Entry & _Node {
   _id: ID!
@@ -1592,7 +1600,7 @@ enum PageProjectOrder {
 }
 
 """
-[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProjects)
+[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageProjects)
 """
 type PageProjects implements Entry & _Node {
   _id: ID!
@@ -1930,7 +1938,13 @@ input cfFaviconsNestedFilter {
   favicon96x96_exists: Boolean
   faviconIco_exists: Boolean
   faviconSvg_exists: Boolean
-  siteManifest_exists: Boolean
+  manifestUrl: String
+  manifestUrl_contains: String
+  manifestUrl_exists: Boolean
+  manifestUrl_in: [String]
+  manifestUrl_not: String
+  manifestUrl_not_contains: String
+  manifestUrl_not_in: [String]
   sys: SysFilter
   webAppManifest192_exists: Boolean
   webAppManifest512_exists: Boolean

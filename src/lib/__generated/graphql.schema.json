@@ -1883,7 +1883,7 @@
       {
         "kind": "OBJECT",
         "name": "Assets",
-        "description": "[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/assets)",
+        "description": "[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/assets)",
         "isOneOf": null,
         "fields": [
           {
@@ -2544,7 +2544,7 @@
       {
         "kind": "OBJECT",
         "name": "ComponentContact",
-        "description": "[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentContact)",
+        "description": "[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentContact)",
         "isOneOf": null,
         "fields": [
           {
@@ -4235,7 +4235,7 @@
       {
         "kind": "OBJECT",
         "name": "ComponentPageHeader",
-        "description": "[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentPageHeader)",
+        "description": "[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentPageHeader)",
         "isOneOf": null,
         "fields": [
           {
@@ -5716,7 +5716,7 @@
       {
         "kind": "OBJECT",
         "name": "ComponentSeo",
-        "description": "[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSeo)",
+        "description": "[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSeo)",
         "isOneOf": null,
         "fields": [
           {
@@ -7750,7 +7750,7 @@
       {
         "kind": "OBJECT",
         "name": "ComponentSlider",
-        "description": "[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSlider)",
+        "description": "[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSlider)",
         "isOneOf": null,
         "fields": [
           {
@@ -8353,7 +8353,7 @@
       {
         "kind": "OBJECT",
         "name": "ComponentSocialMedia",
-        "description": "[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSocialMedia)",
+        "description": "[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSocialMedia)",
         "isOneOf": null,
         "fields": [
           {
@@ -9677,7 +9677,7 @@
       {
         "kind": "OBJECT",
         "name": "Favicons",
-        "description": "[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/favicons)",
+        "description": "[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/favicons)",
         "isOneOf": null,
         "fields": [
           {
@@ -9890,7 +9890,7 @@
             "deprecationReason": null
           },
           {
-            "name": "siteManifest",
+            "name": "manifestUrl",
             "description": null,
             "args": [
               {
@@ -9908,7 +9908,7 @@
             ],
             "type": {
               "kind": "SCALAR",
-              "name": "JSON",
+              "name": "String",
               "ofType": null
             },
             "isDeprecated": false,
@@ -10201,12 +10201,92 @@
             "deprecationReason": null
           },
           {
-            "name": "siteManifest_exists",
+            "name": "manifestUrl",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "manifestUrl_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "manifestUrl_exists",
             "description": null,
             "type": {
               "kind": "SCALAR",
               "name": "Boolean",
               "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "manifestUrl_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "manifestUrl_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "manifestUrl_not_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "manifestUrl_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
             },
             "defaultValue": null,
             "isDeprecated": false,
@@ -10472,6 +10552,18 @@
         "inputFields": null,
         "interfaces": null,
         "enumValues": [
+          {
+            "name": "manifestUrl_ASC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "manifestUrl_DESC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
           {
             "name": "sys_firstPublishedAt_ASC",
             "description": null,
@@ -10863,7 +10955,7 @@
       {
         "kind": "OBJECT",
         "name": "Menu",
-        "description": "[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/menu)",
+        "description": "[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/menu)",
         "isOneOf": null,
         "fields": [
           {
@@ -11728,7 +11820,7 @@
       {
         "kind": "OBJECT",
         "name": "PageAbout",
-        "description": "[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageAbout)",
+        "description": "[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageAbout)",
         "isOneOf": null,
         "fields": [
           {
@@ -12457,7 +12549,7 @@
       {
         "kind": "OBJECT",
         "name": "PageContact",
-        "description": "[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageContact)",
+        "description": "[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageContact)",
         "isOneOf": null,
         "fields": [
           {
@@ -13303,7 +13395,7 @@
       {
         "kind": "OBJECT",
         "name": "PageEditor",
-        "description": "[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageEditor)",
+        "description": "[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageEditor)",
         "isOneOf": null,
         "fields": [
           {
@@ -14607,7 +14699,7 @@
       {
         "kind": "OBJECT",
         "name": "PageHome",
-        "description": "[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageHome)",
+        "description": "[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageHome)",
         "isOneOf": null,
         "fields": [
           {
@@ -15552,7 +15644,7 @@
       {
         "kind": "OBJECT",
         "name": "PageProject",
-        "description": "[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProject)",
+        "description": "[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageProject)",
         "isOneOf": null,
         "fields": [
           {
@@ -17337,7 +17429,7 @@
       {
         "kind": "OBJECT",
         "name": "PageProjects",
-        "description": "[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProjects)",
+        "description": "[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageProjects)",
         "isOneOf": null,
         "fields": [
           {
@@ -24186,12 +24278,92 @@
             "deprecationReason": null
           },
           {
-            "name": "siteManifest_exists",
+            "name": "manifestUrl",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "manifestUrl_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "manifestUrl_exists",
             "description": null,
             "type": {
               "kind": "SCALAR",
               "name": "Boolean",
               "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "manifestUrl_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "manifestUrl_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "manifestUrl_not_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "manifestUrl_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
             },
             "defaultValue": null,
             "isDeprecated": false,
