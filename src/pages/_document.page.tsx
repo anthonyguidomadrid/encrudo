@@ -21,51 +21,50 @@ export default function Document(props) {
     <Html lang="en" className="scroll-smooth">
       <Head>
         {/* Apple Touch Icon */}
-        {faviconUrls.appleTouchIcon ? (
-          <link
-            rel="apple-touch-icon"
-            sizes="180x180"
-            href={faviconUrls.appleTouchIcon}
-          />
-        ) : null}
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href={faviconUrls.appleTouchIcon}
+        />
         {/* PNG Favicons */}
-        {faviconUrls.favicon96X96 ? (
-          <link
-            rel="icon"
-            type="image/png"
-            sizes="96x96"
-            href={favicons.favicon96X96}
-          />
-        ) : null}
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href={faviconUrls.favicon96X96}
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href={faviconUrls.favicon96X96}
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="96x96"
+          href={faviconUrls.favicon96X96}
+        />
         {/* SVG Favicon */}
-        {faviconUrls.faviconSvg ? (
-          <link rel="icon" type="image/svg+xml" href={faviconUrls.faviconSvg} />
-        ) : null}
+        <link rel="icon" type="image/svg+xml" href={faviconUrls.faviconSvg} />
         {/* ICO Favicon */}
-        {faviconUrls.faviconIco ? (
-          <link rel="icon" type="image/x-icon" href={faviconUrls.faviconIco} />
-        ) : null}
+        <link rel="icon" type="image/x-icon" href={faviconUrls.faviconIco} />
         {/* Web App Manifest */}
-        {faviconUrls.manifestUrl ? (
-          <link rel="manifest" href={faviconUrls.manifestUrl} />
-        ) : null}
+        <link rel="manifest" href={faviconUrls.manifestUrl} />
         {/* Web App Manifest PNGs */}
-        {faviconUrls.webAppManifest192 ? (
-          <link
-            rel="icon"
-            type="image/png"
-            sizes="192x192"
-            href={faviconUrls.webAppManifest192}
-          />
-        ) : null}
-        {faviconUrls.webAppManifest512 ? (
-          <link
-            rel="icon"
-            type="image/png"
-            sizes="512x512"
-            href={faviconUrls.webAppManifest512}
-          />
-        ) : null}
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="192x192"
+          href={faviconUrls.webAppManifest192}
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="512x512"
+          href={faviconUrls.webAppManifest512}
+        />
+        {/* Google fonts */}
         <link
           rel="preconnect"
           href="https://fonts.googleapis.com"
