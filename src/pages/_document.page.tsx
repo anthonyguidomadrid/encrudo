@@ -1,48 +1,71 @@
 import { Html, Head, Main, NextScript } from 'next/document'
 import Script from 'next/script'
-
 import { GA_TRACKING_ID, GTAG_TRACKING_ID } from '@src/helpers/gtag'
 
-export default function Document() {
+export default function Document(props) {
+  const favicons =
+    props?.__NEXT_DATA__?.props?.data?.assetsCollection?.items?.[0].favicons ||
+    {}
+
+  const faviconUrls = {
+    appleTouchIcon: favicons?.appleTouchIcon?.url,
+    favicon96X96: favicons?.favicon96X96?.url,
+    faviconIco: favicons?.faviconIco?.url,
+    faviconSvg: favicons?.faviconSvg?.url,
+    webAppManifest192: favicons?.webAppManifest192?.url,
+    webAppManifest512: favicons?.webAppManifest512?.url,
+    siteManifest: favicons?.siteManifest || null
+  }
+
   return (
     <Html lang="en" className="scroll-smooth">
       <Head>
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/favicons/apple-touch-icon.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicons/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicons/favicon-16x16.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="48x48"
-          href="/favicons/favicon-48x48.png"
-        />
-        <link rel="manifest" href="/favicons/site.webmanifest" />
-        <link
-          rel="mask-icon"
-          href="/favicons/safari-pinned-tab.svg"
-          color="#717171"
-        />
-        <link rel="icon" type="image/x-icon" href="/favicons/favicon.ico" />
-        <meta name="msapplication-TileColor" content="#717171" />
-        <meta
-          name="msapplication-config"
-          content="/favicons/browserconfig.xml"
-        />
-        <meta name="theme-color" content="#717171" />
+        {/* Apple Touch Icon */}
+        {faviconUrls.appleTouchIcon ? (
+          <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href={faviconUrls.appleTouchIcon}
+          />
+        ) : null}
+        {/* PNG Favicons */}
+        {faviconUrls.favicon96X96 ? (
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="96x96"
+            href={favicons.favicon96X96}
+          />
+        ) : null}
+        {/* SVG Favicon */}
+        {faviconUrls.faviconSvg ? (
+          <link rel="icon" type="image/svg+xml" href={faviconUrls.faviconSvg} />
+        ) : null}
+        {/* ICO Favicon */}
+        {faviconUrls.faviconIco ? (
+          <link rel="icon" type="image/x-icon" href={faviconUrls.faviconIco} />
+        ) : null}
+        {/* Web App Manifest */}
+        {faviconUrls.siteManifest ? (
+          <link rel="manifest" href={faviconUrls.siteManifest} />
+        ) : null}
+        {/* Web App Manifest PNGs */}
+        {faviconUrls.webAppManifest192 ? (
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="192x192"
+            href={faviconUrls.webAppManifest192}
+          />
+        ) : null}
+        {faviconUrls.webAppManifest512 ? (
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="512x512"
+            href={faviconUrls.webAppManifest512}
+          />
+        ) : null}
         <link
           rel="preconnect"
           href="https://fonts.googleapis.com"
@@ -67,7 +90,6 @@ export default function Document() {
           strategy="afterInteractive"
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
         />
-
         <Script
           id={GA_TRACKING_ID}
           strategy="afterInteractive"

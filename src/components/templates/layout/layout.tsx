@@ -30,6 +30,15 @@ export type AssetContent = {
   logoLight?: Logo
   logoDark?: Logo
   logoSmall?: Logo
+  favicons?: {
+    appleTouchIcon?: Logo
+    favicon96X96?: Logo
+    faviconIco?: Logo
+    faviconSvg?: Logo
+    webAppManifest192?: Logo
+    webAppManifest512?: Logo
+    siteManifest?: Logo
+  }
 } | null
 
 export type ContactContent = {

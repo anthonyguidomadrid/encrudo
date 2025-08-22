@@ -18,6 +18,27 @@ query layout($locale: String, $preview: Boolean) {
       logoSmall {
         ...ImageFields
       }
+      favicons {
+        appleTouchIcon {
+          ...ImageFields
+        }
+        favicon96X96 {
+          ...ImageFields
+        }
+        faviconIco {
+          ...ImageFields
+        }
+        faviconSvg {
+          ...ImageFields
+        }
+        siteManifest
+        webAppManifest192 {
+          ...ImageFields
+        }
+        webAppManifest512 {
+          ...ImageFields
+        }
+      }
     }
   }
   componentContactCollection(limit: 1, locale: $locale, preview: $preview) {
