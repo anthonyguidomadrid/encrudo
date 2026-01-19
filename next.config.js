@@ -23,14 +23,12 @@ module.exports = withPlugins(plugins, {
     // concurrentFeatures: true,
     // serverComponents: true,
   },
-  swcMinify: true, // Enable SWC minification for better tree shaking
   poweredByHeader: false,
   reactStrictMode: false,
   compress: true,
   // Remove legacy polyfills and enable production tree shaking
   modularizeImports: {},
   // Ensure only used code is bundled
-  optimizeFonts: true,
   headers,
   images: {
     remotePatterns: [

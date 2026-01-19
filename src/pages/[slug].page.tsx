@@ -1,7 +1,7 @@
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 
-import { SeoFields } from '@src/components/features/seo'
+import { SeoFields, WebPageJsonLd } from '@src/components/features/seo'
 import { client } from '@src/lib/client'
 import { getServerSideTranslations } from '@src/pages/utils/get-serverside-translations'
 import dynamic from 'next/dynamic'
@@ -17,7 +17,6 @@ const Breadcrumbs = dynamic(
 import { LINKS } from '@src/constants/links'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
-import { WebPageJsonLd } from 'next-seo'
 
 const Page = ({
   page: {

@@ -1,9 +1,8 @@
-import { WebPageJsonLd } from 'next-seo'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import Image from 'next/image'
 import { Splide, SplideSlide } from 'splide-nextjs/react-splide'
 
-import { SeoFields } from '@src/components/features/seo'
+import { SeoFields, WebPageJsonLd } from '@src/components/features/seo'
 import dynamic from 'next/dynamic'
 
 const PageHeader = dynamic(

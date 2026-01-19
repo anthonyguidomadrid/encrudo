@@ -1,6 +1,5 @@
-import { WebPageJsonLd } from 'next-seo'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
-import { SeoFields } from '@src/components/features/seo'
+import { SeoFields, WebPageJsonLd } from '@src/components/features/seo'
 import { client } from '@src/lib/client'
 import { getServerSideTranslations } from '@src/pages/utils/get-serverside-translations'
 import dynamic from 'next/dynamic'

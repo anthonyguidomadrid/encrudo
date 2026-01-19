@@ -15,9 +15,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items }) => {
   return (
     <>
       <BreadcrumbJsonLd
-        itemListElements={items.map((item, idx) => ({
-          '@type': 'ListItem',
-          position: idx + 1,
+        items={items.map((item) => ({
           name: item.label,
           item: `${process.env.NEXT_PUBLIC_SITE_URL || ''}${item.href}`
         }))}

@@ -1,39 +1,39 @@
-const { typescript } = require('eslint-plugin-import/config/typescript');
+const importPlugin = require('eslint-plugin-import')
+const globals = require('globals')
 
 module.exports = [
   {
-    ignores: [
-      'scripts/**/*.js',
-      'src/**/__generated',
-      '.next/**',
-    ],
-    files: ["**/*.{js,jsx,ts,tsx}"],
+    ignores: ['scripts/**/*.js', 'src/**/__generated', '.next/**'],
+    files: ['**/*.{js,jsx,ts,tsx}'],
     plugins: {
       '@typescript-eslint': require('@typescript-eslint/eslint-plugin'),
-      'import': require('eslint-plugin-import'),
-      'react': require('eslint-plugin-react'),
+      import: require('eslint-plugin-import'),
+      react: require('eslint-plugin-react'),
       'react-hooks': require('eslint-plugin-react-hooks'),
       'jsx-a11y': require('eslint-plugin-jsx-a11y'),
-      'prettier': require('eslint-plugin-prettier'),
-      '@next/next': require('@next/eslint-plugin-next'),
+      prettier: require('eslint-plugin-prettier'),
+      '@next/next': require('@next/eslint-plugin-next')
     },
     languageOptions: {
       parser: require('@typescript-eslint/parser'),
       parserOptions: {
         ecmaVersion: 2020,
         sourceType: 'module',
-        ecmaFeatures: { jsx: true },
+        ecmaFeatures: { jsx: true }
       },
-      globals: require('globals'),
+      globals: {
+        ...globals.browser,
+        ...globals.node
+      }
     },
     settings: {
       react: { version: 'detect' },
       'import/resolver': {
-        typescript: { alwaysTryTypes: true },
-      },
+        typescript: { alwaysTryTypes: true }
+      }
     },
     rules: {
-      ...typescript.rules,
+      ...(importPlugin.flatConfigs?.typescript?.rules || {}),
       '@typescript-eslint/no-var-requires': 'off',
       '@typescript-eslint/explicit-function-return-type': 'off',
       '@typescript-eslint/no-non-null-assertion': 'off',
@@ -44,8 +44,8 @@ module.exports = [
       '@typescript-eslint/no-unused-vars': [
         'warn',
         {
-          argsIgnorePattern: '^_|req|res|next|err|ctx|args|context|info',
-        },
+          argsIgnorePattern: '^_|req|res|next|err|ctx|args|context|info'
+        }
       ],
       '@typescript-eslint/no-object-literal-type-assertion': 'off',
       '@typescript-eslint/explicit-member-accessibility': 'off',
@@ -67,19 +67,19 @@ module.exports = [
             {
               pattern: '@/**',
               group: 'external',
-              position: 'after',
+              position: 'after'
             },
             {
               pattern: '@test/**',
               group: 'external',
-              position: 'after',
-            },
+              position: 'after'
+            }
           ],
           alphabetize: {
             order: 'asc',
-            caseInsensitive: true,
-          },
-        },
+            caseInsensitive: true
+          }
+        }
       ],
       'jsx-a11y/click-events-have-key-events': 'off',
       'jsx-a11y/anchor-is-valid': 'off',
@@ -89,7 +89,7 @@ module.exports = [
       'react-hooks/exhaustive-deps': 'warn',
       'react/jsx-uses-react': 'off',
       'react/react-in-jsx-scope': 'off',
-      'react/self-closing-comp': 'warn',
-    },
-  },
-];
+      'react/self-closing-comp': 'warn'
+    }
+  }
+]

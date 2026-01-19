@@ -38,10 +38,12 @@ const Page = ({
     <>
       {seo && <SeoFields {...seo} />}
       <ProductJsonLd
-        productName={title}
-        description={description?.json ? description.json : ''}
+        name={title}
+        description={
+          description?.json ? documentToHtmlString(description.json) : ''
+        }
         brand="Encrudo Taller"
-        images={galleryCollection.items.map(item => item?.url || '')}
+        image={galleryCollection.items.map(item => item?.url || '')}
         offers={{
           priceCurrency: 'EUR',
           availability: 'https://schema.org/InStock',

@@ -1,6 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@config "../../tailwind.config.js";
 
 @layer base {
   h1 {
@@ -12,10 +11,13 @@
   h3 {
     @apply text-lg;
   }
-  h1, h2, h3 {
-    @apply font-header
+  h1,
+  h2,
+  h3 {
+    @apply font-header;
   }
-  ul, ol {
+  ul,
+  ol {
     @apply list-disc ms-5;
   }
   a {

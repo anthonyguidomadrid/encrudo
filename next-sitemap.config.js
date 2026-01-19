@@ -1,5 +1,13 @@
-const fetch = require('node-fetch')
 const { i18n } = require('./next-i18next.config.js')
+
+const fetch = (...args) => {
+  if (typeof globalThis.fetch !== 'function') {
+    throw new Error(
+      'Global fetch is not available. Please run next-sitemap with Node 18+.'
+    )
+  }
+  return globalThis.fetch(...args)
+}
 
 const CONTENTFUL_SPACE_ID = process.env.CONTENTFUL_SPACE_ID
 const CONTENTFUL_ACCESS_TOKEN = process.env.CONTENTFUL_DELIVERY_API_TOKEN

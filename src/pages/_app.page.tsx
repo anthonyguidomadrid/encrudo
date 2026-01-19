@@ -1,5 +1,5 @@
 import { SpeedInsights } from '@vercel/speed-insights/next'
-import { LocalBusinessJsonLd, LogoJsonLd } from 'next-seo'
+import { LocalBusinessJsonLd } from 'next-seo'
 import { appWithTranslation } from 'next-i18next'
 import type { AppContext, AppProps } from 'next/app'
 import { useRouter } from 'next/router'
@@ -12,6 +12,7 @@ import {
   ContactContent,
   Layout
 } from '@src/components/templates/layout'
+import { LogoJsonLd } from '@src/components/features/seo'
 import { LayoutQuery } from '@src/lib/__generated/sdk'
 import { client } from '@src/lib/client'
 
@@ -52,19 +53,18 @@ const App = ({ Component, pageProps, data }: AppProperties) => {
     >
       <LocalBusinessJsonLd
         type="Store"
-        id={`${url}/#business`}
         name={pageProps?.title}
         description={pageProps?.seo?.pageDescription}
         url={url}
         telephone={contactContent?.phone!}
         address={{
-          streetAddress: contactContent?.streetAddress,
-          addressLocality: contactContent?.addressLocality,
-          addressRegion: contactContent?.addressRegion,
-          postalCode: contactContent?.postalCode,
-          addressCountry: contactContent?.addressCountry
+          streetAddress: contactContent?.streetAddress ?? undefined,
+          addressLocality: contactContent?.addressLocality ?? undefined,
+          addressRegion: contactContent?.addressRegion ?? undefined,
+          postalCode: contactContent?.postalCode ?? undefined,
+          addressCountry: contactContent?.addressCountry ?? undefined
         }}
-        openingHours={[
+        openingHoursSpecification={[
           {
             opens: '09:00',
             closes: '18:00',

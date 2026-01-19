@@ -12,7 +12,7 @@ export const NewsletterForm = ({
   onValidated
 }: NewsletterFormProps) => {
   const { t } = useTranslation()
-  let email
+  let email: HTMLInputElement | null = null
   const submit = () =>
     email &&
     email.value.indexOf('@') > -1 &&
@@ -29,7 +29,9 @@ export const NewsletterForm = ({
         <>
           <input
             className="border-t border-b border-l border-gray-300 px-4 py-2 outline-none w-72"
-            ref={node => (email = node)}
+            ref={node => {
+              email = node
+            }}
             type="email"
             placeholder={t('newsletter.placeholder')}
           />
