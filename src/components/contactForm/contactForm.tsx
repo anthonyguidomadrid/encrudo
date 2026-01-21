@@ -27,6 +27,8 @@ export const ContactForm = ({ isSuccess, setIsSuccess }: ContactFormProps) => {
 
   const status = isSuccess ? 'success' : 'error'
 
+  const isSubmitDisabled = loading || !captchaValue.recaptchaLoaded
+
   const inputClass = 'border-b pt-10 outline-none'
 
   const recaptchaRef = useRef({ execute: () => undefined })
@@ -147,10 +149,23 @@ export const ContactForm = ({ isSuccess, setIsSuccess }: ContactFormProps) => {
       </p>
       <button
         type="submit"
-        disabled={loading || !captchaValue.recaptchaLoaded}
-        className="mt-10 uppercase mx-auto w-fit px-5 py-2 border border-primary hover:border-grey-light hover:text-grey-light"
+        disabled={isSubmitDisabled}
+        aria-busy={loading}
+        className={`mt-10 uppercase mx-auto inline-flex items-center justify-center gap-2 w-fit px-5 py-2 border border-primary transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 disabled:opacity-60 disabled:hover:border-primary disabled:hover:text-inherit ${
+          loading
+            ? 'cursor-wait'
+            : isSubmitDisabled
+              ? 'cursor-not-allowed'
+              : 'cursor-pointer'
+        } hover:border-grey-light hover:text-grey-light`}
       >
-        {t('form.fields.button')}
+        {loading ? (
+          <span
+            aria-hidden="true"
+            className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent"
+          />
+        ) : null}
+        <span>{loading ? t('form.sending') : t('form.fields.button')}</span>
       </button>
     </form>
   )

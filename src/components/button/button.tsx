@@ -17,7 +17,7 @@ export const Button = ({
   return (
     <Link href={link} className="mx-auto no-underline">
       <button
-        className={`flex items-center gap-3 hover:opacity-80 uppercase bg-transparent text-grey-dark py-2 px-4 hover:border-transparent ${
+        className={`flex items-center gap-3 hover:opacity-80 uppercase bg-transparent text-grey-dark py-2 px-4 hover:border-transparent cursor-pointer ${
           additionalClasses && additionalClasses
         }`}
       >

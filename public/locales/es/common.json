@@ -29,6 +29,7 @@
       "success": "Su mensaje ha sido enviado con éxito, ¡le responderemos en breve!",
       "error": "Hubo un error al intentar enviar su mensaje. Le recomendamos que se ponga en contacto con nosotros directamente a través de la información de contacto arriba."
     },
+    "sending": "Enviando...",
     "gdpr": {
       "start": "Al enviar este formulario usted acepta nuestras políticas de",
       "data": "Protección de datos",

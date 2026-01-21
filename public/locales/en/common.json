@@ -29,6 +29,7 @@
       "success": "Your message has been sent, we will answer you as soon as possible!",
       "error": "An error occurred while trying to send your message. We recommend that you contact us directly using the contact details above."
     },
+    "sending": "Sending...",
     "gdpr": {
       "start": "By submitting this form you agree to our",
       "between": "and"
