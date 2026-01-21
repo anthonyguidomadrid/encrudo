@@ -31,9 +31,11 @@ export const ContactForm = ({ isSuccess, setIsSuccess }: ContactFormProps) => {
 
   const inputClass = 'border-b pt-10 outline-none'
 
-  const recaptchaRef = useRef({ execute: () => undefined })
+  const recaptchaRef = useRef<ReCAPTCHA | null>(null)
 
   async function handleSubmit(event: any) {
+    event.preventDefault()
+
     const data = {
       name: event.target.name.value,
       email: event.target.email.value,
@@ -45,17 +47,25 @@ export const ContactForm = ({ isSuccess, setIsSuccess }: ContactFormProps) => {
       ...data,
       email: data.email.replace('@', '')
     })
-    event.preventDefault()
-    await recaptchaRef.current?.execute()
+
     setLoading(true)
+
+    const recaptchaToken = await recaptchaRef.current?.executeAsync()
+    if (!recaptchaToken) {
+      setLoading(false)
+      setIsError(true)
+      return
+    }
 
     const response = await fetch('/api/contact', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify({ ...data, recaptchaToken })
     })
+
+    recaptchaRef.current?.reset()
 
     if (response.ok) {
       setLoading(false)
@@ -135,9 +145,10 @@ export const ContactForm = ({ isSuccess, setIsSuccess }: ContactFormProps) => {
         required
       />
       <ReCAPTCHA
-        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_CLIENT_KEY}
+        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_CLIENT_KEY ?? ''}
         onChange={handleCaptchaChange}
         size="invisible"
+        badge="bottomright"
         ref={recaptchaRef}
         asyncScriptOnLoad={asyncScriptOnLoad}
       />

@@ -1,6 +1,58 @@
-import nodemailer from 'nodemailer';
-const handler = async (req, res) => {
-  const { name, email, message, phone } = req.body;
+import type { NextApiRequest, NextApiResponse } from 'next'
+import nodemailer from 'nodemailer'
+
+type ContactBody = {
+  name: string
+  email: string
+  message: string
+  phone: string
+  recaptchaToken?: string
+}
+
+type RecaptchaVerifyResponse = {
+  success: boolean
+  challenge_ts?: string
+  hostname?: string
+  score?: number
+  action?: string
+  'error-codes'?: string[]
+}
+
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+  if (req.method !== 'POST') {
+    res.setHeader('Allow', 'POST')
+    return res.status(405).json({ error: 'Method Not Allowed' })
+  }
+
+  const { name, email, message, phone, recaptchaToken } = req.body as ContactBody
+
+  const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY
+  if (!recaptchaSecret) {
+    return res.status(500).json({ error: 'Missing RECAPTCHA_SECRET_KEY' })
+  }
+  if (!recaptchaToken) {
+    return res.status(400).json({ error: 'Missing recaptchaToken' })
+  }
+
+  try {
+    const verifyRes = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: new URLSearchParams({
+        secret: recaptchaSecret,
+        response: recaptchaToken
+      })
+    })
+
+    const verifyJson = (await verifyRes.json()) as RecaptchaVerifyResponse
+    if (!verifyJson.success) {
+      return res.status(400).json({ error: 'Recaptcha verification failed' })
+    }
+  } catch {
+    return res.status(502).json({ error: 'Recaptcha verification unavailable' })
+  }
 
   const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
@@ -8,9 +60,9 @@ const handler = async (req, res) => {
     secure: true,
     auth: {
       user: process.env.EMAIL_AUTH_USER,
-      pass: process.env.EMAIL_AUTH_PASS,
-    },
-  });
+      pass: process.env.EMAIL_AUTH_PASS
+    }
+  })
 
   try {
     await transporter.sendMail({
@@ -23,13 +75,13 @@ const handler = async (req, res) => {
       <p><strong>Email: </strong> ${email} </p>
       <p><strong>Mensaje: </strong> ${message} </p>
 
-      `,
-    });
-  } catch (err) {
-    console.log(err);
+      `
+    })
+  } catch {
+    return res.status(500).json({ error: 'Failed to send email' })
   }
 
-  res.status(200).json(req.body);
-};
+  return res.status(200).json({ ok: true })
+}
 
-export default handler;
+export default handler
