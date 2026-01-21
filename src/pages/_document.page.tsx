@@ -1,8 +1,8 @@
-import { Html, Head, Main, NextScript } from 'next/document'
+import { Html, Head, Main, NextScript, DocumentProps } from 'next/document'
 import Script from 'next/script'
 import { GA_TRACKING_ID, GTAG_TRACKING_ID } from '@src/helpers/gtag'
 
-export default function Document(props) {
+export default function Document(props: DocumentProps) {
   const data = props?.__NEXT_DATA__.props?.data
   const favicons = data?.assetsCollection?.items?.[0].favicons || {}
   const websiteName = data?.componentContactCollection?.items[0].websiteName
