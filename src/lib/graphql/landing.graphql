@@ -2,6 +2,7 @@ query pageLanding($locale: String, $preview: Boolean) {
   pageHomeCollection(limit: 1, locale: $locale, preview: $preview) {
     items {
       title
+      subtitle
       slider {
         imageCollection(limit: 10) {
           items {

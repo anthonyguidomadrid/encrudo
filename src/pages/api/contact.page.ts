@@ -24,7 +24,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(405).json({ error: 'Method Not Allowed' })
   }
 
-  const { name, email, message, phone, recaptchaToken } = req.body as ContactBody
+  const { name, email, message, phone, recaptchaToken } =
+    req.body as ContactBody
 
   const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY
   if (!recaptchaSecret) {
@@ -35,16 +36,19 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   try {
-    const verifyRes = await fetch('https://www.google.com/recaptcha/api/siteverify', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      body: new URLSearchParams({
-        secret: recaptchaSecret,
-        response: recaptchaToken
-      })
-    })
+    const verifyRes = await fetch(
+      'https://www.google.com/recaptcha/api/siteverify',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: new URLSearchParams({
+          secret: recaptchaSecret,
+          response: recaptchaToken
+        })
+      }
+    )
 
     const verifyJson = (await verifyRes.json()) as RecaptchaVerifyResponse
     if (!verifyJson.success) {

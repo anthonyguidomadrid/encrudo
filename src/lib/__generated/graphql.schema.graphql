@@ -1,5 +1,7 @@
 directive @contentSourceMaps on QUERY
 
+directive @contentfulSchemaMetadata(contentTypePublishedCounters: JSON) on SCHEMA
+
 directive @delegatedResourceLink(contentTypeId: String, field: JSON) on FIELD_DEFINITION | OBJECT
 
 directive @enumMapper(value: JSON) on ENUM_VALUE
@@ -8,21 +10,23 @@ directive @featureFlag(featureName: String) on FIELD
 
 directive @fieldResolver(data: JSON, kind: String) on FIELD_DEFINITION
 
+directive @timeline(where: TimelineFilterInput!) on QUERY
+
 directive @typeIdentifier(contentTypeId: String) on OBJECT
 
 """Represents a binary file in a space. An asset can be any file type."""
 type Asset {
-  contentType(locale: String): String
+  contentType(locale: String, useFallbackLocale: Boolean): String
   contentfulMetadata: ContentfulMetadata!
-  description(locale: String): String
-  fileName(locale: String): String
-  height(locale: String): Int
+  description(locale: String, useFallbackLocale: Boolean): String
+  fileName(locale: String, useFallbackLocale: Boolean): String
+  height(locale: String, useFallbackLocale: Boolean): Int
   linkedFrom(allowedLocales: [String]): AssetLinkingCollections
-  size(locale: String): Int
+  size(locale: String, useFallbackLocale: Boolean): Int
   sys: Sys!
-  title(locale: String): String
-  url(locale: String, transform: ImageTransformOptions): String
-  width(locale: String): Int
+  title(locale: String, useFallbackLocale: Boolean): String
+  url(locale: String, transform: ImageTransformOptions, useFallbackLocale: Boolean): String
+  width(locale: String, useFallbackLocale: Boolean): Int
 }
 
 type AssetCollection {
@@ -102,14 +106,14 @@ input AssetFilter {
 }
 
 type AssetLinkingCollections {
-  assetsCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): AssetsCollection
-  componentPageHeaderCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentPageHeaderCollection
-  componentSeoCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentSeoCollection
-  componentSliderCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentSliderCollection
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  faviconsCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): FaviconsCollection
-  pageAboutCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageAboutCollection
-  pageProjectCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageProjectCollection
+  assetsCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): AssetsCollection
+  componentPageHeaderCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): ComponentPageHeaderCollection
+  componentSeoCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): ComponentSeoCollection
+  componentSliderCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): ComponentSliderCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): EntryCollection
+  faviconsCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): FaviconsCollection
+  pageAboutCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): PageAboutCollection
+  pageProjectCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): PageProjectCollection
 }
 
 enum AssetOrder {
@@ -136,17 +140,17 @@ enum AssetOrder {
 }
 
 """
-[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/assets)
+[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/assets)
 """
 type Assets implements Entry & _Node {
   _id: ID!
   contentfulMetadata: ContentfulMetadata!
-  favicons(locale: String, preview: Boolean, where: FaviconsFilter): Favicons
+  favicons(locale: String, preview: Boolean, useFallbackLocale: Boolean, where: FaviconsFilter): Favicons
   linkedFrom(allowedLocales: [String]): AssetsLinkingCollections
-  logoDark(locale: String, preview: Boolean): Asset
-  logoLight(locale: String, preview: Boolean): Asset
-  logoSmall(locale: String, preview: Boolean): Asset
-  notFoundBackgroundImage(locale: String, preview: Boolean): Asset
+  logoDark(locale: String, preview: Boolean, useFallbackLocale: Boolean): Asset
+  logoLight(locale: String, preview: Boolean, useFallbackLocale: Boolean): Asset
+  logoSmall(locale: String, preview: Boolean, useFallbackLocale: Boolean): Asset
+  notFoundBackgroundImage(locale: String, preview: Boolean, useFallbackLocale: Boolean): Asset
   sys: Sys!
 }
 
@@ -171,7 +175,7 @@ input AssetsFilter {
 }
 
 type AssetsLinkingCollections {
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): EntryCollection
 }
 
 enum AssetsOrder {
@@ -186,22 +190,22 @@ enum AssetsOrder {
 }
 
 """
-[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentContact)
+[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentContact)
 """
 type ComponentContact implements Entry & _Node {
   _id: ID!
-  addressCountry(locale: String): String
-  addressLocality(locale: String): String
-  addressRegion(locale: String): String
+  addressCountry(locale: String, useFallbackLocale: Boolean): String
+  addressLocality(locale: String, useFallbackLocale: Boolean): String
+  addressRegion(locale: String, useFallbackLocale: Boolean): String
   contentfulMetadata: ContentfulMetadata!
-  email(locale: String): String
+  email(locale: String, useFallbackLocale: Boolean): String
   linkedFrom(allowedLocales: [String]): ComponentContactLinkingCollections
-  mailchimpUrl(locale: String): String
-  phone(locale: String): String
-  postalCode(locale: String): String
-  streetAddress(locale: String): String
+  mailchimpUrl(locale: String, useFallbackLocale: Boolean): String
+  phone(locale: String, useFallbackLocale: Boolean): String
+  postalCode(locale: String, useFallbackLocale: Boolean): String
+  streetAddress(locale: String, useFallbackLocale: Boolean): String
   sys: Sys!
-  websiteName(locale: String): String
+  websiteName(locale: String, useFallbackLocale: Boolean): String
 }
 
 type ComponentContactCollection {
@@ -282,8 +286,8 @@ input ComponentContactFilter {
 }
 
 type ComponentContactLinkingCollections {
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  pageContactCollection(limit: Int = 100, locale: String, order: [ComponentContactLinkingCollectionsPageContactCollectionOrder], preview: Boolean, skip: Int = 0): PageContactCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): EntryCollection
+  pageContactCollection(limit: Int = 100, locale: String, order: [ComponentContactLinkingCollectionsPageContactCollectionOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): PageContactCollection
 }
 
 enum ComponentContactLinkingCollectionsPageContactCollectionOrder {
@@ -329,16 +333,16 @@ enum ComponentContactOrder {
 }
 
 """
-[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentPageHeader)
+[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentPageHeader)
 """
 type ComponentPageHeader implements Entry & _Node {
   _id: ID!
   contentfulMetadata: ContentfulMetadata!
-  description(locale: String): ComponentPageHeaderDescription
-  header(locale: String, preview: Boolean): Asset
+  description(locale: String, useFallbackLocale: Boolean): ComponentPageHeaderDescription
+  header(locale: String, preview: Boolean, useFallbackLocale: Boolean): Asset
   linkedFrom(allowedLocales: [String]): ComponentPageHeaderLinkingCollections
   sys: Sys!
-  title(locale: String): String
+  title(locale: String, useFallbackLocale: Boolean): String
 }
 
 type ComponentPageHeaderCollection {
@@ -407,10 +411,10 @@ input ComponentPageHeaderFilter {
 }
 
 type ComponentPageHeaderLinkingCollections {
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  pageAboutCollection(limit: Int = 100, locale: String, order: [ComponentPageHeaderLinkingCollectionsPageAboutCollectionOrder], preview: Boolean, skip: Int = 0): PageAboutCollection
-  pageContactCollection(limit: Int = 100, locale: String, order: [ComponentPageHeaderLinkingCollectionsPageContactCollectionOrder], preview: Boolean, skip: Int = 0): PageContactCollection
-  pageProjectsCollection(limit: Int = 100, locale: String, order: [ComponentPageHeaderLinkingCollectionsPageProjectsCollectionOrder], preview: Boolean, skip: Int = 0): PageProjectsCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): EntryCollection
+  pageAboutCollection(limit: Int = 100, locale: String, order: [ComponentPageHeaderLinkingCollectionsPageAboutCollectionOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): PageAboutCollection
+  pageContactCollection(limit: Int = 100, locale: String, order: [ComponentPageHeaderLinkingCollectionsPageContactCollectionOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): PageContactCollection
+  pageProjectsCollection(limit: Int = 100, locale: String, order: [ComponentPageHeaderLinkingCollectionsPageProjectsCollectionOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): PageProjectsCollection
 }
 
 enum ComponentPageHeaderLinkingCollectionsPageAboutCollectionOrder {
@@ -466,19 +470,19 @@ enum ComponentPageHeaderOrder {
 }
 
 """
-[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSeo)
+[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSeo)
 """
 type ComponentSeo implements Entry & _Node {
   _id: ID!
-  canonicalUrl(locale: String): String
+  canonicalUrl(locale: String, useFallbackLocale: Boolean): String
   contentfulMetadata: ContentfulMetadata!
-  internalName(locale: String): String
+  internalName(locale: String, useFallbackLocale: Boolean): String
   linkedFrom(allowedLocales: [String]): ComponentSeoLinkingCollections
-  nofollow(locale: String): Boolean
-  noindex(locale: String): Boolean
-  pageDescription(locale: String): String
-  pageTitle(locale: String): String
-  shareImagesCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): AssetCollection
+  nofollow(locale: String, useFallbackLocale: Boolean): Boolean
+  noindex(locale: String, useFallbackLocale: Boolean): Boolean
+  pageDescription(locale: String, useFallbackLocale: Boolean): String
+  pageTitle(locale: String, useFallbackLocale: Boolean): String
+  shareImagesCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): AssetCollection
   sys: Sys!
 }
 
@@ -532,13 +536,13 @@ input ComponentSeoFilter {
 }
 
 type ComponentSeoLinkingCollections {
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  pageAboutCollection(limit: Int = 100, locale: String, order: [ComponentSeoLinkingCollectionsPageAboutCollectionOrder], preview: Boolean, skip: Int = 0): PageAboutCollection
-  pageContactCollection(limit: Int = 100, locale: String, order: [ComponentSeoLinkingCollectionsPageContactCollectionOrder], preview: Boolean, skip: Int = 0): PageContactCollection
-  pageEditorCollection(limit: Int = 100, locale: String, order: [ComponentSeoLinkingCollectionsPageEditorCollectionOrder], preview: Boolean, skip: Int = 0): PageEditorCollection
-  pageHomeCollection(limit: Int = 100, locale: String, order: [ComponentSeoLinkingCollectionsPageHomeCollectionOrder], preview: Boolean, skip: Int = 0): PageHomeCollection
-  pageProjectCollection(limit: Int = 100, locale: String, order: [ComponentSeoLinkingCollectionsPageProjectCollectionOrder], preview: Boolean, skip: Int = 0): PageProjectCollection
-  pageProjectsCollection(limit: Int = 100, locale: String, order: [ComponentSeoLinkingCollectionsPageProjectsCollectionOrder], preview: Boolean, skip: Int = 0): PageProjectsCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): EntryCollection
+  pageAboutCollection(limit: Int = 100, locale: String, order: [ComponentSeoLinkingCollectionsPageAboutCollectionOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): PageAboutCollection
+  pageContactCollection(limit: Int = 100, locale: String, order: [ComponentSeoLinkingCollectionsPageContactCollectionOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): PageContactCollection
+  pageEditorCollection(limit: Int = 100, locale: String, order: [ComponentSeoLinkingCollectionsPageEditorCollectionOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): PageEditorCollection
+  pageHomeCollection(limit: Int = 100, locale: String, order: [ComponentSeoLinkingCollectionsPageHomeCollectionOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): PageHomeCollection
+  pageProjectCollection(limit: Int = 100, locale: String, order: [ComponentSeoLinkingCollectionsPageProjectCollectionOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): PageProjectCollection
+  pageProjectsCollection(limit: Int = 100, locale: String, order: [ComponentSeoLinkingCollectionsPageProjectsCollectionOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): PageProjectsCollection
 }
 
 enum ComponentSeoLinkingCollectionsPageAboutCollectionOrder {
@@ -583,6 +587,8 @@ enum ComponentSeoLinkingCollectionsPageEditorCollectionOrder {
 }
 
 enum ComponentSeoLinkingCollectionsPageHomeCollectionOrder {
+  subtitle_ASC
+  subtitle_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC
@@ -647,12 +653,12 @@ enum ComponentSeoOrder {
 }
 
 """
-[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSlider)
+[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSlider)
 """
 type ComponentSlider implements Entry & _Node {
   _id: ID!
   contentfulMetadata: ContentfulMetadata!
-  imageCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): AssetCollection
+  imageCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): AssetCollection
   linkedFrom(allowedLocales: [String]): ComponentSliderLinkingCollections
   sys: Sys!
 }
@@ -673,11 +679,13 @@ input ComponentSliderFilter {
 }
 
 type ComponentSliderLinkingCollections {
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  pageHomeCollection(limit: Int = 100, locale: String, order: [ComponentSliderLinkingCollectionsPageHomeCollectionOrder], preview: Boolean, skip: Int = 0): PageHomeCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): EntryCollection
+  pageHomeCollection(limit: Int = 100, locale: String, order: [ComponentSliderLinkingCollectionsPageHomeCollectionOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): PageHomeCollection
 }
 
 enum ComponentSliderLinkingCollectionsPageHomeCollectionOrder {
+  subtitle_ASC
+  subtitle_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC
@@ -702,14 +710,14 @@ enum ComponentSliderOrder {
 }
 
 """
-[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSocialMedia)
+[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSocialMedia)
 """
 type ComponentSocialMedia implements Entry & _Node {
   _id: ID!
   contentfulMetadata: ContentfulMetadata!
-  link(locale: String): String
+  link(locale: String, useFallbackLocale: Boolean): String
   linkedFrom(allowedLocales: [String]): ComponentSocialMediaLinkingCollections
-  name(locale: String): String
+  name(locale: String, useFallbackLocale: Boolean): String
   sys: Sys!
 }
 
@@ -742,7 +750,7 @@ input ComponentSocialMediaFilter {
 }
 
 type ComponentSocialMediaLinkingCollections {
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): EntryCollection
 }
 
 enum ComponentSocialMediaOrder {
@@ -844,21 +852,21 @@ enum EntryOrder {
 }
 
 """
-[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/favicons)
+[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/favicons)
 """
 type Favicons implements Entry & _Node {
   _id: ID!
-  appleTouchIcon(locale: String, preview: Boolean): Asset
+  appleTouchIcon(locale: String, preview: Boolean, useFallbackLocale: Boolean): Asset
   contentfulMetadata: ContentfulMetadata!
-  favicon96X96(locale: String, preview: Boolean): Asset
-  faviconIco(locale: String, preview: Boolean): Asset
-  faviconSvg(locale: String, preview: Boolean): Asset
-  favicons(locale: String): String
+  favicon(locale: String, useFallbackLocale: Boolean): String
+  favicon96X96(locale: String, preview: Boolean, useFallbackLocale: Boolean): Asset
+  faviconIco(locale: String, preview: Boolean, useFallbackLocale: Boolean): Asset
+  faviconSvg(locale: String, preview: Boolean, useFallbackLocale: Boolean): Asset
   linkedFrom(allowedLocales: [String]): FaviconsLinkingCollections
-  manifestJson(locale: String, preview: Boolean): Asset
+  manifestJson(locale: String, preview: Boolean, useFallbackLocale: Boolean): Asset
   sys: Sys!
-  webAppManifest192(locale: String, preview: Boolean): Asset
-  webAppManifest512(locale: String, preview: Boolean): Asset
+  webAppManifest192(locale: String, preview: Boolean, useFallbackLocale: Boolean): Asset
+  webAppManifest512(locale: String, preview: Boolean, useFallbackLocale: Boolean): Asset
 }
 
 type FaviconsCollection {
@@ -873,16 +881,16 @@ input FaviconsFilter {
   OR: [FaviconsFilter]
   appleTouchIcon_exists: Boolean
   contentfulMetadata: ContentfulMetadataFilter
+  favicon: String
   favicon96x96_exists: Boolean
   faviconIco_exists: Boolean
   faviconSvg_exists: Boolean
-  favicons: String
-  favicons_contains: String
-  favicons_exists: Boolean
-  favicons_in: [String]
-  favicons_not: String
-  favicons_not_contains: String
-  favicons_not_in: [String]
+  favicon_contains: String
+  favicon_exists: Boolean
+  favicon_in: [String]
+  favicon_not: String
+  favicon_not_contains: String
+  favicon_not_in: [String]
   manifestJson_exists: Boolean
   sys: SysFilter
   webAppManifest192_exists: Boolean
@@ -890,8 +898,8 @@ input FaviconsFilter {
 }
 
 type FaviconsLinkingCollections {
-  assetsCollection(limit: Int = 100, locale: String, order: [FaviconsLinkingCollectionsAssetsCollectionOrder], preview: Boolean, skip: Int = 0): AssetsCollection
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  assetsCollection(limit: Int = 100, locale: String, order: [FaviconsLinkingCollectionsAssetsCollectionOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): AssetsCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): EntryCollection
 }
 
 enum FaviconsLinkingCollectionsAssetsCollectionOrder {
@@ -906,8 +914,8 @@ enum FaviconsLinkingCollectionsAssetsCollectionOrder {
 }
 
 enum FaviconsOrder {
-  favicons_ASC
-  favicons_DESC
+  favicon_ASC
+  favicon_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC
@@ -1056,16 +1064,16 @@ The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://
 scalar JSON
 
 """
-[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/menu)
+[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/menu)
 """
 type Menu implements Entry & _Node {
   _id: ID!
   contentfulMetadata: ContentfulMetadata!
-  indexOrder(locale: String): Int
-  isCta(locale: String): Boolean
-  link(locale: String): String
+  indexOrder(locale: String, useFallbackLocale: Boolean): Int
+  isCta(locale: String, useFallbackLocale: Boolean): Boolean
+  link(locale: String, useFallbackLocale: Boolean): String
   linkedFrom(allowedLocales: [String]): MenuLinkingCollections
-  name(locale: String): String
+  name(locale: String, useFallbackLocale: Boolean): String
   sys: Sys!
 }
 
@@ -1110,7 +1118,7 @@ input MenuFilter {
 }
 
 type MenuLinkingCollections {
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): EntryCollection
 }
 
 enum MenuOrder {
@@ -1133,16 +1141,16 @@ enum MenuOrder {
 }
 
 """
-[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageAbout)
+[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageAbout)
 """
 type PageAbout implements Entry & _Node {
   _id: ID!
   contentfulMetadata: ContentfulMetadata!
   linkedFrom(allowedLocales: [String]): PageAboutLinkingCollections
-  pageHeader(locale: String, preview: Boolean, where: ComponentPageHeaderFilter): ComponentPageHeader
-  pageName(locale: String): String
-  picturesOfReferenceCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): AssetCollection
-  seo(locale: String, preview: Boolean, where: ComponentSeoFilter): ComponentSeo
+  pageHeader(locale: String, preview: Boolean, useFallbackLocale: Boolean, where: ComponentPageHeaderFilter): ComponentPageHeader
+  pageName(locale: String, useFallbackLocale: Boolean): String
+  picturesOfReferenceCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): AssetCollection
+  seo(locale: String, preview: Boolean, useFallbackLocale: Boolean, where: ComponentSeoFilter): ComponentSeo
   sys: Sys!
 }
 
@@ -1173,7 +1181,7 @@ input PageAboutFilter {
 }
 
 type PageAboutLinkingCollections {
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): EntryCollection
 }
 
 enum PageAboutOrder {
@@ -1190,17 +1198,17 @@ enum PageAboutOrder {
 }
 
 """
-[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageContact)
+[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageContact)
 """
 type PageContact implements Entry & _Node {
   _id: ID!
-  contactInformation(locale: String, preview: Boolean, where: ComponentContactFilter): ComponentContact
+  contactInformation(locale: String, preview: Boolean, useFallbackLocale: Boolean, where: ComponentContactFilter): ComponentContact
   contentfulMetadata: ContentfulMetadata!
-  googleMapsUrl(locale: String): String
+  googleMapsUrl(locale: String, useFallbackLocale: Boolean): String
   linkedFrom(allowedLocales: [String]): PageContactLinkingCollections
-  pageHeader(locale: String, preview: Boolean, where: ComponentPageHeaderFilter): ComponentPageHeader
-  pageName(locale: String): String
-  seo(locale: String, preview: Boolean, where: ComponentSeoFilter): ComponentSeo
+  pageHeader(locale: String, preview: Boolean, useFallbackLocale: Boolean, where: ComponentPageHeaderFilter): ComponentPageHeader
+  pageName(locale: String, useFallbackLocale: Boolean): String
+  seo(locale: String, preview: Boolean, useFallbackLocale: Boolean, where: ComponentSeoFilter): ComponentSeo
   sys: Sys!
 }
 
@@ -1239,7 +1247,7 @@ input PageContactFilter {
 }
 
 type PageContactLinkingCollections {
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): EntryCollection
 }
 
 enum PageContactOrder {
@@ -1256,17 +1264,17 @@ enum PageContactOrder {
 }
 
 """
-[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageEditor)
+[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageEditor)
 """
 type PageEditor implements Entry & _Node {
   _id: ID!
-  content(locale: String): PageEditorContent
+  content(locale: String, useFallbackLocale: Boolean): PageEditorContent
   contentfulMetadata: ContentfulMetadata!
-  html(locale: String): String
+  html(locale: String, useFallbackLocale: Boolean): String
   linkedFrom(allowedLocales: [String]): PageEditorLinkingCollections
-  pageName(locale: String): String
-  pageSlug(locale: String): String
-  seo(locale: String, preview: Boolean, where: ComponentSeoFilter): ComponentSeo
+  pageName(locale: String, useFallbackLocale: Boolean): String
+  pageSlug(locale: String, useFallbackLocale: Boolean): String
+  seo(locale: String, preview: Boolean, useFallbackLocale: Boolean, where: ComponentSeoFilter): ComponentSeo
   sys: Sys!
 }
 
@@ -1351,7 +1359,7 @@ input PageEditorFilter {
 }
 
 type PageEditorLinkingCollections {
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): EntryCollection
 }
 
 enum PageEditorOrder {
@@ -1370,17 +1378,18 @@ enum PageEditorOrder {
 }
 
 """
-[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageHome)
+[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageHome)
 """
 type PageHome implements Entry & _Node {
   _id: ID!
   contentfulMetadata: ContentfulMetadata!
   linkedFrom(allowedLocales: [String]): PageHomeLinkingCollections
-  projectsCollection(limit: Int = 100, locale: String, order: [PageHomeProjectsCollectionOrder], preview: Boolean, skip: Int = 0, where: PageProjectFilter): PageHomeProjectsCollection
-  seo(locale: String, preview: Boolean, where: ComponentSeoFilter): ComponentSeo
-  slider(locale: String, preview: Boolean, where: ComponentSliderFilter): ComponentSlider
+  projectsCollection(limit: Int = 100, locale: String, order: [PageHomeProjectsCollectionOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: PageProjectFilter): PageHomeProjectsCollection
+  seo(locale: String, preview: Boolean, useFallbackLocale: Boolean, where: ComponentSeoFilter): ComponentSeo
+  slider(locale: String, preview: Boolean, useFallbackLocale: Boolean, where: ComponentSliderFilter): ComponentSlider
+  subtitle(locale: String, useFallbackLocale: Boolean): String
   sys: Sys!
-  title(locale: String): String
+  title(locale: String, useFallbackLocale: Boolean): String
 }
 
 type PageHomeCollection {
@@ -1400,6 +1409,13 @@ input PageHomeFilter {
   seo_exists: Boolean
   slider: cfComponentSliderNestedFilter
   slider_exists: Boolean
+  subtitle: String
+  subtitle_contains: String
+  subtitle_exists: Boolean
+  subtitle_in: [String]
+  subtitle_not: String
+  subtitle_not_contains: String
+  subtitle_not_in: [String]
   sys: SysFilter
   title: String
   title_contains: String
@@ -1411,10 +1427,12 @@ input PageHomeFilter {
 }
 
 type PageHomeLinkingCollections {
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): EntryCollection
 }
 
 enum PageHomeOrder {
+  subtitle_ASC
+  subtitle_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC
@@ -1452,21 +1470,21 @@ enum PageHomeProjectsCollectionOrder {
 }
 
 """
-[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageProject)
+[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProject)
 """
 type PageProject implements Entry & _Node {
   _id: ID!
   contentfulMetadata: ContentfulMetadata!
-  description(locale: String): PageProjectDescription
-  galleryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): AssetCollection
-  header(locale: String, preview: Boolean): Asset
+  description(locale: String, useFallbackLocale: Boolean): PageProjectDescription
+  galleryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): AssetCollection
+  header(locale: String, preview: Boolean, useFallbackLocale: Boolean): Asset
   linkedFrom(allowedLocales: [String]): PageProjectLinkingCollections
-  seo(locale: String, preview: Boolean, where: ComponentSeoFilter): ComponentSeo
-  slug(locale: String): String
-  subtitle(locale: String): String
+  seo(locale: String, preview: Boolean, useFallbackLocale: Boolean, where: ComponentSeoFilter): ComponentSeo
+  slug(locale: String, useFallbackLocale: Boolean): String
+  subtitle(locale: String, useFallbackLocale: Boolean): String
   sys: Sys!
-  thumbnail(locale: String, preview: Boolean): Asset
-  title(locale: String): String
+  thumbnail(locale: String, preview: Boolean, useFallbackLocale: Boolean): Asset
+  title(locale: String, useFallbackLocale: Boolean): String
 }
 
 type PageProjectCollection {
@@ -1553,12 +1571,14 @@ input PageProjectFilter {
 }
 
 type PageProjectLinkingCollections {
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  pageHomeCollection(limit: Int = 100, locale: String, order: [PageProjectLinkingCollectionsPageHomeCollectionOrder], preview: Boolean, skip: Int = 0): PageHomeCollection
-  pageProjectsCollection(limit: Int = 100, locale: String, order: [PageProjectLinkingCollectionsPageProjectsCollectionOrder], preview: Boolean, skip: Int = 0): PageProjectsCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): EntryCollection
+  pageHomeCollection(limit: Int = 100, locale: String, order: [PageProjectLinkingCollectionsPageHomeCollectionOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): PageHomeCollection
+  pageProjectsCollection(limit: Int = 100, locale: String, order: [PageProjectLinkingCollectionsPageProjectsCollectionOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): PageProjectsCollection
 }
 
 enum PageProjectLinkingCollectionsPageHomeCollectionOrder {
+  subtitle_ASC
+  subtitle_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC
@@ -1602,16 +1622,16 @@ enum PageProjectOrder {
 }
 
 """
-[See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageProjects)
+[See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProjects)
 """
 type PageProjects implements Entry & _Node {
   _id: ID!
   contentfulMetadata: ContentfulMetadata!
   linkedFrom(allowedLocales: [String]): PageProjectsLinkingCollections
-  pageHeader(locale: String, preview: Boolean, where: ComponentPageHeaderFilter): ComponentPageHeader
-  pageName(locale: String): String
-  projectsCollection(limit: Int = 100, locale: String, order: [PageProjectsProjectsCollectionOrder], preview: Boolean, skip: Int = 0, where: PageProjectFilter): PageProjectsProjectsCollection
-  seo(locale: String, preview: Boolean, where: ComponentSeoFilter): ComponentSeo
+  pageHeader(locale: String, preview: Boolean, useFallbackLocale: Boolean, where: ComponentPageHeaderFilter): ComponentPageHeader
+  pageName(locale: String, useFallbackLocale: Boolean): String
+  projectsCollection(limit: Int = 100, locale: String, order: [PageProjectsProjectsCollectionOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: PageProjectFilter): PageProjectsProjectsCollection
+  seo(locale: String, preview: Boolean, useFallbackLocale: Boolean, where: ComponentSeoFilter): ComponentSeo
   sys: Sys!
 }
 
@@ -1643,7 +1663,7 @@ input PageProjectsFilter {
 }
 
 type PageProjectsLinkingCollections {
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): EntryCollection
 }
 
 enum PageProjectsOrder {
@@ -1689,39 +1709,39 @@ The 'Quality' type represents quality as whole numeric values between `1` and `1
 scalar Quality
 
 type Query {
-  _node(id: ID!, locale: String, preview: Boolean): _Node
-  _nodes(ids: [ID!]!, locale: String, preview: Boolean): [_Node]!
-  asset(id: String!, locale: String, preview: Boolean): Asset
-  assetCollection(limit: Int = 100, locale: String, order: [AssetOrder], preview: Boolean, skip: Int = 0, where: AssetFilter): AssetCollection
-  assets(id: String!, locale: String, preview: Boolean): Assets
-  assetsCollection(limit: Int = 100, locale: String, order: [AssetsOrder], preview: Boolean, skip: Int = 0, where: AssetsFilter): AssetsCollection
-  componentContact(id: String!, locale: String, preview: Boolean): ComponentContact
-  componentContactCollection(limit: Int = 100, locale: String, order: [ComponentContactOrder], preview: Boolean, skip: Int = 0, where: ComponentContactFilter): ComponentContactCollection
-  componentPageHeader(id: String!, locale: String, preview: Boolean): ComponentPageHeader
-  componentPageHeaderCollection(limit: Int = 100, locale: String, order: [ComponentPageHeaderOrder], preview: Boolean, skip: Int = 0, where: ComponentPageHeaderFilter): ComponentPageHeaderCollection
-  componentSeo(id: String!, locale: String, preview: Boolean): ComponentSeo
-  componentSeoCollection(limit: Int = 100, locale: String, order: [ComponentSeoOrder], preview: Boolean, skip: Int = 0, where: ComponentSeoFilter): ComponentSeoCollection
-  componentSlider(id: String!, locale: String, preview: Boolean): ComponentSlider
-  componentSliderCollection(limit: Int = 100, locale: String, order: [ComponentSliderOrder], preview: Boolean, skip: Int = 0, where: ComponentSliderFilter): ComponentSliderCollection
-  componentSocialMedia(id: String!, locale: String, preview: Boolean): ComponentSocialMedia
-  componentSocialMediaCollection(limit: Int = 100, locale: String, order: [ComponentSocialMediaOrder], preview: Boolean, skip: Int = 0, where: ComponentSocialMediaFilter): ComponentSocialMediaCollection
-  entryCollection(limit: Int = 100, locale: String, order: [EntryOrder], preview: Boolean, skip: Int = 0, where: EntryFilter): EntryCollection
-  favicons(id: String!, locale: String, preview: Boolean): Favicons
-  faviconsCollection(limit: Int = 100, locale: String, order: [FaviconsOrder], preview: Boolean, skip: Int = 0, where: FaviconsFilter): FaviconsCollection
-  menu(id: String!, locale: String, preview: Boolean): Menu
-  menuCollection(limit: Int = 100, locale: String, order: [MenuOrder], preview: Boolean, skip: Int = 0, where: MenuFilter): MenuCollection
-  pageAbout(id: String!, locale: String, preview: Boolean): PageAbout
-  pageAboutCollection(limit: Int = 100, locale: String, order: [PageAboutOrder], preview: Boolean, skip: Int = 0, where: PageAboutFilter): PageAboutCollection
-  pageContact(id: String!, locale: String, preview: Boolean): PageContact
-  pageContactCollection(limit: Int = 100, locale: String, order: [PageContactOrder], preview: Boolean, skip: Int = 0, where: PageContactFilter): PageContactCollection
-  pageEditor(id: String!, locale: String, preview: Boolean): PageEditor
-  pageEditorCollection(limit: Int = 100, locale: String, order: [PageEditorOrder], preview: Boolean, skip: Int = 0, where: PageEditorFilter): PageEditorCollection
-  pageHome(id: String!, locale: String, preview: Boolean): PageHome
-  pageHomeCollection(limit: Int = 100, locale: String, order: [PageHomeOrder], preview: Boolean, skip: Int = 0, where: PageHomeFilter): PageHomeCollection
-  pageProject(id: String!, locale: String, preview: Boolean): PageProject
-  pageProjectCollection(limit: Int = 100, locale: String, order: [PageProjectOrder], preview: Boolean, skip: Int = 0, where: PageProjectFilter): PageProjectCollection
-  pageProjects(id: String!, locale: String, preview: Boolean): PageProjects
-  pageProjectsCollection(limit: Int = 100, locale: String, order: [PageProjectsOrder], preview: Boolean, skip: Int = 0, where: PageProjectsFilter): PageProjectsCollection
+  _node(id: ID!, locale: String, preview: Boolean, useFallbackLocale: Boolean): _Node
+  _nodes(ids: [ID!]!, locale: String, preview: Boolean, useFallbackLocale: Boolean): [_Node]!
+  asset(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): Asset
+  assetCollection(limit: Int = 100, locale: String, order: [AssetOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: AssetFilter): AssetCollection
+  assets(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): Assets
+  assetsCollection(limit: Int = 100, locale: String, order: [AssetsOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: AssetsFilter): AssetsCollection
+  componentContact(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): ComponentContact
+  componentContactCollection(limit: Int = 100, locale: String, order: [ComponentContactOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: ComponentContactFilter): ComponentContactCollection
+  componentPageHeader(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): ComponentPageHeader
+  componentPageHeaderCollection(limit: Int = 100, locale: String, order: [ComponentPageHeaderOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: ComponentPageHeaderFilter): ComponentPageHeaderCollection
+  componentSeo(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): ComponentSeo
+  componentSeoCollection(limit: Int = 100, locale: String, order: [ComponentSeoOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: ComponentSeoFilter): ComponentSeoCollection
+  componentSlider(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): ComponentSlider
+  componentSliderCollection(limit: Int = 100, locale: String, order: [ComponentSliderOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: ComponentSliderFilter): ComponentSliderCollection
+  componentSocialMedia(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): ComponentSocialMedia
+  componentSocialMediaCollection(limit: Int = 100, locale: String, order: [ComponentSocialMediaOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: ComponentSocialMediaFilter): ComponentSocialMediaCollection
+  entryCollection(limit: Int = 100, locale: String, order: [EntryOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: EntryFilter): EntryCollection
+  favicons(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): Favicons
+  faviconsCollection(limit: Int = 100, locale: String, order: [FaviconsOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: FaviconsFilter): FaviconsCollection
+  menu(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): Menu
+  menuCollection(limit: Int = 100, locale: String, order: [MenuOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: MenuFilter): MenuCollection
+  pageAbout(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): PageAbout
+  pageAboutCollection(limit: Int = 100, locale: String, order: [PageAboutOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: PageAboutFilter): PageAboutCollection
+  pageContact(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): PageContact
+  pageContactCollection(limit: Int = 100, locale: String, order: [PageContactOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: PageContactFilter): PageContactCollection
+  pageEditor(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): PageEditor
+  pageEditorCollection(limit: Int = 100, locale: String, order: [PageEditorOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: PageEditorFilter): PageEditorCollection
+  pageHome(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): PageHome
+  pageHomeCollection(limit: Int = 100, locale: String, order: [PageHomeOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: PageHomeFilter): PageHomeCollection
+  pageProject(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): PageProject
+  pageProjectCollection(limit: Int = 100, locale: String, order: [PageProjectOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: PageProjectFilter): PageProjectCollection
+  pageProjects(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): PageProjects
+  pageProjectsCollection(limit: Int = 100, locale: String, order: [PageProjectsOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: PageProjectsFilter): PageProjectsCollection
 }
 
 interface ResourceLink {
@@ -1788,6 +1808,14 @@ Represents a taxonomy concept entity for finding and organizing content easily.
 """
 type TaxonomyConcept {
   id: String
+}
+
+input TimelineFilterInput {
+  """Preview content starting from a given release date"""
+  release_lte: String
+
+  """Preview content starting from a given timestamp"""
+  timestamp_lte: DateTime
 }
 
 interface _Node {
@@ -1937,16 +1965,16 @@ input cfFaviconsNestedFilter {
   OR: [cfFaviconsNestedFilter]
   appleTouchIcon_exists: Boolean
   contentfulMetadata: ContentfulMetadataFilter
+  favicon: String
   favicon96x96_exists: Boolean
   faviconIco_exists: Boolean
   faviconSvg_exists: Boolean
-  favicons: String
-  favicons_contains: String
-  favicons_exists: Boolean
-  favicons_in: [String]
-  favicons_not: String
-  favicons_not_contains: String
-  favicons_not_in: [String]
+  favicon_contains: String
+  favicon_exists: Boolean
+  favicon_in: [String]
+  favicon_not: String
+  favicon_not_contains: String
+  favicon_not_in: [String]
   manifestJson_exists: Boolean
   sys: SysFilter
   webAppManifest192_exists: Boolean

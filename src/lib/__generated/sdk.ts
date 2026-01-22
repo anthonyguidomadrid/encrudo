@@ -42,24 +42,28 @@ export type Asset = {
 /** Represents a binary file in a space. An asset can be any file type. */
 export type AssetContentTypeArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
 /** Represents a binary file in a space. An asset can be any file type. */
 export type AssetDescriptionArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
 /** Represents a binary file in a space. An asset can be any file type. */
 export type AssetFileNameArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
 /** Represents a binary file in a space. An asset can be any file type. */
 export type AssetHeightArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -72,12 +76,14 @@ export type AssetLinkedFromArgs = {
 /** Represents a binary file in a space. An asset can be any file type. */
 export type AssetSizeArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
 /** Represents a binary file in a space. An asset can be any file type. */
 export type AssetTitleArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -85,12 +91,14 @@ export type AssetTitleArgs = {
 export type AssetUrlArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   transform?: InputMaybe<ImageTransformOptions>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
 /** Represents a binary file in a space. An asset can be any file type. */
 export type AssetWidthArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type AssetCollection = {
@@ -188,6 +196,7 @@ export type AssetLinkingCollectionsAssetsCollectionArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -196,6 +205,7 @@ export type AssetLinkingCollectionsComponentPageHeaderCollectionArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -204,6 +214,7 @@ export type AssetLinkingCollectionsComponentSeoCollectionArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -212,6 +223,7 @@ export type AssetLinkingCollectionsComponentSliderCollectionArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -220,6 +232,7 @@ export type AssetLinkingCollectionsEntryCollectionArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -228,6 +241,7 @@ export type AssetLinkingCollectionsFaviconsCollectionArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -236,6 +250,7 @@ export type AssetLinkingCollectionsPageAboutCollectionArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -244,6 +259,7 @@ export type AssetLinkingCollectionsPageProjectCollectionArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export enum AssetOrder {
@@ -269,7 +285,7 @@ export enum AssetOrder {
   WidthDesc = 'width_DESC'
 }
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/assets) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/assets) */
 export type Assets = Entry & _Node & {
   __typename?: 'Assets';
   _id: Scalars['ID']['output'];
@@ -284,45 +300,50 @@ export type Assets = Entry & _Node & {
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/assets) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/assets) */
 export type AssetsFaviconsArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<FaviconsFilter>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/assets) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/assets) */
 export type AssetsLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/assets) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/assets) */
 export type AssetsLogoDarkArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/assets) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/assets) */
 export type AssetsLogoLightArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/assets) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/assets) */
 export type AssetsLogoSmallArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/assets) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/assets) */
 export type AssetsNotFoundBackgroundImageArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type AssetsCollection = {
@@ -357,6 +378,7 @@ export type AssetsLinkingCollectionsEntryCollectionArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export enum AssetsOrder {
@@ -370,7 +392,7 @@ export enum AssetsOrder {
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentContact) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentContact) */
 export type ComponentContact = Entry & _Node & {
   __typename?: 'ComponentContact';
   _id: Scalars['ID']['output'];
@@ -389,63 +411,72 @@ export type ComponentContact = Entry & _Node & {
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentContact) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentContact) */
 export type ComponentContactAddressCountryArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentContact) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentContact) */
 export type ComponentContactAddressLocalityArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentContact) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentContact) */
 export type ComponentContactAddressRegionArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentContact) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentContact) */
 export type ComponentContactEmailArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentContact) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentContact) */
 export type ComponentContactLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentContact) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentContact) */
 export type ComponentContactMailchimpUrlArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentContact) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentContact) */
 export type ComponentContactPhoneArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentContact) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentContact) */
 export type ComponentContactPostalCodeArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentContact) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentContact) */
 export type ComponentContactStreetAddressArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentContact) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentContact) */
 export type ComponentContactWebsiteNameArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type ComponentContactCollection = {
@@ -538,6 +569,7 @@ export type ComponentContactLinkingCollectionsEntryCollectionArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -547,6 +579,7 @@ export type ComponentContactLinkingCollectionsPageContactCollectionArgs = {
   order?: InputMaybe<Array<InputMaybe<ComponentContactLinkingCollectionsPageContactCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export enum ComponentContactLinkingCollectionsPageContactCollectionOrder {
@@ -591,7 +624,7 @@ export enum ComponentContactOrder {
   WebsiteNameDesc = 'websiteName_DESC'
 }
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentPageHeader) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentPageHeader) */
 export type ComponentPageHeader = Entry & _Node & {
   __typename?: 'ComponentPageHeader';
   _id: Scalars['ID']['output'];
@@ -604,28 +637,31 @@ export type ComponentPageHeader = Entry & _Node & {
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentPageHeader) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentPageHeader) */
 export type ComponentPageHeaderDescriptionArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentPageHeader) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentPageHeader) */
 export type ComponentPageHeaderHeaderArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentPageHeader) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentPageHeader) */
 export type ComponentPageHeaderLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentPageHeader) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentPageHeader) */
 export type ComponentPageHeaderTitleArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type ComponentPageHeaderCollection = {
@@ -716,6 +752,7 @@ export type ComponentPageHeaderLinkingCollectionsEntryCollectionArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -725,6 +762,7 @@ export type ComponentPageHeaderLinkingCollectionsPageAboutCollectionArgs = {
   order?: InputMaybe<Array<InputMaybe<ComponentPageHeaderLinkingCollectionsPageAboutCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -734,6 +772,7 @@ export type ComponentPageHeaderLinkingCollectionsPageContactCollectionArgs = {
   order?: InputMaybe<Array<InputMaybe<ComponentPageHeaderLinkingCollectionsPageContactCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -743,6 +782,7 @@ export type ComponentPageHeaderLinkingCollectionsPageProjectsCollectionArgs = {
   order?: InputMaybe<Array<InputMaybe<ComponentPageHeaderLinkingCollectionsPageProjectsCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export enum ComponentPageHeaderLinkingCollectionsPageAboutCollectionOrder {
@@ -797,7 +837,7 @@ export enum ComponentPageHeaderOrder {
   TitleDesc = 'title_DESC'
 }
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSeo) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSeo) */
 export type ComponentSeo = Entry & _Node & {
   __typename?: 'ComponentSeo';
   _id: Scalars['ID']['output'];
@@ -814,54 +854,61 @@ export type ComponentSeo = Entry & _Node & {
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSeo) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSeo) */
 export type ComponentSeoCanonicalUrlArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSeo) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSeo) */
 export type ComponentSeoInternalNameArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSeo) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSeo) */
 export type ComponentSeoLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSeo) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSeo) */
 export type ComponentSeoNofollowArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSeo) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSeo) */
 export type ComponentSeoNoindexArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSeo) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSeo) */
 export type ComponentSeoPageDescriptionArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSeo) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSeo) */
 export type ComponentSeoPageTitleArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSeo) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSeo) */
 export type ComponentSeoShareImagesCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type ComponentSeoCollection = {
@@ -931,6 +978,7 @@ export type ComponentSeoLinkingCollectionsEntryCollectionArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -940,6 +988,7 @@ export type ComponentSeoLinkingCollectionsPageAboutCollectionArgs = {
   order?: InputMaybe<Array<InputMaybe<ComponentSeoLinkingCollectionsPageAboutCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -949,6 +998,7 @@ export type ComponentSeoLinkingCollectionsPageContactCollectionArgs = {
   order?: InputMaybe<Array<InputMaybe<ComponentSeoLinkingCollectionsPageContactCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -958,6 +1008,7 @@ export type ComponentSeoLinkingCollectionsPageEditorCollectionArgs = {
   order?: InputMaybe<Array<InputMaybe<ComponentSeoLinkingCollectionsPageEditorCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -967,6 +1018,7 @@ export type ComponentSeoLinkingCollectionsPageHomeCollectionArgs = {
   order?: InputMaybe<Array<InputMaybe<ComponentSeoLinkingCollectionsPageHomeCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -976,6 +1028,7 @@ export type ComponentSeoLinkingCollectionsPageProjectCollectionArgs = {
   order?: InputMaybe<Array<InputMaybe<ComponentSeoLinkingCollectionsPageProjectCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -985,6 +1038,7 @@ export type ComponentSeoLinkingCollectionsPageProjectsCollectionArgs = {
   order?: InputMaybe<Array<InputMaybe<ComponentSeoLinkingCollectionsPageProjectsCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export enum ComponentSeoLinkingCollectionsPageAboutCollectionOrder {
@@ -1029,6 +1083,8 @@ export enum ComponentSeoLinkingCollectionsPageEditorCollectionOrder {
 }
 
 export enum ComponentSeoLinkingCollectionsPageHomeCollectionOrder {
+  SubtitleAsc = 'subtitle_ASC',
+  SubtitleDesc = 'subtitle_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -1092,7 +1148,7 @@ export enum ComponentSeoOrder {
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSlider) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSlider) */
 export type ComponentSlider = Entry & _Node & {
   __typename?: 'ComponentSlider';
   _id: Scalars['ID']['output'];
@@ -1103,16 +1159,17 @@ export type ComponentSlider = Entry & _Node & {
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSlider) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSlider) */
 export type ComponentSliderImageCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSlider) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSlider) */
 export type ComponentSliderLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
@@ -1145,6 +1202,7 @@ export type ComponentSliderLinkingCollectionsEntryCollectionArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -1154,9 +1212,12 @@ export type ComponentSliderLinkingCollectionsPageHomeCollectionArgs = {
   order?: InputMaybe<Array<InputMaybe<ComponentSliderLinkingCollectionsPageHomeCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export enum ComponentSliderLinkingCollectionsPageHomeCollectionOrder {
+  SubtitleAsc = 'subtitle_ASC',
+  SubtitleDesc = 'subtitle_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -1180,7 +1241,7 @@ export enum ComponentSliderOrder {
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSocialMedia) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSocialMedia) */
 export type ComponentSocialMedia = Entry & _Node & {
   __typename?: 'ComponentSocialMedia';
   _id: Scalars['ID']['output'];
@@ -1192,21 +1253,23 @@ export type ComponentSocialMedia = Entry & _Node & {
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSocialMedia) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSocialMedia) */
 export type ComponentSocialMediaLinkArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSocialMedia) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSocialMedia) */
 export type ComponentSocialMediaLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/componentSocialMedia) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/componentSocialMedia) */
 export type ComponentSocialMediaNameArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type ComponentSocialMediaCollection = {
@@ -1249,6 +1312,7 @@ export type ComponentSocialMediaLinkingCollectionsEntryCollectionArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export enum ComponentSocialMediaOrder {
@@ -1339,16 +1403,16 @@ export enum EntryOrder {
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/favicons) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/favicons) */
 export type Favicons = Entry & _Node & {
   __typename?: 'Favicons';
   _id: Scalars['ID']['output'];
   appleTouchIcon?: Maybe<Asset>;
   contentfulMetadata: ContentfulMetadata;
+  favicon?: Maybe<Scalars['String']['output']>;
   favicon96X96?: Maybe<Asset>;
   faviconIco?: Maybe<Asset>;
   faviconSvg?: Maybe<Asset>;
-  favicons?: Maybe<Scalars['String']['output']>;
   linkedFrom?: Maybe<FaviconsLinkingCollections>;
   manifestJson?: Maybe<Asset>;
   sys: Sys;
@@ -1357,64 +1421,72 @@ export type Favicons = Entry & _Node & {
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/favicons) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/favicons) */
 export type FaviconsAppleTouchIconArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/favicons) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/favicons) */
+export type FaviconsFaviconArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/favicons) */
 export type FaviconsFavicon96X96Args = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/favicons) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/favicons) */
 export type FaviconsFaviconIcoArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/favicons) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/favicons) */
 export type FaviconsFaviconSvgArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/favicons) */
-export type FaviconsFaviconsArgs = {
-  locale?: InputMaybe<Scalars['String']['input']>;
-};
-
-
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/favicons) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/favicons) */
 export type FaviconsLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/favicons) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/favicons) */
 export type FaviconsManifestJsonArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/favicons) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/favicons) */
 export type FaviconsWebAppManifest192Args = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/favicons) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/favicons) */
 export type FaviconsWebAppManifest512Args = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type FaviconsCollection = {
@@ -1430,16 +1502,16 @@ export type FaviconsFilter = {
   OR?: InputMaybe<Array<InputMaybe<FaviconsFilter>>>;
   appleTouchIcon_exists?: InputMaybe<Scalars['Boolean']['input']>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  favicon?: InputMaybe<Scalars['String']['input']>;
   favicon96x96_exists?: InputMaybe<Scalars['Boolean']['input']>;
   faviconIco_exists?: InputMaybe<Scalars['Boolean']['input']>;
   faviconSvg_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  favicons?: InputMaybe<Scalars['String']['input']>;
-  favicons_contains?: InputMaybe<Scalars['String']['input']>;
-  favicons_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  favicons_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  favicons_not?: InputMaybe<Scalars['String']['input']>;
-  favicons_not_contains?: InputMaybe<Scalars['String']['input']>;
-  favicons_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  favicon_contains?: InputMaybe<Scalars['String']['input']>;
+  favicon_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  favicon_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  favicon_not?: InputMaybe<Scalars['String']['input']>;
+  favicon_not_contains?: InputMaybe<Scalars['String']['input']>;
+  favicon_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   manifestJson_exists?: InputMaybe<Scalars['Boolean']['input']>;
   sys?: InputMaybe<SysFilter>;
   webAppManifest192_exists?: InputMaybe<Scalars['Boolean']['input']>;
@@ -1459,6 +1531,7 @@ export type FaviconsLinkingCollectionsAssetsCollectionArgs = {
   order?: InputMaybe<Array<InputMaybe<FaviconsLinkingCollectionsAssetsCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -1467,6 +1540,7 @@ export type FaviconsLinkingCollectionsEntryCollectionArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export enum FaviconsLinkingCollectionsAssetsCollectionOrder {
@@ -1481,8 +1555,8 @@ export enum FaviconsLinkingCollectionsAssetsCollectionOrder {
 }
 
 export enum FaviconsOrder {
-  FaviconsAsc = 'favicons_ASC',
-  FaviconsDesc = 'favicons_DESC',
+  FaviconAsc = 'favicon_ASC',
+  FaviconDesc = 'favicon_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -1589,7 +1663,7 @@ export type ImageTransformOptions = {
   width?: InputMaybe<Scalars['Dimension']['input']>;
 };
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/menu) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/menu) */
 export type Menu = Entry & _Node & {
   __typename?: 'Menu';
   _id: Scalars['ID']['output'];
@@ -1603,33 +1677,37 @@ export type Menu = Entry & _Node & {
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/menu) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/menu) */
 export type MenuIndexOrderArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/menu) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/menu) */
 export type MenuIsCtaArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/menu) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/menu) */
 export type MenuLinkArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/menu) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/menu) */
 export type MenuLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/menu) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/menu) */
 export type MenuNameArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type MenuCollection = {
@@ -1684,6 +1762,7 @@ export type MenuLinkingCollectionsEntryCollectionArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export enum MenuOrder {
@@ -1705,7 +1784,7 @@ export enum MenuOrder {
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageAbout) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageAbout) */
 export type PageAbout = Entry & _Node & {
   __typename?: 'PageAbout';
   _id: Scalars['ID']['output'];
@@ -1719,39 +1798,43 @@ export type PageAbout = Entry & _Node & {
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageAbout) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageAbout) */
 export type PageAboutLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageAbout) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageAbout) */
 export type PageAboutPageHeaderArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<ComponentPageHeaderFilter>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageAbout) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageAbout) */
 export type PageAboutPageNameArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageAbout) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageAbout) */
 export type PageAboutPicturesOfReferenceCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageAbout) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageAbout) */
 export type PageAboutSeoArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<ComponentSeoFilter>;
 };
 
@@ -1793,6 +1876,7 @@ export type PageAboutLinkingCollectionsEntryCollectionArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export enum PageAboutOrder {
@@ -1808,7 +1892,7 @@ export enum PageAboutOrder {
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageContact) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageContact) */
 export type PageContact = Entry & _Node & {
   __typename?: 'PageContact';
   _id: Scalars['ID']['output'];
@@ -1823,44 +1907,49 @@ export type PageContact = Entry & _Node & {
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageContact) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageContact) */
 export type PageContactContactInformationArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<ComponentContactFilter>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageContact) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageContact) */
 export type PageContactGoogleMapsUrlArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageContact) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageContact) */
 export type PageContactLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageContact) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageContact) */
 export type PageContactPageHeaderArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<ComponentPageHeaderFilter>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageContact) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageContact) */
 export type PageContactPageNameArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageContact) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageContact) */
 export type PageContactSeoArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<ComponentSeoFilter>;
 };
 
@@ -1910,6 +1999,7 @@ export type PageContactLinkingCollectionsEntryCollectionArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export enum PageContactOrder {
@@ -1925,7 +2015,7 @@ export enum PageContactOrder {
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageEditor) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageEditor) */
 export type PageEditor = Entry & _Node & {
   __typename?: 'PageEditor';
   _id: Scalars['ID']['output'];
@@ -1940,40 +2030,45 @@ export type PageEditor = Entry & _Node & {
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageEditor) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageEditor) */
 export type PageEditorContentArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageEditor) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageEditor) */
 export type PageEditorHtmlArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageEditor) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageEditor) */
 export type PageEditorLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageEditor) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageEditor) */
 export type PageEditorPageNameArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageEditor) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageEditor) */
 export type PageEditorPageSlugArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageEditor) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageEditor) */
 export type PageEditorSeoArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<ComponentSeoFilter>;
 };
 
@@ -2077,6 +2172,7 @@ export type PageEditorLinkingCollectionsEntryCollectionArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export enum PageEditorOrder {
@@ -2094,7 +2190,7 @@ export enum PageEditorOrder {
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageHome) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageHome) */
 export type PageHome = Entry & _Node & {
   __typename?: 'PageHome';
   _id: Scalars['ID']['output'];
@@ -2103,47 +2199,59 @@ export type PageHome = Entry & _Node & {
   projectsCollection?: Maybe<PageHomeProjectsCollection>;
   seo?: Maybe<ComponentSeo>;
   slider?: Maybe<ComponentSlider>;
+  subtitle?: Maybe<Scalars['String']['output']>;
   sys: Sys;
   title?: Maybe<Scalars['String']['output']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageHome) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageHome) */
 export type PageHomeLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageHome) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageHome) */
 export type PageHomeProjectsCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   locale?: InputMaybe<Scalars['String']['input']>;
   order?: InputMaybe<Array<InputMaybe<PageHomeProjectsCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<PageProjectFilter>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageHome) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageHome) */
 export type PageHomeSeoArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<ComponentSeoFilter>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageHome) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageHome) */
 export type PageHomeSliderArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<ComponentSliderFilter>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageHome) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageHome) */
+export type PageHomeSubtitleArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageHome) */
 export type PageHomeTitleArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type PageHomeCollection = {
@@ -2164,6 +2272,13 @@ export type PageHomeFilter = {
   seo_exists?: InputMaybe<Scalars['Boolean']['input']>;
   slider?: InputMaybe<CfComponentSliderNestedFilter>;
   slider_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  subtitle?: InputMaybe<Scalars['String']['input']>;
+  subtitle_contains?: InputMaybe<Scalars['String']['input']>;
+  subtitle_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  subtitle_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  subtitle_not?: InputMaybe<Scalars['String']['input']>;
+  subtitle_not_contains?: InputMaybe<Scalars['String']['input']>;
+  subtitle_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sys?: InputMaybe<SysFilter>;
   title?: InputMaybe<Scalars['String']['input']>;
   title_contains?: InputMaybe<Scalars['String']['input']>;
@@ -2185,9 +2300,12 @@ export type PageHomeLinkingCollectionsEntryCollectionArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export enum PageHomeOrder {
+  SubtitleAsc = 'subtitle_ASC',
+  SubtitleDesc = 'subtitle_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -2225,7 +2343,7 @@ export enum PageHomeProjectsCollectionOrder {
   TitleDesc = 'title_DESC'
 }
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageProject) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProject) */
 export type PageProject = Entry & _Node & {
   __typename?: 'PageProject';
   _id: Scalars['ID']['output'];
@@ -2243,64 +2361,72 @@ export type PageProject = Entry & _Node & {
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageProject) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProject) */
 export type PageProjectDescriptionArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageProject) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProject) */
 export type PageProjectGalleryCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageProject) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProject) */
 export type PageProjectHeaderArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageProject) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProject) */
 export type PageProjectLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageProject) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProject) */
 export type PageProjectSeoArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<ComponentSeoFilter>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageProject) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProject) */
 export type PageProjectSlugArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageProject) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProject) */
 export type PageProjectSubtitleArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageProject) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProject) */
 export type PageProjectThumbnailArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageProject) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProject) */
 export type PageProjectTitleArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type PageProjectCollection = {
@@ -2408,6 +2534,7 @@ export type PageProjectLinkingCollectionsEntryCollectionArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -2417,6 +2544,7 @@ export type PageProjectLinkingCollectionsPageHomeCollectionArgs = {
   order?: InputMaybe<Array<InputMaybe<PageProjectLinkingCollectionsPageHomeCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -2426,9 +2554,12 @@ export type PageProjectLinkingCollectionsPageProjectsCollectionArgs = {
   order?: InputMaybe<Array<InputMaybe<PageProjectLinkingCollectionsPageProjectsCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export enum PageProjectLinkingCollectionsPageHomeCollectionOrder {
+  SubtitleAsc = 'subtitle_ASC',
+  SubtitleDesc = 'subtitle_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -2471,7 +2602,7 @@ export enum PageProjectOrder {
   TitleDesc = 'title_DESC'
 }
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageProjects) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProjects) */
 export type PageProjects = Entry & _Node & {
   __typename?: 'PageProjects';
   _id: Scalars['ID']['output'];
@@ -2485,41 +2616,45 @@ export type PageProjects = Entry & _Node & {
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageProjects) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProjects) */
 export type PageProjectsLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageProjects) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProjects) */
 export type PageProjectsPageHeaderArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<ComponentPageHeaderFilter>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageProjects) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProjects) */
 export type PageProjectsPageNameArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageProjects) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProjects) */
 export type PageProjectsProjectsCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   locale?: InputMaybe<Scalars['String']['input']>;
   order?: InputMaybe<Array<InputMaybe<PageProjectsProjectsCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<PageProjectFilter>;
 };
 
 
-/** [See type definition](https://app.contentful.com/spaces/gb8vyc5duwg4/content_types/pageProjects) */
+/** [See type definition](https://app.contentful.com/spaces/7hpjtmfrm15k/content_types/pageProjects) */
 export type PageProjectsSeoArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<ComponentSeoFilter>;
 };
 
@@ -2562,6 +2697,7 @@ export type PageProjectsLinkingCollectionsEntryCollectionArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export enum PageProjectsOrder {
@@ -2644,6 +2780,7 @@ export type Query_NodeArgs = {
   id: Scalars['ID']['input'];
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -2651,6 +2788,7 @@ export type Query_NodesArgs = {
   ids: Array<Scalars['ID']['input']>;
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -2658,6 +2796,7 @@ export type QueryAssetArgs = {
   id: Scalars['String']['input'];
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -2667,6 +2806,7 @@ export type QueryAssetCollectionArgs = {
   order?: InputMaybe<Array<InputMaybe<AssetOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<AssetFilter>;
 };
 
@@ -2675,6 +2815,7 @@ export type QueryAssetsArgs = {
   id: Scalars['String']['input'];
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -2684,6 +2825,7 @@ export type QueryAssetsCollectionArgs = {
   order?: InputMaybe<Array<InputMaybe<AssetsOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<AssetsFilter>;
 };
 
@@ -2692,6 +2834,7 @@ export type QueryComponentContactArgs = {
   id: Scalars['String']['input'];
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -2701,6 +2844,7 @@ export type QueryComponentContactCollectionArgs = {
   order?: InputMaybe<Array<InputMaybe<ComponentContactOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<ComponentContactFilter>;
 };
 
@@ -2709,6 +2853,7 @@ export type QueryComponentPageHeaderArgs = {
   id: Scalars['String']['input'];
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -2718,6 +2863,7 @@ export type QueryComponentPageHeaderCollectionArgs = {
   order?: InputMaybe<Array<InputMaybe<ComponentPageHeaderOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<ComponentPageHeaderFilter>;
 };
 
@@ -2726,6 +2872,7 @@ export type QueryComponentSeoArgs = {
   id: Scalars['String']['input'];
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -2735,6 +2882,7 @@ export type QueryComponentSeoCollectionArgs = {
   order?: InputMaybe<Array<InputMaybe<ComponentSeoOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<ComponentSeoFilter>;
 };
 
@@ -2743,6 +2891,7 @@ export type QueryComponentSliderArgs = {
   id: Scalars['String']['input'];
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -2752,6 +2901,7 @@ export type QueryComponentSliderCollectionArgs = {
   order?: InputMaybe<Array<InputMaybe<ComponentSliderOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<ComponentSliderFilter>;
 };
 
@@ -2760,6 +2910,7 @@ export type QueryComponentSocialMediaArgs = {
   id: Scalars['String']['input'];
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -2769,6 +2920,7 @@ export type QueryComponentSocialMediaCollectionArgs = {
   order?: InputMaybe<Array<InputMaybe<ComponentSocialMediaOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<ComponentSocialMediaFilter>;
 };
 
@@ -2779,6 +2931,7 @@ export type QueryEntryCollectionArgs = {
   order?: InputMaybe<Array<InputMaybe<EntryOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<EntryFilter>;
 };
 
@@ -2787,6 +2940,7 @@ export type QueryFaviconsArgs = {
   id: Scalars['String']['input'];
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -2796,6 +2950,7 @@ export type QueryFaviconsCollectionArgs = {
   order?: InputMaybe<Array<InputMaybe<FaviconsOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<FaviconsFilter>;
 };
 
@@ -2804,6 +2959,7 @@ export type QueryMenuArgs = {
   id: Scalars['String']['input'];
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -2813,6 +2969,7 @@ export type QueryMenuCollectionArgs = {
   order?: InputMaybe<Array<InputMaybe<MenuOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<MenuFilter>;
 };
 
@@ -2821,6 +2978,7 @@ export type QueryPageAboutArgs = {
   id: Scalars['String']['input'];
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -2830,6 +2988,7 @@ export type QueryPageAboutCollectionArgs = {
   order?: InputMaybe<Array<InputMaybe<PageAboutOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<PageAboutFilter>;
 };
 
@@ -2838,6 +2997,7 @@ export type QueryPageContactArgs = {
   id: Scalars['String']['input'];
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -2847,6 +3007,7 @@ export type QueryPageContactCollectionArgs = {
   order?: InputMaybe<Array<InputMaybe<PageContactOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<PageContactFilter>;
 };
 
@@ -2855,6 +3016,7 @@ export type QueryPageEditorArgs = {
   id: Scalars['String']['input'];
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -2864,6 +3026,7 @@ export type QueryPageEditorCollectionArgs = {
   order?: InputMaybe<Array<InputMaybe<PageEditorOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<PageEditorFilter>;
 };
 
@@ -2872,6 +3035,7 @@ export type QueryPageHomeArgs = {
   id: Scalars['String']['input'];
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -2881,6 +3045,7 @@ export type QueryPageHomeCollectionArgs = {
   order?: InputMaybe<Array<InputMaybe<PageHomeOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<PageHomeFilter>;
 };
 
@@ -2889,6 +3054,7 @@ export type QueryPageProjectArgs = {
   id: Scalars['String']['input'];
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -2898,6 +3064,7 @@ export type QueryPageProjectCollectionArgs = {
   order?: InputMaybe<Array<InputMaybe<PageProjectOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<PageProjectFilter>;
 };
 
@@ -2906,6 +3073,7 @@ export type QueryPageProjectsArgs = {
   id: Scalars['String']['input'];
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -2915,6 +3083,7 @@ export type QueryPageProjectsCollectionArgs = {
   order?: InputMaybe<Array<InputMaybe<PageProjectsOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<PageProjectsFilter>;
 };
 
@@ -2984,6 +3153,13 @@ export type SysFilter = {
 export type TaxonomyConcept = {
   __typename?: 'TaxonomyConcept';
   id?: Maybe<Scalars['String']['output']>;
+};
+
+export type TimelineFilterInput = {
+  /** Preview content starting from a given release date */
+  release_lte?: InputMaybe<Scalars['String']['input']>;
+  /** Preview content starting from a given timestamp */
+  timestamp_lte?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
 export type _Node = {
@@ -3133,16 +3309,16 @@ export type CfFaviconsNestedFilter = {
   OR?: InputMaybe<Array<InputMaybe<CfFaviconsNestedFilter>>>;
   appleTouchIcon_exists?: InputMaybe<Scalars['Boolean']['input']>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  favicon?: InputMaybe<Scalars['String']['input']>;
   favicon96x96_exists?: InputMaybe<Scalars['Boolean']['input']>;
   faviconIco_exists?: InputMaybe<Scalars['Boolean']['input']>;
   faviconSvg_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  favicons?: InputMaybe<Scalars['String']['input']>;
-  favicons_contains?: InputMaybe<Scalars['String']['input']>;
-  favicons_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  favicons_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  favicons_not?: InputMaybe<Scalars['String']['input']>;
-  favicons_not_contains?: InputMaybe<Scalars['String']['input']>;
-  favicons_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  favicon_contains?: InputMaybe<Scalars['String']['input']>;
+  favicon_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  favicon_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  favicon_not?: InputMaybe<Scalars['String']['input']>;
+  favicon_not_contains?: InputMaybe<Scalars['String']['input']>;
+  favicon_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   manifestJson_exists?: InputMaybe<Scalars['Boolean']['input']>;
   sys?: InputMaybe<SysFilter>;
   webAppManifest192_exists?: InputMaybe<Scalars['Boolean']['input']>;
@@ -3250,7 +3426,7 @@ export type PageLandingQueryVariables = Exact<{
 }>;
 
 
-export type PageLandingQuery = { __typename?: 'Query', pageHomeCollection?: { __typename?: 'PageHomeCollection', items: Array<{ __typename?: 'PageHome', title?: string | null, slider?: { __typename?: 'ComponentSlider', imageCollection?: { __typename?: 'AssetCollection', items: Array<(
+export type PageLandingQuery = { __typename?: 'Query', pageHomeCollection?: { __typename?: 'PageHomeCollection', items: Array<{ __typename?: 'PageHome', title?: string | null, subtitle?: string | null, slider?: { __typename?: 'ComponentSlider', imageCollection?: { __typename?: 'AssetCollection', items: Array<(
             { __typename?: 'Asset' }
             & ImageFieldsFragment
           ) | null> } | null } | null, projectsCollection?: { __typename?: 'PageHomeProjectsCollection', items: Array<(
@@ -3479,6 +3655,7 @@ export const PageLandingDocument = gql`
   pageHomeCollection(limit: 1, locale: $locale, preview: $preview) {
     items {
       title
+      subtitle
       slider {
         imageCollection(limit: 10) {
           items {

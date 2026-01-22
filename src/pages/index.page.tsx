@@ -27,28 +27,32 @@ import { LINKS } from '@src/constants/links'
 import { client } from '@src/lib/client'
 
 const Page = ({
-  page
+  page: { seo, title, subtitle, slider, projectsCollection }
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { t } = useTranslation()
   const url = process.env.NEXT_PUBLIC_SITE_URL
   return (
     <>
-      {page.seo && <SeoFields {...page.seo} />}
+      {seo && <SeoFields {...seo} />}
       <WebPageJsonLd
-        name={page.title}
-        description={page.seo?.pageDescription}
+        name={seo.pageTitle || title || ''}
+        description={seo?.pageDescription}
         id={url!}
         url={url!}
       />
-      {page.slider?.imageCollection?.items?.length && (
-        <SliderBackground items={page.slider?.imageCollection?.items} />
+      {slider?.imageCollection?.items?.length && (
+        <SliderBackground
+          items={slider?.imageCollection?.items}
+          title={title}
+          subtitle={subtitle}
+        />
       )}
-      {page.projectsCollection?.items?.length && (
+      {projectsCollection?.items?.length && (
         <section
           id="proyectos"
           className="max-w-7xl mx-auto p-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 grid-flow-row gap-10"
         >
-          {page.projectsCollection.items.map((project, idx: number) => {
+          {projectsCollection.items.map((project, idx: number) => {
             return <ProductTile key={idx} {...{ project }} />
           })}
           <div className="col-span-full flex justify-center">
