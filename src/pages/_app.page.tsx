@@ -73,7 +73,12 @@ const App = ({ Component, pageProps, data }: AppProperties) => {
         ]}
       />
       <LogoJsonLd logo={assetContent?.logoDark?.url!} url={url!} />
-      <Component {...pageProps} />
+      <div
+        key={router.asPath}
+        className="animate-[pageFadeIn_260ms_ease-out_both] motion-reduce:animate-none"
+      >
+        <Component {...pageProps} />
+      </div>
       <SpeedInsights />
     </Layout>
   )

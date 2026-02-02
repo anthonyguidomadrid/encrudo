@@ -29,6 +29,15 @@ html {
   font-size: 14px;
 }
 
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .ril-caption-content {
   font-size: 11px;
 }
