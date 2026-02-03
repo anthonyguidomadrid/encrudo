@@ -18,6 +18,28 @@ type RecaptchaVerifyResponse = {
   'error-codes'?: string[]
 }
 
+const escapeHtml = (value: string) =>
+  value
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#039;')
+
+const parseSmtpPort = (value: string | undefined) => {
+  if (!value) return undefined
+  const parsed = Number.parseInt(value, 10)
+  return Number.isFinite(parsed) ? parsed : undefined
+}
+
+const parseBool = (value: string | undefined) => {
+  if (!value) return undefined
+  const normalized = value.trim().toLowerCase()
+  if (['1', 'true', 'yes', 'y', 'on'].includes(normalized)) return true
+  if (['0', 'false', 'no', 'n', 'off'].includes(normalized)) return false
+  return undefined
+}
+
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST')
@@ -26,6 +48,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const { name, email, message, phone, recaptchaToken } =
     req.body as ContactBody
+
+  if (!name || !email || !message) {
+    return res.status(400).json({ error: 'Missing required fields' })
+  }
 
   const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY
   if (!recaptchaSecret) {
@@ -58,26 +84,47 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(502).json({ error: 'Recaptcha verification unavailable' })
   }
 
+  const smtpHost = process.env.SMTP_HOST ?? 'smtp.sendgrid.net'
+  const smtpPort =
+    parseSmtpPort(process.env.SMTP_PORT) ??
+    (process.env.SMTP_SECURE ? 465 : 587)
+  const smtpSecure = parseBool(process.env.SMTP_SECURE) ?? smtpPort === 465
+  const smtpUser = process.env.SMTP_USER
+  const smtpPass = process.env.SMTP_PASS
+
+  const emailRecipient = process.env.EMAIL_RECIPIENT
+  const emailFrom = process.env.EMAIL_FROM
+
+  if (!smtpUser || !smtpPass) {
+    return res.status(500).json({ error: 'Missing SMTP credentials' })
+  }
+  if (!emailRecipient) {
+    return res.status(500).json({ error: 'Missing EMAIL_RECIPIENT' })
+  }
+  if (!emailFrom) {
+    return res.status(500).json({ error: 'Missing EMAIL_FROM' })
+  }
+
   const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 465,
-    secure: true,
+    host: smtpHost,
+    port: smtpPort,
+    secure: smtpSecure,
     auth: {
-      user: process.env.EMAIL_AUTH_USER,
-      pass: process.env.EMAIL_AUTH_PASS
+      user: smtpUser,
+      pass: smtpPass
     }
   })
 
   try {
     await transporter.sendMail({
-      from: email,
-      to: process.env.EMAIL_RECIPIENT,
+      from: emailFrom,
+      to: emailRecipient,
       replyTo: email,
       subject: `Has recibido un nuevo mensaje de ${name}`,
-      html: `<p><strong>Nombre: </strong> ${name} </p>
-      <p><strong>Teléfono: </strong> ${phone} </p>
-      <p><strong>Email: </strong> ${email} </p>
-      <p><strong>Mensaje: </strong> ${message} </p>
+      html: `<p><strong>Nombre: </strong> ${escapeHtml(name)} </p>
+      <p><strong>Teléfono: </strong> ${escapeHtml(phone ?? '')} </p>
+      <p><strong>Email: </strong> ${escapeHtml(email)} </p>
+      <p><strong>Mensaje: </strong> ${escapeHtml(message)} </p>
 
       `
     })

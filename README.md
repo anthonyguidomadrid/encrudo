@@ -26,8 +26,9 @@ Rename the `.env.example` file to `.env` and add the necessary values. Here are 
 - `CONTENTFUL_DELIVERY_API_TOKEN`: [Contentful Delivery API token](https://www.contentful.com/developers/docs/references/content-delivery-api/)
 - `CONTENTFUL_PREVIEW_API_TOKEN`: [Contentful Preview API token](https://www.contentful.com/developers/docs/references/content-preview-api/)
 - `CONTENTFUL_GRAPHQL_ENDPOINT`: Contentful GraphQL endpoint
-- `EMAIL_AUTH_USER`: Gmail email for sending contact form messages
-- `EMAIL_AUTH_PASS`: Gmail password
+- `SMTP_HOST` / `SMTP_PORT` / `SMTP_SECURE`: SMTP server settings (e.g. SendGrid)
+- `SMTP_USER` / `SMTP_PASS`: SMTP credentials (for SendGrid SMTP, user is `apikey` and pass is your SendGrid API key)
+- `EMAIL_FROM`: Verified sender address used as the email "from" (the contact's email is set as `replyTo`)
 - `EMAIL_RECIPIENT`: Recipient for contact form messages
 - `NEXT_PUBLIC_SITE_URL`: The public URL of your site (used for SEO, sitemaps, etc.)
 - `NEXT_PUBLIC_RECAPTCHA_CLIENT_KEY`: [Google reCAPTCHA client key](https://developers.google.com/recaptcha/intro)
@@ -167,7 +168,6 @@ This project uses ESLint and Prettier for code quality and formatting. Run `yarn
 - **reCAPTCHA not working on multiple domains**: Add all domains to the allowed list in the Google reCAPTCHA admin console.
 - **Sitemap not updating**: Remove any static `public/sitemap.xml` and ensure `next-sitemap` runs after build.
 - **Static assets not updating**: Clear your browser cache or CDN cache after updating files in `public/assets` or `public/favicons`.
-
 
 ## Author
 
