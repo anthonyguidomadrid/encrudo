@@ -21,6 +21,10 @@ export default function Document(props: DocumentProps) {
   return (
     <Html lang={locale || 'es'} className="scroll-smooth">
       <Head>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, viewport-fit=cover"
+        />
         {/* Apple Touch Icon */}
         <link
           rel="apple-touch-icon"
