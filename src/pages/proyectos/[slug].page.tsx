@@ -3,8 +3,7 @@ import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { useTranslation } from 'next-i18next'
 
 import ArrowLeft from '@icons/arrow-left.svg'
-import { ProductJsonLd } from 'next-seo'
-import { SeoFields } from '@src/components/features/seo'
+import { SeoFields, WebPageJsonLd } from '@src/components/features/seo'
 import dynamic from 'next/dynamic'
 
 const ProjectHeader = dynamic(
@@ -37,18 +36,10 @@ const Page = ({
   return (
     <>
       {seo && <SeoFields {...seo} />}
-      <ProductJsonLd
+      <WebPageJsonLd
         name={title}
-        description={
-          description?.json ? documentToHtmlString(description.json) : ''
-        }
-        brand="Encrudo Taller"
-        image={galleryCollection.items.map(item => item?.url || '')}
-        offers={{
-          priceCurrency: 'EUR',
-          availability: 'https://schema.org/InStock',
-          url
-        }}
+        description={seo?.pageDescription}
+        id={url}
         url={url}
       />
       <ProjectHeader
