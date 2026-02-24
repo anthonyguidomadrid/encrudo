@@ -4,6 +4,7 @@ import { GA_TRACKING_ID, GTAG_TRACKING_ID } from '@src/helpers/gtag'
 
 export default function Document(props: DocumentProps) {
   const data = props?.__NEXT_DATA__.props?.data
+  const locale = props?.__NEXT_DATA__?.locale
   const favicons = data?.assetsCollection?.items?.[0].favicons || {}
   const websiteName = data?.componentContactCollection?.items[0].websiteName
 
@@ -18,7 +19,7 @@ export default function Document(props: DocumentProps) {
   }
 
   return (
-    <Html lang="en" className="scroll-smooth">
+    <Html lang={locale || 'es'} className="scroll-smooth">
       <Head>
         {/* Apple Touch Icon */}
         <link

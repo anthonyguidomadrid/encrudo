@@ -8,15 +8,51 @@ import { SeoFieldsFragment } from '@src/lib/__generated/sdk'
 const isAbsoluteHttpUrl = (value: unknown): value is string =>
   typeof value === 'string' && /^https?:\/\//.test(value)
 
+const stripQueryAndHash = (path: string) => path.split('#')[0].split('?')[0]
+
+const stripLocalePrefix = (path: string, locales: string[] | undefined) => {
+  if (!locales?.length) return path
+  const normalized = path.startsWith('/') ? path : `/${path}`
+
+  for (const locale of locales) {
+    if (normalized === `/${locale}`) return '/'
+    if (normalized.startsWith(`/${locale}/`)) {
+      const rest = normalized.slice(locale.length + 1)
+      return rest.length ? rest : '/'
+    }
+  }
+
+  return normalized
+}
+
 const generateUrl = (
   siteUrl: string | undefined,
   locale: string,
-  path: string
+  path: string,
+  options?: {
+    defaultLocale?: string
+    locales?: string[]
+  }
 ) => {
   if (!isAbsoluteHttpUrl(siteUrl)) return undefined
 
-  const normalizedPath = path.startsWith('/') ? path.slice(1) : path
-  return new URI(siteUrl).segment([locale, normalizedPath]).toString()
+  const cleanPath = stripQueryAndHash(path)
+  const pathWithoutLocale = stripLocalePrefix(cleanPath, options?.locales)
+
+  const normalizedPath = pathWithoutLocale.startsWith('/')
+    ? pathWithoutLocale
+    : `/${pathWithoutLocale}`
+
+  const defaultLocale = options?.defaultLocale || 'es'
+
+  const localizedPath =
+    locale && locale !== defaultLocale
+      ? normalizedPath === '/'
+        ? `/${locale}`
+        : `/${locale}${normalizedPath}`
+      : normalizedPath
+
+  return new URI(siteUrl).path(localizedPath).toString()
 }
 
 export const SeoFields = ({
@@ -27,21 +63,36 @@ export const SeoFields = ({
   canonicalUrl,
   shareImagesCollection
 }: SeoFieldsFragment) => {
-  const { locale, locales, asPath } = useRouter()
+  const { locale, locales, defaultLocale, asPath } = useRouter()
 
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
 
-  const url = generateUrl(siteUrl, locale || '', asPath)
+  const url = generateUrl(siteUrl, locale || '', asPath, {
+    defaultLocale: defaultLocale || 'es',
+    locales: locales?.slice()
+  })
 
   const languageAlternates =
     locales
-      ?.map(locale => ({
-        hrefLang: locale,
-        href: generateUrl(siteUrl, locale, asPath)
+      ?.map(localeItem => ({
+        hrefLang: localeItem,
+        href: generateUrl(siteUrl, localeItem, asPath, {
+          defaultLocale: defaultLocale || 'es',
+          locales: locales?.slice()
+        })
       }))
       .filter((alt): alt is { hrefLang: string; href: string } =>
         Boolean(alt.href)
       ) || []
+
+  const xDefault = generateUrl(siteUrl, defaultLocale || 'es', asPath, {
+    defaultLocale: defaultLocale || 'es',
+    locales: locales?.slice()
+  })
+
+  const languageAlternatesWithDefault = xDefault
+    ? [...languageAlternates, { hrefLang: 'x-default', href: xDefault }]
+    : languageAlternates
 
   return (
     <Head>
@@ -51,8 +102,8 @@ export const SeoFields = ({
         canonical: canonicalUrl || url || undefined,
         nofollow: nofollow || false,
         noindex: noindex || false,
-        languageAlternates: languageAlternates.length
-          ? languageAlternates
+        languageAlternates: languageAlternatesWithDefault.length
+          ? languageAlternatesWithDefault
           : undefined,
         openGraph: {
           type: 'website',
