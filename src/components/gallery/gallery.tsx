@@ -1,9 +1,25 @@
-import { motion } from 'framer-motion'
+import { domAnimation, LazyMotion, m } from 'framer-motion'
 import Image from 'next/image'
+import dynamic from 'next/dynamic'
+import type { ComponentType } from 'react'
 import { useState } from 'react'
-import Lightbox from 'react-image-lightbox'
 
 import { Picture } from '../types'
+
+type LightboxComponentProps = {
+  mainSrc: string
+  nextSrc?: string
+  prevSrc?: string
+  onCloseRequest: () => void
+  onMovePrevRequest?: () => void
+  onMoveNextRequest?: () => void
+  enableZoom?: boolean
+  imageCaption?: string
+}
+
+const Lightbox = dynamic(() => import('react-image-lightbox'), {
+  ssr: false
+}) as unknown as ComponentType<LightboxComponentProps>
 
 export type GalleryProps = {
   photos: Picture[]
@@ -23,54 +39,59 @@ export const Gallery = ({ photos, columnAmount }: GalleryProps) => {
   const [currentIdx, setCurrentIdx] = useState(0)
 
   return (
-    <>
-      {isLightBoxOpen && (
-        <Lightbox
-          mainSrc={photoLinks[currentIdx]}
-          nextSrc={photoLinks[(currentIdx + 1) % photoLinks.length]}
-          prevSrc={
-            photoLinks[(currentIdx + photoLinks.length - 1) % photoLinks.length]
-          }
-          onCloseRequest={() => setLightBoxOpen(false)}
-          onMovePrevRequest={() =>
-            setCurrentIdx(
-              (currentIdx + photoLinks.length - 1) % photoLinks.length
-            )
-          }
-          onMoveNextRequest={() =>
-            setCurrentIdx((currentIdx + 1) % photoLinks.length)
-          }
-          enableZoom={false}
-          imageCaption={photos[currentIdx].description}
-        />
-      )}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 pt-5">
-        {photosColumns.map((photoArray, idx) => (
-          <div className="grid gap-10" key={idx}>
-            {photoArray.map((photo, idx) => (
-              <motion.button
-                key={idx}
-                onClick={() => {
-                  setLightBoxOpen(true)
-                  setCurrentIdx(
-                    photos.findIndex(picture => picture.url === photo.url) ?? 0
-                  )
-                }}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-              >
-                <Image
-                  className="h-full w-full object-cover object-center hover:scale-105 transition duration-500 ease-in-out"
-                  src={photo.url}
-                  alt={photo.description}
-                  width={1200}
-                  height={900}
-                />
-              </motion.button>
-            ))}
-          </div>
-        ))}
-      </div>
-    </>
+    <LazyMotion features={domAnimation}>
+      <>
+        {isLightBoxOpen && (
+          <Lightbox
+            mainSrc={photoLinks[currentIdx]}
+            nextSrc={photoLinks[(currentIdx + 1) % photoLinks.length]}
+            prevSrc={
+              photoLinks[
+                (currentIdx + photoLinks.length - 1) % photoLinks.length
+              ]
+            }
+            onCloseRequest={() => setLightBoxOpen(false)}
+            onMovePrevRequest={() =>
+              setCurrentIdx(
+                (currentIdx + photoLinks.length - 1) % photoLinks.length
+              )
+            }
+            onMoveNextRequest={() =>
+              setCurrentIdx((currentIdx + 1) % photoLinks.length)
+            }
+            enableZoom={false}
+            imageCaption={photos[currentIdx].description}
+          />
+        )}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 pt-5">
+          {photosColumns.map((photoArray, idx) => (
+            <div className="grid gap-10" key={idx}>
+              {photoArray.map((photo, idx) => (
+                <m.button
+                  key={idx}
+                  onClick={() => {
+                    setLightBoxOpen(true)
+                    setCurrentIdx(
+                      photos.findIndex(picture => picture.url === photo.url) ??
+                        0
+                    )
+                  }}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                >
+                  <Image
+                    className="h-full w-full object-cover object-center hover:scale-105 transition duration-500 ease-in-out"
+                    src={photo.url}
+                    alt={photo.description}
+                    width={1200}
+                    height={900}
+                  />
+                </m.button>
+              ))}
+            </div>
+          ))}
+        </div>
+      </>
+    </LazyMotion>
   )
 }

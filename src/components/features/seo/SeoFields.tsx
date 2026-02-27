@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import { generateNextSeo } from 'next-seo/pages'
 import { useRouter } from 'next/router'
-import URI from 'urijs'
 
 import { SeoFieldsFragment } from '@src/lib/__generated/sdk'
 
@@ -52,7 +51,15 @@ const generateUrl = (
         : `/${locale}${normalizedPath}`
       : normalizedPath
 
-  return new URI(siteUrl).path(localizedPath).toString()
+  try {
+    const url = new URL(siteUrl)
+    url.pathname = localizedPath
+    url.search = ''
+    url.hash = ''
+    return url.toString()
+  } catch {
+    return undefined
+  }
 }
 
 export const SeoFields = ({

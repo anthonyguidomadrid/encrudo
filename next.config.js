@@ -19,6 +19,7 @@ module.exports = withPlugins(plugins, {
     ENVIRONMENT_NAME: process.env.ENVIRONMENT_NAME
   },
   experimental: {
+    optimizePackageImports: ['framer-motion']
     // urlImports: true,
     // concurrentFeatures: true,
     // serverComponents: true,

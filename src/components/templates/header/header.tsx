@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { motion, AnimatePresence } from 'framer-motion'
+import { AnimatePresence, domAnimation, LazyMotion, m } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import {
@@ -87,7 +87,7 @@ export const Header: FunctionComponent<HeaderProps> = ({
 
   const desktopMenu = useMemo(() => {
     return (
-      <motion.div
+      <m.div
         key="desktop-menu"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -117,94 +117,95 @@ export const Header: FunctionComponent<HeaderProps> = ({
             </li>
           ))}
         </ul>
-      </motion.div>
+      </m.div>
     )
   }, [closeMenu, isDark, menuContent])
 
   return (
-    <header>
-      <OutsideClickDetector isMenuOpen={isMenuOpen} setMenuOpen={setMenuOpen}>
-        <nav
-          role="navigation"
-          aria-label="Main navigation"
-          className={classNames(
-            'flex items-center justify-between flex-wrap p-5 uppercase fixed top-0 w-full z-50 text-white',
-            {
-              'bg-white bg-opacity-90 text-primary drop-shadow-[0_2px_8px_rgba(0,0,0,0.25)]':
-                isDark,
-              'bg-gradient-to-b from-black/50 to-transparent': !isDark
-            }
-          )}
-        >
-          <div className="flex items-center flex-shrink-0">
-            <Link href="/" onClick={() => setMenuOpen(false)}>
-              <Image
-                src={isDark ? (logoDark?.url ?? '') : (logoLight?.url ?? '')}
-                alt={
-                  isDark
-                    ? (logoDark?.description ?? '')
-                    : (logoLight?.description ?? '')
-                }
-                className="w-auto h-7 drop-shadow-[0_2px_8px_rgba(0,0,0,0.25)]"
-                width="100"
-                height="27"
-              />
-            </Link>
-          </div>
-          <div className="block md:hidden">
-            <button
-              className="flex items-center p-3"
-              aria-expanded={isMenuOpen}
-              aria-controls="mobile-menu"
-              onClick={e => {
-                e.stopPropagation()
-                setMenuOpen(!isMenuOpen)
-              }}
-            >
-              {isMenuOpen ? (
-                <CrossIcon className={'h-6 w-6 text-primary'} />
-              ) : (
-                <HamburgerMenu
-                  className={classNames('h-6 w-6', {
-                    'fill-white': !isDark,
-                    'fill-primary': isDark
-                  })}
+    <LazyMotion features={domAnimation}>
+      <header>
+        <OutsideClickDetector isMenuOpen={isMenuOpen} setMenuOpen={setMenuOpen}>
+          <nav
+            role="navigation"
+            aria-label="Main navigation"
+            className={classNames(
+              'flex items-center justify-between flex-wrap p-5 uppercase fixed top-0 w-full z-50 text-white',
+              {
+                'bg-white bg-opacity-90 text-primary drop-shadow-[0_2px_8px_rgba(0,0,0,0.25)]':
+                  isDark,
+                'bg-gradient-to-b from-black/50 to-transparent': !isDark
+              }
+            )}
+          >
+            <div className="flex items-center flex-shrink-0">
+              <Link href="/" onClick={() => setMenuOpen(false)}>
+                <Image
+                  src={isDark ? (logoDark?.url ?? '') : (logoLight?.url ?? '')}
+                  alt={
+                    isDark
+                      ? (logoDark?.description ?? '')
+                      : (logoLight?.description ?? '')
+                  }
+                  className="w-auto h-7 drop-shadow-[0_2px_8px_rgba(0,0,0,0.25)]"
+                  width="100"
+                  height="27"
                 />
-              )}
-            </button>
-          </div>
-          <div className="hidden md:flex flex-1 justify-center">
-            {desktopMenu}
-          </div>
-          <div className="hidden md:flex items-center justify-end">
-            <LanguageSelector isDark={isDark} onClick={closeMenu} />
-          </div>
-        </nav>
-
-        <AnimatePresence>
-          {!isDesktop && isMenuOpen && (
-            <>
-              <motion.div
-                key="mobile-backdrop"
-                className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                onClick={closeMenu}
-              />
-              <motion.aside
-                key="mobile-drawer"
-                id="mobile-menu"
-                role="dialog"
-                aria-modal="true"
-                aria-label="Main menu"
-                className="fixed right-0 top-0 z-50 h-[100dvh] w-screen sm:w-[min(22rem,88vw)] bg-white text-primary shadow-2xl"
-                initial={{ x: '100%' }}
-                animate={{ x: 0 }}
-                exit={{ x: '100%' }}
-                transition={{ type: 'tween', duration: 0.25 }}
-                onClick={e => e.stopPropagation()}
+              </Link>
+            </div>
+            <div className="block md:hidden">
+              <button
+                className="flex items-center p-3"
+                aria-expanded={isMenuOpen}
+                aria-controls="mobile-menu"
+                onClick={e => {
+                  e.stopPropagation()
+                  setMenuOpen(!isMenuOpen)
+                }}
               >
+                {isMenuOpen ? (
+                  <CrossIcon className={'h-6 w-6 text-primary'} />
+                ) : (
+                  <HamburgerMenu
+                    className={classNames('h-6 w-6', {
+                      'fill-white': !isDark,
+                      'fill-primary': isDark
+                    })}
+                  />
+                )}
+              </button>
+            </div>
+            <div className="hidden md:flex flex-1 justify-center">
+              {desktopMenu}
+            </div>
+            <div className="hidden md:flex items-center justify-end">
+              <LanguageSelector isDark={isDark} onClick={closeMenu} />
+            </div>
+          </nav>
+
+          <AnimatePresence>
+            {!isDesktop && isMenuOpen && (
+              <>
+                <m.div
+                  key="mobile-backdrop"
+                  className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  onClick={closeMenu}
+                />
+                <m.aside
+                  key="mobile-drawer"
+                  id="mobile-menu"
+                  role="dialog"
+                  aria-modal="true"
+                  aria-label="Main menu"
+                  className="fixed right-0 top-0 z-50 h-[100dvh] w-screen sm:w-[min(22rem,88vw)] bg-white text-primary shadow-2xl"
+                  initial={{ x: '100%' }}
+                  animate={{ x: 0 }}
+                  exit={{ x: '100%' }}
+                  transition={{ type: 'tween', duration: 0.25 }}
+                  onClick={e => e.stopPropagation()}
+                >
                 <div className="flex items-center justify-between py-6 px-5 border-b border-black/10">
                   <Link href="/" onClick={closeMenu} className="no-underline">
                     <Image
@@ -254,11 +255,12 @@ export const Header: FunctionComponent<HeaderProps> = ({
                     <LanguageSelector isDark={true} onClick={closeMenu} />
                   </div>
                 </div>
-              </motion.aside>
-            </>
-          )}
-        </AnimatePresence>
-      </OutsideClickDetector>
-    </header>
+                </m.aside>
+              </>
+            )}
+          </AnimatePresence>
+        </OutsideClickDetector>
+      </header>
+    </LazyMotion>
   )
 }
