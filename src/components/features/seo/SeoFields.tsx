@@ -12,6 +12,17 @@ const stripQueryAndHash = (path: string) => path.split('#')[0].split('?')[0]
 const stripTrailingSlash = (path: string) =>
   path.length > 1 && path.endsWith('/') ? path.slice(0, -1) : path
 
+const normalizeTwitterHandle = (value: unknown) => {
+  if (typeof value !== 'string') return undefined
+  const trimmed = value.trim()
+  if (!trimmed) return undefined
+
+  // Reject URLs — twitter:site/twitter:creator expect handles (e.g. @encrudo)
+  if (/^https?:\/\//i.test(trimmed)) return undefined
+
+  return trimmed.startsWith('@') ? trimmed : `@${trimmed}`
+}
+
 const stripLocalePrefix = (path: string, locales: string[] | undefined) => {
   if (!locales?.length) return path
   const normalized = path.startsWith('/') ? path : `/${path}`
@@ -78,6 +89,12 @@ export const SeoFields = ({
   const { locale, locales, defaultLocale, asPath } = useRouter()
 
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
+  const twitterSite = normalizeTwitterHandle(
+    process.env.NEXT_PUBLIC_TWITTER_SITE || process.env.NEXT_PUBLIC_TWITTER
+  )
+  const twitterHandle = normalizeTwitterHandle(
+    process.env.NEXT_PUBLIC_TWITTER_HANDLE || process.env.NEXT_PUBLIC_TWITTER
+  )
 
   const url = generateUrl(siteUrl, locale || '', asPath, {
     defaultLocale: defaultLocale || 'es',
@@ -132,8 +149,9 @@ export const SeoFields = ({
           }))
         },
         twitter: {
-          ...(url ? { site: url } : {}),
-          cardType: 'summary_large_image'
+          cardType: 'summary_large_image',
+          ...(twitterSite ? { site: twitterSite } : {}),
+          ...(twitterHandle ? { handle: twitterHandle } : {})
         }
       })}
     </Head>
