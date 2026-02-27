@@ -1,12 +1,32 @@
 import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
+import dynamic from 'next/dynamic'
+import type { ComponentType, Ref } from 'react'
 import { useRef, useState } from 'react'
-import ReCAPTCHA from 'react-google-recaptcha'
 
 import * as gtag from '../../helpers/gtag'
 
 import ErrorIcon from '@icons/error.svg'
 import SuccessIcon from '@icons/success.svg'
+
+type ReCAPTCHAInstance = {
+  executeAsync: () => Promise<string | null>
+  reset: () => void
+}
+
+type ReCAPTCHAProps = {
+  sitekey: string
+  onChange?: (value: string | null) => void
+  size?: 'compact' | 'normal' | 'invisible'
+  badge?: 'bottomright' | 'bottomleft' | 'inline'
+  asyncScriptOnLoad?: () => void
+}
+
+const ReCAPTCHA = dynamic(() => import('react-google-recaptcha'), {
+  ssr: false
+}) as unknown as ComponentType<
+  ReCAPTCHAProps & { ref?: Ref<ReCAPTCHAInstance> }
+>
 
 type ContactFormProps = {
   isSuccess: boolean
@@ -31,7 +51,7 @@ export const ContactForm = ({ isSuccess, setIsSuccess }: ContactFormProps) => {
 
   const inputClass = 'border-b pt-10 outline-none'
 
-  const recaptchaRef = useRef<ReCAPTCHA | null>(null)
+  const recaptchaRef = useRef<ReCAPTCHAInstance | null>(null)
 
   async function handleSubmit(event: any) {
     event.preventDefault()
@@ -149,7 +169,7 @@ export const ContactForm = ({ isSuccess, setIsSuccess }: ContactFormProps) => {
         onChange={handleCaptchaChange}
         size="invisible"
         badge="bottomright"
-        ref={recaptchaRef}
+        ref={recaptchaRef as unknown as Ref<ReCAPTCHAInstance>}
         asyncScriptOnLoad={asyncScriptOnLoad}
       />
       <p className="pt-5 text-sm">

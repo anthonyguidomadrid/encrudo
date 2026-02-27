@@ -1,5 +1,5 @@
-const withBundleAnalyzer = require('@next/bundle-analyzer');
-const withPWA = require('next-pwa');
+const withBundleAnalyzer = require('@next/bundle-analyzer')
+const withPWA = require('next-pwa')
 
 module.exports = [
   [
@@ -10,14 +10,14 @@ module.exports = [
         dest: `public`,
         register: false,
         swSrc: './service-worker.js',
-        publicExcludes: ['!favicon/**/*'],
-      },
-    },
+        publicExcludes: ['!favicon/**/*']
+      }
+    }
   ],
   [
     withBundleAnalyzer,
     {
-      enabled: process.env.BUNDLE_ANALYZE === 'true',
-    },
-  ],
-];
+      enabled: process.env.BUNDLE_ANALYZE === 'true'
+    }
+  ]
+]

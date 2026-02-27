@@ -206,55 +206,55 @@ export const Header: FunctionComponent<HeaderProps> = ({
                   transition={{ type: 'tween', duration: 0.25 }}
                   onClick={e => e.stopPropagation()}
                 >
-                <div className="flex items-center justify-between py-6 px-5 border-b border-black/10">
-                  <Link href="/" onClick={closeMenu} className="no-underline">
-                    <Image
-                      src={logoDark?.url ?? logoLight?.url ?? ''}
-                      alt={
-                        logoDark?.description ?? logoLight?.description ?? ''
-                      }
-                      className="w-auto h-7"
-                      width="100"
-                      height="27"
-                    />
-                  </Link>
-                  <button
-                    className="p-2"
-                    aria-label="Close menu"
-                    onClick={closeMenu}
-                  >
-                    <CrossIcon
-                      className={'h-6 w-6 text-primary cursor-pointer'}
-                    />
-                  </button>
-                </div>
-
-                <div className="h-full overflow-y-auto px-5 py-6">
-                  <ul className="list-none p-0 m-0 flex flex-col gap-2 text-base">
-                    {menuContent?.map((item, idx) => (
-                      <li key={idx}>
-                        <Link
-                          className={classNames(
-                            'no-underline w-full block rounded-xl px-4 py-3 hover:bg-primary/5 active:bg-primary/10',
-                            {
-                              'border border-primary/30':
-                                item?.isCta && isDesktop
-                            }
-                          )}
-                          href={item?.link ?? ''}
-                          onClick={closeMenu}
-                          scroll={!item?.link?.includes('#')}
-                        >
-                          {item?.name}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="mt-6 pt-4 border-t border-black/10">
-                    <LanguageSelector isDark={true} onClick={closeMenu} />
+                  <div className="flex items-center justify-between py-6 px-5 border-b border-black/10">
+                    <Link href="/" onClick={closeMenu} className="no-underline">
+                      <Image
+                        src={logoDark?.url ?? logoLight?.url ?? ''}
+                        alt={
+                          logoDark?.description ?? logoLight?.description ?? ''
+                        }
+                        className="w-auto h-7"
+                        width="100"
+                        height="27"
+                      />
+                    </Link>
+                    <button
+                      className="p-2"
+                      aria-label="Close menu"
+                      onClick={closeMenu}
+                    >
+                      <CrossIcon
+                        className={'h-6 w-6 text-primary cursor-pointer'}
+                      />
+                    </button>
                   </div>
-                </div>
+
+                  <div className="h-full overflow-y-auto px-5 py-6">
+                    <ul className="list-none p-0 m-0 flex flex-col gap-2 text-base">
+                      {menuContent?.map((item, idx) => (
+                        <li key={idx}>
+                          <Link
+                            className={classNames(
+                              'no-underline w-full block rounded-xl px-4 py-3 hover:bg-primary/5 active:bg-primary/10',
+                              {
+                                'border border-primary/30':
+                                  item?.isCta && isDesktop
+                              }
+                            )}
+                            href={item?.link ?? ''}
+                            onClick={closeMenu}
+                            scroll={!item?.link?.includes('#')}
+                          >
+                            {item?.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="mt-6 pt-4 border-t border-black/10">
+                      <LanguageSelector isDark={true} onClick={closeMenu} />
+                    </div>
+                  </div>
                 </m.aside>
               </>
             )}

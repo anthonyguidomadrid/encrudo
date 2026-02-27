@@ -1,7 +1,8 @@
 import { useTranslation } from 'next-i18next'
 import Image from 'next/image'
 import Link from 'next/link'
-import MailchimpSubscribe from 'react-mailchimp-subscribe'
+import dynamic from 'next/dynamic'
+import type { ComponentType, ReactNode } from 'react'
 
 import { ContactContent, Logo, SocialMediaContent, MenuItem } from '../layout'
 
@@ -10,6 +11,26 @@ import { FooterWrapper } from '.'
 import { NewsletterForm } from '@src/components/newsletterForm'
 import { transformPhoneNumberToLink } from '@src/helpers/transformPhoneNumber'
 import { getAddress } from '@src/helpers/getAddress'
+
+type MailchimpSubscribeStatus = 'sending' | 'success' | 'error' | null
+
+type MailchimpSubscribeRenderArgs = {
+  subscribe: (data: Record<string, unknown>) => void
+  status: MailchimpSubscribeStatus
+  message?: string | null
+}
+
+type MailchimpSubscribeProps = {
+  url: string
+  render: (args: MailchimpSubscribeRenderArgs) => ReactNode
+}
+
+const MailchimpSubscribe = dynamic(
+  () => import('react-mailchimp-subscribe').then(mod => mod.default),
+  {
+    ssr: false
+  }
+) as unknown as ComponentType<MailchimpSubscribeProps>
 
 export type FooterProps = {
   logo?: Logo
