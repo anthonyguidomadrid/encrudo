@@ -31,12 +31,7 @@ module.exports = {
           'system-ui',
           'sans-serif'
         ],
-        header: [
-          'var(--font-italiana)',
-          'ui-serif',
-          'Georgia',
-          'serif'
-        ]
+        header: ['var(--font-italiana)', 'ui-serif', 'Georgia', 'serif']
       }
     }
   },

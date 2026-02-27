@@ -1,4 +1,5 @@
 import classNames from 'classnames'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 export type LanguageSelectorProps = {
@@ -10,38 +11,31 @@ export const LanguageSelector = ({
   isDark = true,
   onClick
 }: LanguageSelectorProps) => {
-  const { locales } = useRouter()
   const router = useRouter()
-
-  const changeLocale = (value: string) => {
-    router.push(
-      { pathname: router.pathname, query: router.query },
-      router.asPath,
-      {
-        locale: String(value)
-      }
-    )
-  }
+  const { locales, locale: activeLocale, asPath } = router
 
   return (
     <div className={classNames('flex p-3', { 'text-primary': isDark })}>
       {locales?.map((locale, idx) => {
+        const isActive = locale === activeLocale
         return (
-          <button
+          <Link
             key={idx}
             className={classNames(
-              'uppercase border-r pr-2 last:pl-2 last:border-0 last:pr-0 hover:opacity-70 cursor-pointer',
+              'uppercase border-r pr-2 last:pl-2 last:border-0 last:pr-0 hover:opacity-70 cursor-pointer no-underline',
               {
-                'border-primary': isDark
+                'border-primary': isDark,
+                'opacity-60 pointer-events-none': isActive
               }
             )}
-            onClick={() => {
-              changeLocale(locale)
-              onClick && onClick()
-            }}
+            href={asPath || '/'}
+            locale={locale}
+            hrefLang={locale}
+            aria-current={isActive ? 'page' : undefined}
+            onClick={() => onClick && onClick()}
           >
             {locale}
-          </button>
+          </Link>
         )
       })}
     </div>

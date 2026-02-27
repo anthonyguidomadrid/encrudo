@@ -48,6 +48,9 @@ export const Footer = ({
   const { t } = useTranslation()
   const phoneNumber = transformPhoneNumberToLink(contactContent?.phone)
   const linkClassName = 'no-underline hover:opacity-70'
+  const emailHref = contactContent?.email
+    ? `mailto:${contactContent.email}`
+    : undefined
 
   return (
     <footer role="contentinfo">
@@ -67,10 +70,10 @@ export const Footer = ({
                 {getAddress(contactContent)}
               </address>
               <Link
-                href={`mailto: ${contactContent?.email}`}
-                target={'_blank'}
+                href={emailHref ?? '#'}
                 className={linkClassName}
                 rel="noreferrer"
+                aria-disabled={!emailHref}
               >
                 {contactContent?.email}
               </Link>
@@ -81,35 +84,47 @@ export const Footer = ({
             <FooterWrapper title={t('footer.link')}>
               <nav aria-label={t('footer.link')}>
                 <ul className="list-none p-0 m-0 flex flex-col items-center gap-1">
-                  {menuContent?.map((menuItem, index) => (
-                    <li key={index}>
-                      <Link
-                        href={menuItem?.link ?? ''}
-                        className={linkClassName}
-                        scroll={!menuItem?.link?.includes('#')}
-                      >
-                        {menuItem?.name}
-                      </Link>
-                    </li>
-                  ))}
+                  {menuContent?.map((menuItem, index) => {
+                    const href = menuItem?.link?.trim()
+                    const label = menuItem?.name?.trim()
+                    if (!href || !label) return null
+
+                    return (
+                      <li key={`${href}-${index}`}>
+                        <Link
+                          href={href}
+                          className={linkClassName}
+                          scroll={!href.includes('#')}
+                        >
+                          {label}
+                        </Link>
+                      </li>
+                    )
+                  })}
                 </ul>
               </nav>
             </FooterWrapper>
             <FooterWrapper title={t('footer.social')}>
               <nav aria-label={t('footer.social')}>
                 <ul className="list-none p-0 m-0 flex flex-col items-center gap-1">
-                  {socialMediaContent?.map((menuItem, index) => (
-                    <li key={index}>
-                      <Link
-                        href={menuItem?.link ?? ''}
-                        target={'_blank'}
-                        className={linkClassName}
-                        rel="noreferrer"
-                      >
-                        {menuItem?.name}
-                      </Link>
-                    </li>
-                  ))}
+                  {socialMediaContent?.map((menuItem, index) => {
+                    const href = menuItem?.link?.trim()
+                    const label = menuItem?.name?.trim()
+                    if (!href || !label) return null
+
+                    return (
+                      <li key={`${href}-${index}`}>
+                        <Link
+                          href={href}
+                          target={'_blank'}
+                          className={linkClassName}
+                          rel="noreferrer"
+                        >
+                          {label}
+                        </Link>
+                      </li>
+                    )
+                  })}
                 </ul>
               </nav>
             </FooterWrapper>

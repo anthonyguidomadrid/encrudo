@@ -98,24 +98,30 @@ export const Header: FunctionComponent<HeaderProps> = ({
           id="main-menu"
           className="flex flex-row justify-center gap-5 list-none p-0 m-0"
         >
-          {menuContent?.map((item, idx) => (
-            <li key={idx} className="inline-block">
-              <Link
-                className={classNames(
-                  'no-underline hover:opacity-70 drop-shadow-[0_2px_8px_rgba(0,0,0,0.25)]',
-                  {
-                    'text-primary border-primary': isDark,
-                    'border px-3 py-2': item?.isCta
-                  }
-                )}
-                href={item?.link ?? ''}
-                onClick={closeMenu}
-                scroll={!item?.link?.includes('#')}
-              >
-                {item?.name}
-              </Link>
-            </li>
-          ))}
+          {menuContent?.map((item, idx) => {
+            const href = item?.link?.trim()
+            const label = item?.name?.trim()
+            if (!href || !label) return null
+
+            return (
+              <li key={`${href}-${idx}`} className="inline-block">
+                <Link
+                  className={classNames(
+                    'no-underline hover:opacity-70 drop-shadow-[0_2px_8px_rgba(0,0,0,0.25)]',
+                    {
+                      'text-primary border-primary': isDark,
+                      'border px-3 py-2': item?.isCta
+                    }
+                  )}
+                  href={href}
+                  onClick={closeMenu}
+                  scroll={!href.includes('#')}
+                >
+                  {label}
+                </Link>
+              </li>
+            )
+          })}
         </ul>
       </m.div>
     )
@@ -231,24 +237,30 @@ export const Header: FunctionComponent<HeaderProps> = ({
 
                   <div className="h-full overflow-y-auto px-5 py-6">
                     <ul className="list-none p-0 m-0 flex flex-col gap-2 text-base">
-                      {menuContent?.map((item, idx) => (
-                        <li key={idx}>
-                          <Link
-                            className={classNames(
-                              'no-underline w-full block rounded-xl px-4 py-3 hover:bg-primary/5 active:bg-primary/10',
-                              {
-                                'border border-primary/30':
-                                  item?.isCta && isDesktop
-                              }
-                            )}
-                            href={item?.link ?? ''}
-                            onClick={closeMenu}
-                            scroll={!item?.link?.includes('#')}
-                          >
-                            {item?.name}
-                          </Link>
-                        </li>
-                      ))}
+                      {menuContent?.map((item, idx) => {
+                        const href = item?.link?.trim()
+                        const label = item?.name?.trim()
+                        if (!href || !label) return null
+
+                        return (
+                          <li key={`${href}-${idx}`}>
+                            <Link
+                              className={classNames(
+                                'no-underline w-full block rounded-xl px-4 py-3 hover:bg-primary/5 active:bg-primary/10',
+                                {
+                                  'border border-primary/30':
+                                    item?.isCta && isDesktop
+                                }
+                              )}
+                              href={href}
+                              onClick={closeMenu}
+                              scroll={!href.includes('#')}
+                            >
+                              {label}
+                            </Link>
+                          </li>
+                        )
+                      })}
                     </ul>
 
                     <div className="mt-6 pt-4 border-t border-black/10">
