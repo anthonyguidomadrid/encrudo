@@ -47,4 +47,8 @@ next-env.d.ts
 .idea/modules.xml
 .idea/vcs.xml
 
-
+# next-sitemap
+sitemap.xml
+sitemap-index.xml
+robots.txt
+sitemap-*.xml
