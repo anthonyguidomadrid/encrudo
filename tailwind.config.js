@@ -25,8 +25,18 @@ module.exports = {
         }
       },
       fontFamily: {
-        sans: ['Montserrat'],
-        header: ['Italiana']
+        sans: [
+          'var(--font-montserrat)',
+          'ui-sans-serif',
+          'system-ui',
+          'sans-serif'
+        ],
+        header: [
+          'var(--font-italiana)',
+          'ui-serif',
+          'Georgia',
+          'serif'
+        ]
       }
     }
   },

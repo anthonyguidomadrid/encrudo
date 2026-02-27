@@ -2,6 +2,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 import { LocalBusinessJsonLd } from 'next-seo'
 import { appWithTranslation } from 'next-i18next'
 import type { AppContext, AppProps } from 'next/app'
+import { Italiana, Montserrat } from 'next/font/google'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
@@ -19,6 +20,21 @@ import { client } from '@src/lib/client'
 import '../styles/global.css'
 import 'splide-nextjs/splide/dist/css/themes/splide-default.min.css'
 import 'react-image-lightbox/style.css'
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  style: ['normal', 'italic'],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  display: 'swap',
+  variable: '--font-montserrat'
+})
+
+const italiana = Italiana({
+  subsets: ['latin'],
+  weight: '400',
+  display: 'swap',
+  variable: '--font-italiana'
+})
 
 export type AppProperties = AppProps & {
   data: LayoutQuery
@@ -43,44 +59,54 @@ const App = ({ Component, pageProps, data }: AppProperties) => {
   const url = process.env.NEXT_PUBLIC_SITE_URL
 
   return (
-    <Layout
-      menuContent={data?.menuCollection?.items?.sort(
-        (a, b) => (a?.indexOrder ?? 0) - (b?.indexOrder ?? 0)
-      )}
-      assetContent={assetContent}
-      contactContent={contactContent}
-      socialMediaContent={socialMediaContent}
+    <div
+      className={`${montserrat.className} ${montserrat.variable} ${italiana.variable}`}
     >
-      <LocalBusinessJsonLd
-        type="Store"
-        name={pageProps?.title}
-        description={pageProps?.seo?.pageDescription}
-        url={url}
-        telephone={contactContent?.phone!}
-        address={{
-          streetAddress: contactContent?.streetAddress ?? undefined,
-          addressLocality: contactContent?.addressLocality ?? undefined,
-          addressRegion: contactContent?.addressRegion ?? undefined,
-          postalCode: contactContent?.postalCode ?? undefined,
-          addressCountry: contactContent?.addressCountry ?? undefined
-        }}
-        openingHoursSpecification={[
-          {
-            opens: '09:00',
-            closes: '18:00',
-            dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
-          }
-        ]}
-      />
-      <LogoJsonLd logo={assetContent?.logoDark?.url!} url={url!} />
-      <div
-        key={router.asPath}
-        className="animate-[pageFadeIn_260ms_ease-out_both] motion-reduce:animate-none"
+      <Layout
+        menuContent={data?.menuCollection?.items?.sort(
+          (a, b) => (a?.indexOrder ?? 0) - (b?.indexOrder ?? 0)
+        )}
+        assetContent={assetContent}
+        contactContent={contactContent}
+        socialMediaContent={socialMediaContent}
       >
-        <Component {...pageProps} />
-      </div>
-      <SpeedInsights />
-    </Layout>
+        <LocalBusinessJsonLd
+          type="Store"
+          name={pageProps?.title}
+          description={pageProps?.seo?.pageDescription}
+          url={url}
+          telephone={contactContent?.phone!}
+          address={{
+            streetAddress: contactContent?.streetAddress ?? undefined,
+            addressLocality: contactContent?.addressLocality ?? undefined,
+            addressRegion: contactContent?.addressRegion ?? undefined,
+            postalCode: contactContent?.postalCode ?? undefined,
+            addressCountry: contactContent?.addressCountry ?? undefined
+          }}
+          openingHoursSpecification={[
+            {
+              opens: '09:00',
+              closes: '18:00',
+              dayOfWeek: [
+                'Monday',
+                'Tuesday',
+                'Wednesday',
+                'Thursday',
+                'Friday'
+              ]
+            }
+          ]}
+        />
+        <LogoJsonLd logo={assetContent?.logoDark?.url!} url={url!} />
+        <div
+          key={router.asPath}
+          className="animate-[pageFadeIn_260ms_ease-out_both] motion-reduce:animate-none"
+        >
+          <Component {...pageProps} />
+        </div>
+        <SpeedInsights />
+      </Layout>
+    </div>
   )
 }
 
