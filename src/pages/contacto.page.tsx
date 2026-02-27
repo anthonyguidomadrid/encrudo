@@ -7,6 +7,7 @@ import { client } from '@src/lib/client'
 import { getServerSideTranslations } from '@src/pages/utils/get-serverside-translations'
 import { LINKS } from '@src/constants/links'
 import dynamic from 'next/dynamic'
+import { getLayoutData } from '@src/pages/utils/get-layout-data'
 
 const PageHeader = dynamic(
   () =>
@@ -77,9 +78,12 @@ const ContactPage = ({
 
 export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
   try {
-    const data = await client.pageContact({
-      locale
-    })
+    const [layoutData, data] = await Promise.all([
+      getLayoutData(locale),
+      client.pageContact({
+        locale
+      })
+    ])
     const page = data.pageContactCollection?.items[0]
 
     if (!page) {
@@ -91,6 +95,7 @@ export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
     return {
       props: {
         ...(await getServerSideTranslations(locale)),
+        layoutData,
         page
       }
     }

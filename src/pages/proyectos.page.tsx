@@ -4,6 +4,7 @@ import { client } from '@src/lib/client'
 import { getServerSideTranslations } from '@src/pages/utils/get-serverside-translations'
 import dynamic from 'next/dynamic'
 import { LINKS } from '@src/constants/links'
+import { getLayoutData } from '@src/pages/utils/get-layout-data'
 
 const PageHeader = dynamic(
   () =>
@@ -50,9 +51,12 @@ const ProjectsPage = ({
 
 export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
   try {
-    const data = await client.pageProjects({
-      locale
-    })
+    const [layoutData, data] = await Promise.all([
+      getLayoutData(locale),
+      client.pageProjects({
+        locale
+      })
+    ])
     const page = data.pageProjectsCollection?.items[0]
 
     if (!page) {
@@ -64,6 +68,7 @@ export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
     return {
       props: {
         ...(await getServerSideTranslations(locale)),
+        layoutData,
         page
       }
     }

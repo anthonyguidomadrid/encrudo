@@ -3,20 +3,7 @@ import Script from 'next/script'
 import { GA_TRACKING_ID, GTAG_TRACKING_ID } from '@src/helpers/gtag'
 
 export default function Document(props: DocumentProps) {
-  const data = props?.__NEXT_DATA__.props?.data
   const locale = props?.__NEXT_DATA__?.locale
-  const favicons = data?.assetsCollection?.items?.[0].favicons || {}
-  const websiteName = data?.componentContactCollection?.items[0].websiteName
-
-  const faviconUrls = {
-    appleTouchIcon: favicons?.appleTouchIcon?.url,
-    favicon96X96: favicons?.favicon96X96?.url,
-    faviconIco: favicons?.faviconIco?.url,
-    faviconSvg: favicons?.faviconSvg?.url,
-    webAppManifest192: favicons?.webAppManifest192?.url,
-    webAppManifest512: favicons?.webAppManifest512?.url,
-    manifestJson: favicons?.manifestJson?.url
-  }
 
   return (
     <Html lang={locale || 'es'} className="scroll-smooth">
@@ -24,51 +11,6 @@ export default function Document(props: DocumentProps) {
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, viewport-fit=cover"
-        />
-        {/* Apple Touch Icon */}
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href={faviconUrls.appleTouchIcon}
-        />
-        <meta name="apple-mobile-web-app-title" content={websiteName} />
-        {/* PNG Favicons */}
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href={faviconUrls.favicon96X96}
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href={faviconUrls.favicon96X96}
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="96x96"
-          href={faviconUrls.favicon96X96}
-        />
-        {/* SVG Favicon */}
-        <link rel="icon" type="image/svg+xml" href={faviconUrls.faviconSvg} />
-        {/* ICO Favicon */}
-        <link rel="icon" type="image/x-icon" href={faviconUrls.faviconIco} />
-        {/* Web App Manifest */}
-        <link rel="manifest" href={faviconUrls.manifestJson} />
-        {/* Web App Manifest PNGs */}
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="192x192"
-          href={faviconUrls.webAppManifest192}
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="512x512"
-          href={faviconUrls.webAppManifest512}
         />
         <Script
           id={GA_TRACKING_ID}

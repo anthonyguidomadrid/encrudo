@@ -24,6 +24,7 @@ const Button = dynamic(
 import { client } from '@src/lib/client'
 import { getServerSideTranslations } from '@src/pages/utils/get-serverside-translations'
 import { LINKS } from '@src/constants/links'
+import { getLayoutData } from '@src/pages/utils/get-layout-data'
 
 const Page = ({
   product
@@ -71,10 +72,13 @@ export const getServerSideProps: GetServerSideProps = async ({
   }
 
   try {
-    const data = await client.pageProject({
-      slug: params.slug.toString(),
-      locale
-    })
+    const [layoutData, data] = await Promise.all([
+      getLayoutData(locale),
+      client.pageProject({
+        slug: params.slug.toString(),
+        locale
+      })
+    ])
     const product = data.pageProjectCollection?.items[0]
 
     if (!product) {
@@ -86,6 +90,7 @@ export const getServerSideProps: GetServerSideProps = async ({
     return {
       props: {
         ...(await getServerSideTranslations(locale)),
+        layoutData,
         product
       }
     }

@@ -17,6 +17,7 @@ const Breadcrumbs = dynamic(
 import { LINKS } from '@src/constants/links'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
+import { getLayoutData } from '@src/pages/utils/get-layout-data'
 
 const Page = ({
   page: {
@@ -77,10 +78,13 @@ export const getServerSideProps: GetServerSideProps = async ({
   }
 
   try {
-    const data = await client.pageEditor({
-      slug: params.slug.toString(),
-      locale
-    })
+    const [layoutData, data] = await Promise.all([
+      getLayoutData(locale),
+      client.pageEditor({
+        slug: params.slug.toString(),
+        locale
+      })
+    ])
     const page = data.pageEditorCollection?.items[0]
 
     if (!page) {
@@ -92,6 +96,7 @@ export const getServerSideProps: GetServerSideProps = async ({
     return {
       props: {
         ...(await getServerSideTranslations(locale)),
+        layoutData,
         page
       }
     }

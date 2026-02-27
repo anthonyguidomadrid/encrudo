@@ -6,6 +6,7 @@ import { SeoFields } from '@src/components/features/seo/SeoFields'
 import { getServerSideTranslations } from '@src/pages/utils/get-serverside-translations'
 import { client } from '@src/lib/client'
 import { ImageFieldsFragment } from '@src/lib/__generated/sdk'
+import { getLayoutData } from '@src/pages/utils/get-layout-data'
 
 const ErrorPage404 = ({ notFoundBackgroundImageUrl }) => {
   const { t } = useTranslation()
@@ -42,14 +43,19 @@ const ErrorPage404 = ({ notFoundBackgroundImageUrl }) => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  const data = await client.notFound({
-    locale
-  })
+  const [layoutData, data] = await Promise.all([
+    getLayoutData(locale),
+    client.notFound({
+      locale
+    })
+  ])
+
   const notFoundBackgroundImageUrl =
     data.assetsCollection?.items[0]?.notFoundBackgroundImage?.url
   return {
     props: {
       ...(await getServerSideTranslations(locale)),
+      layoutData,
       notFoundBackgroundImageUrl
     }
   }

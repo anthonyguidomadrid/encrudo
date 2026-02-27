@@ -25,6 +25,7 @@ const Button = dynamic(
 import { useTranslation } from 'next-i18next'
 import { LINKS } from '@src/constants/links'
 import { client } from '@src/lib/client'
+import { getLayoutData } from '@src/pages/utils/get-layout-data'
 
 const Page = ({
   page: { seo, title, subtitle, slider, projectsCollection }
@@ -70,7 +71,11 @@ const Page = ({
 
 export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
   try {
-    const data = await client.pageLanding({ locale })
+    const [layoutData, data] = await Promise.all([
+      getLayoutData(locale),
+      client.pageLanding({ locale })
+    ])
+
     const page = data.pageHomeCollection?.items[0]
 
     if (!page) {
@@ -82,6 +87,7 @@ export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
     return {
       props: {
         ...(await getServerSideTranslations(locale)),
+        layoutData,
         page
       }
     }

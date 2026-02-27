@@ -1,7 +1,8 @@
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import Head from 'next/head'
 import { LocalBusinessJsonLd } from 'next-seo'
 import { appWithTranslation } from 'next-i18next'
-import type { AppContext, AppProps } from 'next/app'
+import type { AppProps } from 'next/app'
 import { Italiana, Montserrat } from 'next/font/google'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
@@ -14,8 +15,7 @@ import {
   Layout
 } from '@src/components/templates/layout'
 import { LogoJsonLd } from '@src/components/features/seo'
-import { LayoutQuery } from '@src/lib/__generated/sdk'
-import { client } from '@src/lib/client'
+import type { LayoutQuery } from '@src/lib/__generated/sdk'
 
 import '../styles/global.css'
 import 'splide-nextjs/splide/dist/css/themes/splide-default.min.css'
@@ -37,10 +37,12 @@ const italiana = Italiana({
 })
 
 export type AppProperties = AppProps & {
-  data: LayoutQuery
+  pageProps: AppProps['pageProps'] & {
+    layoutData?: LayoutQuery
+  }
 }
 
-const App = ({ Component, pageProps, data }: AppProperties) => {
+const App = ({ Component, pageProps }: AppProperties) => {
   const router = useRouter()
   useEffect(() => {
     const handleRouteChange = (url: URL) => {
@@ -52,16 +54,88 @@ const App = ({ Component, pageProps, data }: AppProperties) => {
     }
   }, [router.events])
 
+  const data = pageProps.layoutData
+
   const contactContent = data?.componentContactCollection
     ?.items[0] as ContactContent
   const assetContent = data?.assetsCollection?.items[0] as AssetContent
   const socialMediaContent = data?.componentSocialMediaCollection?.items
   const url = process.env.NEXT_PUBLIC_SITE_URL
 
+  const favicons = data?.assetsCollection?.items?.[0]?.favicons
+  const websiteName = data?.componentContactCollection?.items?.[0]?.websiteName
+
   return (
     <div
       className={`${montserrat.className} ${montserrat.variable} ${italiana.variable}`}
     >
+      <Head>
+        {websiteName ? (
+          <meta name="apple-mobile-web-app-title" content={websiteName} />
+        ) : null}
+
+        {favicons?.appleTouchIcon?.url ? (
+          <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href={favicons.appleTouchIcon.url}
+          />
+        ) : null}
+
+        {favicons?.favicon96X96?.url ? (
+          <>
+            <link
+              rel="icon"
+              type="image/png"
+              sizes="16x16"
+              href={favicons.favicon96X96.url}
+            />
+            <link
+              rel="icon"
+              type="image/png"
+              sizes="32x32"
+              href={favicons.favicon96X96.url}
+            />
+            <link
+              rel="icon"
+              type="image/png"
+              sizes="96x96"
+              href={favicons.favicon96X96.url}
+            />
+          </>
+        ) : null}
+
+        {favicons?.faviconSvg?.url ? (
+          <link rel="icon" type="image/svg+xml" href={favicons.faviconSvg.url} />
+        ) : null}
+
+        {favicons?.faviconIco?.url ? (
+          <link rel="icon" type="image/x-icon" href={favicons.faviconIco.url} />
+        ) : null}
+
+        {favicons?.manifestJson?.url ? (
+          <link rel="manifest" href={favicons.manifestJson.url} />
+        ) : null}
+
+        {favicons?.webAppManifest192?.url ? (
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="192x192"
+            href={favicons.webAppManifest192.url}
+          />
+        ) : null}
+
+        {favicons?.webAppManifest512?.url ? (
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="512x512"
+            href={favicons.webAppManifest512.url}
+          />
+        ) : null}
+      </Head>
+
       <Layout
         menuContent={data?.menuCollection?.items?.sort(
           (a, b) => (a?.indexOrder ?? 0) - (b?.indexOrder ?? 0)
@@ -108,25 +182,6 @@ const App = ({ Component, pageProps, data }: AppProperties) => {
       </Layout>
     </div>
   )
-}
-
-App.getInitialProps = async ({ router }: AppContext) => {
-  const locale = router.locale
-  try {
-    const data = await client.layout({ locale })
-
-    if (!data) {
-      return {
-        notFound: true
-      }
-    }
-
-    return { data }
-  } catch {
-    return {
-      notFound: true
-    }
-  }
 }
 
 export default appWithTranslation(App)
