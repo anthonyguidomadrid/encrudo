@@ -18,6 +18,8 @@ module.exports = withPlugins(plugins, {
   env: {
     ENVIRONMENT_NAME: process.env.ENVIRONMENT_NAME
   },
+  trailingSlash: false,
+  skipTrailingSlashRedirect: false,
   experimental: {
     optimizePackageImports: ['framer-motion']
     // urlImports: true,
@@ -42,6 +44,60 @@ module.exports = withPlugins(plugins, {
     ]
   },
   pageExtensions: ['page.tsx', 'page.ts', 'page.jsx', 'page.js'],
+  async redirects() {
+    const redirects = []
+
+    const defaultLocale = i18n?.defaultLocale
+    if (defaultLocale) {
+      redirects.push(
+        {
+          source: `/${defaultLocale}`,
+          destination: '/',
+          permanent: true
+        },
+        {
+          source: `/${defaultLocale}/:path*`,
+          destination: '/:path*',
+          permanent: true
+        }
+      )
+    }
+
+    // Optional host normalization (www <-> apex) based on NEXT_PUBLIC_SITE_URL.
+    // This keeps a single canonical host without hard-coding a domain.
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
+    if (siteUrl && /^https?:\/\//.test(siteUrl)) {
+      try {
+        const { hostname } = new URL(siteUrl)
+        const preferWww = hostname.startsWith('www.')
+        const apex = preferWww ? hostname.slice(4) : hostname
+        const www = `www.${apex}`
+
+        const escapeForRegex = value =>
+          value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+
+        if (preferWww) {
+          redirects.push({
+            source: '/:path*',
+            has: [{ type: 'host', value: `^${escapeForRegex(apex)}$` }],
+            destination: `https://${www}/:path*`,
+            permanent: true
+          })
+        } else {
+          redirects.push({
+            source: '/:path*',
+            has: [{ type: 'host', value: `^${escapeForRegex(www)}$` }],
+            destination: `https://${apex}/:path*`,
+            permanent: true
+          })
+        }
+      } catch {
+        // ignore invalid NEXT_PUBLIC_SITE_URL
+      }
+    }
+
+    return redirects
+  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,

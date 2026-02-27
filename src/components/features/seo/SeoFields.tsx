@@ -9,6 +9,9 @@ const isAbsoluteHttpUrl = (value: unknown): value is string =>
 
 const stripQueryAndHash = (path: string) => path.split('#')[0].split('?')[0]
 
+const stripTrailingSlash = (path: string) =>
+  path.length > 1 && path.endsWith('/') ? path.slice(0, -1) : path
+
 const stripLocalePrefix = (path: string, locales: string[] | undefined) => {
   if (!locales?.length) return path
   const normalized = path.startsWith('/') ? path : `/${path}`
@@ -51,9 +54,11 @@ const generateUrl = (
         : `/${locale}${normalizedPath}`
       : normalizedPath
 
+  const finalPath = stripTrailingSlash(localizedPath)
+
   try {
     const url = new URL(siteUrl)
-    url.pathname = localizedPath
+    url.pathname = finalPath
     url.search = ''
     url.hash = ''
     return url.toString()
