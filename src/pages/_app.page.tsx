@@ -106,7 +106,11 @@ const App = ({ Component, pageProps }: AppProperties) => {
         ) : null}
 
         {favicons?.faviconSvg?.url ? (
-          <link rel="icon" type="image/svg+xml" href={favicons.faviconSvg.url} />
+          <link
+            rel="icon"
+            type="image/svg+xml"
+            href={favicons.faviconSvg.url}
+          />
         ) : null}
 
         {favicons?.faviconIco?.url ? (

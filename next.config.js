@@ -68,13 +68,32 @@ module.exports = withPlugins(plugins, {
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
     if (siteUrl && /^https?:\/\//.test(siteUrl)) {
       try {
-        const { hostname } = new URL(siteUrl)
+        const parsed = new URL(siteUrl)
+        const { hostname, protocol } = parsed
         const preferWww = hostname.startsWith('www.')
         const apex = preferWww ? hostname.slice(4) : hostname
         const www = `www.${apex}`
+        const canonicalHost = preferWww ? www : apex
 
         const escapeForRegex = value =>
           value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+
+        // HTTPS normalization: only apply in production behind a proxy/CDN that
+        // sets x-forwarded-proto. Most hosts do this already, but this prevents
+        // accidental http indexing if it ever happens.
+        if (
+          process.env.NODE_ENV === 'production' &&
+          protocol === 'https:' &&
+          canonicalHost &&
+          canonicalHost !== 'localhost'
+        ) {
+          redirects.push({
+            source: '/:path*',
+            has: [{ type: 'header', key: 'x-forwarded-proto', value: 'http' }],
+            destination: `https://${canonicalHost}/:path*`,
+            permanent: true
+          })
+        }
 
         if (preferWww) {
           redirects.push({
